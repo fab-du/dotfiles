@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bash
 #package to install for android 
 #http://paste.ubuntu.com/7696742/ 
 
