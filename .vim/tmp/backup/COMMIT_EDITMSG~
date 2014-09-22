@@ -6,5 +6,7 @@
 # Ihr Branch ist auf dem selben Stand wie 'origin/master'.
 #
 # zum Commit vorgemerkte Änderungen:
-#	neue Datei:     .gitconfig
+#	geändert:       .vim/tmp/backup/install_dotfile.sh~
+#	geändert:       .vim/view/~=+Project=+dotfiles=+install_dotfile.sh=
+#	geändert:       install_dotfile.sh
 #
