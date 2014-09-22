@@ -9,3 +9,4 @@ dotfiles
    * .vimrc
    * .gitconfig
 
+* .vim [dir]
