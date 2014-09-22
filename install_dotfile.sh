@@ -33,6 +33,8 @@ DOTFILES=(
     '$HOME/.ycm_extra_conf.pyc' 
 )
 
+ls -A . | xargs -0 -I file ln -s "$PWD/file" "$HOME/file"
+
 
 #first check if the home dir , already contains those dot file
 

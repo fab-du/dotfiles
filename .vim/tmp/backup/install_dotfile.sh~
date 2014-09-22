@@ -4,8 +4,10 @@
 mkdir $HOME/dotfile_orig
 
 #actuel dir 
+#DOT_DIR=$PWD 
+#We can use $PWD for this purpose since $PWD give the hole path 
 
-DOT_DIR=$PWD/dotfiles 
+
 
 DOTFILES=(
     '$HOME/.bash_aliases' 
@@ -30,6 +32,8 @@ DOTFILES=(
     '$HOME/.ycm_extra_conf.py' 
     '$HOME/.ycm_extra_conf.pyc' 
 )
+
+
 
 
 #first check if the home dir , already contains those dot file
