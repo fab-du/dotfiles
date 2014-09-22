@@ -7,4 +7,5 @@ dotfiles
    * .tmux.conf
    * .xinitrc
    * .vimrc
+   * .gitconfig
 
