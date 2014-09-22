@@ -138,12 +138,12 @@ setlocal winfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 15) / 31)
+let s:l = 5 - ((4 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
-normal! 018|
+5
+normal! 0
 lcd ~/documents/wai1/src/de/hs_mannheim/servlets
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
