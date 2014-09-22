@@ -5,4 +5,6 @@ dotfiles
 
 #Actuel: 
    * .tmux.conf
+   * .xinitrc
+   * .vimrc
 
