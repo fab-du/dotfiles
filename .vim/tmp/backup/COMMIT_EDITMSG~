@@ -6,8 +6,9 @@
 # Ihr Branch ist auf dem selben Stand wie 'origin/master'.
 #
 # zum Commit vorgemerkte Änderungen:
-#	geändert:       .gitignore
-#	geändert:       .vim/tmp/backup/.gitignore~
 #	geändert:       .vim/tmp/backup/COMMIT_EDITMSG~
+#	neue Datei:     .vim/tmp/undo/%home%batlab%Project%dotfiles%.vimrc
+#	geändert:       .vim/view/~=+.vimrc=
 #	geändert:       .vim/view/~=+Project=+dotfiles=+.git=+COMMIT_EDITMSG=
+#	geändert:       .vimrc
 #
