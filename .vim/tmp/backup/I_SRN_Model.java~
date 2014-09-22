@@ -1,0 +1,7 @@
+package de.hs_mannheim.SRNInterface;
+
+public interface I_SRN_Model extends java.io.Serializable{
+	
+	@Override
+	public String toString();
+}

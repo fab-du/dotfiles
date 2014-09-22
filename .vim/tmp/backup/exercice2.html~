@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convertir en toute lettre</title>
+    <meta charset="utf-8" />
+    <script> 
+    var s_chiffre=prompt("Veuillez entrez un chiffre !!! \n Entre 0 et 999"); 
+    var n_chiffre = parseInt(s_chiffre,10);  
+    console.log("start of script" + n_chiffre);
+
+    var tab_unite= ['zero','un', 'deux','trois','quatre','cinq','six','sept','huit','neuf']; 
+
+    
+    var tab = ['','onze','douze','treize', 'quatorze','quinze','seize']; 
+    
+    var tab_dixaine = ['','dix','vingt','trente','quarante','cinquante','soixante','','quatrevingt','']
+
+    //var tab_centaine = ['','cent',];
+    function enLettre(chiffre) {//{{{
+
+        var centaine = (chiffre - (chiffre % 100)) / 100;  
+        console.log("Centaine:" + centaine);
+        
+        chiffre  = chiffre % 100;  
+        var dizaine  = (chiffre - (chiffre % 10)) /  10; 
+        console.log("dixaine:"+dizaine);
+        var unite = chiffre % 10; 
+        console.log("unite:"+unite);
+
+        if( centaine === 0 && dizaine === 0 )
+        {
+            if( unite === 0 )
+                return ''+tab_unite[0]; 
+
+            return ''+tab_unite[unite]; 
+        }
+        else if( centaine === 0 && dizaine !== 0 )
+        {
+            if( unite >=1 && unite <= 6)
+            {
+                return tab[unite];
+            }
+
+            
+            if( unite === 0)
+            {
+                if( dizaine === 9 )
+                    return tab_dixaine[8] +tab_dixaine[1]; 
+                if( dizaine === 7 )
+                    return tab_dixaine[6] +tab_dixaine[1]; 
+
+                return ''+tab_dixaine[dizaine]; 
+            }
+            else  
+            {
+                if( dizaine === 9 )
+                    return tab_dixaine[8] +'et' + '-' + enLettre(unite + 10); 
+                if( dizaine === 7 )
+                    return tab_dixaine[6] +'et' + '-'+enLettre(unite+10); 
+
+                return ''+tab_dixaine[dizaine] + '-' + 'et' + '-' + tab_unite[unite]; 
+            }
+        }
+        else 
+        {
+            if( centaine === 100)
+            {
+                return 'cent' 
+            }
+
+            if( dizaine === 0 && unite === 0 )
+            {
+                return tab_unite[centaine] + '-' + 'cents'; 
+            }
+            else
+            {
+                return tab_unite[centaine] + '-' + 'cents' +'-' +'et'+'-'+enLettre(chiffre) 
+            }
+            return '' + tab[centaine]+ ' '+ tab[dizaine] + tab[unite]; 
+        }
+    }//}}}
+    
+    if( !isNaN(n_chiffre) || n_chiffre<0 || n_chiffre > 999)
+    {
+        console.log("la lettre est un chiffre");
+        var lettre = enLettre( n_chiffre ); 
+        alert( ' ' + lettre ); 
+    }
+    else 
+    {
+         
+    }
+
+    for( i = 0; i<=999; i++)
+    {
+        console.log(""+i +"\t "+enLettre(i));
+    }
+
+    </script>
+</head>
+<body>
+</body>
+</html>

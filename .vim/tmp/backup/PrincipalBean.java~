@@ -1,0 +1,56 @@
+package de.hs_mannheim.bean;
+import java.util.Date; 
+
+import de.hs_mannheim.DBConnection.IData;
+
+
+
+public class PrincipalBean {
+
+	String userName; 
+	String stadtName; 
+        String[] multipleStadte; 
+	Date date; 
+	IData data; 
+
+	public Date getDate(){
+		return date; 
+	} 
+	
+	public void setDate( Date date ){
+            this.date = date; 
+	} 
+	
+	public String getUsername(){
+		return userName; 
+	} 
+	public void setUsername(String userName){
+            this.userName = userName; 
+        } 
+	
+	public String getStadtname(){
+		return stadtName; 
+	} 
+	public void setStadtname(String stadtName){
+		this.stadtName = stadtName; 
+	}
+
+        public String [] getStadtname1()
+        {
+            return multipleStadte;  
+        }
+
+        public void setStadtname( String[] multipleStadte)
+        {
+            this.multipleStadte = multipleStadte;  
+        }
+	
+	public IData getData(){
+		return data; 
+	}
+	
+	public void setData(IData data ){
+		this.data = data; 
+	}
+	
+}

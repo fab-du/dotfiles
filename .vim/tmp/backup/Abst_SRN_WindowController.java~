@@ -1,0 +1,8 @@
+
+package de.hs_mannheim.SRNInterface;
+
+class Abst_SRN_WindowController implements I_SRN_WindowController{
+
+
+}
+

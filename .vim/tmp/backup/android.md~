@@ -1,0 +1,52 @@
+# Android Tutorium
+
+## I. Definitions
+
+### a) Android Manifest (AndroidManifest.xml)
+Manifest glues everythings concerning the application. 
+It is the file that explaining what the app consist of. specfy the main 
+building block, what permission are requires and so on. 
+
+### b) Ressources Files
+
+### b.1) Layout XML 
+Locating in path `res/layout` , his purpose is to specify the layout 
+of the screen. 
+
+### b.2) String 
+Location in paht `res/values/strings`, he contains all the text used in 
+the application. </br>
+Example of String resources 
+
+```
+<!--store in res/values/strings.xml-->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <string name="hello">Hello World, HelloWorld!</string>
+   <string name="app_name">Hello, World!!!</string>
+</resources>
+```
+
+### b.3) The R.java file 
+The R file is the glue between the world of Java and the world of resources .
+It is an automatically generated file, and as such, you never modify it. It is
+recreated every time you change anything in the res directory, for example, 
+when you add an image or XML file.
+
+### c) Android application 
+An android Application is a loose collection of Services, Activities,
+ContentProvider and BroadcastReceiver.  
+ksdjf
+aksdj
+aslkdj
+aslkdj
+aksjd
+laksjf
+askljdf
+kajsdfksdf
+dkjakjfaleiie
+kdf
+ <div class="footer">
+ ------------------------------
+&copy; 2004 Foo Corporation
+</div>

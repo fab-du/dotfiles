@@ -1,0 +1,60 @@
+
+#include "modell.h"
+
+
+    QVariant modell::data( const QModelIndex& index, int Role) const{
+    
+    int row = index.row(); 
+
+    switch( Role )
+    {
+    
+        case Name:                   return _screens[ row ]->name(); 
+            break; 
+        case Orientation:            return  _screens[row]->orientation(); 
+            break; 
+        case Ava_Geomedtry_x:  
+            break; 
+        case Ava_virtual_Geo_Y: 
+            break; 
+        case Ava_Size_W: 
+            break; 
+        case Ava_Size_H: 
+            break; 
+        case Virtual_Geo_X: 
+            break; 
+        case Virtual_Geo_Y: 
+            break; 
+        case Phy_Size_H: 
+            break; 
+        case Phy_Size_W: 
+            break; 
+    
+    
+    }
+
+    return NULL; 
+    }
+
+
+
+QHash<int,QByteArray> modell::roleNames() const
+{
+
+    QHash<int, QByteArray> roles; 
+
+    roles[Name] = "Name"; 
+    //roles[Orientation]= "Orientation"; 
+    //roles[Ava_Geomedtry_x]="Available Geometry X"; 
+    //roles[Ava_Geomedtry_y]="Available Geometry Y"; 
+    //roles[Ava_Size_W]="Available Size Width"; 
+    //roles[Ava_Size_H]="Available Size Height"; 
+    //roles[Ava_virtual_Geo_X]="Available Virtual Geometry X"; 
+    //roles[Ava_virtual_Geo_Y]="Available Virtual Geometry Y"; 
+    //roles[Virtual_Geo_X]="Virtual Geometry X"; 
+    //roles[Virtual_Geo_Y]="Virtual Geometry Y"; 
+    //roles[Phy_Size_W]="Physikalische Size Width"; 
+    //roles[Phy_Size_H]="Physikalische Size Height";
+
+    return roles; 
+}

@@ -1,0 +1,67 @@
+Monitoring: 
+---------- 
+
+0. Info ueber CPU erhalten . 
+---------------------------- 
+
+cat /proc/cpuinfo > cpuinfo.txt 
+
+Dadurch erhaltet man folgende Infos : 
+>> CPU Family, CPU Core  
+>> Anzahl der CPUs 
+>> Model Name 
+>> Vendor ID   usw. ...... 
+
+
+1. Untersuchen welche Prozess die CPU auslastet : 
+
+Das koennte man brauchen in die folgende Faelle zum Beispiel: 
+* Testen der CPU Auslatund eines (Programm)Prozess die man geschrieben hat 
+* Prozess aushalten die zuviel Ressource benutzt . 
+ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10
+
+---------------- Sample Output ---------------------------------------------------------------------------------------
+%CPU   PID USER     COMMAND
+ 4.6  7520 batlab   x-www-browser 
+ 2.8  1883 root     /usr/bin/X11/X -nolisten tcp -auth /var/run/slim.auth vt07
+ 1.9  7651 batlab   /usr/lib/iceweasel/xulrunner/plugin-container /usr/lib/flashplugin-nonfree/libflashplayer.so -greomni /usr/lib/iceweasel/xulrunner/omni.ja -appdir /usr/lib/iceweasel 7520 plugin
+ 0.5 21443 batlab   vpnui
+ 0.3 21418 root     /opt/cisco/anyconnect/bin/vpnagentd
+ 0.2  3283 batlab   compton --vsync opengl
+ 0.2  3160 batlab   conky -q
+ 0.2  2919 batlab   clipit
+ 0.0     7 root     [watchdog/0]
+
+------------- Ende Sample Output ------------------------------------------------------------------------------------
+
+2. CPU Benutzung in Prozent von ein Prozess 
+
+  - Rausfinden der PID (Prozess ID ) der Prozess mit "ps"-Kommando (und Variante )
+----------------Sample output------------------------ 
+     --> ps 
+  PID TTY          TIME CMD
+21999 pts/3    00:00:00 bash
+22135 pts/3    00:00:02 vim
+22145 pts/3    00:00:00 python2
+22227 pts/3    00:00:00 bash
+22228 pts/3    00:00:00 ps
+
+--------------Ende Sample Output -------------------- 
+
+ - jetzt wollen wir rausfinden (in %) die CPU-Auslatung (und die Speicherbelegung) 
+   der Prozess( Kommando bash ) mit PID 22145 
+
+----------------Sample output------------------------ 
+   -->  ps -p 21999 -o %cpu,%mem,cmd
+    %CPU %MEM CMD
+    0.0  0.1 /bin/bash
+----------- Ende Sample Output ----------------------- 
+
+
+
+
+
+
+
+
+

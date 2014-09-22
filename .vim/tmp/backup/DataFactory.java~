@@ -1,0 +1,60 @@
+package de.hs_mannheim.DBConnection;
+
+public class DataFactory {
+	
+	protected String dataType; 
+	protected IData data; 
+	
+	/* Constants zur Erzeugung von Objekten */ 
+	
+	public static final String NACH_EINSTELLUNG =
+			"nachEinstellung"; 
+	
+	public static final String NACH_DATUM = 
+			"nachDatum"; 
+	
+	public static final String NACH_ORT = 
+			"nachOrt"; 
+	
+	public static final String NACH_USER = 
+			"nachUser";
+	
+	
+	
+	public DataFactory(String dataType){
+		this.dataType = dataType; 
+	}
+	
+	
+	void setDataType(String dataType){
+		this.dataType = dataType; 
+	}
+	
+	IData getData(){
+		
+	 if(dataType.equals(NACH_EINSTELLUNG)){
+		 
+		 //data = new DataNachEinstellung(); 
+		 
+	 }else if(dataType.equals(NACH_DATUM))
+	 {
+		 data = new DataNachDatum(); 
+		 
+	 }else if(dataType.equals(NACH_ORT)){
+		 
+		 data = new DataNachOrt(); 
+		 
+	 }else if(dataType.equals(NACH_USER)){
+		 
+		 data = new DataNachUser(); 
+		 
+	 }else{
+		 data = null; 
+	 }
+		
+		
+		return data; 
+	}
+	
+
+}//End of Class 

@@ -1,0 +1,63 @@
+package de.hs_mannheim.servlets;
+
+
+/* Hier werden alle Constante definiert */
+public final class WaiConst {
+
+	public static final String  INDEX_PAGE =
+			"/index.html";
+
+        public static final String ERROR_PAGE=
+                        "/error.html"
+	
+	/* VIEWS ..........................  */
+	public static final String VIEW_ANFRAGE_PAGE=
+			"/WEB-INF/anfrage.jsp"; 
+	
+	public static final String VIEW_RESULT_ANFRAGE_PAGE=
+			"/WEB-INF/resultAnfrage.jsp";
+	
+	/* FIN VIEWS ........................*/
+	
+	
+	/*ATTRIBUTS ..............................*/
+	
+	
+	public static final String ATT_USER=
+			"user";
+	
+	
+	
+	public static final String ATT_STADT=
+			"stadt"; 
+	
+	
+	
+	public static final String ATT_DATE = 
+			""; 
+	
+	
+	
+	public static final String ATT_OK = /* Bestaetigung der SuchEinstellung */ 
+			"ok"; 
+	
+	/* ATTRIBUTS ..............................*/
+	
+	 
+	/* SQL Statement ......................... */
+	
+	public static final String SQL_USER_INFO_OK =
+			  "SELECT User_Id FROM Users"
+			+ "WHERE userName=?"
+	        + "AND passWORD =?";
+	
+	public static final String SQL_GET_USER_FOTOS = 
+			  "SELECT Stadt_Name FROM Staedte"
+		    + "WHERE User_Id = ? ";
+	
+	public static final String SQL_GET_FOTOS_NACH_CONF = 
+			"SELECT Verzeichniss FROM Staedte"
+			+ "WHERE User_Id =? "
+			+ "AND Stadt_Name = ?"; 
+	
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+<link rel="stylesheet" href="../JS/jquery_ui/jquery-ui.min.css">
+
+</head>
+<body>
+
+    <div id="wrapper">
+        <div id="bigBox">
+        </div>
+
+        <div id="smallBox" >
+        </div>
+    </div>
+
+    <div id="fotolist">
+    <ul>
+    <li>img/activity.png</li>
+    <li>img/androidBuild.png</li>
+    <li>img/background.jpg</li>
+    <li>img/clementine.png</li>
+    <li>img/F_2013_251.jpg</li>
+    <li>img/F_2013_252.jpg</li>
+    <li>img/F_2014_365.jpg</li>
+    <li>img/toto.jpg</li>
+    </ul>
+    </div>
+
+
+
+</body>
+<script src="../JS/jquery_ui/external/jquery/jquery.js"></script>
+<script src="../JS/jquery_ui/jquery-ui.min.js"></script>
+<script src="foto.js" type="text/javascript" charset="utf-8"></script>
+</html>

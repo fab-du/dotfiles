@@ -1,0 +1,189 @@
+package de.example.bluetooth1;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Set;
+import java.util.UUID;
+
+import android.bluetooth.BluetoothDevice;  
+import android.bluetooth.BluetoothAdapter; 
+import android.bluetooth.BluetoothSocket; 
+import android.os.Bundle; 
+import android.os.Handler; 
+import android.os.Message; 
+import android.util.Log; 
+import android.widget.Toast;
+
+public class BtInterface {
+
+    BluetoothDevice device          = null; 
+    BluetoothSocket socket          = null; 
+    InputStream     receiveStream   = null; 
+    OutputStream    sendStream      = null; 
+
+    Handler handler; 
+    ReceiverThread receiverThread; 
+
+
+    public BtInterface( Handler statushandler , Handler handler ){
+        Set<BluetoothDevice> setPairedDevices 
+            = BluetoothAdapter.getDefaultAdapter().getBondedDevices(); 
+
+        BluetoothDevice[] pairedDevices = 
+            ( BluetoothDevice[]) setPairedDevices.toArray( new BluetoothDevice[ setPairedDevices.size()]); 
+
+        for (int i=0; i < pairedDevices.length ; i++ ) {
+           if( pairedDevices[i].getName().contains("ModuleBluetooth")) 
+           {
+	device = pairedDevices[i];
+                try 
+                {
+                    socket = 
+                        device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
+                    receiveStream = socket.getInputStream();
+                    sendStream = socket.getOutputStream();
+            } catch (IOException e) {
+                    e.printStackTrace();
+            }
+            break;
+            
+           }
+        }
+
+    
+    }
+    
+    public BtInterface( String devicename,Handler statushandler , Handler handler )
+    {
+    	
+        Set<BluetoothDevice> setPairedDevices 
+        = BluetoothAdapter.getDefaultAdapter().getBondedDevices(); 
+
+    BluetoothDevice[] pairedDevices = 
+        ( BluetoothDevice[]) setPairedDevices.toArray( new BluetoothDevice[ setPairedDevices.size()]); 
+
+for (int i=0; i < pairedDevices.length ; i++ ) {
+if( pairedDevices[i].getName().contains( devicename )) 
+{
+device = pairedDevices[i];
+try 
+{
+socket = 
+device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
+receiveStream = socket.getInputStream();
+sendStream = socket.getOutputStream();
+} catch (IOException e) {
+e.printStackTrace();
+}
+    break;
+    
+    }
+    }
+    }
+
+	public void connect() {
+            new Thread() {
+                    @Override public void run() {
+                            try
+                            {
+                                socket.connect();
+                                Message msg = handler.obtainMessage();
+                                msg.arg1 = 1;
+                                handler.sendMessage(msg);
+                
+                                receiverThread.start();
+                            } catch (IOException e) {
+                                    Log.v("N", "Connection Failed : "+e.getMessage());
+                                    e.printStackTrace();
+                            }
+                    }
+            }.start();
+	}
+
+    public void sendData( String data)
+    {
+        sendData( data, false); 
+    }
+
+    public void sendData( String data, boolean deleteScheduldedData)
+    {
+        try {
+            sendStream.write(data.getBytes()); 
+            sendStream.flush(); 
+        } catch( IOException e ){
+            e.printStackTrace();
+        }
+    }
+
+    public void close()
+    {
+        if( socket == null )
+        {
+            //Nix zu tun 
+            //Vermeindung der Versuch eine nicht-exitierende Socket
+            //abzuschliessen 
+        }
+        else 
+        { 
+            try {
+                socket.close(); 
+            } catch(IOException e){
+                e.printStackTrace();
+            } 
+        }
+    }
+
+
+    public BluetoothDevice getDevice(){ return device; }
+
+String receiveMessage; 
+public static boolean debug = false; 
+public String getreceiveMessage()
+{
+	if( receiveMessage != null)
+		return receiveMessage; 
+		return null;  
+}
+private class ReceiverThread extends Thread {
+    Handler handler;
+        
+        ReceiverThread(Handler h) {
+                handler = h;
+        }
+        
+        @Override public void run() {
+                while(true) {
+                try {
+                        if(receiveStream.available() > 0) {
+                                byte buffer[] = new byte[100];
+                                int k = receiveStream.read(buffer, 0, 100);
+
+                                if(k > 0) {
+                                        byte rawdata[] = new byte[k];
+                                        for(int i=0;i<k;i++)
+                                                rawdata[i] = buffer[i];
+                                        
+                                        String data = new String(rawdata);
+
+                                        Message msg = handler.obtainMessage();
+                                        Bundle b = new Bundle();
+                                        b.putString("receivedData", data);
+                                        receiveMessage = data; 
+                                        debug = true; 
+                                        
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                                }
+                        }
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        }
+                }
+        }
+}
+
+
+}//end of the Class 
+
+

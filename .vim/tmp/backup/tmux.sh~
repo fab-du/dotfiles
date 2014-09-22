@@ -1,0 +1,8 @@
+#!/bin/bash 
+
+#tmux for java 
+
+
+tmux -2  
+
+

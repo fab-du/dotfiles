@@ -1,6 +1,13 @@
 #!/bin/bash 
 
+
 mkdir $HOME/dotfile_orig
+
+#actuel dir 
+#DOT_DIR=$PWD 
+#We can use $PWD for this purpose since $PWD give the hole path 
+
+
 
 DOTFILES=(
     '$HOME/.bash_aliases' 

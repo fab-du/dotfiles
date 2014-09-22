@@ -1,0 +1,250 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern} 
+\usepackage{makeidx} 
+\usepackage[T1]{fontenc}
+
+%Inserting java snippets 
+\usepackage{listings} 
+\usepackage{color} 
+\definecolor{dkgreen}{rgb}{0,0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5} 
+\definecolor{mauve}{rgb}{0.58,0,0,0.82} 
+
+\lstset{frame=tb,
+    language=Java,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue}, 
+    commentstyle=\color{dkgreen}, 
+    stringstyle=\color{mauve},
+    breaklines=true, 
+    breakatwhitespace=true,
+    tabsize=3
+}
+
+
+\lstset{frame=tb,
+    language=Bash,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue}, 
+    commentstyle=\color{dkgreen}, 
+    stringstyle=\color{mauve},
+    breaklines=true, 
+    breakatwhitespace=true,
+    tabsize=3
+}
+
+
+
+\lstset{frame=tb,
+    language=Xml,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue}, 
+    commentstyle=\color{dkgreen}, 
+    stringstyle=\color{mauve},
+    breaklines=true, 
+    breakatwhitespace=true,
+    tabsize=3
+}
+
+
+\title{Studienarbeit Freescale Sabre.} 
+\author{Siyapdje, Fabrice Dufils\\Matrikelnummer: 1015366 \\ Informationtechnik Institut\\ 
+    Betreuer: Herr Dr. Pf. Lukusa Kapulepa}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Freescale Sabre Microcontroller Uebersicht.}
+    \subsection{Hardware Spezifikation}
+    \subsection{Software Spezifikation}
+    \subsection{Sabre unter Android}
+    \subsection{Sabre unter Linux}
+    
+\section{Freescale Sabre Microcontroller unter Android}
+    \subsection{Installion von Android}
+    \subsection{Linux-einstellung der Entwicklungsumgebung}
+
+    Host-System Einstellung:\\  
+
+ 1. Installation von jre-7 ( java runtime environment )\\  
+    
+-Auf der oracle Webseite , kann das JRE runtergeladen werden:  
+      "jre-7u<version>-linux-i586.tar.gz" 
+
+    - Entpacken Sie die jre-7u<version>-linux-i586.tar.gz irgendwo auf Ihre Rechner. 
+      Hier in der home-Verzeichniss zum Beispiel:  
+      tar cfvz jre-7u<version>-linux-i586.tar.gz \$HOME jre7 
+      cd \$HOME/jre7 
+
+ 2. Installation der JDK-7 ( Java development kit )\\ 
+
+    - Auf der oracle Webseite die jdk (neueste) version runterladen . "jdk-7u<version>-linux-x64.tar.gz" 
+    - Entpacken Sie die "jdk-7u<version>-linux-x64.tar.gz" \$HOME/jdk-7 
+     (fast das gleiche Vorgang wie bei der Installion von JRE )
+
+ 3. Einstellung der PATH JDK\_HOME , JAVA\_HOME .\\ 
+
+
+ 4. Laden Sie die Android SDK runter von "Android Developper" Webseite \\
+
+
+ 5. Erweiterung der PATH mit Android bin Verzeichniss. \\ 
+    Zumbeispiel wurde die Android SDK in \$HOME/android_sdk installiert. 
+    dann die Erweiterung von der PATH mit android bin Verzeichnis geschiecht folgendermasse : 
+
+    echo '\$HOME/android\_sdk/'
+
+ 6. Noetige Tools :\\ 
+
+-gdb, gdbserver \\
+\begin{lstlisting} 
+ sudo apt-get install gdb gdbserver 
+ \end{lstlisting}   
+
+ Doc: gdb\_server.txt  
+
+- adb ( Android Debugger Bridge ) \\ 
+Wird mit Android SDK mitgelifert 
+
+-Vim\\ 
+\begin{lstlisting} 
+ apt-get install vim  
+\end{lstlisting}
+
+Doc : vim\_for\_java\_android.txt 
+
+-Eclipse ( Alternative zu vim)\\    
+Doc : eclipse\_for\_java\_android.txt      
+
+-tmux\\
+\begin{lstlisting} 
+sudo apt-get install tmux 
+\end{lstlisting} 
+
+Doc : tmux.txt 
+
+-rsync (client)\\ 
+
+-rsync (server)\\ 
+
+- ssh\\
+
+- ssh (server)\\  
+
+- dropbear\\ 
+ssh, sshserver, und dropbear erm"oglichen die Entwicklung
+von Software direckt auf das Zielger"at .   
+
+
+7. Einstellung der host-System um der usb zu detektieren . \\
+- kommando "android update adb" durchführen, damit wird die 
+Konfiguration Datei adb\_usb.ini generiert falls noch nicht 
+vorhanden ist. 
+
+\begin{lstlisting} 
+ echo "0x15a2" >> $HOME/.android/adb_usb.ini 
+ Loggin as root  (sudo su) 
+ touch /ect/udev/rules.d/imx-android.rules 
+ echo "SUBSYSTEM=="usb", ATTR{idVendor}=="15a2", MODE="0666", GROUP="plugdev""  
+   >>  /ect/udev/rules.d/51-android.rules 
+ chmod a+r /etc/udev/rules.d/imx-android.rules
+ #loggen Sie sich wieder als normaler user ( exit-Kommando von ) 
+ #Board anschliessen. 
+ adb kill-server 
+ adb start-server 
+\end{lstlisting}
+
+\section{Beispiel Programme}
+    \subsection{Connectivity}
+        \subsubsection{Bluetooth}
+Anwendungsfall : Benutzung der Sabre für die Steuerung eines LED-Tafel. 
+
+** Seite der Microcontroller ( LED-Tafel ) : \\ 
+---------------------------------------- 
+
+Der Microcontroller soll ein serielle Verbindungsschnittstelle wie ein 
+RS232 oder UART besitzen .
+Dazu benoetigen wir auch ein Bluetooth-module, diese muss in der Lage sein SPP-Profile zu unterstutzen, und der muss auch mit 
+seriellen Verbindung compatible sein. 
+zB: DB9 , DIP oder auch CMS ..... 
+
+1. Verbindung der Bluetooth Module mit dem MC (Hardware). 
+diese Verbindung muss ein "Cross-Verbindung" sein.\\ 
+ \begin{lstlisting} 
+ Rx-Pin MC -------> Tx-Pin der Bluetooth Module 
+ Tx-Pin MC -------> Rx-Pin der Bluetooth Module  
+\end{lstlisting} 
+
+2. Bautrate einstellen ( Software ) \\  
+    Es muss hier die Baudrate eingestellt werden ( siehe Developper-Guide der MC ). 
+    Man muss aber nicht seite der Sarbre( Android ) die Bautrate einstellen. 
+    den Wert , die man hier gibt ist eigentlich egal , da seite der Android host 
+    wird durch die blutooth-module die Protokolle synchronisiert . 
+
+
+** Seite der Android ( Sarbre ) \\ 
+---------------------------- 
+
+1. in der AndroidManifest datei muss die Rechte eingetragen werden. \\ 
+ 
+
+\begin{lstlisting} 
+<uses-permission android:name="android.permission.BLUETOOTH\_ADMIN" />
+<uses-permission android:name="android.permission.BLUETOOTH" /> 
+\end{lstlisting}
+
+
+Android SDK stellt drei Klassen zur Verfügung um die Bluetooth zu benutzen : 
+
+BluetoothDevice : Die Klasse repräsentiert ein Bluetooth host
+BluetoothAdapter : Die Klasse ermöglicht den Scann von Blutooth-port, Activieren/Deaktivieren 
+von Bluetooth ......
+BluetoothSocket: Durch diese Klasse bekommt man die Socket zum Lesen und Schreiben auf dem 
+Bluetooth Verbindung. 
+
+
+Diese sind die wesentliche Merkmale für die Programmierung 
+von Bluotooth Apps unter Android.\\ 
+Für weitere Informationen wird es auf Android Developper Webseite
+verwiesen : 
+http://developer.android.com/guide/topics/connectivity/bluetooth.html
+
+
+
+Die Interface sieht so aus: 
+ 
+\begin{lstlisting} 
+public class BtInterface {
+private BluetoothDevice device = null;    // Bluetooth module auf der MC  
+private BluetoothSocket socket = null;
+private InputStream receiveStream = null;// Empfangkanal   
+private OutputStream sendStream = null;  //  SendeKanal 
+} 
+\end{lstlisting} 
+
+
+        \subsubsection{Wifi}
+        \subsubsection{UMTS}
+    \subsection{Geolocalisation}
+    \subsection{Sensoren}
+
+\end{document}

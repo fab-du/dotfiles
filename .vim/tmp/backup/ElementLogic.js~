@@ -1,0 +1,25 @@
+
+
+var UhrObject = function(){
+}
+
+UhrObject.prototype.uhr : 0 
+
+UhrObject.prototype.getTime(){
+
+}
+
+UhrObject.prototype.getSec()
+{
+
+}
+
+UhrObject.prototype.getMin()
+{
+
+}
+
+UhrObject.prototype.getUhr()
+{
+
+}

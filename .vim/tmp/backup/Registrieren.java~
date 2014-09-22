@@ -1,0 +1,188 @@
+package de.hs_mannheim.ui;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+
+import java.awt.TextField;
+import java.awt.Window;
+
+import javax.swing.JButton;
+import javax.swing.AbstractAction;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
+import javax.swing.Action;
+
+import user.UserModellForRegistration;
+import de.hs_mannheim.ui.UIControllerReg.ButtonControll;
+
+import java.awt.event.ActionListener;
+
+public class Registrieren extends JFrame implements WindowListener, ActionListener{
+	
+	public static final String ACTION_EINLOG = "einlogen"; 
+	public static final String ACTION_REGISTRIEREN = "registrieren"; 
+	public static final String ACTION_EXIT = "exit";
+	
+	private JTextField text_Name;
+	private JTextField text_Vorname;
+	private JTextField text_Email;
+	private JTextField text_BName;
+	private JPasswordField text_Password;
+	private JPasswordField text_PasswordRetype;
+	private JButton btnRegistrieren;
+	private JButton btnEinloggen;
+	private JButton btnExit;  
+	private boolean goToEinlogen = false;
+
+	public Registrieren() {
+		setResizable(false);
+	
+		getContentPane().setLayout(null);
+		
+		this.addWindowListener(this);
+		
+		JLabel label_Name = new JLabel("Name");
+		label_Name.setBounds(53, 56, 46, 14);
+		getContentPane().add(label_Name);
+		
+		JLabel label_Vorname = new JLabel("Vorname");
+		label_Vorname.setBounds(53, 81, 46, 14);
+		getContentPane().add(label_Vorname);
+		
+		JLabel label_BName = new JLabel("B. Name");
+		label_BName.setBounds(53, 147, 46, 14);
+		getContentPane().add(label_BName);
+		
+		JLabel label_Passwort = new JLabel("Passwort");
+		label_Passwort.setBounds(53, 175, 46, 14);
+		getContentPane().add(label_Passwort);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(411, 106, -357, 14);
+		getContentPane().add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(88, 131, 266, 5);
+		getContentPane().add(separator_1);
+		
+		JLabel lblEmail = new JLabel("E-mail");
+		lblEmail.setBounds(53, 106, 46, 14);
+		getContentPane().add(lblEmail);
+		
+		text_Name = new JTextField();
+		text_Name.setBounds(109, 53, 223, 20);
+		getContentPane().add(text_Name);
+		text_Name.setColumns(10);
+		
+		text_Vorname = new JTextField();
+		text_Vorname.setBounds(109, 78, 223, 20);
+		getContentPane().add(text_Vorname);
+		text_Vorname.setColumns(10);
+		
+		text_Email = new JTextField();
+		text_Email.setBounds(109, 103, 223, 20);
+		getContentPane().add(text_Email);
+		text_Email.setColumns(10);
+		
+		text_BName = new JTextField();
+		text_BName.setBounds(112, 147, 220, 20);
+		getContentPane().add(text_BName);
+		text_BName.setColumns(10);
+		
+		text_Password = new JPasswordField();
+		text_Password.setBounds(112, 172, 221, 20);
+		getContentPane().add(text_Password);
+		
+		text_PasswordRetype = new JPasswordField();
+		text_PasswordRetype.setBounds(112, 197, 220, 20);
+		getContentPane().add(text_PasswordRetype);
+		
+		JLabel lblRetypePasswort = new JLabel("Retype Passwort");
+		lblRetypePasswort.setBounds(16, 199, 89, 14);
+		getContentPane().add(lblRetypePasswort);
+		
+		btnRegistrieren = new JButton("Registrieren");
+		btnRegistrieren.setBounds(63, 257, 108, 23);
+		getContentPane().add(btnRegistrieren);
+		btnRegistrieren.setActionCommand(ACTION_REGISTRIEREN);
+		
+		setVisible(true);
+		
+		btnEinloggen = new JButton("Einloggen");
+		btnEinloggen.setBounds(181, 257, 89, 23);
+		getContentPane().add(btnEinloggen);
+		btnEinloggen.setActionCommand(ACTION_EINLOG);
+		
+		
+		btnExit = new JButton("Exit");
+		btnExit.setBounds(280, 257, 89, 23);
+		getContentPane().add(btnExit);
+		btnExit.setActionCommand(ACTION_EXIT);
+	}
+	
+	
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowClosed(WindowEvent e) {
+		
+	}
+	@Override
+	public void windowClosing(WindowEvent e) {
+		setVisible(false); 
+		System.exit(0);
+		
+	}
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addObservabĺe(ButtonControll buttonControll) {
+		btnEinloggen.addActionListener(buttonControll);
+		btnExit.addActionListener(buttonControll);
+		btnRegistrieren.addActionListener(buttonControll);
+	}
+	
+	public String updateModel(UserModellForRegistration model){
+	
+		model.setEmail(text_Email.getText());
+		model.setName(text_Name.getText());
+		model.setPassword(text_Password.getText());
+		model.setUsername(text_BName.getText());
+		model.setVorname(text_Vorname.getText());
+		return (text_PasswordRetype.getText()); 
+		
+	}
+}

@@ -1,0 +1,19 @@
+
+
+var mongoose = require('mongoose');
+var     http = require('http');
+
+mongoose.connect('mongodb://localhost/test');
+
+var connection = mongoose.connection; 
+var schema     = mongoose.Schema; 
+
+
+http.createServer( function (req, res) {
+    
+    
+
+
+}).listen(3000);
+
+

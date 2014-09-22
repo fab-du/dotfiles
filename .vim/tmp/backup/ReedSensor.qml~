@@ -1,0 +1,76 @@
+import QtQuick 2.0 
+
+Rectangle{
+    width : 100   
+    height: 100  
+    color : "lightblue" 
+
+    property real x_eingang :  0 
+    property real x_ausgang :  0 
+    property bool block  :  true  
+
+    rotation : 120  
+
+
+        Rectangle{
+           id : feuRouge  
+           x : 0 
+           y : 0 
+           width : parent.width / 2 
+           height : width 
+           color: {
+                    if( x_eingang == 544 || x_ausgang == 394  )               
+                    {
+                        block = false 
+                        rotAnim.duration = 5000 
+                        rotAnim.start()
+                        return "green"
+                    }
+                    else if (block)
+                    {
+                        return "grey" 
+                    }
+                    else
+                    {
+                        return "green"
+                    }
+                 }
+
+           radius : width/2 
+
+
+
+           ColorAnimation on color {
+               id : rotAnim 
+               running : false 
+               from : "grey"
+               to : { if (running == false) block = true ; console.log(running); return "green"} 
+           }
+
+        }
+
+        Rectangle{
+           id : feuJaune 
+           x : feuRouge.x + feuRouge.width  
+           y : 0 
+           width : parent.width / 2  
+           height : width 
+           color: "lime"
+
+           radius : width/2 
+
+           Timer{
+                interval: 200; running: true; repeat: true
+                onTriggered :jaunAnim.restart() 
+           }
+
+
+        ColorAnimation on color {
+            id : jaunAnim 
+            from : "lime"
+            to : "grey" 
+            duration : 100 
+        }
+
+        }
+}//end of Rectangle 

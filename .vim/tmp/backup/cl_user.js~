@@ -1,0 +1,16 @@
+
+/**************************************************************** *
+ *
+ *Class to handle user personal Info 
+ **Name 
+ **Vornmae 
+ **Adress 
+ **Email Adress 
+ ***UserName 
+ ***Password 
+ *
+ *************************************************************** */
+
+function cl_user() {
+    
+}

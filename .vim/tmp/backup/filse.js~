@@ -1,0 +1,10 @@
+
+
+var fs = require('fs'); 
+
+
+fs.readdir(__dirname , function( err , files){
+    if( err ) console.error( err ); 
+
+    console.log( files ); 
+}); 

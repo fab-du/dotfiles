@@ -1,0 +1,277 @@
+/*//{{{
+ ******************************************************************************
+ *the core of the Module . 
+ *
+ *Goal : Stell ein Schnittstelle zur Verfuegung , zweck : 
+ *        
+ *      * Spezifikation von Bildern-Quelle ( ob JSON oder XML Datei, Array ... usw )
+ *      * Einstellung : 
+ *        -Anzahl Bildern pro Seite 
+ *        -bzw. Bildern Groesse
+ *      * Image Object 
+ *      * Timer 
+ *      * Some utility functions 
+ *      * usw . 
+ ****************************************************************************** 
+ *///}}}
+
+
+var Foto_Core = (function () {
+    var     core ={}, 
+            data =[], 
+            
+
+            photo_attr = {//{{{ Foto Generale configuration 
+            photo_width  : 200, 
+            photo_height : 200,  
+            photo_scale  : 0,  
+            show_info         : true, 
+            draggable         : false 
+            }, //}}}
+
+            data_structur= {//{{{
+                stadt_name: "", 
+                bilder_feld: []            
+           },  //}}}
+
+            img_ft_canvas ={ //{{{
+                                img_pos: 0, 
+                                img_info_bulle: '', 
+                                img_top_corner_x:0, 
+                                img_top_corner_y:0     
+                             }, //}}}
+            canvas = {//{{{
+                 canvas_el       : Object, 
+                 canvas_width    : 800, 
+                 canvas_height   : 600,  
+
+                 canvas_ctx2d    : Object, 
+                 canvas_separator: 1 
+            },  //}}}
+            div_block = {//{{{
+                 block_width:canvas.canvas_width + 5*canvas.canvas_separator, 
+                 block_height:canvas.canvas_height + 5*canvas.canvas_separator
+            }; //}}}
+function scaleSize(maxW, maxH, currW, currH){//{{{
+    var ratio = currH / currW;
+    if(currW >= maxW && ratio <= 1){
+        currW = maxW;
+        currH = currW * ratio;
+    } else if(currH >= maxH){
+        currH = maxH;
+        currW = currH / ratio;
+    }
+    return [currW, currH];
+}//}}}
+function wichImage(x, y)//{{{
+{
+    //if( x >= CANVAS_WIDTH + 6 || y >= CANVAS_HEIGHT + 6)
+        //return ; 
+
+    if( y > 0 && y < 200 && x > 0 && x < 200 )
+        return {
+                image: 1, 
+                topCornerX : 0, 
+                topCornerY : 0
+              }; 
+
+    if( y > 0 && y < 200 && x > 200 && x < 400)
+        return {
+                image: 2, 
+                topCornerX : 200, 
+                topCornerY : 0
+              }; 
+
+
+    if( y > 0 && y < 200 && x > 400 && x < 600)
+        return {
+                image:3, 
+                topCornerX:400, 
+                topCornerY:0
+              }; 
+
+
+    if( y > 0 && y < 200 && x > 600 && x < 800 )
+        return {
+                image: 4, 
+                topCornerX : 600, 
+                topCornerY : 0
+              }; 
+
+    //-------------------- 
+
+    if(y > 200 && y <400 && x > 0 && x < 200 )
+        return {
+                image: 5, 
+                topCornerX:0, 
+                topCornerY:200 
+              }; 
+
+    if(y > 200 && y <400 && x > 200 && x < 400)
+        return {
+                image: 6, 
+                topCornerX : 200, 
+                topCornerY : 200 
+              }; 
+
+    if(y > 200 && y <400 && x > 400 && x < 600 )
+        return {
+                image: 7, 
+                topCornerX : 400,
+                topCornerY : 200 
+              }; 
+
+    if(y > 200 && y <400 && x > 600 && x < 800 )
+        return {
+                image: 8,
+                topCornerX : 600, 
+                topCornerY : 200 
+              }; 
+
+    //-------------------- 
+
+    if( y > 400 && y < 600 && x > 0 && x < 200 )
+        return {
+                image:9, 
+                topCornerX:0, 
+                topCornerY:400 
+              }; 
+
+    if( y > 400 && y < 600  && x > 200 && x < 400)
+        return {
+                image:10, 
+                topCornerX:200, 
+                topCornerY:400 
+              }; 
+
+    if( y > 400 && y < 600  && x >490 && x < 600)
+        return {
+                image:11, 
+                topCornerX:400, 
+                topCornerY:400 
+              }; 
+
+    if( y > 400 && y < 600  && x > 600 && x < 809)
+        return {
+                image: 12, 
+                topCornerX:600, 
+                topCornerY:400 
+              }; 
+}
+//}}}
+function createCanvas() {//{{{
+    var strEl = document.getElementsByTagName('canvas'); 
+    if( strEl.length === 0) 
+    {    // create one 
+        // if no canvas Element in the html page . 
+        canvas.canvas_el = createNewEl( document.getElementsByTagName('body')[0], 'canvas').childNode ; 
+    }
+    else // use 
+    {
+        console.log("Ein canvas Element existiert bereits "); 
+    }
+
+    //Set canvas Property  
+    canvas.canvas_el.setAttribute('id', 'photo_album'); 
+    canvas.canvas_el.setAttribute('width', canvas.canvas_width); 
+    canvas.canvas_el.setAttribute('height', canvas.canvas_height); 
+    canvas.canvas_ctx2d = strEl[0].getContext('2d'); 
+}//}}}
+function init(){//{{{
+    createCanvas();  // 1. Create canvas element , or use the already created one . 
+    extract_img_from_file( " file:///home/batlab/documents/wai1/foo/FotoJS/image.xml");
+    console.log(data.length);
+}//}}}
+function extract_img_from_file(file_name) {//{{{
+    var request = new XMLHttpRequest(); 
+    request.open('GET', file_name , false); 
+    request.send( null ); 
+    extract_img_from_file_xml(request); 
+}//}}}
+var extract_img_from_file_json = function (request_json){//{{{
+    var str = JSON.parse( request.responseText ); 
+    alert(str);
+}; //}}}
+var extract_img_from_file_xml  = function (request_xml) {//{{{
+    var foo =  request_xml.responseXML;  
+    var toto = foo.getElementsByTagName('stadt'); 
+    for (var i=0; i < toto.length; i++) {
+        var stadt_name = toto[i].getAttribute('name'); 
+        var foto_el= []; 
+        var fotoEl = toto[i].getElementsByTagName('bild'); 
+        for (var j=0; j < fotoEl.length; j++) {
+            foto_el.push( fotoEl[j].firstElementChild.innerHTML ); 
+        }
+        data.push( {stadt_name : stadt_name, bilder_feld : foto_el } ); 
+    } 
+}; //}}}
+/*//{{{ function createNewEl(parentEl, el_to_add) 
+ *function : CreateNewEl 
+ *@arg1    : parentEl  : ist an htmlObject 
+ *@arg2    : el_to_add : ist an string representing the name of the Node to add 
+ *@return  : { 
+ *              parentNode : Reprensenting the parent htmlObject 
+ *             ,childNode  : Representing  the child node Object we just create and append to ParentNode 
+ *            }
+ */
+function createNewEl(parentEl , el_to_add ) {
+    var new_node = document.createElement(el_to_add); 
+    parentEl.appendChild(new_node);
+    return pair_parent_child = {
+     parentNode : parentEl 
+    ,childNode  : new_node   
+    }; 
+}//}}}
+function clear_canvas() {//{{{
+    canvas.canvas_ctx2d.clearRect(0,0, canvas.canvas_width, canvas.canvas_width); 
+}//}}}
+function extract_all_node( str_node ) {//{{{
+    var tab = document.getElementsByTagName( str_node );
+    var array_img = []; 
+    for (var i=0; i < tab.length; i++) {
+        array_tab.push( tab[i]); 
+    }
+    return array_img; 
+}//}}}
+function extract_all_node_att( html_obj_array , str_attr ) {//{{{
+    var tab = html_obj_array;  
+    var attr_array = []; 
+    for (var i=0; i < tab.length; i++) {
+        attr_array.push(tab[i].getAttribute( str_attr ) ) ; 
+    }    
+    return attr_array; 
+}//}}}
+function image_loader( image_obj_array, image_source_array ) {//{{{
+    var tab = []; 
+    var tab1= []; 
+    var isLoaded = false; 
+
+    tab = image_obj_array; 
+    tab1= image_source_array; 
+    
+    for (var i=0; i < tab.length; i++) {
+
+        tab[i].onload = function () {
+            //TODO : reduce Image to feed to the canvas 
+            //TODO : other action 
+        }; 
+        
+        tab[i].src = image_source_array[i]; 
+        isLoaded = true; 
+    }
+    return isLoaded ; 
+}//}}}
+            return    {//{{{
+                         alb_img_feat_canvas : img_ft_canvas, 
+                         nr_stadte           : data.length , 
+                         canvas              : canvas, 
+                         data                : data, 
+                         alb_fkt_init        : init 
+                       }; //}}}
+}(Foto_Core || {} )); 
+
+window.onload = function () {//{{{
+    Foto_Core.alb_fkt_init(); 
+    DRAW_MODULE.drawCadran(); 
+    console.log(Foto_Core.data.length);
+}; //}}}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Dufilsfabrice1100.github.io by dufilsfabrice1100</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+          <h1 style = "color:#3498db">Dufils Fabrice </h1>
+          <h1>BatLab.Inc (Batie/Cameroon) </h1>
+          <p style="width:100px, height:100px"> <img style="width:100px, height:100px"src="./img/profil.jpg"> </p>
+        <p></p>
+
+
+        <p class="view"><a href="https://github.com/dufilsfabrice1100">View My GitHub Profile</a></p>
+
+      </header>
+      <section>
+          <!--here we go for article-->
+
+      </section>
+      <footer>
+
+          <span style="background-color:#3498db"><img src="./img/twitter2.svg" alt="follow me!!" height = "40" width="40" style="background-color:#3498db"/> </span>
+          <span style="width:20px, height: 20px"><img src="./img/facebook3.svg" alt="follow me!!" height = "40" width="40"/> </span>
+          <span style="width:20px, height: 20px"><img src="./img/wordpress.svg" alt="follow me!!" height = "40" width="40"/> </span>
+          <span style="width:20px, height: 20px"><img src="./img/github2.svg" alt="follow me!!" height = "40" width="40"/> </span>
+          <span style="width:20px, height: 20px"><img src="./img/youtube.svg" alt="follow me!!" height = "40" width="40"/> </span>
+
+      </footer>
+      <style type="text/css" media="screen">
+          img{
+              background-color:#3498db; 
+            }
+      </style>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

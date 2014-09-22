@@ -1,0 +1,33 @@
+
+package de.hs_mannheim.blue;
+
+
+import java.io.InputStream; 
+
+public class Reception {
+
+    InputStream in;  
+
+    public Reception( InputStream in)
+    {
+        this.in = in; 
+    }
+
+
+    public void lib_readByte()
+    {
+    
+    }
+
+
+    public void lib_readString()
+    {
+    
+    }
+
+    public void lib_readFile()
+    {
+    
+    }
+}
+

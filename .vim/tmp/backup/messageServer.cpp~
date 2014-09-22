@@ -1,0 +1,27 @@
+
+#include "messageServer.h"
+
+
+void MessageServer::incomingConnection( int sockDeskriptor )
+{
+    ClientSocket *clientsocket = new ClientSocket( this ); 
+    clientsocket->setSocketDescriptor( setSocketDescriptor ); 
+    clientsocket->setServer( this ); 
+    _clientlist.push_back( s );  
+    emit newConnection( _clientlist.size()); 
+}
+
+
+void MessageServer::sendToAllClient( QByteArray &message )
+{
+    static unsigned messageCounter = 0; 
+
+    clientlist::iterator i = _clientlist.begin(); 
+    const clientlist::iterator end = _clientlist.end(); 
+
+    while ( ++i != end)
+        ( *i )->write( a ); 
+    emit newMessage( ++messageCounter ); 
+}
+
+

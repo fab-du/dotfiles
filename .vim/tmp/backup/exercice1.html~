@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script>
+    var age = parseInt (prompt("Bienvenue!!!!! \n Veuillez entrez votre age SVP !!!")) ; 
+        
+        if( age <= 0) 
+        {
+            alert("Entrez un age superieur ou egale a 1 SVP.") 
+        }
+        else if( age >=1 && age <= 17)
+        {
+            alert( "Vous n etes pas encore majeure "); 
+        }
+        else if( age >= 18 && age <= 49)
+        {
+            alert( "vous etes majeur mais pas encore Senior");  
+        }
+        else if( age >= 50 && age<= 59)
+        {
+            alert( "vous etes Senior mais pas encore retraite ");   
+        }
+        else if( age >= 60 && age<= 120)
+        {
+           alert( "vous etes retraite , profitez de votre temps libre");   
+        } 
+        else
+        {
+            alert("Vous n avez pas entre votre age "); 
+        }
+    </script> 
+</head>
+<body>
+    <header>
+        
+    </header>
+    <footer>
+        
+    </footer>
+</body>
+</html>

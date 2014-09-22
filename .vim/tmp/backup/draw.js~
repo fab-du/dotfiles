@@ -1,0 +1,48 @@
+
+
+var DRAW_MODULE = (function (Foto_Core) {
+
+    var module = {}, core = Foto_Core; 
+
+
+function clearContainer() {//{{{
+    core.canvas.canvas_ctx2d.clearRect(0,0,core.canvas.canvas_width, core.canvas.canvas_height); 
+}//}}}
+
+module.drawCadran = function drawBildCadran()//{{{
+{
+    core.canvas.canvas_ctx2d.save(); 
+
+    core.canvas.canvas_ctx2d.moveTo(0,0); 
+    for( var i=0; i<= core.canvas.canvas_width; i=i+100)
+    {
+        if( i % 300 === 0 )
+        {
+          core.canvas.canvas_ctx2d.moveTo( i,0 ) ; 
+          core.canvas.canvas_ctx2d.lineTo( i, core.canvas.canvas_height ); 
+          console.log(core.canvas.canvas_height);
+          core.canvas.canvas_ctx2d.stroke(); 
+        }
+    }
+    for( var j=0; j<= core.canvas.canvas_height; j = j+100 )
+    {
+        if(  j % 300 === 0)
+        {
+           core.canvas.canvas_ctx2d.moveTo(0,j); 
+           core.canvas.canvas_ctx2d.lineTo( core.canvas.canvas_width, j);
+           console.log(core.canvas.canvas_width);
+           core.canvas.canvas_ctx2d.stroke(); 
+        }
+    }
+core.canvas.canvas_ctx2d.restore(); 
+}; 
+    
+
+    return module; 
+})( Foto_Core ); 
+
+
+
+
+
+

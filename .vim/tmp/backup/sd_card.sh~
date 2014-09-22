@@ -1,0 +1,57 @@
+
+#!/bin/bash 
+
+touch logfile.txt 
+
+
+
+echo Geben Sie die den Link zur SD CARD an: 
+
+echo !!!!!!!!!!!! WICTIG !!!!!!!!!!!! 
+echo Damit Die Daten auf Ihre System 
+echo oder gesamte System beschädigt wird , 
+echo muss den Pfad der SD-Card Richtig eingegeben wird. 
+
+echo sd-Card-link-\>
+read SD_CARD_NAME 
+
+
+echo Geben Sie der Pfad zur SDB Bundle : 
+read BUNDLE_PFAD 
+
+echo $SD_CARD_NAME 
+echo $BUNDLE_PFAD 
+
+
+
+
+
+
+
+#function suchen_benoetigen_Daten()
+#{
+  #file_1 = "u-boot-mx6q-sabreauto.bin"
+  #file_2 = "uImage"
+
+#}
+
+
+#function createPartition()
+#{
+
+#}
+
+
+#function format_SD_Card()
+#{
+#}
+
+#function schreiben_SD_Card()
+#{
+    ##dd if=$BUNDLE_PFAD of=/dev/mmcblk0 
+#}
+
+
+#function suchen_SD_Card()
+#{
+#}

@@ -1,0 +1,229 @@
+import QtQuick 2.0 
+import QtQuick.Controls 1.0
+
+// for hour = (0.0083333333 * sec) + (0.5 * min) + (30 * h))
+Rectangle{
+width: 800 
+height : width +200 
+
+property int counter: 0 
+property int hour   : 0 
+property int min    : 0 
+property int sec    : 0  
+property int rayon  : 100 
+property int rayon1 : 70 
+
+Reveil{
+    anchors.right : parent.left 
+    anchors.left  : canvas.right 
+    anchors.top   : canvas.top
+    color : "black"
+    border.color : "blue"
+    border.width : 3 
+}
+
+Weather{
+    /*anchors.right: parent.left */
+    /*anchors.left : canvas.right */
+    /*anchors.top  : canvas.top */
+
+}
+
+Timer
+{
+interval:50;running:true;
+repeat:true
+onTriggered:
+{
+hour = parseInt( Qt.formatTime( new Date(), "h" ) ) 
+min  = parseInt( Qt.formatTime( new Date(), "m" ) ) 
+sec  = parseInt( Qt.formatTime( new Date(), "s" ) ) 
+canvas.requestPaint()
+}
+}
+
+Canvas{
+id: canvas 
+width: 400
+height:400 
+anchors.centerIn: parent 
+
+Rectangle{
+    id : circle 
+    anchors.centerIn : parent 
+    width : rayon * 2   
+    height: width 
+    radius : width * 0.5  
+    color : "transparent"
+    border.color : "red"
+    border.width : 3  
+
+}
+
+
+onPaint:{
+    
+    var ctx = canvas.getContext( '2d' ); 
+    ctx.rect(0,0,400,400)
+    ctx.fillStyle="#FFF0A5"
+    ctx.fill()
+
+
+        ctx.beginPath()
+            ctx.StrokeStyle = 'green'
+            ctx.lineWidth=3 
+            ctx.moveTo(200,200)
+            var obj = Qt.rect( 100,100,50,50 );
+            
+            obj.color = "black"
+            ctx.stroke()
+        ctx.closePath()
+
+
+        ctx.beginPath()
+            ctx.moveTo(200,200 )
+            ctx.lineWidth=3 
+            ctx.strokeStyle="black"
+            var angle = 2*3.14*sec*6 // calcul de l angle en radian  
+            angle =  angle / 360     // Suite calcul de l angle en radian 
+
+
+            if( sec >= 0 && sec <=15)
+            {
+                angle = 1.57 + angle  //1.57 = pi/2  
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( 200 + angleCos*(-rayon)  , 200-angleSin*(rayon) )
+
+            }
+
+            if( sec > 15 && sec <=30 )
+            {
+                angle = 1.57- angle 
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( angleCos*(rayon) + 200 , 200-angleSin*(rayon) ) 
+            }
+
+            if( sec > 30 && sec <=45 ) 
+            {
+                angle = 1.57 + angle 
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( 200 - angleCos*(rayon) , 200+angleSin*(-rayon) )  
+            }
+
+            if( sec > 45 && sec < 60  ) 
+            {
+                angle = 1.57 + angle 
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( 200+angleCos*(-rayon) , 200+angleSin*(-rayon) )   
+            }
+
+
+            ctx.stroke()
+        ctx.closePath()
+
+
+        
+        ctx.beginPath()
+            ctx.moveTo(200,200 )
+            ctx.lineWidth=3 
+            ctx.strokeStyle='red'
+            var angle = ((0.1*min*60) + (0.1 * sec)) * 2*3.14// calcul de l angle en radian min   
+            angle =  angle / 360     // Suite calcul de l angle en radian 
+
+
+            if( min >= 0 && min <=15)
+            {
+                angle = 1.57 + angle  //1.57 = pi/2  
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( 200 + angleCos*(-rayon1)  , 200-angleSin*(rayon1) )
+            }
+
+            if( min > 15 && min <=30 )
+            {
+                angle = 1.57- angle 
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( angleCos*(rayon1) + 200 , 200-angleSin*(rayon1) ) 
+            }
+
+            if( min > 30 && min <=45 ) 
+            {
+                angle = 1.57 + angle 
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( 200 - angleCos*(rayon1) , 200+angleSin*(-rayon1) )  
+            }
+
+            if( min > 45 && min < 60  ) 
+            {
+                angle = 1.57 + angle 
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( 200+angleCos*(-rayon1) , 200+angleSin*(-rayon1) )   
+            }
+
+            ctx.stroke()
+        ctx.closePath()
+
+    
+        
+        ctx.beginPath()
+
+    // for hour = (0.0083333333 * sec) + (0.5 * min) + (30 * h))
+            ctx.moveTo(200,200 )
+            ctx.lineWidth=3 
+            ctx.strokeStyle='black'
+            var angle = ((0.0083333333*sec ) + (0.5 * min) + (30*hour)) * 2*3.14// calcul de l angle en radian min   
+            angle =  angle / 360     // Suite calcul de l angle en radian 
+
+
+            if( (hour >= 0 && hour <= 3) || 
+                ( hour >= 12 && hour <= 15 )) 
+            {
+                angle = 1.57 + angle  //1.57 = pi/2  
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( 200 + angleCos*(-rayon1)  , 200-angleSin*(rayon1) )
+            }
+
+            if( ( hour > 3 && hour <= 6 )|| 
+                 (hour >15 && hour <= 18) ) 
+            {
+                angle = 1.57- angle 
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( angleCos*(rayon1) + 200 , 200-angleSin*(rayon1) ) 
+            }
+
+            if( (hour > 6 && hour <= 9 )|| 
+                ( hour > 18 && hour <= 21 )) 
+            {
+                angle = 1.57 + angle 
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( 200 - angleCos*(rayon1) , 200+angleSin*(-rayon1) )  
+            }
+
+            if( (hour > 9 && hour < 12  )|| 
+                ( hour > 21 && hour<24 ) ) 
+            {
+                angle = 1.57 + angle 
+                    var angleCos = Math.cos( angle) 
+                    var angleSin = Math.sin( angle )
+                ctx.lineTo( 200+angleCos*(-rayon1) , 200+angleSin*(-rayon1) )   
+            }
+
+            ctx.stroke()
+        ctx.closePath()
+
+        }//end of onPaint
+
+
+   }//end of canvas 
+
+}//end of main Rectangle 

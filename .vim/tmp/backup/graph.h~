@@ -1,0 +1,84 @@
+#ifndef GRAPH_H
+#define GRAPH_H 
+
+#include <QtQuick/QQuickItem>
+#include <QtQuick/QSGNode> 
+#include <QtQuick/QSGGeometry> 
+#include <QObject>
+
+class GRAPH : public QQuickItem  
+{
+    Q_OBJECT 
+Q_PROPERTY
+(
+float
+scaleX
+READ
+getScaleX
+WRITE
+setScaleX
+NOTIFY
+updateScaleX
+)
+Q_PROPERTY
+(
+float
+scaleY
+READ
+getScaleY
+WRITE
+setScaleY
+NOTIFY
+updateScaleY
+)
+Q_PROPERTY
+(
+float
+verticalDivision
+READ
+getVerticalDivision
+WRITE
+setVerticalDivision
+NOTIFY
+updateVerticalDivision
+)
+Q_PROPERTY
+(
+float arrowSize READ
+getArrowSize
+WRITE
+setArrowSize
+NOTIFY
+updateArrowSize
+)
+
+private: 
+        float _scaleX; 
+        float _scaleY; 
+        float _verticalDivision; 
+        float _arrowSize; 
+
+public: 
+        Graph( QQuickItem *parent = 0 ); 
+        QSGNode* updatePaintNode( QSGNode* node, QQuickItem::UpdatePaintNodeData* data); 
+
+        float getScaleX(); 
+        float getScaleY(); 
+        float getArrowSize(); 
+        float getVerticalDivision(); 
+
+        float setScaleX( float f); 
+        float setScaleY( float f); 
+        float setArrowSize( float f); 
+        float setVerticalDivision( float f); 
+
+        
+signals: 
+void updateVerticalDivision( ); 
+void updateScaleX(); 
+void updateScaleY(); 
+void updateArrowSize(); 
+
+}//end of class 
+
+#endif

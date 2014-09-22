@@ -1,0 +1,57 @@
+%\thispagestyle{empty}
+\phantomsection
+\begin{titlepage}
+\parindent=0pt
+
+%www.devoloppez.com \hspace*{\stretch{1}} \LaTeX intermédiaire%
+
+%Rubrique \LaTeX\hspace*{\stretch{1}} Tutoriels
+
+\vspace*{\stretch{1}}
+\begin{center}
+\includegraphics[scale=0.5]{images/logo.png}%
+\end{center}
+
+\vspace*{\stretch{1}}
+\hrulefill
+\begin{center}\bfseries\Huge
+   Embedded Linux Android mit Freescale Sabre SDB 
+\end{center}
+\hrulefill
+
+\vspace*{1cm}
+\begin{center}\bfseries\Large
+Siyapdje, Fabrice Dufils 
+1015366 
+\end{center}
+    
+\begin{center}\bfseries\Large
+Sous la direction de Le Tuteur.
+\end{center}
+
+    \vspace*{\stretch{2}}
+
+
+\begin{flushright}
+       Le \today 
+\end{flushright}   
+
+\begin{tikzpicture}[remember picture, overlay]
+ \begin{scope}[shift={(current page.south west)},shift={(1,1)},scale=1]
+ \shade[ball color=blue,opacity=.6] (0,0) circle (10ex);
+ \shade[ball color=blue,opacity=.8] (1.7,1) circle (5ex);
+ \shade[ball color=blue,opacity=.8] (1.5,3) circle (2ex);
+ \shade[ball color=blue,opacity=.5] (-0.5,3) circle (1ex);
+ \shade[ball color=blue,opacity=.8] (1,4) circle (1ex);
+ \shade[ball color=blue,opacity=.6] (3.5,2.5) circle (2ex);
+ \shade[ball color=blue,opacity=.8] (2.5,4.5) circle (4ex);
+ \shade[ball color=blue,opacity=.5] (3,4) circle (3ex);
+ \shade[ball color=blue,opacity=.8] (4.5,4.5) circle (3ex);
+ \shade[ball color=blue,opacity=.5] (5.1,4.7) circle (2ex);
+ \shade[ball color=blue,opacity=.8] (5,6) circle (1.5ex);
+ \shade[ball color=blue,opacity=.6] (3.5,5.5) circle (2ex);
+ \shade[ball color=blue,opacity=.8] (5,3) circle (1ex);
+ \end{scope}
+ \end{tikzpicture}
+\end{titlepage}
+

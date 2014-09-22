@@ -1,0 +1,26 @@
+
+package de.hs_mannheim.konstante;  
+
+
+
+public class Ui_Kommand {
+    
+    //UI Konstante 
+    public final static String ui_einlog = "einlog_ui"; 
+
+    public final static String ui_registrieren = "registrieren_ui"; 
+
+    public final static String ui_exit = "exit_ui"; 
+
+
+    //TCP konstante 
+    public final static String tcp_send_einlog_command_to_server = "send_einlog_tcp"; 
+
+    public final static String tcp_send_registration_command_to_server = "send_registration_tcp"; 
+
+    public final static String tcp_send_exit_command_to_serve = "send_einlog_tcp"; 
+
+    //Cryptographie Konstante 
+    
+    
+}

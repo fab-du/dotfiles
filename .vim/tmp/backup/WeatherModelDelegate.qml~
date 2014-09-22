@@ -1,0 +1,122 @@
+import QtQuick 2.0
+
+Item { 
+id: wetteDelegate 
+anchors.fill: parent
+
+Column { anchors.fill: parent 
+spacing: 5
+
+Row{
+
+Rectangle { 
+height: 30; width: 200; color: "lightblue" 
+
+    Text { 
+        anchors.left: parent.left 
+        anchors.verticalCenter: parent.verticalCenter 
+        text: "<b>Country: </b> \n"+ country}
+    }
+
+}
+
+Row { 
+Rectangle { 
+height: 30; width: 200; color: "lightblue" 
+
+    Text { 
+        anchors.left: parent.left 
+        anchors.verticalCenter: parent.verticalCenter 
+        text: "<b>City: </b>"+ city}
+    } 
+
+}
+
+Row { 
+Rectangle { 
+height: 30; width: 200; color: "lightblue"
+
+    Text { 
+        anchors.left: parent.left 
+        anchors.verticalCenter: parent.verticalCenter
+        text:qsTr("<b>Temperature:</b> %1 ").arg( parseInt(temperature) - 273.15)}
+    } 
+}
+
+Row { 
+Rectangle { 
+height: 30; width: 200; color: "lightblue"
+
+    Text { 
+        anchors.left: parent.left 
+        anchors.verticalCenter: parent.verticalCenter
+        text:qsTr("<b>Humidity:</b> %1 ").arg( humidity)}
+    }
+}
+
+Row { 
+Rectangle { 
+height: 30; width: 200; color: "lightblue"
+
+    Text { 
+        anchors.left: parent.left 
+        anchors.verticalCenter: parent.verticalCenter
+        text:qsTr("<b>Pressure:</b> %1 ").arg( pressure)}
+    }
+}
+
+Row { 
+Rectangle { 
+height: 30; width: 200; color: "lightblue"
+
+    Text { 
+        anchors.left: parent.left 
+        anchors.verticalCenter: parent.verticalCenter
+        text:qsTr("<b>Clouds:</b> %1 ").arg( clouds )
+    }
+
+} 
+}
+
+Row { 
+Rectangle { 
+height: 30; width: 200; color: "lightblue"
+    Text { 
+        anchors.left: parent.left 
+        anchors.verticalCenter: parent.verticalCenter
+        text:qsTr("<b>windspeed:</b> %1 ").arg( windspeed )
+    }
+
+} 
+
+}
+
+Row { 
+Rectangle { 
+height: 30; width: 200; color: "lightblue"
+
+    Text { 
+        anchors.left: parent.left 
+        anchors.verticalCenter: parent.verticalCenter
+        text:qsTr("<b>windname:</b> %1 ").arg( windname )
+    }
+
+}
+}
+
+Row { 
+Rectangle { 
+height: 30; width: 200; color: "lightblue"
+
+    Text { 
+        anchors.left: parent.left 
+        anchors.verticalCenter: parent.verticalCenter
+        text:qsTr("<b>Wind direction:</b> %1 ").arg( winddirection )
+    }
+
+}
+}
+
+}//End column
+
+}

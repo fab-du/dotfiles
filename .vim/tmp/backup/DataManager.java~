@@ -1,0 +1,232 @@
+
+package de.hs_mannheim.db; 
+
+import de.hs_mannheim.model.*; 
+
+
+import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+
+public class DataManager{
+    
+    ArrayList<SRN_EinlogModel> usersPuffer; 
+    int pos_user; 
+    
+    DbReader        reader; 
+    DbWriter        writer; 
+    DbConnection    connection; 
+    
+    SRN_EinlogModel         user_einlog; 
+    SRN_RegistrationModel   user_reg; 
+    
+    /* The Singleton , i like to do it that way :-D */
+    private static DataManager theDataManager;
+    
+public static DataManager getTheDataManager() {
+    if (theDataManager == null) {
+        // noch kein Manager existent, daher erst mal machen:
+        theDataManager = new DataManager();
+        }
+            return theDataManager;
+}
+
+public void closeDB() {
+    connection.close();
+     System.out.println("mrData: Datenbank geschlossen");
+}
+
+
+/*
+ *findenUser 
+ *args: SRN_EinlogModel 
+ *type: int 
+ *Description: untersucht der userPuffer, nach der Suche 
+ *von die als Parameter eingegebene user; 
+ *Wenn der userModell nicht gefunden gibt er -1 zurueck, 
+ */
+
+
+private int findeUser( SRN_EinlogModel modell )
+{
+  if( usersPuffer.isEmpty( ) ) return -1; 
+
+  int pos = 0; 
+  SRN_EinlogModel foo; 
+
+  while( pos < usersPuffer.size( )) 
+  {
+       foo =  usersPuffer.get(pos); 
+       if( foo.toString( ) == modell.toString() ) 
+          {
+              return pos; 
+          }
+
+       pos++; 
+  }
+
+return -1; 
+}
+
+public void insertUser(SRN_EinlogModel modell) {
+    // fügt den Studenten s in Puffer und Datenbank ein
+    int pos = findeUser(modell);
+    if (pos >= 0) {
+        String error= "Pufferfehler beim Einfügen users: user schon im Puffer ";
+        JOptionPane.showMessageDialog(null, error);
+    }
+    usersPuffer.add(modell);  // den Studenten s an den Puffer anfügen
+    // er wurde am Ende angefügt, daher Pufferposition anpassen
+    pos_user  = usersPuffer.size()-1;
+            
+    // Jetzt muss der Student noch in die DB kommen:
+    String sql = "INSERT INTO STUDENT ";
+    sql       += "(ID,USERNAME,PASSWORT) ";
+    sql       += "VALUES (?,?,?)";
+    
+    try {
+        PreparedStatement pstmt = connection.createPreparedStatement(sql);
+        pstmt.setInt(1, modell.hashCode());
+        pstmt.setString(2, modell.getUserName());
+        pstmt.setString(3, modell.getPasswort());
+        pstmt.executeUpdate(); 
+        pstmt.close();
+    } catch (SQLException e) {
+        String error = "DB-Fehler beim Einfügen User: "+
+                        modell.getUserName();
+        error += "\n\t"+e.getMessage();
+        JOptionPane.showMessageDialog(null, error);
+    } 
+    
+     System.out.println("mrData: neuer User: "+
+     modell.getUserName());
+}
+
+
+
+
+
+
+public void deleteUser(SRN_EinlogModel model) {
+    // lösche den Studenten s aus Puffer und Datenbank
+    int pos = usersPuffer.indexOf(model);
+    if (pos < 0) {
+        //ich bin gar nicht im Puffer,oh je...
+        String error= "Pufferfehler beim Löschen, Student fehlt: "+model;
+        JOptionPane.showMessageDialog(null, error,"Warning",JOptionPane.WARNING_MESSAGE);
+    }
+    // die Methode deletedStudent ist überladen: es gibt sie 2x aber in
+    // unterschiedlicher Ausprägung: mal übergibt man einen Studenten,
+    // (das sind wir hier gerade) und bei der 
+    // anderen übergibt man die Pufferposition.
+    // Da wir nun wissen, wo der Student im Puffer ist, kann den
+    // Rest der Arbeit doch gleich unsere "Schwester" erledigen:
+        this.deleteUser(pos);
+    }
+
+    private void deleteUser(int pos) {
+        // TODO Auto-generated method stub
+        SRN_EinlogModel model = P_getUser( pos ); 
+        usersPuffer.remove(pos); 
+
+        if( pos < 0 && pos > usersPuffer.size()) return; 
+        //Aktulisierung von der Puffer Position 
+        if( usersPuffer.isEmpty() ) pos_user = 0; 
+        else if( pos_user > usersPuffer.size())
+            pos_user = usersPuffer.size()-1; 
+
+        //Loeschen vom DB 
+
+    }
+
+public SRN_EinlogModel P_getUser( int pos )
+{
+    return null;
+}
+
+private ArrayList<String> getAllUserDatei()
+{
+   usersPuffer = new ArrayList<SRN_EinlogModel>(); 
+   SRN_EinlogModel foo; 
+
+int    arg1; 
+String arg2;
+String arg3; 
+
+try 
+{
+  ResultSet rs = reader.query( " select * from SRN.User_ein order by id  " ); 
+  while( rs.next() == true )
+  {
+    arg1 = rs.getInt("id"); 
+    arg2 = rs.getString("user_name"); 
+    arg3 = rs.getString(" password"); 
+
+    foo = new SRN_EinlogModel(); 
+    foo.setUserName(arg2); 
+    foo.setPasswort(arg3); 
+    usersPuffer.add( foo ); 
+  }
+
+reader.closeResultSet( rs ); 
+} catch(java.sql.SQLException e){
+    e.printStackTrace();
+}
+
+    return null; 
+}
+
+
+
+public ArrayList<String> getVerteilteUserDatei()
+{
+    int arg1; 
+
+    return null; 
+}
+
+public ArrayList<String> getUserFreunde()
+{   
+    ArrayList<SRN_EinlogModel> 
+        userfriendListe = new ArrayList<SRN_EinlogModel>(); 
+
+     SRN_EinlogModel arg; 
+
+     String arg1 = null; 
+     String arg2; 
+
+
+     //ArrayList<int> iduserFriend = new ArrayList<int>(); 
+
+    try {
+        ResultSet rs = reader.query ("select user_name, id from SRN.User_friend, SRN.User_ein"+
+               "where SRN.User_ein.id = SRN.User_friend.id order by id"); 
+
+        while( rs.next() == true )
+        {
+            arg1 = rs.getString(" user_name ");             
+            arg2 = new String( "" ); 
+
+            arg.setUserName(arg1); 
+            arg.setPasswort(arg2); 
+
+            System.out.println(" tommy mama   "); 
+        }
+
+
+    } catch(java.sql.SQLException e ){
+
+        e.printStackTrace();
+    }
+    return null; 
+}
+
+
+    public datamanager()
+    {
+        
+    }
+
+
+}//end of class 

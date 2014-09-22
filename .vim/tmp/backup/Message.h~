@@ -1,0 +1,26 @@
+
+/*
+ *Definition Von der Datagramme 
+ *Message 
+ */
+
+#ifndef MESSAGE_H
+#define MESSAGE_H 
+
+
+#include <QObject>
+
+typedef struct Message 
+{
+    quint32 type; 
+    quint32 size; 
+    quint32 nameSize; 
+
+    quint8 name[ 256 ]; 
+    quint8 messageSize;  
+    quint8 message[ 256 ]; 
+
+} Message; 
+
+
+#endif

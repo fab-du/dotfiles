@@ -1,0 +1,33 @@
+
+import QtQuick 2.0 
+
+Rectangle{
+
+width: 200 
+height: 200 
+
+Image{
+id: img 
+x: 20 
+y: 20 
+
+source: "F_2013_251.jpg"
+clip: true 
+
+NumberAnimation on x {
+   to: 600 
+   duration : 8000
+   loops: Animation.Infinite
+}
+
+RotationAnimation on rotation{
+to: 360 
+duration: 8000 
+loops: Animation.Infinite 
+}
+
+
+}
+
+
+}

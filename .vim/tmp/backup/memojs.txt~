@@ -1,0 +1,15 @@
+
+
+
+Event: 
+*mouseover
+*onclick 
+
+
+
+howto: 
+
+var el = getElementFromhtml()
+
+    el.addEventListener('eventName', 
+        handlerFunction(event), false); 

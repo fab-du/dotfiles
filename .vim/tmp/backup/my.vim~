@@ -1,0 +1,126 @@
+
+let s:is_win   = has('win32') || has('win64')
+let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
+let s:is_linux = !s:is_mac && has('unix')
+
+
+set encoding=utf-8
+scriptencoding utf-8
+set termencoding=utf-8
+set fileencodings=utf-8,default,latin1 
+
+
+set ttyfast
+
+if s:is_win
+	nnoremap [prefix]reload :source ~/_vimrc<CR>
+	nnoremap [prefix]vimrc  :e ~/_vimrc<CR>
+	nnoremap [prefix]gvimrc :e ~/_gvimrc<CR>
+elseif s:is_mac
+	nnoremap [prefix]reload :source ~/dotfiles/.vimrc<CR>
+	nnoremap [prefix]vimrc  :e ~/dotfiles/.vimrc<CR>:cd ~/dotfiles<CR>
+	nnoremap [prefix]gvimrc :e ~/dotfiles/.gvimrc<CR>:cd ~/dotfiles<CR>
+else
+	nnoremap [prefix]reload :source ~/.vimrc<CR>
+	nnoremap [prefix]vimrc  :e ~/.vimrc<CR>
+	nnoremap [prefix]gvimrc :e ~/.gvimrc<CR>
+endif
+
+
+" Indent
+" ---------------------------------------------------------------------------------------------------
+nnoremap > >>
+nnoremap < <<
+vnoremap > >gv
+vnoremap < <gv
+
+
+" Ref: https://github.com/cohama/.vim/blob/master/.vimrc
+function! NotMoveWhenLeavingFromInsertMode()
+	let cursorPos = col(".")
+	let maxColumn = col("$")
+	if cursorPos < maxColumn && cursorPos != 1
+		return "\<Esc>l"
+	else
+		return "\<Esc>"
+	endif
+endfunction
+imap <silent><expr> <Esc> NotMoveWhenLeavingFromInsertMode()
+
+
+
+" Ref: http://d.hatena.ne.jp/osyo-manga/20130424/1366800441
+function! s:move_cursor_pos_mapping(str, ...)
+	let left = get(a:, 1, '<Left>')
+	let lefts = join(map(split(matchstr(a:str, '.*<Cursor>\zs.*\ze'), '.\zs'), 'left'), '')
+	return substitute(a:str, '<Cursor>', '', '') . lefts
+endfunction
+
+function! _(str)
+	return s:move_cursor_pos_mapping(a:str, "\<Left>")
+endfunction
+
+nnoremap <expr> [prefix]s _(":%s/<Cursor>//g")
+vnoremap <expr> [prefix]s _(":S/<Cursor>//g")
+nnoremap <expr> [prefix]S _(":%S/<Cursor>//g")
+vnoremap <expr> [prefix]S _(":S/<Cursor>//g")
+
+" TextObj
+" ---------------------------------------------------------------------------------------------------
+vmap s  <Plug>VSurround
+omap ab <Plug>(textobj-multiblock-a)
+omap ib <Plug>(textobj-multiblock-i)
+vmap ab <Plug>(textobj-multiblock-a)
+vmap ib <Plug>(textobj-multiblock-i)
+
+
+" Line number
+" ---------------------------------------------------------------------------------------------------
+let s:default_updatetime   = &updatetime
+let s:immediate_updatetime = 10
+
+function! s:CursorLineNrColorDefault()
+	if &updatetime == s:immediate_updatetime
+		let &updatetime = s:default_updatetime
+	endif
+	hi CursorLineNr ctermfg=33 guifg=#268bd2
+	hi CursorLine   cterm=none gui=none
+	hi Cursor       gui=inverse,bold
+endfunction
+
+function! s:CursorLineNrColorInsert(mode)
+	if a:mode == 'i'
+		hi CursorLineNr ctermfg=64 guifg=#859900
+		hi CursorLine   cterm=underline gui=underline
+	elseif a:mode == 'r'
+		hi CursorLineNr ctermfg=124 guifg=#ff0000
+		hi CursorLine  cterm=underline gui=undercurl
+	elseif a:mode == 'replace-one-character'
+		let &updatetime = s:immediate_updatetime
+		hi CursorLineNr ctermfg=124 guifg=#ff0000
+		hi CursorLine   cterm=underline gui=none
+		hi Cursor       guifg=#ff0000 gui=inverse
+	endif
+endfunction
+
+function! s:CursorLineNrColorVisual()
+	let &updatetime = s:immediate_updatetime
+	hi CursorLineNr ctermfg=61 guifg=#6c71c4
+	hi CursorLine   cterm=none gui=none
+	return ''
+endfunction
+
+vnoremap <silent> <expr> <SID>(CursorLineNrColorVisual)  <SID>CursorLineNrColorVisual()
+" MEMO: need 'lh' to fire CursorMoved event to update highlight..., not cool.
+nnoremap <silent> <script> v v<SID>(CursorLineNrColorVisual)lh
+nnoremap <silent> <script> V V<SID>(CursorLineNrColorVisual)lh
+nnoremap <silent> <script> <C-v> <C-v><SID>(CursorLineNrColorVisual)lh
+nnoremap r :call <SID>CursorLineNrColorInsert('replace-one-character')<CR>r
+
+augroup ChangeLineNumber
+	autocmd!
+	autocmd VimEnter    * call s:CursorLineNrColorDefault()
+	autocmd InsertEnter * call s:CursorLineNrColorInsert(v:insertmode)
+	autocmd InsertLeave * call s:CursorLineNrColorDefault()
+	autocmd CursorHold  * call s:CursorLineNrColorDefault()
+augroup END

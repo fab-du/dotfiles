@@ -1,0 +1,6 @@
+
+package de.hs_mannheim.bitmap;
+
+class BitMapView {
+}
+

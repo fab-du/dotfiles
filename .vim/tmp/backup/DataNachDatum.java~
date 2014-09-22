@@ -1,0 +1,20 @@
+package de.hs_mannheim.DBConnection;
+
+import java.awt.Image;
+
+public class DataNachDatum implements IData{
+
+    Image img; 
+
+	@Override
+	public Image getImage() {
+		// TODO Auto-generated method stub
+		return img;
+	}
+
+	@Override
+	public void setImage(Image image) {
+	    img = image; 	
+	}
+
+}

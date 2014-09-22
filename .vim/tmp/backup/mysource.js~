@@ -1,0 +1,13 @@
+
+
+var mydiv = document.getElementById('myDiv'), 
+    results = document.getElementById('results');
+
+mydiv.onmouseover = function(){ 
+    results.innerHTML += "Le curseur vient d entrer"; 
+}; 
+
+
+mydiv.onmouseout = function(){ 
+    results.innerHTML += "Le curseur vient de sortir";
+};

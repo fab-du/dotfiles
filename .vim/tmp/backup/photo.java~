@@ -1,0 +1,13 @@
+import java.awt.Image ; 
+
+
+public class photo {
+
+    String imgPath = ""; 
+    Image img;
+
+    public void displayImgInfo()
+    {
+        img = new Image(); 
+    } 
+}

@@ -1,0 +1,24 @@
+
+##HowTo Markdown
+
+##I. Pandoc command options 
+
+* --chapters => Treat top-Level headers as chapters in Latex, Contexts and 
+   docbook
+
+* --latex-engine=pdflatex|lualatex|xelatex Use the specified LaTeX engine
+when producing PDF output. The default is pdflatex. If the engine is not in
+your PATH, the full path of the engine may be specified here.
+
+
+* --bibliography=FILE Set the bibliography field in the document’s metadata 
+to FILE, overriding any value set in the metadata, and process citations 
+using pandoc-citeproc. (This is equivalent to --metadata bibliography=FILE
+--filter pandoc-citeproc.)
+* --csl=FILE Set the csl field in the document’s metadata to FILE, overriding
+any value set in the metadata. (This is equivalent to --metadata csl=FILE.)
+* --citation-abbreviations=FILE Set the citation-abbreviations field in the
+document’s metadata to FILE, overriding any value set in the metadata. (This
+is equivalent to --metadata citation-abbreviations=FILE.)
+
+% Fabrice Dufils 

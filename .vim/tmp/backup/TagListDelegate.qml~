@@ -1,0 +1,42 @@
+import QtQuick 2.0 
+
+
+Component{
+    id : tagdelegate 
+
+Rectangle{
+    id : modelRec
+    height : 12 
+    width: 30
+    color : "green"
+    border.width : 1 
+    border.color : "lightblue"
+
+    Row{
+    anchors.fill : parent
+        Text{
+            text : name 
+        }
+
+
+    }
+
+    MouseArea {
+        anchors.fill : parent 
+        onClicked : modelRec.state == 'click' ? modelRec.state = "thing" : modelRec.state = 'click'
+    }
+
+    states:[
+            State{
+                name : "click" 
+                PropertyChanges { target: modelRec; color : "blue" }
+            },
+    
+            State{
+                name : "thing" 
+                PropertyChanges { target: modelRec; color : "green" }
+            }
+    ]
+}
+
+}

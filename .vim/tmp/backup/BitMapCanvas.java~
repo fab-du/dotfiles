@@ -1,0 +1,45 @@
+package de.hs_mannheim.bitmap;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.view.View;
+import android.graphics.Canvas;
+import android.os.Environment;
+import android.util.AttributeSet; 
+
+
+    public BitMapCanvas( Context context , AttributeSet aSet )
+    {
+        super( context, aSet ); 
+        p = new Paint(); 
+    }
+
+    public void drawInitialScreen()
+    {
+    }
+
+
+    /****************************************
+     *function for quick paint configuration 
+    *************************************** */
+    private void setPaint
+        ( 
+         Color color 
+        ,int   StrokeWidth 
+        ,int   alpha 
+        )
+    {
+
+        p.setColor(color); 
+        p.setStrokeWidth(StrokeWidth); 
+        p.setAlpha(alpha); 
+    
+    }
+
+
+}//end of Class 
+
+
+//File root = Environment.

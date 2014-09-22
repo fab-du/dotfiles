@@ -1,0 +1,22 @@
+
+
+#folder_01.source = qml/posu 
+#folder_01.target = qml 
+
+##DEPLOYMENTFOLDERS = folder_01
+
+
+
+TEMPLATE = app
+TARGET = foo1
+INCLUDEPATH += .
+QT = core gui quick qml 
+
+
+# Input
+HEADERS += header/model.h header/qtquick2applicationviewer.h
+SOURCES += src/main.cpp src/model.cpp \ 
+           src/qtquick2applicationviewer.cpp 
+
+OTHER_FILES += \ 
+            qml/main.qml

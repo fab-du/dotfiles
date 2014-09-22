@@ -1,0 +1,16 @@
+
+/**********************************************************
+ *                                                        *
+ *@Author: Siyapdje, Fabrice Dufils ( BatieLab ), 1015366 *
+ *                                                        * 
+ **********************************************************/
+
+import QtQuick 2.0 
+
+Text{
+        property var title : ""
+        text : title 
+        font.family : "serif sans ms"
+        font.letterSpacing: 2
+        styleColor : "gray"
+    }

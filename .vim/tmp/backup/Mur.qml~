@@ -1,0 +1,33 @@
+import QtQuick 2.0 
+Item{
+    width:  mur_kante * Math.sin( angle1 ) 
+    height: mur_hauteur    
+    property int _x : width / 2   /*debut de la maison*/ 
+    property int _y : height/2    /* debut de la maison */ 
+    property int _x1 : _x + mur_kante*Math.sin(0.52333) 
+    property int _y1 :  _y - mur_kante*Math.cos(0.52333)
+    property int mur_width : 30 
+    property int mur_hauteur : 40 // default hoehe  
+    property int mur_kante :   400  
+    property var angle1   : 0.52333  
+    Rectangle{
+        x : _x 
+        y : _y 
+
+        width : mur_width 
+        height: mur_hauteur  
+        color : "transparent" 
+        border.color : "black"
+        border.width: 2 
+    }//end of Rectangle 
+    Rectangle{
+        id : rec2
+        x : _x1 
+        y : _y1 
+        width : mur_width 
+        height: mur_hauteur  
+        color : "transparent" 
+        border.color : "black"
+        border.width: 2 
+    }//end of Rectangle 
+}//end of Item 

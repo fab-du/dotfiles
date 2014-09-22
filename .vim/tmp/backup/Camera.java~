@@ -1,0 +1,59 @@
+
+package de.hs_mannheim.beans;
+
+import java.net.URL; 
+
+
+class Camera {
+
+    private URL url     =null;  
+
+    private Long id     =null; 
+
+    private String name =null; 
+
+
+    public Camera( name, url, id)
+    {
+        this.name = name ; 
+        this.id   = id   ; 
+        this.url  = url  ; 
+    }
+
+
+    public Camera( id )
+    {
+        this.id   = id   ; 
+    }
+
+    public getName ()
+    {
+        return name;  
+    }
+
+    public getId()
+    {
+        return id;  
+    }
+
+    public getUrl()
+    {
+        return url; 
+    }
+
+    public setName( String name)
+    {
+        this.name = name;  
+    }
+
+    public setId( Long id )
+    {
+        this.id = id;  
+    }
+
+    public setUrl ( URL url )
+    {
+        this.url = url ;  
+    }
+}
+

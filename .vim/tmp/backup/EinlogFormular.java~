@@ -1,0 +1,58 @@
+package de.hs_mannheim.bean;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
+
+/**
+ * class Name : EinlogFormular : 
+ * 
+ * ********/
+
+public class EinlogFormular {
+
+	String userName;
+	String passWord;
+	List<String> stadtListe = new ArrayList<String>();
+	
+	public EinlogFormular(){
+		userName = "*"; 
+		passWord = "*"; 
+		stadtListe.add("Mannheim"); 
+	}
+	
+	public void setUserName(String username){
+		this.userName = username; 
+	}
+	
+	public void setPassWord( String password ){
+		this.passWord = password; 
+	}
+	
+	public String getUserName(){
+		return userName; 
+	}
+	
+	public String getPassWord(){
+		return passWord; 
+	}
+	
+        /**
+         *params: stadtListe 
+         * */
+	public void setStadtListe( String[] stadtListe){
+		this.stadtListe = Arrays.asList(stadtListe);
+	}
+	
+	public String[] getStadtListe(){
+		return (String[]) stadtListe.toArray(); 
+	}
+
+        public static void main(String[] args) {
+            EinlogFormular einlog = new EinlogFormular(); 
+            
+        }
+	
+}//End of the class 

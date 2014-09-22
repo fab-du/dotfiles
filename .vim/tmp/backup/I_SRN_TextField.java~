@@ -1,0 +1,5 @@
+package de.hs_mannheim.SRNInterface;
+
+public interface I_SRN_TextField extends I_SRN_TrackableComponent{
+
+}

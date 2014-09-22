@@ -1,0 +1,11 @@
+
+QT 	+= core widgets quick qml
+
+SOURCES += 	main.cpp \
+		numberConverter.cpp
+			
+HEADERS	+= 	numberConverter.h
+
+OTHER_FILES += gui.qml \
+    hs-Mannheim.jpg \
+    images.jpg

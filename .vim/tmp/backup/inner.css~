@@ -1,0 +1,16 @@
+
+#myDiv, #results{
+    margin: 50px ; 
+}
+
+#myDiv{
+    padding: 10px; 
+    width: 200px; 
+    text-align: center; 
+    background-color: #000; 
+}
+
+#myDiv div{
+    margin: 10px; 
+    background-color: #555; 
+}

@@ -1,0 +1,40 @@
+
+package de.hs_mannheim.SRNInterface;
+
+import java.awt.event.ActionEvent;
+
+import de.hs_mannheim.konstante.Ui_Kommand;
+
+
+abstract class Abst_SRN_BtnControll implements java.awt.event.ActionListener {
+
+
+
+    I_SRN_Window view; 
+    I_SRN_Model model; 
+
+
+    public Abst_SRN_BtnControll(I_SRN_Window view, I_SRN_Model model )
+    {
+        
+    this.view = view; 
+    this.model = model; 
+    
+    }
+
+    public void actionPerfomed(ActionEvent e )
+    {
+    
+    
+    String cmd = e.getActionCommand(); 
+
+    if(cmd == Ui_Kommand.ui_exit ) 
+    {
+        System.exit(0); 
+    }
+    
+    }
+
+    public abstract void customActions(); 
+}
+

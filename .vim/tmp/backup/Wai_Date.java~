@@ -1,0 +1,36 @@
+package de.hs_mannheim.bean;
+import  java.util.Date; 
+
+public class Wai_Date {
+    int day; 
+    int month; 
+    int year; 
+
+    void setMonth(int month)
+    {
+        this.month = month 
+    }
+    
+    void setDay(int day)
+    {
+        this.day = day; 
+    }
+
+    void setYear(int year)
+    {
+        this.year = year;  
+    }
+
+    int getMonth()
+    {
+        return month; 
+    }
+    int getDay()
+    {
+        return day; 
+    }
+    int getYear()
+    {
+        return year; 
+    }
+}

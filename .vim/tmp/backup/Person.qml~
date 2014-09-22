@@ -1,0 +1,93 @@
+import QtQuick 2.0 
+  Rectangle{
+      id : animation 
+
+          property string img  : "tux.gif"
+          property real    _x  : 0   
+          property real    _y  : 0   
+
+          x: _x    
+          y: _y 
+          width: personnage.width 
+          height: personnage.height 
+          color: "transparent"
+          border.width :3
+          border.color : "red"
+         
+          focus : true 
+
+    /*Keys.onRightPressed:{*/
+         
+        /*_dx = _dx + 5 */
+        /*_x  =_dx */
+         /*animation.state = "recht"*/
+        /*console.log("salut", _dx );*/
+        /*anim.running = true; */
+    /*}*/
+    /*Keys.onLeftPressed:{*/
+        /*_dx = _dx -5 */
+        /*_x = _dx */
+        /*animation.state = "left" */
+        /*console.log("salut", _dx);*/
+        /*anim.running = true */
+
+    /*}*/
+
+      AnimatedImage{
+          id : personnage  
+          source : img
+
+      }
+
+     //spiegeln 
+     rotation : 180 
+     transform: Rotation{
+       id: rot 
+      origin.x:    animation.width / 2
+	 origin.y: animation.height / 2
+	 axis.x: 1; axis.y: 0; axis.z: 0
+	 angle: 180
+     }
+
+       NumberAnimation on x {
+          id : anim 
+          duration : 20
+      }
+
+      states:[
+          State{
+              name : "recht"
+              PropertyChanges{
+                  target : anim 
+                  from : _x - 5   
+                  to : _x  
+              }
+
+              PropertyChanges{
+                    target : rot 
+                origin.x:0 
+                origin.y:0 
+                axis.x: 0; axis.y: 0; axis.z: 0
+                angle: 0 
+
+              }
+
+              PropertyChanges{
+                target : personnage 
+                rotation : 0 
+              }
+          }, 
+        State{
+            name : "left"
+            PropertyChanges{
+                target: anim 
+                from : _x+5   
+                to   : _x  
+            }
+        }
+      ]
+      
+
+}//end of second Rectangle 
+
+

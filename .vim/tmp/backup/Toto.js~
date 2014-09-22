@@ -1,0 +1,22 @@
+
+
+/*
+ *Diese Javascript Datei repraesentierte die Logic 
+ *des Programmes. es wird alles hier implementiert 
+ *nur die Kopfe des elements und die IDs werden 
+ *in Qml Datei implementiert . 
+ *Weiterhin werden alle Modele auch in 
+ *Javascript implementiert. 
+ */
+
+
+var MyRec = new QtObject(); 
+
+MyRec.foo = 2 
+MyRec.tata=4 
+
+function main(canvas) {
+
+var context=canvas.getContext('2d')
+
+}

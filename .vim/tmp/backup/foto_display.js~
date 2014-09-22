@@ -1,0 +1,7 @@
+
+
+function foto_display(req, res) {
+    
+}
+
+exports.foto_diplay = foto_display; 

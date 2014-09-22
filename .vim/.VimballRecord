@@ -1,0 +1,1 @@
+tagbar.vmb: call delete('/home/batlab/.vim/README.md')|call delete('/home/batlab/.vim/autoload/tagbar.vim')|call delete('/home/batlab/.vim/doc/tagbar.txt')|call delete('/home/batlab/.vim/plugin/tagbar.vim')|call delete('/home/batlab/.vim/syntax/tagbar.vim')

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<reveil version="2.0">
+
+        <wecker>
+            <title>Aufstehen</title>
+            <zustand> deaktivierte </zustand>
+            
+            <zeit>
+                <hour> 05 </hour>
+                <min>  45 </min>
+            </zeit>
+
+            <tage>
+                <mo>ja</mo> 
+                <di>ja</di> 
+                <mi>ja</mi>
+                <do>ja</do> 
+                <fr>ja</fr>
+                <sa>ja</sa>
+                <so>ja</so>
+            </tage>
+
+        </wecker> 
+
+        <wecker> 
+            <title> Schlafen </title>
+            <zustand> aktivierte </zustand>
+
+            <zeit>
+                <hour> 22 </hour>
+                <min> 30 </min>
+            </zeit>
+
+
+            <tage>
+                <mo>nein</mo> 
+                <di>ja</di> 
+                <mi>ja</mi>
+                <do>ja</do> 
+                <fr>ja</fr>
+                <sa>nein</sa>
+                <so>nein</so>
+            </tage>
+
+        </wecker>
+
+</reveil>

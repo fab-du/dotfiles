@@ -1,0 +1,29 @@
+
+#ifndef MESSAGESERVER_H
+#define MESSAGESERVER_H 
+
+#include <QObject>
+#include <QTcpSocket> 
+#include <QTcpServer>
+
+#include "definition.h"
+
+
+class MessageServer: public QTcpServer 
+{
+    Q_OBJECT 
+
+    clientList _clientlist; 
+
+    public: 
+    MessageServer( QObject *parent = 0 ){ this->lisen(QHostAddress::Any, 2009); }
+
+    void incomingConnection( int sockDeskriptor ); 
+    void sendToAllClient( QByteArray &message ); 
+
+signals:
+    void newConnection( int count );
+    void newMessage( int count ); 
+
+}; 
+#endif

@@ -1,0 +1,67 @@
+#ifndef MODELL_H
+#define MODELL_H
+
+//#include <QObject>
+#include <QAbstractListModel>
+#include <QGuiApplication> 
+#include <QScreen>
+#include <QList>
+
+class modell : public QAbstractListModel
+{
+
+    Q_OBJECT
+
+    enum DataRoles {
+
+        Name = Qt::UserRole + 1,
+        Orientation_n,
+        Ava_Geomedtry_x,
+        Ava_Geomedtry_y,
+        Ava_Size_W,   /* Size Width */
+        Ava_Size_H,
+        Ava_virtual_Geo_X,
+        Ava_virtual_Geo_Y,
+        Virtual_Geo_X,
+        Virtual_Geo_Y,
+        Phy_Size_W,
+        Phy_Size_H
+
+    };
+
+
+
+    public:
+    //Constructors
+    modell(){_screens = QGuiApplication::screens(); }
+    //end of Constructor
+
+    //Not implement Destructor , maybe later to make
+    //the modell consisten
+    ~modell(){ }
+
+
+
+    int rowCount( const QModelIndex& parent = QModelIndex()) const
+    {   Q_UNUSED( parent )
+        return _screens.size();}
+
+    QVariant
+    data(const QModelIndex& index, int role=Qt::DisplayRole) const;
+
+    //bool removeRows( int position, int rows, const QModelIndex& parent
+            //= QModelIndex());
+
+//signals:
+    private:
+    QList< QScreen* > _screens;
+
+    // QAbstractItemModel interface
+public:
+    QHash<int, QByteArray> roleNames() const;
+};
+
+
+
+#endif
+

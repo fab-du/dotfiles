@@ -1,0 +1,91 @@
+
+U-Boot : ist der meistbenutze open source boot Loader für 
+eigebetete Linux. der unterstützt mehrere CPU-Architekturtypen 
+wie beispielerweise ARM, MIPS, x86 und natürlich PowerPC. 
+
+GRUP: 
+
+BusyBox : oder "das Schweizer Taschenmesser eingebetteter Linux
+System". 
+BusyBox stellt eine Sammlung der wichtigsten Linux Befehle in 
+einer einzigen Binärdatei zusammen. Die meisten von BusyBox 
+implementierten Befehle verfügen über einen reduzierten 
+Funktionsumfang im Vergleich zu den originalen aus dem GNU 
+Projekt. Das Ergebnis ist ein gelungener Kompromiss aus Funktions-
+reichtum und Speicherbedarf, der sich sehr gut für eingebetetten
+Linux System eignet. 
+
+
+LTIB ( Linux Target Image Builder ) 
+ ist einem Tools , dass man benutzen kann um zu entwicklen und installieren 
+ des Programms aufs ZielSystem. LTIB unterstürtzt PowerPC, ARM und Coldfire. 
+
+
+BSP: Board Support Packages  
+
+SDB: 
+
+GDB: 
+
+FTP: 
+
+SD-Card 
+
+MMC-Card 
+
+tftp-Server 
+
+nfs-Server 
+
+Samba-Server 
+
+MiddleWare 
+
+GNU : GNU not Unix 
+
+GCC : GNU Compiler Collection : 
+GNU Compiler ist eine Sammlung von Kompilers, die unterstürtzt Programmiersprache 
+wie Ada, C, C++, Frotran, Java, Objective-C, und Objective-C++. 
+gcc benutzt binäre Package wie "binutils", die letze stellt GNU Assembler( gas ) 
+und linker/loader (ld) und viele andere Programme zur Optimization , Benutzung und 
+Herstellung von executable zur Verfügung .  
+
+Der GNU C compiler ist der wichtigste Bestandteil der Linux Distribution bzw. von der 
+eingebettenen Linux, da mit diesem Compiler wird der Linux-Kernel kompiliert sowie der
+Bootloader und System-Services . 
+
+ 
+Embedded Linux Distribution: 
+Ist ein Distribution, die derart konzipiert wurde , um die Hardwarebeschränkungen von 
+eingebettene-System zu berücksichtigen , und damit optimal zu arbeiten. 
+
+Die wesentliche Unterschied zwischen Desktop basierte Linux Distribution und eingebetene Linux 
+ist dass für Desktop basierte Linux Distribution wird das Programm auf/für die Rechner entwicklet , 
+Bei eingebettenen Linux wird meist das Programm auf ein HostSystem Compiliert, man redet dann 
+von CrossCompiler und auf den Zielgeräte (Hardware) gespielt . 
+
+Toolchains: ==> "Werkzeugkette"
+
+
+Bootloader : 
+Ist eine kleine Application die startet wenn die Geräte angeschaltet wird. 
+Vorgang : Hardware wird Angeschaltet -> Bootloader laedt Linux-Kernel auf den -> 
+Start mit der Ausführung von Befehlen. 
+Beispiele Von Bootloaders : 
+--GRUB : Grand Unified Boot Loader 
+--Syslinux : Booting from DOS/Windows or Linux filesystems ( SYSLinux ), 
+  the Network with ( PXelinux ) , DVD , CD und Usb Syslinux . 
+
+--U-Boot eine Plattform unabhaengig Boot Loader . 
+
+
+
+LKM : Loadable Kernel Module. ( file extension .ko = kernel object )
+Treibet koennen in zwei verschiedenen Arten in Eingebetene Linux zum Laufen gebracht werden. 
+1. Treiber kann gleich mit und in der Kernel kompiliert werden. 
+2. Treiber kann auch  als LKM  beim Laufzeit dinamisch aufgerufen werden. 
+
+
+udev : On Demand Device Creation 
+
+

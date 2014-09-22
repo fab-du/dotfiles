@@ -1,0 +1,25 @@
+
+package de.hs_mannheim.bluetooth;
+import  android.bluetooth.*;
+import java.io.InputStream; 
+import java.io.OutputStream;
+
+
+class SarbreServer implements IService{
+
+private InputStream  receiveStream ;// Canal de réception
+private OutputStream sendStream ;// Canal d'émission
+
+
+public InputStream getReader()
+{
+    return receiveStream; 
+}
+
+public OutputStream getWriter()
+{
+    return sendStream; 
+}
+    
+}
+

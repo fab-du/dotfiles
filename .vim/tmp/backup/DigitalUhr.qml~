@@ -1,0 +1,168 @@
+import QtQuick 2.0 
+
+UiMenu{
+    titre: "Uhr"
+    property int uhr : 00 
+    property int min : 00 
+    property int sec : 00
+    property int i   : 0
+    property int segment_width: 20 
+    property int segment_height: 60 
+    property int separator: 2
+    property date curr_date: new Date 
+
+    Timer{
+         
+        }
+
+//            a   
+//         ______
+//        |  g   | b 
+//      f |______|
+//     e  |      | c 
+//        |______|
+//            d 
+
+Rectangle{
+    width: segment_width*2 + segment_height + 2*separator  
+
+    height: segment_height*2 + 2*separator  
+    anchors.centerIn: parent 
+    border.width : separator
+    border.color: "blue"
+    Text{
+        text: Date().toLocaleTimeString(Qt.locale("de_DE"))
+        Component.onCompleted:{ console.log("\n quand c complet"+text);}
+    }
+
+    MouseArea{
+        anchors.fill : parent
+        onClicked:{
+            drawZahl( 3 ) ; 
+        }
+    }
+
+        Rectangle{/*{{{*/
+        id: a
+        width: segment_height  
+        height: segment_width  
+        color: "red" 
+        anchors.top : parent.top  
+        anchors.horizontalCenter: parent.horizontalCenter 
+        }
+        Rectangle{
+        id: b
+        width: segment_width  
+        height: segment_height  
+        anchors.top : parent.top 
+        anchors.left : a.right
+        anchors.leftMargin : separator 
+        color: "black"
+        }
+        Rectangle{
+        id:c
+        width: segment_width  
+        height: segment_height  
+        color: "black"
+        anchors.top : b.bottom
+        anchors.left : a.right 
+        anchors.bottom: parent.bottom
+        anchors.topMargin : separator 
+        anchors.leftMargin : separator 
+        }
+        Rectangle{
+        id: d
+        width: segment_height 
+        height: segment_width 
+        color: "black"
+        anchors.bottom : parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter 
+        }
+        Rectangle{
+        id: e
+        width: segment_width 
+        height: segment_height 
+        color: "black"
+        anchors.right: d.left 
+        anchors.bottom : parent.bottom
+        anchors.rightMargin : separator 
+        }
+        Rectangle{
+        id: f
+        width: segment_width  
+        height: segment_height  
+        color: "black"
+        anchors.bottom : e.top 
+        anchors.top : parent.top
+        anchors.right: d.left 
+        anchors.rightMargin : separator 
+        anchors.bottomMargin: separator
+        }
+        Rectangle{
+        id: g
+        width: segment_height 
+        height: segment_width 
+        color: "black"
+        anchors.centerIn : parent 
+        }/*}}}*/
+}
+
+function drawZahl( zahl )
+{
+        if( zahl === 0) 
+        {
+            g.color = g.parent.color;  
+        }
+        else if( zahl === 1)
+        {
+            a.color = 
+            f.color = 
+            g.color = 
+            e.color = 
+            d.color = d.parent.color;  
+        }
+        else if( zahl === 2 )
+        {
+            f.color = 
+            c.color = c.parent.color;  
+        }
+        else if( zahl === 3 )
+        {
+            f.color= 
+            e.color= e.parent.color;  
+        }
+        else if( zahl === 4)
+        {
+            a.color= 
+            e.color= 
+            d.color= d.parent.color;  
+        }
+        else if( zahl === 5)
+        {
+            b.color=
+            e.color= d.parent.color; 
+        }
+        else if( zahl === 6)
+        {
+            b.color = d.parent.color;  
+        }
+        else if( zahl === 7 )
+        {
+            f.color=
+            g.color=
+            e.color=
+            d.color=d.parent.color;  
+        }
+        else if( zahl === 8)
+        {
+            //nix zu tun 
+           //Da Segmente schon gefuehlt sind  
+        }
+        else if( zahl === 9)
+        {
+            e.color=d.parent.color;  
+        }
+
+    }
+
+}

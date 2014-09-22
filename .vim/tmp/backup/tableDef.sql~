@@ -1,0 +1,16 @@
+
+
+DROP TABLE IF EXISTS  SRN_userInfo;
+DROP TABLE IF EXISTS  SRN_userInfo;
+
+CREATE TABLE SRN_userInfo 
+(
+
+    id integer unsigned NOT NULL AUTOINCREMENT, 
+    userName varchar(100) NOT NULL,
+    name varchar(100) NOT NULL,
+    vorname varchar(100) NOT NULL,
+
+ 
+
+)ENGINE=InnoDB;

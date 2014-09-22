@@ -1,0 +1,24 @@
+package de.hs_mannheim.servlets;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class DisplayImage extends HttpServlet{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6440502268974503409L;
+
+	
+	protected void
+	doGet( HttpServletRequest req, HttpServletResponse res){		
+	}
+	
+	protected void 
+	doPost(HttpServletRequest req, HttpServletResponse res){
+		this.doGet(req, res);
+	}
+	
+}

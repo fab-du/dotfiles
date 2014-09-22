@@ -1,0 +1,47 @@
+
+#include "graph.h"
+
+QSGNode* Graph::updatePaintNode( QSGNode* node, QQuickItem::UpdatePaintNodeData* data )
+{
+
+QSGGeometryNode* gNode= NULL; 
+QSGGeometry* geometry = NULL; 
+QRectF bounds = boundingRect(); 
+
+int vCountUp   = ( bounds.height()/ _scaleY  )* _verticalDivision; 
+int vCountDown = ( bounds.width()/ _scaleX  )* ( 1 - _verticalDivision ); 
+
+int segmentCount = 13 + 3*vCountUp + 3*vCountDown ; 
+
+if(!node)
+{
+gNode=new QSGGeometryNode();
+gNode->setMaterial(newQSGVertexColorMaterial);
+geometry=newQSGGeometry(QSGGeometry::defaultAttributes_ColoredPoint2D(),segmentCount);
+geometry->setLineWidth(2);
+geometry->setDrawingMode(GL_LINE_STRIP);
+gNode->setGeometry(geometry);
+gNode->setFlag(QSGNode::OwnsGeometry);
+gNode->setFlag(QSGNode::OwnsMaterial);
+}
+else
+{
+gNode=static_cast<QSGGeometryNode*>(node);
+geometry=gNode->geometry();
+}
+
+float centerLineH=m_verticalDivision * (bounds.y() + bounds.height());
+float endPointV=bounds.y()+bounds.height();
+float endPointH=bounds.x()+bounds.width();
+
+QSGGeometry::ColoredPoint2D* vertices =geometry->vertexDataAsColoredPoint2D();
+QColor c(255,0,0);
+
+vertices[0].set(bounds.x()-m_arrowSize,bounds.y()+m_arrowSize,c.red(),c.green(),c.blue(),255);
+vertices[1].set(bounds.x(),bounds.y(),c.red(),c.green(),c.blue(),255);
+vertices[2].set(bounds.x()+m_arrowSize,bounds.y()+m_arrowSize,c.red(),c.green(),c.blue(),255);
+vertices[3].set(bounds.x(),bounds.y(),c.red(),c.green(),c.blue(),255);
+vertices[4].set(bounds.x(),bounds.y()+bounds.height(),c.red(),c.green(),c.blue(),255);
+vertices[5].set(bounds.x(),centerLineH,c.red(),c.green(),c.blue(),255);
+vertices[6].set(endPointH,centerLineH,c.red(),c.green(),c.blue(),255);
+}

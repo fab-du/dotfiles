@@ -1,0 +1,61 @@
+import QtQuick 2.0 
+import QtQuick.XmlListModel 2.0 
+
+
+
+XmlListModel{
+
+    id : weatherModel 
+    source: "http://api.openweathermap.org/data/2.5/weather?q=Mannheim&mode=xml"
+    query: "/current"
+
+    XmlRole{
+        name: "Land"
+        query: "city/country/string()"
+    }
+
+    XmlRole{
+        name : "Stadt"
+        query: "city/@name/string()"
+    }
+
+    XmlRole{
+        name  : "temperature" 
+        query : "temperature/@value/string()" 
+    }
+
+    XmlRole{
+        name  : "Feuchtigkeit" 
+        query : "humidity/@value/string()" 
+    }
+
+    XmlRole{
+        name  : "pressure" 
+        query : "pressure/@value/string()" 
+    }
+
+
+    XmlRole{
+        name  : "cloud" 
+        query : "weather/@value/string()" 
+    }
+
+
+    XmlRole{
+        name  : "WindGeschwindigkeit" 
+        query : "wind/speed/@value/string()" 
+    }
+
+
+    XmlRole{
+        name  : "WindName" 
+        query : "wind/speed/@name/string()" 
+    }
+
+
+    XmlRole{
+        name  : "WindRichtung" 
+        query : "wind/speed/@name/string()" 
+    }
+
+}

@@ -1,0 +1,14 @@
+import QtQuick 2.0 
+import "Toto.js" as Logic  
+
+Rectangle{
+    width : 200  
+    height: 200 
+
+Logic.MyRec{
+    
+        foo : 10 
+        tata :100
+    }
+
+}

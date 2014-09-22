@@ -1,0 +1,14 @@
+
+import QtQuick 2.0 
+
+
+ListView{
+    id: xmlView 
+    width: 180
+    height: 300 
+    model: xmlModell
+
+    Text:{ text: ""+ xmlModell.land }
+    
+
+}

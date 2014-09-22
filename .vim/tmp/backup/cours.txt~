@@ -1,0 +1,27 @@
+
+
+Embedded Linux 
+-------------- 
+
+
+les principaux elements sont: 
+
+** Le Bootloader 
+
+** Le Tool chain 
+
+** Le Kernel 
+
+** et le User Space 
+
+
+
+
+************ Tool Chain *************** 
+Tool chain consist at at least : 
+
+-binutils : GNU Assembler, Linker etc 
+-gcc : GNU C Compiler 
+-C Libray ( libc ) : The interface to the operating System 
+-gdb: Debugger  
+

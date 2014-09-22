@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Photo Preloader </title>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+</body>
+
+
+
+    <script type="text/javascript">
+
+    /*
+     *Description : This function take an array of strings , representing 
+     *              the image sources , and preload images using those sources 
+     */
+    function foto_preloader(arr) {
+
+        var obj_arr_img = [], 
+            imagesLoaded = 0, 
+            after_preload= function(){}; 
+        
+        var arr = (typeof arr != 'object')? [arr]:arr , // force arr parameter to always be an array 
+
+
+            for (var i = arr.length - 1; i >= 0; i--) {
+                obj_arr_img[i]= new Image(); 
+                obj_arr_img.src = arr[i]; 
+
+                obj_arr_img[i].onload= function () {
+                    
+                }
+                obj_arr_img[i].onerror = function () {
+                    
+                }
+
+                return {
+                     done : function (f) {
+                         after_preload = f || after_preload ;
+                     }
+            
+                    }
+
+            }
+        
+    }
+        
+    </script>
+
+</html>

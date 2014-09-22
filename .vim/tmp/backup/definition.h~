@@ -1,0 +1,15 @@
+
+#ifndef DEFINITION_H
+#define DEFINITION_H value
+
+#include <QObject>
+#include <vector>
+#include <QTcpSocket>
+
+#include "clientSocket.h"
+
+typedef  char byte ; 
+
+typedef vector<ClientSocket*> clientList; 
+
+#endif

@@ -1,0 +1,116 @@
+import QtQuick 2.0 
+import QtQuick.Controls 1.0 
+
+
+
+Rectangle{
+
+width: 600 
+height: width  
+
+
+property int counter: 0 
+property var ctx 
+
+
+Timer
+{
+interval:50;running:true;
+repeat:true
+onTriggered:
+{
+canvas.requestPaint()
+}
+
+}
+
+
+Canvas{
+
+Image{
+    id : img
+}
+
+
+id: canvas 
+        width: parent.width -50  
+        height: parent.height -50 
+
+        anchors.centerIn : parent 
+
+        onPaint:{
+            ctx = canvas.getContext( '2d' ) 
+
+                ctx.fillStyle = "red"
+                ctx.rect(0,0,parent.width,parent.height) 
+            ctx.fill()
+
+
+    ctx.beginPath()
+        ctx.moveTo( 0,20) 
+        ctx.stokeStyle = "black"
+        ctx.lineWidth = 5 
+        ctx.lineTo(20,20)
+        ++counter
+        /*}*/
+        ctx.stroke()
+        ctx.closePath()
+
+        ctx.lineJoin = "round"
+
+    ctx.beginPath()
+    ctx.moveTo( 20,20 )
+    ctx.trokeStyle = "black" 
+    ctx.lineWidth = 3 
+    ctx.lineTo( 20 ,14)
+    ctx.stroke()
+    ctx.closePath()
+
+        ctx.lineJoin = "round"
+
+    ctx.beginPath()
+    ctx.moveTo( 20,20 )
+    ctx.trokeStyle = "black" 
+    ctx.lineWidth = 3 
+    ctx.lineTo( 20 ,26)
+    ctx.stroke()
+    ctx.closePath()
+
+
+        ctx.lineJoin = "round"
+    ctx.beginPath()
+    ctx.moveTo( 20,26 )
+    ctx.trokeStyle = "black" 
+    ctx.lineWidth = 3 
+    ctx.lineTo( 28 ,20)
+    ctx.stroke()
+    ctx.closePath()
+
+
+        ctx.lineJoin = "round"
+    ctx.beginPath()
+    ctx.moveTo( 20,14 )
+    ctx.trokeStyle = "black" 
+    ctx.lineWidth = 3 
+    ctx.lineTo( 28 ,20)
+    ctx.stroke()
+    ctx.closePath()
+
+        ctx.lineJoin = "round"
+
+ctx.beginPath() 
+    canvas.loadImage("background.jpg")
+    ctx.drawImage("background.jpg",100,20)
+ctx.closePath()
+
+    }
+
+
+
+
+
+}//end of Canvas 
+
+
+
+}//end of Rectangle 

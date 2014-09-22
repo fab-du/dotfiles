@@ -1,0 +1,14 @@
+
+    {
+      "libs": [
+        "browser",
+        "jquery", 
+        "ecma5"
+      ],
+      "loadEagerly": [],
+      "plugins": {
+        "requirejs": {}, 
+        "node": {}, 
+        "express":{} 
+      }
+    }

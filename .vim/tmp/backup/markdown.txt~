@@ -1,0 +1,35 @@
+
+
+1. Header 
+
+* H1 header ==> # ( single dies )
+* H2 header ==> ## ( two dies )
+
+    ** this text will be bold ** 
+     _ this text will be italic _ 
+
+
+2. Link with id 
+[id]: http://link_to_site.de 
+
+3. Insert image 
+![Alt text](/path/to/image.png "image title")
+
+4. List 
+
+*List1
+ -element1_1
+ -element1_2
+*List2
+ -element2_1
+ -element2_2 
+
+4. Insert code 
+Possibility 1. 
+<p> 
+<code>
+insert code hier 
+</code>
+</p> 
+Possibity 2. use ``
+

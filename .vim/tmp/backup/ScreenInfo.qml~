@@ -1,0 +1,41 @@
+
+import QtQuick 2.2 
+import QtQuick.Controls 1.0
+
+Rectangle{
+width : 500 
+height: width +200 
+
+
+   ListView {
+            id: view1
+            anchors { fill: parent; margins:20}
+            focus: true
+            spacing: 7
+            cacheBuffer: 5
+            delegate: Screendelegate {}
+            model: modell 
+       }
+
+Canvas {
+id : canvas 
+width: 400 
+height: 400 
+anchors.centerIn : parent
+
+onPaint:{
+    var ctx = initScreen( canvas )
+}
+
+}
+
+function initScreen( screen )
+{
+    var ctx = screen.getContext( '2d' ) 
+    ctx.rect(0,0,400,400)
+    ctx.fillStyle="#FFF0A5"
+    ctx.fill()
+    return ctx; 
+}
+
+}

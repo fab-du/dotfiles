@@ -1,0 +1,168 @@
+#!/bin/bash 
+
+echo
+echo "Making System up to Date"
+echo
+
+
+sudo apt-get update -y 
+sudo apt-get upgrade -y 
+
+
+echo
+echo "install synaptic, aptitude, Gdebi" 
+echo
+sudo apt-get install aptitude synaptic gdebi-core
+
+
+
+#Some plugin 
+sudo apt-get install pepperflashplugin-nonfree
+sudo apt-get install flashplugin-installer
+sudo apt-get install vlc
+
+#Install Skype 
+wget http://download.skype.com/linux/skype-ubuntu-precise_4.2.0.13-1_i386.deb
+sudo gdebi skype-ubuntu-precise_4.2.0.13-1_i386.deb
+
+
+#Install Dropbox 
+sudo gdebi dropbox_1.6.0_amd64.deb
+
+if [[ ! -f $HOME/.gtkrc-2.0 ]]; then
+        touch $HOME/.gtkrc-2.0 
+fi
+
+echo"  gtk-menu-popup-delay = 0      ">>$HOME/.gtkrc-2.0
+echo"  gtk-menu-popdown-delay = 0    ">>$HOME/.gtkrc-2.0
+echo"  gtk-menu-bar-popup-delay = 0  ">>$HOME/.gtkrc-2.0
+echo"  gtk-enable-animations = 0     ">>$HOME/.gtkrc-2.0
+echo"  gtk-timeout-expand = 0        ">>$HOME/.gtkrc-2.0
+echo"  gtk-timeout-initial = 0       ">>$HOME/.gtkrc-2.0
+echo"  gtk-timeout-repeat = 0        ">>$HOME/.gtkrc-2.0
+
+
+#Gksudo is a gui tool to run gui apps as root.
+#To launch any gui app with root privileges, use gksudo
+# gksudo thunar
+
+sudo apt-get install gksu
+
+#Now extract and copy all the wallpapers in 
+#the following directory. Note that you need root privileges 
+#to be able to write inside that directory.
+
+wget https://launchpad.net/elementaryos/0.2-luna/luna-wallpapers/+download/luna-wallpapers.tar.gz
+gksudo thunar /usr/share/xfce4/backdrops
+
+sudo apt-get install rar
+
+echo
+echo "Installing Repo"
+echo
+if [ ! -d ~/bin ]; then
+  mkdir -p ~/bin
+fi
+curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+chmod a+x ~/bin/repo
+
+echo
+echo "Installing ADB Drivers!"
+echo
+wget http://www.broodplank.net/51-android.rules
+sudo mv -f 51-android.rules /etc/udev/rules.d/51-android.rules
+sudo chmod 644 /etc/udev/rules.d/51-android.rules
+
+
+echo
+echo "Downloading and Configuring Android SDK!!"
+echo "Making sure unzip is installed"
+echo
+sudo apt-get install unzip $PARAM
+
+
+if [ `getconf LONG_BIT` = "64" ]
+then
+        echo
+echo "Downloading SDK for 64bit Linux System"
+        wget http://dl.google.com/android/adt/adt-bundle-linux-x86_64-20131030.zip
+        echo "Download Complete!!"
+        echo "Extracting"
+        mkdir ~/adt-bundle
+        mv adt-bundle-linux-x86_64-20131030.zip ~/adt-bundle/adt_x64.zip
+        cd ~/adt-bundle
+        unzip adt_x64.zip
+        mv -f adt-bundle-linux-x86_64-20131030/* .
+        echo "Configuring environment"
+        echo -e '\n# Android tools\nexport PATH=${PATH}:~/adt-bundle/sdk/tools\nexport PATH=${PATH}:~/adt-bundle/sdk/platform-tools\nexport PATH=${PATH}:~/bin' >> ~/.bashrc
+        echo -e '\nPATH="$HOME/adt-bundle/sdk/tools:$HOME/adt-bundle/sdk/platform-tools:$PATH"' >> ~/.profile
+        echo "Placing desktop shortcuts"
+        ln -s ~/adt-bundle/eclipse/eclipse ~/Desktop/Eclipse
+        ln -s ~/adt-bundle/sdk/tools/android ~/Desktop/SDK-Manager
+        echo "Done!!"
+else
+
+        echo
+echo "Downloading SDK for 32bit Linux System"
+        wget http://dl.google.com/android/adt/adt-bundle-linux-x86-20131030.zip
+        echo "Download Complete!!"
+        echo "Extracting"
+        mkdir ~/adt-bundle
+        mv adt-bundle-linux-x86-20131030.zip ~/adt-bundle/adt_x86.zip
+        cd ~/adt-bundle
+        unzip adt_x86.zip
+        mv -f adt-bundle-linux-x86_64-20131030/* .
+        echo "Configuring environment"
+        echo -e '\n# Android tools\nexport PATH=${PATH}:~/adt-bundle/sdk/tools\nexport PATH=${PATH}:~/adt-bundle/sdk/platform-tools\nexport PATH=${PATH}:~/bin' >> ~/.bashrc
+        echo -e '\nPATH="$HOME/adt-bundle/sdk/tools:$HOME/adt-bundle/sdk/platform-tools:$PATH"' >> ~/.profile
+        echo "Placing desktop shortcuts"
+        ln -s ~/adt-bundle/eclipse/eclipse ~/Desktop/Eclipse
+        ln -s ~/adt-bundle/sdk/tools/android ~/Desktop/SDK-Manager
+        echo "Done!!"
+fi
+
+
+
+
+
+
+
+
+
+
+echo "Anmelden als Root \n"
+echo "Geben Sie bitte Ihre Passwort \n"
+
+INSTALL_PATH = $HOME/installation_path 
+
+mkdir $INSTALL_PATH  
+
+cd "$INSTALL_PATH" 
+
+git clone  https://github.com/aakoskin/lndir >> /dev/null 
+
+
+echo "Installing Developper-Tools"
+
+echo "Install Build-Tools \n"
+
+apt-get install build-essential -y >> /dev/null 
+
+
+echo "####Install Version-Management####"
+
+echo "Install Git \n"
+
+apt-get install git-core -y 
+
+
+echo "####Install Utilitaire####"
+
+
+
+echo "#### Vim ####"
+
+apt-get install vim-youcompleteme -y 
+apt-get install fonts-powerline   -y 
+apt-get install vim-gocomplete   -y 
+apt-get install iceweasel-vimperator -y 

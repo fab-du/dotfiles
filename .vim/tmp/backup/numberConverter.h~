@@ -1,0 +1,52 @@
+#ifndef NUMBERCONVERTER_H
+#define NUMBERCONVERTER_H
+
+#include <QObject>
+#include <QtCore/QObject>
+#include <QString>
+
+class NumberConverter : public QObject {
+
+    Q_OBJECT
+
+    Q_PROPERTY(QString bin READ getBin WRITE setBin NOTIFY binChanged)
+    Q_PROPERTY(QString oct READ getOct WRITE setOct NOTIFY octChanged)
+    Q_PROPERTY(QString dec READ getDec WRITE setDec NOTIFY decChanged)
+    Q_PROPERTY(QString hex READ getHex WRITE setHex NOTIFY hexChanged)
+    // weitere Properties ...
+
+    QString m_bin;
+    QString m_oct;
+    QString m_dec;
+    QString m_hex;
+
+public:
+    NumberConverter( QObject* parent=NULL ):QObject( parent ) {}
+
+    QString getBin() {return m_bin;}
+    QString getOct() {return m_oct;}
+    QString getDec() {return m_dec;}
+    QString getHex() {return m_hex;}
+
+    void setBin(QString value);
+    void setOct(QString value);
+    void setDec(QString value);
+    void setHex(QString value);
+
+    QString formatBin (QString b);
+/*    QString formatOct (QString o);
+    QString formatDec (QString b);
+    QString formatHex (QString o);
+*/
+    void update ( int value);
+
+
+signals:
+    void binChanged();
+    void octChanged();
+    void decChanged();
+    void hexChanged();
+
+};
+
+#endif // NUMBERCONVERTER_H

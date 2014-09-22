@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent" >
+
+<Button 
+    android:id="@+id/button1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:onClick="findServer"
+    android:text="Find Server" />
+
+<Button 
+    android:id="@+id/button2"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:onClick="exit" 
+    android:text="exit"/>
+
+<Button 
+    android:id="@+id/button3"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:onClick="on"
+    android:text="on"/>
+<Button 
+    android:id="@+id/buttonvis"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:onClick="visible"
+    android:text="Gerät sichtbar machen"/>
+
+<Button 
+    android:id="@+id/button4"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:onClick="off"
+    android:text="off"/>
+
+<Button 
+    android:id="@+id/button5"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:onClick="list"
+    android:text="list paired device"/>
+
+   <ListView
+      android:id="@+id/listView1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:onClick="connect_with_paired"
+      android:visibility="visible" />
+      
+</LinearLayout>

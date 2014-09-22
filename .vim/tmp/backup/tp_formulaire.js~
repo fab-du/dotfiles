@@ -1,0 +1,19 @@
+
+
+
+function formating() {
+    var query = document.querySelectorAll('#formulaire input'); 
+
+    //var el = document.getElementById('#formulaire'); 
+    //el.style.mar
+
+    for(var i=0; i<query.length; i++)
+    {
+        query[i].style.marginLeft = '40px'; 
+        query[i].style.marginRight = '10px'; 
+
+    }
+}
+
+
+formating(); 

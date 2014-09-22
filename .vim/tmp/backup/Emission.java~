@@ -1,0 +1,31 @@
+
+package de.hs_mannheim.blue;
+
+import java.io.OutputStream; 
+
+public class Emission {
+
+    OutputStream out; 
+
+   public  Emission( OutputStream out )
+    {
+       this.out = out ;  
+    }
+
+
+   public void lib_writeByte()
+   {
+   }
+
+   public void lib_writeString()
+   {
+   }
+
+   public void lib_writeFile()
+   {
+   }
+
+}
+
+
+

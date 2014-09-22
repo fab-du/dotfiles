@@ -1,0 +1,39 @@
+
+DROP TABLE  IF EXISTS User_Reg; 
+DROP TABLE  IF EXISTS User_ein; 
+DROP TABLE  IF EXISTS User_friend; 
+DROP TABLE  IF EXISTS User_data; 
+
+create table User_Reg (
+
+    id INT UNSIGNED NOT NULL, 
+    userName VARCHAR(255) NOT NULL, 
+    passwort VARCHAR(255) NOT NULL, 
+    name VARCHAR(255) NOT NULL, 
+    vorname VARCHAR(255) NOT NULL, 
+    email   VARCHAR(255) NOT NULL 
+) ENGINE=INNODB;  
+
+
+create table User_ein(
+    id INT UNSIGNED NOT NULL, 
+    userName VARCHAR(255) NOT NULL, 
+    passwort VARCHAR(255) 
+    
+)ENGINE=INNODB; 
+
+
+create table User_friend(
+    id INT UNSIGNED NOT NULL 
+    
+)ENGINE=INNODB; 
+
+ create table User_data
+     (
+
+     id INT UNSIGNED NOT NULL, 
+     pfad VARCHAR(255) NOT NULL 
+
+     ) ENGINE=INNODB;
+
+

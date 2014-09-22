@@ -1,0 +1,18 @@
+import QtQuick 2.0 
+import QtQuick.Window 2.1 
+
+Item{
+    id: konst
+    property int menu_height : 400
+    property int menu_width  : menu_height  
+
+    property int app_width   :  Screen.desktopAvailableWidth
+    property int app_height  :  Screen.desktopAvailableHeight
+
+    property var app_name    : "FreeKombi"
+    property var app_version : "1.0"  
+    
+    property int haupt_menu_height : app_height  
+    property int haupt_menu_width  : app_width  
+
+}

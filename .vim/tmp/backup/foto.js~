@@ -1,0 +1,304 @@
+
+$('head').append('<link type="text/css" rel="stylesheet" href="foto.css">'); 
+
+
+
+$('body').css({"text-align":"center", "width:":"800px"})
+
+$('#wrapper').css({
+    "border": "2px solid green", 
+    "width": "800px",
+    "height": "600px",
+    "margin-left": "auto", 
+    "margin-right": "auto"
+}); 
+
+$('#bigBox').css({
+    "border": "2px solid black",
+    "width": "600px", 
+    "height": "400px", 
+    "margin-left": "auto", 
+    "margin-right": "auto"
+     
+});  
+
+$('#smallBox').css({
+    "display": "block",
+    "border": "1px solid red", 
+    "width": "780px", 
+    "height": "140", 
+    "margin-left": "auto", 
+    "margin-right": "auto", 
+    "overflow": "hidden", 
+    "left": "50%",
+    "text-align": "justify",
+    "margin-top": "5px"
+     
+}); 
+
+
+function drawCadran( nr_foto ){
+
+    if( !typeof nr_foto === 'Number')
+        return; 
+
+    for (var i=0; i < nr_foto ; i++) {
+        $('#smallBox').append('<div class="smallBoxes"> </div>');
+    }
+
+    $('.smallBoxes').each(function(){
+        $(this).css({
+            "border" : "1px solid black",
+            "margin" : "5px", 
+            "margin-right":"10px",
+            "padding": "0", 
+            "width": "10%", 
+            "float": "left", 
+            "position": "relative", 
+            "height": "130px"
+            
+        }); 
+    
+    }); 
+}
+
+var img_tag_arr = getImageFromTag(); 
+drawCadran(img_tag_arr.length);
+
+
+$('.smallBoxes').click(function(e){
+    display_img_in_big_box(this); 
+});
+
+function display_img_in_big_box(arg) {//{{{
+    
+    var smallboximg = $(arg).css('background-image'); 
+    
+    $('#bigBox').css('background-image', smallboximg); 
+    $('#bigBox').css({
+            "background-repeat" : "no-repeat", 
+            "background-size": "60%", 
+            "background-position": "center"
+    }); 
+}//}}}
+
+function getImageFromTag() {//{{{
+
+    var img_tag_arr = []; 
+    var i=0; 
+
+    $('#fotolist ul li').each(function(imgTag,link){
+        link = $(this).text(); 
+        img_tag_arr.push(link); 
+    }); 
+
+    return img_tag_arr; 
+}//}}}
+
+var i=0; 
+
+    $('.smallBoxes').each(function(){
+        $(this).css({
+            "background-image" : 'url("'+img_tag_arr[i]+'")', 
+            "background-repeat" : "no-repeat",
+            "background-size": "100%", 
+            "background-position": "center"
+        });
+        i++; 
+    });
+
+
+    $('#wrapper').after('<div id="nav"> </div>'); 
+    $('#nav').css({
+    "border": "2px solid green", 
+    "width": "800px",
+    "height": "20px",
+    "margin-left": "auto", 
+    "margin-right": "auto", 
+    "margin-top": "5px"
+    }); 
+
+
+
+$('#nav').append( '<button id="beginning">go to beginning</button>');
+$('#nav').append('<button id="rewind">rewind</button>'); 
+$('#nav').append('<button id="play">play</button>');
+$('#nav').append('<button id="stop">stop</button>'); 
+$('#nav').append('<button id="forward">fast forward</button>'); 
+$('#nav').append('<button id="end">go to end</button>'); 
+
+ $(function() {
+$( "#beginning" ).button({
+text: false,
+icons: {
+primary: "ui-icon-seek-start"
+}
+});
+$( "#rewind" ).button({
+text: false,
+icons: {
+primary: "ui-icon-seek-prev"
+}
+});
+$( "#play" ).button({
+text: false,
+icons: {
+primary: "ui-icon-play"
+}
+})
+.click(function() {
+var options;
+if ( $( this ).text() === "play" ) {
+options = {
+label: "pause",
+icons: {
+primary: "ui-icon-pause"
+}
+};
+} else {
+options = {
+label: "play",
+icons: {
+primary: "ui-icon-play"
+}
+};
+}
+$( this ).button( "option", options );
+});
+$( "#stop" ).button({
+text: false,
+icons: {
+primary: "ui-icon-stop"
+}
+})
+.click(function() {
+$( "#play" ).button( "option", {
+label: "play",
+icons: {
+primary: "ui-icon-play"
+}
+});
+});
+$( "#forward" ).button({
+text: false,
+icons: {
+primary: "ui-icon-seek-next"
+}
+});
+$( "#end" ).button({
+text: false,
+icons: {
+primary: "ui-icon-seek-end"
+}
+});
+});
+
+
+/*
+ *return : -1  => no image have been clicked before 
+ *         -2  => last element of the list , go to the next list 
+ *      {0..7} => valid element go to the next 
+ */
+
+function actuel_img_display() {
+    var background = $('#bigBox').css('background-image'); 
+    var count = 0; 
+
+    if(  background === 'none') 
+    {
+        return -1;        //diplay the first image in the list  
+    }
+    else 
+    {
+
+        $('.smallBoxes').each(function(index){
+
+            if( $(this).css('background-image') == background )
+            {
+                if ( index === $('.smallBoxes').length-1) 
+                {
+                    count = -2;  
+                }
+                else if ( index < $('.smallBoxes').length) 
+                {
+                    count = index; 
+                }
+                return false; 
+
+            }
+        }); 
+
+    console.log("please give me" , count);
+    return count; 
+    }
+}
+
+$( '#forward' ).on('click', function () {
+
+    if( actuel_img_display() === -1 )
+    {
+        display_img_in_big_box( $('.smallBoxes').first()); 
+    }
+    else if( actuel_img_display() === -2)
+    {
+        console.log("Sorry end of the list you cant go nowhere");
+    }
+    else
+    {
+        display_img_in_big_box( $('.smallBoxes').get(actuel_img_display()+1)); 
+    }
+
+    focus_on_curr_img(2); 
+
+}); 
+
+$( '#rewind').on( 'click', function(){
+
+    if( actuel_img_display() === -1 )
+    {
+        display_img_in_big_box( $('.smallBoxes').first()); 
+    }
+    else if( actuel_img_display() === -2)
+    {
+        // when we reach the end go back 
+        display_img_in_big_box( $('.smallBoxes').get( $('.smallBoxes').length -2));
+    }
+    else
+    {
+        display_img_in_big_box( $('.smallBoxes').get(actuel_img_display()-1)); 
+    }
+
+    focus_on_curr_img( 1 ); 
+    
+});
+
+/*
+ *arg : 1 rewind 
+ *    : 2 forward 
+ */
+function focus_on_curr_img( arg ) {
+    var todo = 0;  
+    if( actuel_img_display() === -1 )
+    {
+        $('.smallBoxes').first().css( {"border" : "2px solid grey"}) ;
+    }
+    else if( actuel_img_display() === -2)
+    {
+        $('.smallBoxes').last().css( {"border" : "2px solid grey"}) ;
+    }
+    else
+    {
+        if( arg === 1 )
+        {
+
+            todo = -1; 
+        }
+        else 
+        {
+            todo = 1;  
+        }
+
+        $('.smallBoxes').get(todo + actuel_img_display()).css( {"border" : "2px solid grey"}) ;
+    }
+}
+

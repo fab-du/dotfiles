@@ -1,0 +1,73 @@
+package de.hs_mannheim.sensor;
+
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.os.Build;
+import android.os.Bundle;
+
+import java.util.List;
+
+
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.util.Log;
+import android.view.*;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class SensorActivity extends Activity {
+    /** Called when the activity is first created. */
+	private static final String TAG = "MyActivity";
+
+    private SensorManager sm; 
+    private TextView sensorData; 
+    private Button button; 
+    List<Sensor> mlist;
+
+    @TargetApi(Build.VERSION_CODES.CUPCAKE)
+	@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        SensorActivity sa = new SensorActivity(); 
+    
+       setContentView(R.layout.main);
+
+       sensorData = (TextView)findViewById(R.id.textview1); 
+       button = ( Button )findViewById(R.id.button1);
+
+       sm = ( SensorManager ) this.getSystemService( SENSOR_SERVICE ); 
+
+    }
+    
+    public void listSensor( View view)
+    {
+    	  mlist = sm.getSensorList( Sensor.TYPE_ALL ); 
+
+          StringBuilder bdata = new StringBuilder(); 
+          
+          Toast.makeText(this, "Sensor Number:" + mlist.size() 
+          , Toast.LENGTH_LONG);
+          
+          int foo = mlist.size();
+          System.out.println( mlist.size() );
+          Log.v(TAG, String.valueOf(mlist.size()));
+
+
+          for ( Sensor sensor : mlist )
+          {
+          
+        	  
+              bdata.append("Name: "		 +sensor.getName() +"\n"); 
+              bdata.append("Typ: "			 + sensor.getType() +"\n"); 
+              bdata.append("Version: " 	 +sensor.getVersion() + "\n"); 
+              bdata.append("bei Hersteller: " + sensor.getVendor() + "\n");
+              bdata.append("Power: "		 + sensor.getPower() + "mA"+"\n");  
+              bdata.append("Max Range: "    + sensor.getMaximumRange() +"\n");    
+              bdata.append("Resolution: "	 +sensor.getResolution() +"\n" );
+              bdata.append("---------------------------------------------------");
+              
+          }
+          sensorData.setText( bdata ); 
+    }
+}

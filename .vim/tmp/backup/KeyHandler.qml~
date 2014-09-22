@@ -1,0 +1,38 @@
+
+import QtQuick 2.0 
+/*import Logic.js AS Logic */
+
+
+Component{
+
+Item{
+
+    anchors.fill : parent 
+    focus: true 
+
+    Keys.onLeftPressed:{
+    
+    }
+
+    Keys.onRightPressed:{
+       animation._dx =animation._dx + 5 
+       animation._x  =animation._dx 
+       animation.state = "recht"
+       console.log("salut", _dx );
+       animation.anim.running = true; 
+    
+    }
+
+    Keys.onReturnPressed:{
+    
+    }
+
+
+
+
+
+
+}
+
+
+}

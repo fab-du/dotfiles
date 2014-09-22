@@ -1,0 +1,3 @@
+map <leader>q  <ESC>:q<CR><CR>
+map <leader>qq <ESC>:q!<CR>
+

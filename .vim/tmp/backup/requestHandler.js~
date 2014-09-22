@@ -1,0 +1,12 @@
+
+
+function start() {
+   console.log("Starter handler"); 
+}
+
+function upload() {
+   console.log("Uploader Handler"); 
+}
+
+exports.start  = start; 
+exports.upload = upload; 

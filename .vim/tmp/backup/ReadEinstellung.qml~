@@ -1,0 +1,67 @@
+import QtQuick 2.0 
+import QtQuick.XmlListModel 2.0 
+
+XmlListModel{
+    id : einstellung 
+
+    source : "serialReveil.xml"
+    query  : "/serialReveil" 
+    query  : "/reveil/wecker"
+    query  : "/reveil/wecker/zeit"
+    query  : "/reveil/wecker/tage"
+
+    XmlRole{
+    name : "title"
+    query: "title/string()"
+    isKey: true 
+    }
+
+    XmlRole{
+    name: "zustand"
+    query: "zustand/string()"
+    }
+    
+    XmlRole{
+    name : "zeit"
+    query: "zeit/hour/string()"
+    }
+
+
+    XmlRole{
+    name : "zeit"
+    query: "zeit/min/string()"
+    }
+
+    XmlRole{
+    name : "mo"
+    query: "tage/mo/string()"
+    }
+
+
+    XmlRole{
+    name : "di"
+    query: "tage/di/string()"
+    }
+    XmlRole{
+    name : "mi"
+    query: "tage/mi/string()"
+    }
+    XmlRole{
+    name : "do"
+    query: "tage/do/string()"
+    }
+    XmlRole{
+    name : "fr"
+    query: "tage/fr/string()"
+    }
+    XmlRole{
+    name : "sa"
+    query: "tage/sa/string()"
+    }
+    XmlRole{
+    name : "so"
+    query: "tage/so/string()"
+    }
+
+
+}

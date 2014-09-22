@@ -1,0 +1,6 @@
+# view AndroidManifest.xml #generated:12
+-keep class de.hs_mannheim.sensor.SensorActivity { <init>(...); }
+
+# onClick res/layout/main.xml #generated:6
+-keepclassmembers class * { *** findServer(...); }
+

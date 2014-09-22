@@ -1,0 +1,15 @@
+
+package de.hs_mannheim.bluetooth; 
+
+import java.io.InputStream;
+import java.io.OutputStream; 
+
+import android.bluetooth.*; 
+
+public class SarbreClient {
+    private BluetoothDevice device = null;// le périphérique (le module bluetooth)
+    private BluetoothSocket socket = null;
+    private InputStream receiveStream = null;// Canal de réception
+    private OutputStream sendStream = null;// Canal d'émission
+}
+

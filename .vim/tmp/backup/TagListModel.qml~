@@ -1,0 +1,31 @@
+import QtQuick 2.0 
+
+
+
+ListModel{
+    id : tagModel 
+
+    ListElement
+     { name : "Mo"} 
+
+    ListElement
+    { name: "Di"} 
+
+    ListElement
+    {name: "Mi"} 
+
+    ListElement
+    { name: "Do" } 
+
+
+    ListElement
+    {name: "Fr"} 
+
+
+    ListElement
+    {name: "Sa"} 
+
+    ListElement
+    {name: "So"} 
+}
+

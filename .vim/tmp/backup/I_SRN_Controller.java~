@@ -1,0 +1,7 @@
+
+package de.hs_mannheim.SRNInterface;
+
+interface I_SRN_Controller {
+    
+}
+

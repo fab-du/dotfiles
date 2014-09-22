@@ -1,0 +1,111 @@
+package de.hs_mannheim.server;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Vector;
+import java.util.Enumeration;
+
+import javax.net.ServerSocketFactory;
+
+
+public class Server implements Runnable{
+
+	
+	   Thread mMainThread;
+	    boolean mRunning;
+	    
+	    ServerSocket mMainServer;
+	    Sockethandler mLastHandler;
+	    
+	    Vector  mHandlers;
+	    boolean mStopMode = false;
+	 
+	    public Server()
+	    {
+	    	   mHandlers = new Vector();
+		        mStopMode = false;
+	    }
+	    
+	    public void start(){
+	        System.out.println("START THE WEBSERVER!!!");
+	        mRunning    = true;
+	        mMainThread = new Thread(this);
+	        mMainThread.start();
+	    }
+	    
+	    public void stop(){
+	    	System.out.println("WEBSERVER STOPPING");
+	        mStopMode = true;
+	        if(mMainServer!=null){
+	            try {
+	                if(!mMainServer.isClosed()){
+	                    mMainServer.close();
+	                }
+	            } catch (IOException iOException) {
+	                System.out.println("server stop - "+iOException.toString());
+	            }
+
+	            //Stop all the socket handlers
+	            for(Enumeration e=mHandlers.elements();e.hasMoreElements();){
+	                Sockethandler handler = (Sockethandler)e.nextElement();
+	                handler.stop();
+	            }
+	        }
+
+	        mRunning = false;
+	        mMainThread.interrupt();
+	    }
+
+
+    public void run() {
+        System.out.println("Server Started");
+
+        mMainServer = null;
+        Socket sock = null;
+        try {
+            //Open a socket..
+            mMainServer = ServerSocketFactory.getDefault().createServerSocket(10000);
+            mMainServer.setSoTimeout(0);
+
+            while(mRunning){
+                sock = mMainServer.accept();
+                sock.setSoTimeout(0);
+                sock.setTcpNoDelay(true);
+                
+                System.out.println("Client accepted");
+                if(mLastHandler != null){
+                   mLastHandler.stop();
+                }
+                sockethandler handler = new sockethandler(sock,this);
+                mLastHandler = handler;
+            
+                //Add to our list
+                mHandlers.add(handler);
+            }
+
+        }catch (Exception iOException) {
+           System.out.println("Client accept "+iOException.toString());
+            
+        }
+
+        try {
+            if(mMainServer!=null){
+                if(!mMainServer.isClosed()){
+                    mMainServer.close();
+                }
+            }
+        } catch (IOException iOException1) {
+         System.out.println("internal - "+iOException1.toString());
+        }
+
+        System.out.println("Server finished");
+    }
+
+    public void sockethandlerFinished(Sockethandler zHandler){
+        if(!mStopMode){
+            mHandlers.remove(zHandler);
+        }
+    }
+} //end of Class 
+
