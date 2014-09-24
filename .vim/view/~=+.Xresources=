@@ -27,6 +27,8 @@ setlocal noarabic
 setlocal noautoindent
 setlocal balloonexpr=
 setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
@@ -124,12 +126,18 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 4 - ((3 * winheight(0) + 15) / 31)
+27
+normal! zo
+120
+normal! zo
+187
+normal! zo
+let s:l = 29 - ((28 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 025|
+29
+normal! 013|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

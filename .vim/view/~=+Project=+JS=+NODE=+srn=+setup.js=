@@ -2,7 +2,6 @@ let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
-imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
 imap <buffer> <S-BS> <Plug>delimitMateS-BS
 imap <buffer> <BS> <Plug>delimitMateBS
 nnoremap <buffer> <silent> <Left> :call posero#PreviousSlide()
@@ -27,6 +26,8 @@ setlocal noarabic
 setlocal noautoindent
 setlocal balloonexpr=
 setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
@@ -107,7 +108,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%!airline#statusline(3)
+setlocal statusline=%!airline#statusline(2)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=500
@@ -124,7 +125,7 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 8) / 16)
+let s:l = 1 - ((0 * winheight(0) + 4) / 9)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt

@@ -3,12 +3,12 @@
 # die mit '#' beginnen, werden ignoriert, und eine leere Beschreibung
 # bricht den Commit ab.
 # Auf Branch master
-# Ihr Branch ist auf dem selben Stand wie 'origin/master'.
-#
 # zum Commit vorgemerkte Änderungen:
-#	geändert:       .vim/tmp/backup/COMMIT_EDITMSG~
-#	neue Datei:     .vim/tmp/undo/%home%batlab%Project%dotfiles%.vimrc
-#	geändert:       .vim/view/~=+.vimrc=
-#	geändert:       .vim/view/~=+Project=+dotfiles=+.git=+COMMIT_EDITMSG=
-#	geändert:       .vimrc
+#	geändert:       app.js
+#	geändert:       db/setup.js
+#	geändert:       router.js
+#	geändert:       routes/einloggen.js
+#	geändert:       routes/registrieren.js
+#	geändert:       views/einloggen.ejs
+#	geändert:       views/registrieren.ejs
 #

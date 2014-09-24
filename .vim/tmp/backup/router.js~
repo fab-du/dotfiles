@@ -1,13 +1,19 @@
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var registration= require('./routes/registrieren'); 
-var einloggen= require('./routes/einloggen');
+var express = require('express');
+var path = require('path');
+var index = require('./routes/index.js');
+var registration= require('./routes/registrieren.js'); 
+var einloggen= require('./routes/einloggen.js');
 
 module.exports = function (app) {
-    app.use('/', routes);
-    app.use('/users', users);
-    app.use('/einloggen',einloggen.einloggen);
-    app.use('/registration',registration.registration);
+
+    app.get('/', index);
+    app.get('/index', index);
+
+    app.get('/einloggen', einloggen.einloggen );
+    app.post('/einloggen', einloggen.processPost);
+
+    app.get('/registration', registration.registration);
+    app.post('/registration', registration.processPost);
 
 
 
@@ -20,7 +26,7 @@ module.exports = function (app) {
 
 
 
-    // development error handler
+    // development error handler//{{{
     // will print stacktrace
     if (app.get('env') === 'development') {
         app.use(function(err, req, res, next) {
@@ -40,7 +46,7 @@ module.exports = function (app) {
             message: err.message,
             error: {}
         });
-    });
+    });//}}}
 
     return app; 
 }

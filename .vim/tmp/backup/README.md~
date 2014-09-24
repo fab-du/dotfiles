@@ -1,10 +1,38 @@
-dotfiles
-========
 
-dotfiles
+# SRN Semester Project 
 
-#Actuel: 
-   * .tmux.conf
-   * .xinitrc
-   * .vimrc
+
+## I. Beschreibung
+
+Diese Anwendung ist eine Verteilte Anwendung, die ein sicherheitsystem , 
+      vergleichbare mit dem Keybundle von Apple implementiert. 
+
+
+## II. Was kann das System ? 
+Benutzer konnen dank diese System: <br />
+
+* Daten verschluesselt. 
+* Schluesselt auf ein sichere Weg tauschen 
+* Uebersicht auf die schluessel halten.
+* uebergebene Schlussel , zuruckziehen. 
+* Andere Benutzer von ihre Freunde Liste entfernen bzw. hinzufügen
+
+## III. Was das System nicht kann ? 
+
+* Diese Software ist nicht dafuer implementiert, Daten zwischen Partein zu 
+      tauschen. 
+
+## IV. Technologies 
+
+* Linux
+* Web 
+* Node Js , Express Js, Passport, MongoDB 
+
+
+## V. Funktion 
+1. **User Verwaltung** 
+
+
+
+
 

@@ -1,0 +1,4 @@
+
+# Source profile File 
+. ~/.profile 
+
