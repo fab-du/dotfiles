@@ -10,3 +10,4 @@ dotfiles
    * .gitconfig
 
 * .vim [dir]
+* .config[dir]
