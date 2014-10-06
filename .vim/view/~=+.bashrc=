@@ -28,6 +28,8 @@ setlocal noarabic
 setlocal autoindent
 setlocal balloonexpr=
 setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
@@ -133,11 +135,11 @@ silent! normal! zE
 normal! zo
 87
 normal! zo
-let s:l = 94 - ((35 * winheight(0) + 16) / 32)
+let s:l = 6 - ((5 * winheight(0) + 16) / 32)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-94
+6
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost

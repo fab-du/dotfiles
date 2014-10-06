@@ -39,8 +39,8 @@ gap_x 20
 gap_y 20
 
 #Music player 
-mpd_host "localhost"
-mpd_port "6609"
+mpd_host localhost
+mpd_port 6609
 
 TEXT
 ${scroll 16 $nodename - $sysname $kernel on $machine | }

@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var app = require('./app')
 var index = require('./routes/index.js');
 var registration= require('./routes/registrieren.js'); 
 var einloggen= require('./routes/einloggen.js');

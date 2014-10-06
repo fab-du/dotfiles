@@ -1,5 +1,5 @@
 
-export ANDROID_SDK=/home/batlab/android-sdks 
+export ANDROID_SDK="/home/batlab/android-sdks"
 
 export PATH=$PATH:$ANDROID_SDK/tools 
 
@@ -9,7 +9,7 @@ source ~/.bashrc
 
 
 export ECLPSE_HOME="/home/batlab/eclipse"
-export PATH="$ECLPSE_HOME:$PATH"
+export PATH=$ECLPSE_HOME:$PATH
 
 export JAVA_HOME="/usr/lib/jvm/java-7-oracle"
 export PATH="/usr/lib/jvm/java-7-oracle/bin:$PATH"

@@ -8,6 +8,8 @@ dotfiles
    * .xinitrc
    * .vimrc
    * .gitconfig
+   * .conkyrc
 
 * .vim [dir]
 * .config[dir]
+

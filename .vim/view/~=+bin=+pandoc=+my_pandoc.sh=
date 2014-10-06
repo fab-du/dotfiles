@@ -5,6 +5,10 @@ set cpo&vim
 imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
 imap <buffer> <S-BS> <Plug>delimitMateS-BS
 imap <buffer> <BS> <Plug>delimitMateBS
+nnoremap <buffer> <silent> <Left> :call posero#PreviousSlide()
+nnoremap <buffer> <silent> <Right> :call posero#NextSlide()
+nnoremap <buffer> <silent> <Down> :call posero#NextLine()
+nnoremap <buffer> <silent> <Up> :call posero#PreviousLine()
 imap <buffer> <silent> g <Plug>delimitMateJumpMany
 inoremap <buffer>  
 imap <buffer> " <Plug>delimitMate"
@@ -23,6 +27,8 @@ setlocal noarabic
 setlocal noautoindent
 setlocal balloonexpr=
 setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
@@ -120,11 +126,11 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 10 - ((9 * winheight(0) + 18) / 37)
+let s:l = 15 - ((14 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-10
+15
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost

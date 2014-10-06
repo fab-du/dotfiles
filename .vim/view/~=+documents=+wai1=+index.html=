@@ -5,8 +5,13 @@ set cpo&vim
 imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
 imap <buffer> <S-BS> <Plug>delimitMateS-BS
 imap <buffer> <BS> <Plug>delimitMateBS
+nnoremap <buffer> <silent> <Left> :call posero#PreviousSlide()
+nnoremap <buffer> <silent> <Right> :call posero#NextSlide()
+nnoremap <buffer> <silent> <Down> :call posero#NextLine()
+nnoremap <buffer> <silent> <Up> :call posero#PreviousLine()
 imap <buffer> <silent> g <Plug>delimitMateJumpMany
 inoremap <buffer>  
+inoremap <buffer>  
 imap <buffer> " <Plug>delimitMate"
 imap <buffer> ' <Plug>delimitMate'
 imap <buffer> ( <Plug>delimitMate(
@@ -25,6 +30,8 @@ setlocal noarabic
 setlocal autoindent
 setlocal balloonexpr=
 setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
@@ -105,7 +112,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%!airline#statusline(5)
+setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=800
@@ -127,13 +134,13 @@ silent! normal! zE
 19,29fold
 19,29fold
 17,45fold
-47,50fold
-12,51fold
-12,51fold
-12,51fold
-53,72fold
-53,72fold
-73,119fold
+47,48fold
+12,49fold
+12,49fold
+12,49fold
+51,70fold
+51,70fold
+71,117fold
 4
 normal! zo
 12
@@ -150,18 +157,18 @@ normal! zo
 normal! zc
 47
 normal! zo
-53
+51
 normal! zo
-53
+51
 normal! zo
-73
+71
 normal! zo
-let s:l = 2 - ((1 * winheight(0) + 5) / 10)
+let s:l = 64 - ((31 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
-normal! 0
+64
+normal! 010|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

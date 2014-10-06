@@ -89,6 +89,6 @@ export ECLIPSE_HOME=/home/batlab/eclipse
 export GRADLE_HOME=/home/batlab/tmp/gradle-1.10
 export PATH=$PATH:$GRADLE_HOME/bin/
 export PATH=$PATH:/home/batlab/eclipse
- NODE_PATH='/usr/local/lib/jsctags:' 
+ NODE_PATH='/usr/local/lib/jsctags' 
 
- source ~/.bash_it/themes/sexy/sexy.theme.bash 
+ #source ~/.bash_it/themes/sexy/sexy.theme.bash 

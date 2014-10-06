@@ -2,13 +2,12 @@ let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
-imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
 imap <buffer> <S-BS> <Plug>delimitMateS-BS
 imap <buffer> <BS> <Plug>delimitMateBS
-nnoremap <buffer> <silent> <Left> :call posero#PreviousSlide()
-nnoremap <buffer> <silent> <Right> :call posero#NextSlide()
-nnoremap <buffer> <silent> <Down> :call posero#NextLine()
 nnoremap <buffer> <silent> <Up> :call posero#PreviousLine()
+nnoremap <buffer> <silent> <Down> :call posero#NextLine()
+nnoremap <buffer> <silent> <Right> :call posero#NextSlide()
+nnoremap <buffer> <silent> <Left> :call posero#PreviousSlide()
 imap <buffer> <silent> g <Plug>delimitMateJumpMany
 inoremap <buffer>  
 imap <buffer> " <Plug>delimitMate"
@@ -109,7 +108,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%!airline#statusline(3)
+setlocal statusline=%!airline#statusline(2)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=500
@@ -126,12 +125,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 9 - ((8 * winheight(0) + 6) / 12)
+let s:l = 19 - ((18 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
-normal! 0
+19
+normal! 046|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :
