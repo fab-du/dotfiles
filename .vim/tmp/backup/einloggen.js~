@@ -4,6 +4,8 @@ var validate = require('../validator/validate.js');
 var db = require('../db/setup.js');
 var User = db.getUserModel();
 
+var app= require('../app');
+
 exports.einloggen = function(req, res) {
   res.render('einloggen', { title: 'Einloggen' });
   console.log("REq come here");
@@ -21,8 +23,23 @@ exports.processPost = function (req, res) {
 
     if( richtig )
     {
-        authentification(newUser); 
+         
+        var isError=authentification(newUser);
+
+        console.log(isError);
+        if(!isError)
+        {
+            req.session.currentUser=newUser.username; 
+            req.session.isLogged=true;  
+        }
+        else
+        {
+            req.session.currentUser = null; 
+            req.session.isLogged = false;  
+        }
     }
+
+    console.log("sesssion",req.session);
 
 };
 
@@ -37,6 +54,7 @@ function authentification( newUser ) {//{{{
         {
             //isError = user.authentificate(newUser.password);
             console.log(user);
+            isError = false; 
         }
     });
 
@@ -46,5 +64,6 @@ function authentification( newUser ) {//{{{
 exports.userspace= function(req, res){
     res.render("app-template", {title: 'welcome user'});
 };
+
 
 

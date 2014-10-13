@@ -153,7 +153,7 @@ vnoremap > >gv
 vnoremap < <gv
             
 set showbreak=↪
-set listchars=tab:>-,eol:¬,extends:❯,precedes:❮
+"set listchars=tab:>-,eol:¬,extends:❯,precedes:❮
 
 set autowrite
 set autoread
@@ -311,7 +311,6 @@ map <leader>O :set paste<cr>m`O<esc>``:set nopaste<cr>
 " A shortcut to show the numbered register contents
 map <F2> :reg "0123456789-*+:/<cr>
 
-set colorcolumn=80              "cc:    draw a visual line down the 80th column
 " Toggle spell-checking
 map <silent> <F10> :set nospell!<cr>:set nospell?<cr>
 
@@ -384,29 +383,17 @@ set wildmode=longest:full,list:full  "wim:   helps wildmenu auto-completion
 " }}}
 " Window Layout {{{
 set encoding=utf-8
-set relativenumber              "rnu:   show line numbers relative to the current line; <leader>u to toggle
-set number                      "nu:    show the actual line number for the current line in relativenumber
+"set relativenumber              "rnu:   show line numbers relative to the current line; <leader>u to toggle
+"set number                      "nu:    show the actual line number for the current line in relativenumber
 set showmode                    "smd:   shows current vi mode in lower left
-set cursorline                  "cul:   highlights the current line
 set showcmd                     "sc:    shows typed commands
-set cmdheight=2                 "ch:    make a little more room for error messages
-set sidescroll=2                "ss:    only scroll horizontally little by little
-set scrolloff=1                 "so:    places a line between the current line and the screen edge
-set sidescrolloff=2             "siso:  places a couple columns between the current column and the screen edge
-set laststatus=2                "ls:    makes the status bar always visible
 set ttyfast                     "tf:    improves redrawing for newer computers
 set history=200                 "hi:    number of search patterns and ex commands to remember
 set viminfo='200                "vi:    For a nice, huuuuuge viminfo file
-if &columns < 88
-    " If we can't fit at least 80-cols, don't display these screen hogs
-    set nonumber
-    set foldcolumn=0
-endif
 " }}}
 " Multi-buffer/window/tab editing {{{
 
 set switchbuf=usetab            "swb:   Jumps to first tab or window that contains specified buffer instead of duplicating an open window
-set showtabline=1               "stal:  Display the tabbar if there are multiple tabs. Use :tab ball or invoke Vim with -p
 set hidden                      "hid:   allows opening a new buffer in place of an existing one without first saving the existing one
 
 
@@ -419,32 +406,6 @@ if ! &diff
     au BufLeave * let b:winview = winsaveview()
     au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
-
-"function! CmdQuickFixPrevious()
-    "if v:char == '<F8>'
-        "exe ':cprevious'
-    "else 
-        "exe ':cfirst'
-    "endif 
-"endfunction 
- 
-"function! CmdQuickFixNext()
-    "if v:char == '<F7>'
-        "exe ':cnext'
-    "else 
-        "exe ':clast'
-    "endif 
-"endfunction  
-"" Shortcuts for working with quickfix/location lists
-"nmap <expr> <F8>  CmdQuickFixPrevious()
-"nmap <expr> <F8><F8> 
-""nmap <expr> <F8><F8> :cprevious
-""nmap <expr> <F8>f    :cfirst
-"nmap <expr> <F7>  CmdQuickFixNext()
-""nmap <expr> <F7><F7> :cnext
-""nmap <expr> <F7>l    :clast
-
-
 
 
 " Disable one diff window during a three-way diff allowing you to cut out the
@@ -480,57 +441,12 @@ nmap <silent> <leader>du :diffupdate<cr>
 set mouse=                      "       Disable mouse control for console Vim (very annoying)
 set clipboard=                  "       Disable automatic X11 clipboard crossover
 " }}}
-" Color {{{
-"   All coloring options are for the non-GUI Vim (see :help cterm-colors).
-" Make listchars (much) more noticable.
-au ColorScheme * hi SpecialKey ctermfg=7 ctermbg=1
-
-" A nice, minimalistic tabline.
-au ColorScheme * hi TabLine cterm=bold,underline ctermfg=8 ctermbg=none
-au ColorScheme * hi TabLineSel cterm=bold ctermfg=0 ctermbg=7
-au ColorScheme * hi TabLineFill cterm=bold ctermbg=none
-
-" Black ColorColumn to not catch the eye more than is necessary
-au ColorScheme * hi ColorColumn ctermbg=magenta 
-call matchadd('ColorColumn', '%81v', 100)
-
-" Makes the current line stand out with bold and in the numberline
-au ColorScheme * hi CursorLine cterm=bold
-au ColorScheme * hi LineNr cterm=bold ctermfg=0 ctermbg=none
-
-" Match the Sign column to the number column
-au ColorScheme * hi SignColumn cterm=bold ctermfg=0 ctermbg=none
 
 " Shorten the timeout when looking for a paren match to highlight
 let g:matchparen_insert_timeout = 5
 set synmaxcol=500               "smc:	Stop syntax highlighting on very long lines
 syntax enable
 
-" This rewires n and N to do the highlighing...
-nnoremap <silent> n   n:call HLNext(0.4)<cr>
-nnoremap <silent> N   N:call HLNext(0.4)<cr>
-" OR ELSE ring the match in red...
-function! HLNext (blinktime)
-    highlight RedOnRed ctermfg=red ctermbg=red
-    let [bufnum, lnum, col, off] = getpos('.')
-    let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
-    echo matchlen
-    let ring_pat = (lnum > 1 ? '\%'.(lnum-1).'l\%>'.max([col-4,1]) .'v\%<'.(col+matchlen+3).'v.\|' : '')
-            \ . '\%'.lnum.'l\%>'.max([col-4,1]) .'v\%<'.col.'v.'
-            \ . '\|'
-            \ . '\%'.lnum.'l\%>'.max([col+matchlen-1,1]) .'v\%<'.(col+matchlen+3).'v.'
-            \ . '\|'
-            \ . '\%'.(lnum+1).'l\%>'.max([col-4,1]) .'v\%<'.(col+matchlen+3).'v.'
-    let ring = matchadd('RedOnRed', ring_pat, 101)
-    redraw
-    exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-    call matchdelete(ring)
-    redraw
-endfunction
-" }}}
-" {{{"set background=dark
-colorscheme seoul256 
-" }}} 
 "Basic {{{
 nnoremap<nowait> j gj
 nnoremap<nowait> k gk
@@ -550,119 +466,8 @@ function! s:QuitTab()
   endtry
 endfunction
 "}}}
-" Printing {{{
-" Shows line numbers and adjusts the left margin not to be ridiculous
-set printoptions=number:y,left:5pc
-"set printfont=Monaco:h8         " face-type (not size) ignored in PostScript output :-(
-set printencoding=utf-8
-" }}}
-" :Explore mode {{{
-" Hide the following file patterns.
-let g:netrw_hide = 1
-let g:netrw_list_hide = '^\..*,\.pyc$'
-" Default to thin, vertical Explore windows that output tree view.
-let g:netrw_preview = 1
-let g:netrw_winsize = 30
-let g:netrw_liststyle = 3
-" }}}
 " Scripting helpers {{{1
-
 command -nargs=1 Warn echohl WarningMsg | echo <args> | echohl None
-
-" }}}
-" Make the current buffer a scratch buffer {{{1
-function! Scratch()
-    setlocal buftype=nofile
-    setlocal bufhidden=delete
-    setlocal noswapfile
-    Warn "This file is now a scratch file!"
-endfunction
-nmap <silent> <leader>S :call Scratch()<cr>
-
-" }}}
-" MyTabLine {{{
-" Number the tabs.
-
-function! MyTabLine()
-    let s = ''
-    let t = tabpagenr()
-    let i = 1
-
-    while i <= tabpagenr('$')
-        let buflist = tabpagebuflist(i)
-        let winnr = tabpagewinnr(i)
-        let curwinnr = tabpagewinnr(i,'$')
-
-        let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-        let s .= '%' . i . 'T'
-        let s .= ' '  . i . ': '
-        let file = bufname(buflist[winnr - 1])
-        let file = fnamemodify(file, ':p:t')
-        if file == ''
-            let file = '[No Name]'
-        endif
-        let s .= file
-        let s .= (curwinnr > 1 ? ' (' . curwinnr .') ' : '')
-        let s .= ' '
-        let i = i + 1
-    endwhile
-    let s .= '%T%#TabLineFill#%='
-    let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
-    return s
-endfunction
-set tabline=%!MyTabLine()
-" }}}
-" Break out any vals with a consistent delimiter on to separate lines {{{
-"
-" Useful for reordering function parameters or list items or delimited text
-" since Vim makes it easy to reorder lines. Once ordered, lines can be
-" re-joined with the sister-function below.
-"
-" E.g., given the text:
-"
-"   def foo(bar, baz, qux, quux):
-"       pass
-"
-" Use a text-object to select everything within the parenthesis:
-" <leader>si(
-" Choose ", " as the delimiter (the default), which results in:
-"
-"     def foo(
-"   bar
-"   baz
-"   qux
-"   quux
-"   ):
-"       pass
-"
-" Reorder the items as necessary then join using:
-" <leader>ji(
-" Choose ", " as the delimeter to join with (the default).
-"
-" FIXME: currently joining does not include the text-object chars
-" TODO: visual selection support; some text objects are not multi-line (",')
-
-function! SplitItems(type, ...)
-    let c = input("Split on what chars? ", ", ")
-    normal! `[v`]x
-    let @@ = substitute(@@, c, '\n', 'g')
-    set paste
-    exe "normal! i\<cr>\<esc>"
-    pu! "
-    set nopaste
-endfunction
-nnoremap <leader>s :set opfunc=SplitItems<cr>g@
-
-function! JoinItems(type, ...)
-    let c = input("Join with what chars? ", ", ")
-    normal! `[v']d
-    let @@ = substitute(@@, '\n', c, 'g')
-    set paste
-    exe "normal! P\<esc>"
-    set nopaste
-endfunction
-nnoremap <leader>j :set opfunc=JoinItems<cr>g@
-
 " }}}
 " Plugin: Gundo "{{{
 nnoremap <F11> :GundoToggle<cr>
@@ -691,17 +496,7 @@ let g:tagbar_autoshowtag = 1
 let g:tagbar_width = 25
 let g:tagbar_iconchars = ['+', '-']
 "}}}
-" Plugin: Airline {{{
-" let g:airline_powerline_fonts = 1
-let g:airline_detect_whitespace = 2
-let g:airline_whitespace_symbol = 'Ξ'
-let g:airline_linecolumn_prefix = '␊ '
-let g:airline_left_sep = '▞'
-let g:airline_right_sep = '▚'
-" Add the alternate buffer name next to the current file name
-let g:airline_section_c = "%f%m %{bufname('#') != '' ? '('. expand('#:t') .')' : ''}"
 
-" }}}
 "All Window, Tab, Navigation related {{{"{{{
 "Resize splits when the window is resize
 au VimResized * :wincmd=
@@ -730,7 +525,7 @@ inoremap <silent> <C-h> <esc><C-W><right>
 inoremap <silent> <C-k> <esc><C-W><up>
 inoremap <silent> <C-j> <esc><C-W><down>
 
-:nnoremap <silent>vs :vsplit new<CR>  
+:nnoremap <silent>vs :vsplit<CR>  
 :nnoremap <silent>hs :split <CR> 
 
 :nnoremap <silent><bar> <C-W><bar> 
@@ -747,6 +542,7 @@ vnoremap <up>    :2wincmd +<cr>
 vnoremap <down>  :2wincmd -<cr>
 "}}
 "}}}"}}}
+
 " CDC = Change to Directory of Current file"{{{
 command CDC cd %:p:h
 "}}}
@@ -796,7 +592,6 @@ vmap <silent>Ts "vy :call VimuxSendText(@v)<CR>:call VimuxSendKeys("Enter")<CR>
 nmap <silent>Tc :VimuxInterruptRunner<CR>
 "}}}
 " Plugin: Dispatch "{{{
-
 
 function! DetermineCplusplusProject() 
         exec ':Rooter'
@@ -861,10 +656,6 @@ vnoremap <leader>Al :left<cr>
 vnoremap <leader>Ac :center<cr>
 vnoremap <leader>Ar :right<cr>
 "}}}
-"Esc with jk {{{
-"inoremap jk <ESC> 
-"Dont need it anymore since I remap the lock key to ESC key .
-"}}}
 " Clear search {{{
 nnoremap <C-l> :noh<cr>
 "}}}
@@ -889,9 +680,6 @@ nnoremap mN [m  " jump to the previous Function
 noremap <C-e> 5<C-e>
 noremap <C-y> 5<C-y>
 "}}}
-" Map C-F5 to run programm "{{{
-nnoremap<C-F5> <Esc>:!'/home/batlab/bin/java/run.sh'<CR>
-"}}}
 "Markdown " {{{2
 augroup markdown 
    au!
@@ -906,34 +694,9 @@ augroup markdown
    let g:tcommentGuessFileType_markdown = 'html'
 augroup end
 "}}}
-"{{{ Dont move cursor after ESC 
-" Ref: https://github.com/cohama/.vim/blob/master/.vimrc
-function! NotMoveWhenLeavingFromInsertMode()
-	let cursorPos = col(".")
-	let maxColumn = col("$")
-	if cursorPos < maxColumn && cursorPos != 1
-		return "\<Esc>l"
-	else
-		return "\<Esc>"
-	endif
-endfunction
-imap <silent><expr> <Esc> NotMoveWhenLeavingFromInsertMode()
-"imap <silent><expr> jk NotMoveWhenLeavingFromInsertMode()
-"}}}
 "Plugin: CtrlP {{{
 nnoremap <silent>mru :CtrlPMRUFiles<CR>  
 "}}}
-" Plugin: Posero"{{{
-let g:posero_default_mappings = 1
-
-nnoremap <silent> <buffer> <up>    :call posero#PreviousLine()<CR>
-nnoremap <silent> <buffer> <down>  :call posero#NextLine()<CR>
-nnoremap <silent> <buffer> <right> :call posero#NextSlide()<CR>
-nnoremap <silent> <buffer> <left>  :call posero#PreviousSlide()<CR>
-"POSERO>> let b:posero_fake_type = "^\$"
-"POSERO>> let b:posero_auto_next_line = 1
-"POSERO>> let b:posero_push_all = 1
-""}}}
 
 
 " eof

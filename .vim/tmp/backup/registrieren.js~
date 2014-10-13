@@ -24,7 +24,11 @@ exports.processPost = function(req, res){
 
     if(richtig)
     {
-        authentification(errors, newUser);
+        var test = authentification(errors, newUser);
+
+        if( test ) // register new user-session
+        {
+        }
     }
 
 };
@@ -56,7 +60,6 @@ function authentification( errors, foo ) {
                         console.log("user have been added"); 
                 });
                 
-                newCryptUser.disconnect();
             }
         });        
         

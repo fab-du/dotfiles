@@ -3,179 +3,56 @@
 # die mit '#' beginnen, werden ignoriert, und eine leere Beschreibung
 # bricht den Commit ab.
 # Auf Branch master
+# Ihr Branch ist auf dem selben Stand wie 'origin/master'.
+#
 # zum Commit vorgemerkte Änderungen:
-#	geändert:       app.js
-#	neue Datei:     bower_components/webix/.bower.json
-#	neue Datei:     bower_components/webix/README.md
-#	neue Datei:     bower_components/webix/bower.json
-#	neue Datei:     bower_components/webix/codebase/fonts/PTS-webfont.eot
-#	neue Datei:     bower_components/webix/codebase/fonts/PTS-webfont.ttf
-#	neue Datei:     bower_components/webix/codebase/fonts/PTS-webfont.woff
-#	neue Datei:     bower_components/webix/codebase/fonts/font-license.txt
-#	neue Datei:     bower_components/webix/codebase/fonts/fontawesome-webfont.eot
-#	neue Datei:     bower_components/webix/codebase/fonts/fontawesome-webfont.svg
-#	neue Datei:     bower_components/webix/codebase/fonts/fontawesome-webfont.woff
-#	neue Datei:     bower_components/webix/codebase/i18n/be.js
-#	neue Datei:     bower_components/webix/codebase/i18n/de.js
-#	neue Datei:     bower_components/webix/codebase/i18n/en.js
-#	neue Datei:     bower_components/webix/codebase/i18n/es.js
-#	neue Datei:     bower_components/webix/codebase/i18n/fr.js
-#	neue Datei:     bower_components/webix/codebase/i18n/it.js
-#	neue Datei:     bower_components/webix/codebase/i18n/ja.js
-#	neue Datei:     bower_components/webix/codebase/i18n/ru.js
-#	neue Datei:     bower_components/webix/codebase/i18n/zh.js
-#	neue Datei:     bower_components/webix/codebase/legacy/excanvas/AUTHORS
-#	neue Datei:     bower_components/webix/codebase/legacy/excanvas/COPYING
-#	neue Datei:     bower_components/webix/codebase/legacy/excanvas/README
-#	neue Datei:     bower_components/webix/codebase/legacy/excanvas/excanvas.js
-#	neue Datei:     bower_components/webix/codebase/skins/air.css
-#	neue Datei:     bower_components/webix/codebase/skins/aircompact.css
-#	neue Datei:     bower_components/webix/codebase/skins/clouds.css
-#	neue Datei:     bower_components/webix/codebase/skins/compact.css
-#	neue Datei:     bower_components/webix/codebase/skins/debug/air.css
-#	neue Datei:     bower_components/webix/codebase/skins/debug/aircompact.css
-#	neue Datei:     bower_components/webix/codebase/skins/debug/clouds.css
-#	neue Datei:     bower_components/webix/codebase/skins/debug/compact.css
-#	neue Datei:     bower_components/webix/codebase/skins/debug/flat.css
-#	neue Datei:     bower_components/webix/codebase/skins/debug/glamour.css
-#	neue Datei:     bower_components/webix/codebase/skins/debug/light.css
-#	neue Datei:     bower_components/webix/codebase/skins/debug/metro.css
-#	neue Datei:     bower_components/webix/codebase/skins/debug/terrace.css
-#	neue Datei:     bower_components/webix/codebase/skins/debug/touch.css
-#	neue Datei:     bower_components/webix/codebase/skins/debug/web.css
-#	neue Datei:     bower_components/webix/codebase/skins/flat.css
-#	neue Datei:     bower_components/webix/codebase/skins/glamour.css
-#	neue Datei:     bower_components/webix/codebase/skins/light.css
-#	neue Datei:     bower_components/webix/codebase/skins/metro.css
-#	neue Datei:     bower_components/webix/codebase/skins/terrace.css
-#	neue Datei:     bower_components/webix/codebase/skins/touch.css
-#	neue Datei:     bower_components/webix/codebase/skins/web.css
-#	neue Datei:     bower_components/webix/codebase/webix.css
-#	neue Datei:     bower_components/webix/codebase/webix.js
-#	neue Datei:     bower_components/webix/codebase/webix_debug.js
-#	neue Datei:     bower_components/webix/license.txt
-#	neue Datei:     bower_components/webix/readme.txt
-#	neue Datei:     bower_components/webix/whatsnew.txt
-#	geändert:       db/model.js
-#	geändert:       db/setup.js
-#	neue Datei:     node_modules/mongo-store/.npmignore
-#	neue Datei:     node_modules/mongo-store/.travis.yml
-#	neue Datei:     node_modules/mongo-store/LICENCE
-#	neue Datei:     node_modules/mongo-store/Makefile
-#	neue Datei:     node_modules/mongo-store/README.md
-#	neue Datei:     node_modules/mongo-store/examples/simple.js
-#	neue Datei:     node_modules/mongo-store/index.js
-#	neue Datei:     node_modules/mongo-store/node_modules/ap/README.markdown
-#	neue Datei:     node_modules/mongo-store/node_modules/ap/examples/z.js
-#	neue Datei:     node_modules/mongo-store/node_modules/ap/index.js
-#	neue Datei:     node_modules/mongo-store/node_modules/ap/package.json
-#	neue Datei:     node_modules/mongo-store/node_modules/ap/test/curry.js
-#	neue Datei:     node_modules/mongo-store/package.json
-#	neue Datei:     node_modules/mongo-store/test/integration.js
-#	neue Datei:     node_modules/mongo-store/test/unit.js
-#	neue Datei:     node_modules/mongo-store/testem.json
-#	neue Datei:     public/javascripts/application.js
-#	neue Datei:     public/js/ace-locals.js
-#	neue Datei:     public/js/ace/src/ace.js
-#	neue Datei:     public/js/ace/src/keybinding-emacs.js
-#	neue Datei:     public/js/ace/src/keybinding-vim.js
-#	neue Datei:     public/js/ace/src/mode-c9search.js
-#	neue Datei:     public/js/ace/src/mode-c_cpp.js
-#	neue Datei:     public/js/ace/src/mode-clojure.js
-#	neue Datei:     public/js/ace/src/mode-coffee.js
-#	neue Datei:     public/js/ace/src/mode-coldfusion.js
-#	neue Datei:     public/js/ace/src/mode-csharp.js
-#	neue Datei:     public/js/ace/src/mode-css.js
-#	neue Datei:     public/js/ace/src/mode-diff.js
-#	neue Datei:     public/js/ace/src/mode-golang.js
-#	neue Datei:     public/js/ace/src/mode-groovy.js
-#	neue Datei:     public/js/ace/src/mode-haxe.js
-#	neue Datei:     public/js/ace/src/mode-html.js
-#	neue Datei:     public/js/ace/src/mode-java.js
-#	neue Datei:     public/js/ace/src/mode-javascript.js
-#	neue Datei:     public/js/ace/src/mode-json.js
-#	neue Datei:     public/js/ace/src/mode-jsx.js
-#	neue Datei:     public/js/ace/src/mode-latex.js
-#	neue Datei:     public/js/ace/src/mode-less.js
-#	neue Datei:     public/js/ace/src/mode-liquid.js
-#	neue Datei:     public/js/ace/src/mode-lua.js
-#	neue Datei:     public/js/ace/src/mode-luahtml.js
-#	neue Datei:     public/js/ace/src/mode-luapage.js
-#	neue Datei:     public/js/ace/src/mode-markdown.js
-#	neue Datei:     public/js/ace/src/mode-ocaml.js
-#	neue Datei:     public/js/ace/src/mode-perl.js
-#	neue Datei:     public/js/ace/src/mode-pgsql.js
-#	neue Datei:     public/js/ace/src/mode-php.js
-#	neue Datei:     public/js/ace/src/mode-powershell.js
-#	neue Datei:     public/js/ace/src/mode-python.js
-#	neue Datei:     public/js/ace/src/mode-ruby.js
-#	neue Datei:     public/js/ace/src/mode-scad.js
-#	neue Datei:     public/js/ace/src/mode-scala.js
-#	neue Datei:     public/js/ace/src/mode-scss.js
-#	neue Datei:     public/js/ace/src/mode-sh.js
-#	neue Datei:     public/js/ace/src/mode-sql.js
-#	neue Datei:     public/js/ace/src/mode-svg.js
-#	umbenannt:      db/index.js -> public/js/ace/src/mode-text.js
-#	neue Datei:     public/js/ace/src/mode-textile.js
-#	neue Datei:     public/js/ace/src/mode-xml.js
-#	neue Datei:     public/js/ace/src/mode-xquery.js
-#	neue Datei:     public/js/ace/src/mode-yaml.js
-#	neue Datei:     public/js/ace/src/theme-chrome.js
-#	neue Datei:     public/js/ace/src/theme-clouds.js
-#	neue Datei:     public/js/ace/src/theme-clouds_midnight.js
-#	neue Datei:     public/js/ace/src/theme-cobalt.js
-#	neue Datei:     public/js/ace/src/theme-crimson_editor.js
-#	neue Datei:     public/js/ace/src/theme-dawn.js
-#	neue Datei:     public/js/ace/src/theme-dreamweaver.js
-#	neue Datei:     public/js/ace/src/theme-eclipse.js
-#	neue Datei:     public/js/ace/src/theme-github.js
-#	neue Datei:     public/js/ace/src/theme-idle_fingers.js
-#	neue Datei:     public/js/ace/src/theme-kr_theme.js
-#	neue Datei:     public/js/ace/src/theme-merbivore.js
-#	neue Datei:     public/js/ace/src/theme-merbivore_soft.js
-#	neue Datei:     public/js/ace/src/theme-mono_industrial.js
-#	neue Datei:     public/js/ace/src/theme-monokai.js
-#	neue Datei:     public/js/ace/src/theme-pastel_on_dark.js
-#	neue Datei:     public/js/ace/src/theme-solarized_dark.js
-#	neue Datei:     public/js/ace/src/theme-solarized_light.js
-#	neue Datei:     public/js/ace/src/theme-textmate.js
-#	neue Datei:     public/js/ace/src/theme-tomorrow.js
-#	neue Datei:     public/js/ace/src/theme-tomorrow_night.js
-#	neue Datei:     public/js/ace/src/theme-tomorrow_night_blue.js
-#	neue Datei:     public/js/ace/src/theme-tomorrow_night_bright.js
-#	neue Datei:     public/js/ace/src/theme-tomorrow_night_eighties.js
-#	neue Datei:     public/js/ace/src/theme-twilight.js
-#	neue Datei:     public/js/ace/src/theme-vibrant_ink.js
-#	neue Datei:     public/js/ace/src/worker-coffee.js
-#	neue Datei:     public/js/ace/src/worker-css.js
-#	neue Datei:     public/js/ace/src/worker-javascript.js
-#	neue Datei:     public/js/ace/src/worker-json.js
-#	neue Datei:     public/js/ace/src/worker-xquery.js
-#	neue Datei:     public/js/application.js
-#	neue Datei:     public/js/bootbox.js
-#	neue Datei:     public/js/bootbox.min.js
-#	neue Datei:     public/js/bootstrap.js
-#	neue Datei:     public/js/bootstrap.min.js
-#	neue Datei:     public/js/bootstrapx-clickover.js
-#	neue Datei:     public/js/handlebars.js
-#	neue Datei:     public/js/jquery.effects.core.js
-#	neue Datei:     public/js/jquery.effects.slide.js
-#	neue Datei:     public/js/jquery.min.js
-#	neue Datei:     public/js/jquery.timeago.js
-#	neue Datei:     public/js/jquery.transit.min.js
-#	neue Datei:     public/js/open-document.js
-#	neue Datei:     public/js/pdf.js
-#	neue Datei:     public/js/socket-application.js
-#	neue Datei:     public/stylesheets/application.css
-#	geändert:       router.js
-#	geändert:       routes/einloggen.js
-#	geändert:       routes/registrieren.js
-#	neue Datei:     routes/userspace.js
-#	geändert:       validator/validateEinloggen.js
-#	geändert:       validator/validateRegistration.js
-#	neue Datei:     views/app-template.ejs
-#	geändert:       views/einloggen.ejs
-#	neue Datei:     views/footer.ejs
-#	neue Datei:     views/header.ejs
-#	geändert:       views/registrieren.ejs
+#	neue Datei:     .config/FreeMat/FreeMat v4.0.conf
+#	geändert:       .config/Thunar/thunarrc
+#	geändert:       .config/configstore/update-notifier-bower.yml
+#	geändert:       .config/configstore/update-notifier-nodemon.yml
+#	geändert:       .config/geany/geany.conf
+#	gelöscht:       .config/geany/geany_socket_batlab__0
+#	geändert:       .config/gtk-2.0/gtkfilechooser.ini
+#	geändert:       .config/libreoffice/4/user/registrymodifications.xcu
+#	geändert:       .config/libreoffice/4/user/uno_packages/cache/log.txt
+#	geändert:       .config/nitrogen/bg-saved.cfg
+#	geändert:       .config/nitrogen/nitrogen.cfg
+#	geändert:       .config/vlc/vlc-qt-interface.conf
+#	neue Datei:     .config/xfburn/settings.xml
+#	neue Datei:     .conkyrc
+#	geändert:       .vim/tmp/backup/.bash_profile~
+#	geändert:       .vim/tmp/backup/.bashrc~
+#	geändert:       .vim/tmp/backup/.conkyrc~
+#	geändert:       .vim/tmp/backup/.profile~
+#	geändert:       .vim/tmp/backup/.zshrc~
+#	geändert:       .vim/tmp/backup/COMMIT_EDITMSG~
+#	geändert:       .vim/tmp/backup/README.md~
+#	geändert:       .vim/tmp/backup/app.js~
+#	geändert:       .vim/tmp/backup/einloggen.js~
+#	geändert:       .vim/tmp/backup/index.html~
+#	geändert:       .vim/tmp/backup/my_pandoc.sh~
+#	geändert:       .vim/tmp/backup/registrieren.js~
+#	geändert:       .vim/tmp/backup/router.js~
+#	geändert:       .vim/tmp/backup/setup.js~
+#	geändert:       .vim/tmp/undo/%home%batlab%.bash_profile
+#	geändert:       .vim/tmp/undo/%home%batlab%.bashrc
+#	geändert:       .vim/tmp/undo/%home%batlab%documents%wai1%index.html
+#	geändert:       .vim/view/~=+.bash_profile=
+#	geändert:       .vim/view/~=+.bashrc=
+#	geändert:       .vim/view/~=+.conkyrc=
+#	geändert:       .vim/view/~=+.profile=
+#	geändert:       .vim/view/~=+.zshrc=
+#	geändert:       .vim/view/~=+Project=+JS=+NODE=+srn=+app.js=
+#	geändert:       .vim/view/~=+Project=+JS=+NODE=+srn=+router.js=
+#	geändert:       .vim/view/~=+Project=+JS=+NODE=+srn=+routes=+einloggen.js=
+#	geändert:       .vim/view/~=+Project=+JS=+NODE=+srn=+routes=+registrieren.js=
+#	geändert:       .vim/view/~=+Project=+JS=+NODE=+srn=+setup.js=
+#	geändert:       .vim/view/~=+Project=+dotfiles=+.git=+COMMIT_EDITMSG=
+#	geändert:       .vim/view/~=+Project=+dotfiles=+README.md=
+#	geändert:       .vim/view/~=+bin=+pandoc=+my_pandoc.sh=
+#	geändert:       .vim/view/~=+documents=+wai1=+index.html=
+#	geändert:       README.md
+#
+# Änderungen, die nicht zum Commit vorgemerkt sind:
+#	geändert:       .config/conky (geänderter Inhalt)
 #

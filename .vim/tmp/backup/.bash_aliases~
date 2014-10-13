@@ -4,6 +4,9 @@ alias set_addr='http://141.19.96.35/svn/set52'
 alias git_addr='https://github.com/dufilsfabrice1100'
 alias email='dufilsfabrice@googlemail.com'
 
+alias get_wai_registration="GET http://localhost:8080/WAI_PRO/registration"
+alias get_wai_einloggen="GET http://localhost:8080/WAI_PRO/einloggen"
+
 ################################### 
 #Schnell editing 
 alias vim_vimrc='vim $HOME/.vimrc' 
@@ -17,6 +20,9 @@ alias xrandr_one='xrandr --output VGA1 --off'
 ######Youtube download############ 
 alias youtube_mp3='youtube-dl --extract-audio --audio-format mp3' 
 alias youtube_video='cclive'
+
+######NOTE############## 
+alias NOTE='cd $HOME/Dropbox/'
 
 
 ###############################
@@ -44,6 +50,7 @@ alias WEB='cd $HOME/Project/WEB'
 alias NODE='cd $HOME/Project/JS/NODE/'
 alias ANDROID='cd $HOME/Project/ANDROID/'
 alias JAVA='cd $HOME/Project/JAVA/'
+alias J2EE='cd $HOME/Project/J2EE/'
 
 
 #Android Programming Aliases : 
@@ -114,7 +121,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
 
-alias pandoc='pandoc --latex-engine=luatex --toc'
+#alias pandoc='pandoc --latex-engine=luatex --toc'
  
 # Parenting changing perms on / #
 alias chown='chown --preserve-root'
