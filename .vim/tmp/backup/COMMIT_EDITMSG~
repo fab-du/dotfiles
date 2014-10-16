@@ -6,7 +6,7 @@
 # Ihr Branch ist auf dem selben Stand wie 'origin/master'.
 #
 # zum Commit vorgemerkte Änderungen:
-#	geändert:       .xinitrc
+#	geändert:       .vim/tmp/backup/COMMIT_EDITMSG~
 #
 # Änderungen, die nicht zum Commit vorgemerkt sind:
 #	geändert:       .config/conky (geänderter Inhalt)

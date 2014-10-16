@@ -9,6 +9,7 @@ dotfiles
    * .vimrc
    * .gitconfig
    * .conkyrc
+   * .xmodmaprc
 
 * .vim [dir]
 * .config[dir]
