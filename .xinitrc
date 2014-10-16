@@ -3,7 +3,7 @@
 . ~/.profile 
 
 # source xmodmap 
-if [ -s ~/.Xmodmap ]; then
+if [ -s ~/.xmodmaprc ]; then
     xmodmap ~/.xmodmaprc
 fi
 
