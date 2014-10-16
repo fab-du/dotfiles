@@ -1,13 +1,66 @@
-dotfiles
-========
 
-dotfiles
 
-#Actuel: 
-   * .tmux.conf
-   * .xinitrc
-   * .vimrc
-   * .gitconfig
+WAI SEMESTER PROJECT 
+==================== 
 
-* .vim [dir]
-* .config[dir]
+
+I. Beschreibung
+--------------- 
+  Zum Schluss der Vorlesung WAI ( Web Architektur ), wird ein 
+  System ( Web Server ) Entwicklet , das Fotos von Staedte in 
+  einer Datenbank sammeln und schliesslich je nach Konfiguration 
+  von Benutzer im Webbrowser darstellt. 
+
+II. Technologies 
+---------------- 
+* Serverseitig : 
+   * J2EE 
+   * Servlets 
+   * jsp 
+   * sql ( mysql )
+* Clientseitig : 
+   * html5/css 
+   * javascript ( jquery )
+
+III. FEATURES 
+============= 
+
+III.1. Benutzerverwaltung 
+------------------------- 
+Die Webplattform verfügt ueber eine sichere Verwaltung von Benutzer Daten. 
+Mag ein Benutzer die an Ihnen zur Verfuegung gestellt Service benutzen, 
+muss der sich registrieren lassen. <br />
+Name, Vorname, Email, Benutzername und Password werden gefragt während 
+der Registrierung. Bei ein erfolgreichen Registrierung wird einen 
+eindeutigen ID an Benutzer zugewiesen. <br />
+
+* <strong>Registration</strong>
+  * Erfolgreiche Registrierung , dann Speichern von Benutzer Daten in 
+    Datenbank und Zuweisung einen eindeutigen ID. 
+  * Nicht-erfolgreiche Registrierung, dann wird den Benutzer
+    gefoerdert Ihre Eingabe zu korrigieren. 
+  * Beim wiederholten falschen Eingaben wird den Benutzer blockiert. 
+
+* <strong>Einloggen</strong>
+  * Erfolgreiche Einloggen, dann wird die konfigurierte Seite der 
+    Benutzer geoeffnet, sog "user space". 
+  * Nicht-erfolgreiche Einloggen, dann wird den Benutzer
+    gefoerdert Ihre Eingabe zu korrigieren. 
+  * Beim wiederholten falschen Eingaben wird den Benutzer blockiert. 
+  
+* <strong>Konfiguration</strong>
+  * Vorausetzung : registrierte Benutzer und erfolgreich eingeloggt. 
+  * Auswaehlen von angebotene Städte. 
+  * Wenn nicht wird ein default Stadt von System ausgewählt. 
+
+* <strong>Anzeige</strong>
+  * Klicken auf Stadtname , dann Anzeige von Bildern. 
+  * Klicken auf einen Bild, dann Vergroesserung dieses Bild 
+
+
+IV. Technische Spezifizierung 
+============================= 
+<--TODO-->
+
+
+

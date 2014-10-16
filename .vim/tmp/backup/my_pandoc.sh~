@@ -1,47 +1,41 @@
 #!/bin/bash 
 set -e #enable argument
 
+##What needed 
+#Footer
+#Header 
+
+#Table of content 
+
+#code snippet with dark background 
+
+# $1 welche modus 
+# $2 pdf, slide 
+# $3 input name  
+
 
 latex_engine="pdflatex"
 data_dir='/home/batlab/Dropbox/pandoc-templates'
-output="output.pdf"
-template=""
-depth=1
-
-
-pdf()
-{
-pandoc --data-dir="$data_dir" --latex-engine="$latex_engine" --template "$template" --table-of-contents --toc-depth "$depth" $3 -o $output 
-}
-
-slidy()
-{
-	pandoc --data-dir="$data_dir" -t "$template" $3 -o $output 
-}
-
 
 case $1 in 
 	mode)
 	  case $2 in 
 		pdf)
-			template="default.latex"
+			template='default.latex'
 			depth=3
-			echo "yes pdf"
-			echo "$3"
-			pdf 
+			output='output.pdf'
 		;;
 		slide) 
-			template="beamer"
+			template='default.slidy'
 			depth=1
-			echo "yes slide"
-			echo "$3"
-			slidy 
+			output='output.pdf'
 		;;
 	  esac
 	;;
 esac 
 
-exit 1
+pandoc --data-dir="$data_dir" --latex-engine="$latex_engine" --template "$template" --table-of-contents --toc-depth $depth -o $output $3 
+
 
 
 

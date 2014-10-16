@@ -6,53 +6,22 @@
 # Ihr Branch ist auf dem selben Stand wie 'origin/master'.
 #
 # zum Commit vorgemerkte Änderungen:
-#	neue Datei:     .config/FreeMat/FreeMat v4.0.conf
-#	geändert:       .config/Thunar/thunarrc
-#	geändert:       .config/configstore/update-notifier-bower.yml
-#	geändert:       .config/configstore/update-notifier-nodemon.yml
-#	geändert:       .config/geany/geany.conf
-#	gelöscht:       .config/geany/geany_socket_batlab__0
-#	geändert:       .config/gtk-2.0/gtkfilechooser.ini
-#	geändert:       .config/libreoffice/4/user/registrymodifications.xcu
-#	geändert:       .config/libreoffice/4/user/uno_packages/cache/log.txt
-#	geändert:       .config/nitrogen/bg-saved.cfg
-#	geändert:       .config/nitrogen/nitrogen.cfg
-#	geändert:       .config/vlc/vlc-qt-interface.conf
-#	neue Datei:     .config/xfburn/settings.xml
-#	neue Datei:     .conkyrc
-#	geändert:       .vim/tmp/backup/.bash_profile~
-#	geändert:       .vim/tmp/backup/.bashrc~
-#	geändert:       .vim/tmp/backup/.conkyrc~
-#	geändert:       .vim/tmp/backup/.profile~
-#	geändert:       .vim/tmp/backup/.zshrc~
-#	geändert:       .vim/tmp/backup/COMMIT_EDITMSG~
-#	geändert:       .vim/tmp/backup/README.md~
-#	geändert:       .vim/tmp/backup/app.js~
-#	geändert:       .vim/tmp/backup/einloggen.js~
-#	geändert:       .vim/tmp/backup/index.html~
-#	geändert:       .vim/tmp/backup/my_pandoc.sh~
-#	geändert:       .vim/tmp/backup/registrieren.js~
-#	geändert:       .vim/tmp/backup/router.js~
-#	geändert:       .vim/tmp/backup/setup.js~
-#	geändert:       .vim/tmp/undo/%home%batlab%.bash_profile
-#	geändert:       .vim/tmp/undo/%home%batlab%.bashrc
-#	geändert:       .vim/tmp/undo/%home%batlab%documents%wai1%index.html
-#	geändert:       .vim/view/~=+.bash_profile=
-#	geändert:       .vim/view/~=+.bashrc=
-#	geändert:       .vim/view/~=+.conkyrc=
-#	geändert:       .vim/view/~=+.profile=
-#	geändert:       .vim/view/~=+.zshrc=
-#	geändert:       .vim/view/~=+Project=+JS=+NODE=+srn=+app.js=
-#	geändert:       .vim/view/~=+Project=+JS=+NODE=+srn=+router.js=
-#	geändert:       .vim/view/~=+Project=+JS=+NODE=+srn=+routes=+einloggen.js=
-#	geändert:       .vim/view/~=+Project=+JS=+NODE=+srn=+routes=+registrieren.js=
-#	geändert:       .vim/view/~=+Project=+JS=+NODE=+srn=+setup.js=
-#	geändert:       .vim/view/~=+Project=+dotfiles=+.git=+COMMIT_EDITMSG=
-#	geändert:       .vim/view/~=+Project=+dotfiles=+README.md=
-#	geändert:       .vim/view/~=+bin=+pandoc=+my_pandoc.sh=
-#	geändert:       .vim/view/~=+documents=+wai1=+index.html=
-#	geändert:       README.md
-#
-# Änderungen, die nicht zum Commit vorgemerkt sind:
-#	geändert:       .config/conky (geänderter Inhalt)
+#	gelöscht:       Vorgensmodell/Modell_des_Bundes/Definition
+#	gelöscht:       Vorgensmodell/Modell_des_Bundes/Dokumente Pro Phasen
+#	gelöscht:       Vorgensmodell/Modell_des_Bundes/Nachteile
+#	gelöscht:       "Vorgensmodell/Modell_des_Bundes/T\303\244tigkeiten Pro Phasen"
+#	gelöscht:       Vorgensmodell/Modell_des_Bundes/Vorteile
+#	gelöscht:       Vorgensmodell/V-Modell/Definition
+#	gelöscht:       Vorgensmodell/V-Modell/Dokumente Pro Phasen
+#	gelöscht:       Vorgensmodell/V-Modell/Nachteile
+#	gelöscht:       "Vorgensmodell/V-Modell/T\303\244tigkeiten Pro Phasen"
+#	gelöscht:       Vorgensmodell/V-Modell/Vorteile
+#	gelöscht:       Vorgensmodell/Wasserfallmodell/Definition
+#	gelöscht:       Vorgensmodell/Wasserfallmodell/Dokumente Pro Phasen
+#	gelöscht:       Vorgensmodell/Wasserfallmodell/Nachteile
+#	gelöscht:       "Vorgensmodell/Wasserfallmodell/T\303\244tigkeiten Pro Phasen"
+#	gelöscht:       Vorgensmodell/Wasserfallmodell/Vorteile
+#	gelöscht:       output.pdf
+#	geändert:       src/presentation.md
+#	neue Datei:     src/scratch.md
 #
