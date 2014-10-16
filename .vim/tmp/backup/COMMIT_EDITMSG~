@@ -6,22 +6,8 @@
 # Ihr Branch ist auf dem selben Stand wie 'origin/master'.
 #
 # zum Commit vorgemerkte Änderungen:
-#	gelöscht:       Vorgensmodell/Modell_des_Bundes/Definition
-#	gelöscht:       Vorgensmodell/Modell_des_Bundes/Dokumente Pro Phasen
-#	gelöscht:       Vorgensmodell/Modell_des_Bundes/Nachteile
-#	gelöscht:       "Vorgensmodell/Modell_des_Bundes/T\303\244tigkeiten Pro Phasen"
-#	gelöscht:       Vorgensmodell/Modell_des_Bundes/Vorteile
-#	gelöscht:       Vorgensmodell/V-Modell/Definition
-#	gelöscht:       Vorgensmodell/V-Modell/Dokumente Pro Phasen
-#	gelöscht:       Vorgensmodell/V-Modell/Nachteile
-#	gelöscht:       "Vorgensmodell/V-Modell/T\303\244tigkeiten Pro Phasen"
-#	gelöscht:       Vorgensmodell/V-Modell/Vorteile
-#	gelöscht:       Vorgensmodell/Wasserfallmodell/Definition
-#	gelöscht:       Vorgensmodell/Wasserfallmodell/Dokumente Pro Phasen
-#	gelöscht:       Vorgensmodell/Wasserfallmodell/Nachteile
-#	gelöscht:       "Vorgensmodell/Wasserfallmodell/T\303\244tigkeiten Pro Phasen"
-#	gelöscht:       Vorgensmodell/Wasserfallmodell/Vorteile
-#	gelöscht:       output.pdf
-#	geändert:       src/presentation.md
-#	neue Datei:     src/scratch.md
+#	geändert:       .xinitrc
+#
+# Änderungen, die nicht zum Commit vorgemerkt sind:
+#	geändert:       .config/conky (geänderter Inhalt)
 #
