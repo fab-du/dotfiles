@@ -6,8 +6,6 @@
 # Ihr Branch ist auf dem selben Stand wie 'origin/master'.
 #
 # zum Commit vorgemerkte Änderungen:
-#	geändert:       .vim/tmp/backup/COMMIT_EDITMSG~
-#
-# Änderungen, die nicht zum Commit vorgemerkt sind:
-#	geändert:       .config/conky (geänderter Inhalt)
+#	geändert:       src/de/hs_mannheim/DB/DB.java
+#	geändert:       src/de/hs_mannheim/servlets/Einloggen.java
 #

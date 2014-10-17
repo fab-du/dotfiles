@@ -13,4 +13,5 @@ dotfiles
 
 * .vim [dir]
 * .config[dir]
+* bin[dir]
 

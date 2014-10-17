@@ -1,0 +1,39 @@
+#/bin/bash 
+
+set -e 
+
+domain=$2     #Domain where the page to download are
+page=$4       #Page to download
+
+progname = $(basename $0)
+function help
+{
+    cat <<EOF
+Usage: $progname -domain example.com -download example.com/tutorial 
+
+ start
+
+EOF
+}
+
+if [ "$1" = "-h" ]; then
+  help 
+  exit 0  
+fi
+
+my_wget 
+
+function my_wget {
+wget \
+     --recursive \
+     --no-clobber \
+     --page-requisites \
+     --html-extension \
+     --convert-links \
+     --restrict-file-names=windows \
+     --domains $domain\
+     --no-parent $page\
+         $4/
+}
+
+#vim ft=sh 
