@@ -6,6 +6,8 @@
 # Ihr Branch ist auf dem selben Stand wie 'origin/master'.
 #
 # zum Commit vorgemerkte Änderungen:
-#	geändert:       src/de/hs_mannheim/DB/DB.java
-#	geändert:       src/de/hs_mannheim/servlets/Einloggen.java
+#	neue Datei:     setupSYS.sh
+#
+# Änderungen, die nicht zum Commit vorgemerkt sind:
+#	geändert:       ../.config/conky (geänderter Inhalt)
 #

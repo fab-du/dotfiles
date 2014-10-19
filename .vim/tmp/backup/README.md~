@@ -1,17 +1,87 @@
-dotfiles
-========
 
-dotfiles
+WAI SEMESTER PROJECT 
+==================== 
 
-#Actuel: 
-   * .tmux.conf
-   * .xinitrc
-   * .vimrc
-   * .gitconfig
-   * .conkyrc
-   * .xmodmaprc
 
-* .vim [dir]
-* .config[dir]
-* bin[dir]
+I. Beschreibung
+--------------- 
+  Zum Schluss der Vorlesung WAI ( Web Architektur ), wird ein 
+  System ( Web Server ) Entwicklet , das Fotos von Staedte in 
+  einer Datenbank sammeln und schliesslich je nach Konfiguration 
+  von Benutzer im Webbrowser darstellt. 
+
+II. Technologies 
+---------------- 
+* Serverseitig : 
+   * J2EE 
+   * Servlets 
+   * jsp 
+   * sql ( mysql )
+* Clientseitig : 
+   * html5/css 
+   * javascript ( jquery )
+
+III. FEATURES 
+============= 
+
+III.1. Benutzerverwaltung 
+------------------------- 
+Die Webplattform verfügt ueber eine sichere Verwaltung von Benutzer Daten. 
+Mag ein Benutzer die an Ihnen zur Verfuegung gestellt Service benutzen, 
+muss der sich registrieren lassen. <br />
+Name, Vorname, Email, Benutzername und Password werden gefragt während 
+der Registrierung. Bei ein erfolgreichen Registrierung wird einen 
+eindeutigen ID an Benutzer zugewiesen. <br />
+
+* <strong>Registration</strong>
+  * Erfolgreiche Registrierung , dann Speichern von Benutzer Daten in 
+    Datenbank und Zuweisung einen eindeutigen ID. 
+  * Nicht-erfolgreiche Registrierung, dann wird den Benutzer
+    gefoerdert Ihre Eingabe zu korrigieren. 
+  * Beim wiederholten falschen Eingaben wird den Benutzer blockiert. 
+
+* <strong>Einloggen</strong>
+  * Erfolgreiche Einloggen, dann wird die konfigurierte Seite der 
+    Benutzer geoeffnet, sog "user space". 
+  * Nicht-erfolgreiche Einloggen, dann wird den Benutzer
+    gefoerdert Ihre Eingabe zu korrigieren. 
+  * Beim wiederholten falschen Eingaben wird den Benutzer blockiert. 
+  
+* <strong>Konfiguration</strong>
+  * Vorausetzung : registrierte Benutzer und erfolgreich eingeloggt. 
+  * Auswaehlen von angebotene Städte. 
+  * Wenn nicht wird ein default Stadt von System ausgewählt. 
+
+* <strong>Anzeige</strong>
+  * Klicken auf Stadtname , dann Anzeige von Bildern. 
+  * Klicken auf einen Bild, dann Vergroesserung dieses Bild 
+
+
+IV. Technische Spezifizierung 
+============================= 
+
+IV.1. Datenbank Module
+----------------------
+
+Datenbank stellt eine Verbindung mit dem auf den Server
+gespeichrte Daten. <br />
+Um Daten von Benutzer ( Name , Session ID ....) zu serialisieren
+wird auch auf den Datenbank zugegriffen. <br />
+
+<strong>PS: Alle Daten auschliesslich Fotolinks werden 
+vor der Serialisierung verschluesselt</strong>
+DB-module stellt folgende weitere Funktionalitäten zur Verfügung: <br/>
+
+* Speichern von User persoenlichen Daten bei der Registrierung: <br />
+  Dabei wird geprüft ob kein andere User den gleichen Benutzername
+  bzw. email besitzt. 
+* Bestätigung der Eingabe eines Benutzer während das Einloggen: <br />
+  Dabei werden Benutzername und Password geprüft. 
+* Wiedergabe von User gespeicherte Einstellungen. <br />
+  Hierbei handel siche um Städte deren , die User der Fotos gerne 
+  ansehen will. 
+
+
+
+
 

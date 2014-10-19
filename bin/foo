@@ -1,0 +1,958 @@
+PANDOC(1)                                        General Commands Manual                                        PANDOC(1)
+
+
+
+NAME
+       pandoc - general markup converter
+
+SYNOPSIS
+       pandoc [options] [input-file]...
+
+DESCRIPTION
+       Pandoc  is  a  Haskell library for converting from one markup format to another, and a command-line tool that uses
+       this library.  It can read markdown and (subsets of) Textile, reStructuredText,  HTML,  LaTeX,  MediaWiki  markup,
+       Haddock  markup, OPML, Emacs Org-mode and DocBook; and it can write plain text, markdown, reStructuredText, XHTML,
+       HTML 5, LaTeX (including beamer slide shows), ConTeXt, RTF, OPML, DocBook, OpenDocument, ODT, Word docx, GNU  Tex‐
+       info,  MediaWiki  markup, EPUB (v2 or v3), FictionBook2, Textile, groff man pages, Emacs Org-Mode, AsciiDoc, InDe‐
+       sign ICML, and Slidy, Slideous, DZSlides, reveal.js or S5 HTML slide shows.  It can also  produce  PDF  output  on
+       systems where LaTeX is installed.
+
+       Pandoc's  enhanced  version  of markdown includes syntax for footnotes, tables, flexible ordered lists, definition
+       lists, fenced code blocks, superscript, subscript, strikeout, title blocks, automatic tables of contents, embedded
+       LaTeX  math,  citations, and markdown inside HTML block elements.  (These enhancements, described below under Pan‐
+       doc's markdown, can be disabled using the markdown_strict input or output format.)
+
+       In contrast to most existing tools for converting markdown to HTML, which use regex substitutions,  Pandoc  has  a
+       modular design: it consists of a set of readers, which parse text in a given format and produce a native represen‐
+       tation of the document, and a set of writers, which convert this  native  representation  into  a  target  format.
+       Thus, adding an input or output format requires only adding a reader or writer.
+
+   Using pandoc
+       If  no  input-file  is  specified,  input is read from stdin.  Otherwise, the input-files are concatenated (with a
+       blank line between each) and used as input.  Output goes to stdout by default (though output to stdout is disabled
+       for the odt, docx, epub, and epub3 output formats).  For output to a file, use the -o option:
+
+              pandoc -o output.html input.txt
+
+       Instead of a file, an absolute URI may be given.  In this case pandoc will fetch the content using HTTP:
+
+              pandoc -f html -t markdown http://www.fsf.org
+
+       If  multiple  input files are given, pandoc will concatenate them all (with blank lines between them) before pars‐
+       ing.
+
+       The format of the input and output can be specified explicitly using command-line options.  The input  format  can
+       be  specified using the -r/--read or -f/--from options, the output format using the -w/--write or -t/--to options.
+       Thus, to convert hello.txt from markdown to LaTeX, you could type:
+
+              pandoc -f markdown -t latex hello.txt
+
+       To convert hello.html from html to markdown:
+
+              pandoc -f html -t markdown hello.html
+
+       Supported output formats are listed below under the -t/--to option.  Supported  input  formats  are  listed  below
+       under  the -f/--from option.  Note that the rst, textile, latex, and html readers are not complete; there are some
+       constructs that they do not parse.
+
+       If the input or output format is not specified explicitly, pandoc will attempt to guess it from the extensions  of
+       the input and output filenames.  Thus, for example,
+
+              pandoc -o hello.tex hello.txt
+
+       will convert hello.txt from markdown to LaTeX.  If no output file is specified (so that output goes to stdout), or
+       if the output file's extension is unknown, the output format will default to HTML.  If no input file is  specified
+       (so  that input comes from stdin), or if the input files' extensions are unknown, the input format will be assumed
+       to be markdown unless explicitly specified.
+
+       Pandoc uses the UTF-8 character encoding for both input and output.  If  your  local  character  encoding  is  not
+       UTF-8, you should pipe input and output through iconv:
+
+              iconv -t utf-8 input.txt | pandoc | iconv -f utf-8
+
+   Creating a PDF
+       Earlier  versions  of  pandoc  came  with a program, markdown2pdf, that used pandoc and pdflatex to produce a PDF.
+       This is no longer needed, since pandoc can now produce pdf output itself.  To produce a  PDF,  simply  specify  an
+       output  file  with  a  .pdf  extension.   Pandoc will create a latex file and use pdflatex (or another engine, see
+       --latex-engine) to convert it to PDF:
+
+              pandoc test.txt -o test.pdf
+
+       Production of a PDF requires that a LaTeX engine be installed (see --latex-engine, below), and  assumes  that  the
+       following LaTeX packages are available: amssymb, amsmath, ifxetex, ifluatex, listings (if the --listings option is
+       used), fancyvrb, longtable, booktabs, url, graphicx, hyperref, ulem, babel (if the lang variable is set), fontspec
+       (if xelatex or lualatex is used as the LaTeX engine), xltxtra and xunicode (if xelatex is used).
+
+   hsmarkdown
+       A  user who wants a drop-in replacement for Markdown.pl may create a symbolic link to the pandoc executable called
+       hsmarkdown.   When  invoked  under  the  name  hsmarkdown,  pandoc  will  behave  as  if  invoked  with   -f mark‐
+       down_strict --email-obfuscation=references,  and  all  command-line  options will be treated as regular arguments.
+       However, this approach does not work under Cygwin, due to problems with its simulation of symbolic links.
+
+OPTIONS
+   General options
+       -f FORMAT, -r FORMAT, --from=FORMAT, --read=FORMAT
+              Specify input format.  FORMAT can be native (native Haskell), json (JSON version of native  AST),  markdown
+              (pandoc's  extended markdown), markdown_strict (original unextended markdown), markdown_phpextra (PHP Mark‐
+              down Extra extended markdown), markdown_github (github extended markdown), textile (Textile), rst (reStruc‐
+              turedText),  html  (HTML),  docbook  (DocBook),  opml  (OPML),  org  (Emacs Org-mode), mediawiki (MediaWiki
+              markup), haddock (Haddock markup), or latex (LaTeX).  If +lhs is appended to markdown, rst, latex, or html,
+              the input will be treated as literate Haskell source: see Literate Haskell support, below.  Markdown syntax
+              extensions can be individually enabled or disabled by appending +EXTENSION  or  -EXTENSION  to  the  format
+              name.   So,  for  example, markdown_strict+footnotes+definition_lists is strict markdown with footnotes and
+              definition lists enabled, and  markdown-pipe_tables+hard_line_breaks  is  pandoc's  markdown  without  pipe
+              tables and with hard line breaks.  See Pandoc's markdown, below, for a list of extensions and their names.
+
+       -t FORMAT, -w FORMAT, --to=FORMAT, --write=FORMAT
+              Specify  output  format.   FORMAT  can be native (native Haskell), json (JSON version of native AST), plain
+              (plain text), markdown (pandoc's extended markdown), markdown_strict (original unextended markdown),  mark‐
+              down_phpextra  (PHP  Markdown  extra  extended  markdown),  markdown_github (github extended markdown), rst
+              (reStructuredText), html (XHTML 1), html4 (HTML 5), latex (LaTeX), beamer (LaTeX beamer slide  show),  con‐
+              text  (ConTeXt),  man  (groff  man), mediawiki (MediaWiki markup), textile (Textile), org (Emacs Org-Mode),
+              texinfo (GNU Texinfo), opml (OPML), docbook (DocBook), opendocument (OpenDocument),  odt  (OpenOffice  text
+              document),  docx  (Word  docx), rtf (rich text format), epub (EPUB v2 book), epub3 (EPUB v3), fb2 (Fiction‐
+              Book2 e-book), asciidoc (AsciiDoc), icml (InDesign ICML), slidy (Slidy HTML  and  javascript  slide  show),
+              slideous  (Slideous  HTML  and  javascript  slide show), dzslides (DZSlides HTML5 + javascript slide show),
+              revealjs (reveal.js HTML5 + javascript slide show), s5 (S5 HTML and javascript slide show), or the path  of
+              a  custom  lua  writer  (see  Custom  writers,  below).   Note that odt, epub, and epub3 output will not be
+              directed to stdout; an output filename must be specified using the -o/--output option.  If +lhs is appended
+              to  markdown,  rst,  latex, beamer, html, or html5, the output will be rendered as literate Haskell source:
+              see Literate Haskell support, below.  Markdown syntax extensions can be individually enabled or disabled by
+              appending +EXTENSION or -EXTENSION to the format name, as described above under -f.
+
+       -o FILE, --output=FILE
+              Write output to FILE instead of stdout.  If FILE is -, output will go to stdout.  (Exception: if the output
+              format is odt, docx, epub, or epub3, output to stdout is disabled.)
+
+       --data-dir=DIRECTORY
+              Specify the user data directory to search for pandoc data files.  If this  option  is  not  specified,  the
+              default user data directory will be used.  This is
+
+                     $HOME/.pandoc
+
+              in unix,
+
+                     C:\Documents And Settings\USERNAME\Application Data\pandoc
+
+              in Windows XP, and
+
+                     C:\Users\USERNAME\AppData\Roaming\pandoc
+
+              in  Windows  7.   (You  can find the default user data directory on your system by looking at the output of
+              pandoc --version.) A reference.odt, reference.docx, default.csl, epub.css, templates, slidy,  slideous,  or
+              s5 directory placed in this directory will override pandoc's normal defaults.
+
+       -v, --version
+              Print version.
+
+       -h, --help
+              Show usage message.
+
+   Reader options
+       -R, --parse-raw
+              Parse  untranslatable  HTML  codes  and  LaTeX environments as raw HTML or LaTeX, instead of ignoring them.
+              Affects only HTML and LaTeX input.  Raw HTML can be printed in  markdown,  reStructuredText,  HTML,  Slidy,
+              Slideous,  DZSlides,  reveal.js,  and  S5  output;  raw LaTeX can be printed in markdown, reStructuredText,
+              LaTeX, and ConTeXt output.  The default is for the readers to omit  untranslatable  HTML  codes  and  LaTeX
+              environments.   (The LaTeX reader does pass through untranslatable LaTeX commands, even if -R is not speci‐
+              fied.)
+
+       -S, --smart
+              Produce typographically correct output, converting straight quotes to curly quotes, --- to em-dashes, -- to
+              en-dashes, and ... to ellipses.  Nonbreaking spaces are inserted after certain abbreviations, such as "Mr."
+              (Note: This option is significant only when the input format is markdown, markdown_strict, or textile.   It
+              is selected automatically when the input format is textile or the output format is latex or context, unless
+              --no-tex-ligatures is used.)
+
+       --old-dashes
+              Selects the pandoc <= 1.8.2.1 behavior for parsing smart dashes: - before a numeral is an en-dash,  and  --
+              is an em-dash.  This option is selected automatically for textile input.
+
+       --base-header-level=NUMBER
+              Specify the base level for headers (defaults to 1).
+
+       --indented-code-classes=CLASSES
+              Specify  classes  to  use  for  indented  code  blocks--for example, perl,numberLines or haskell.  Multiple
+              classes may be separated by spaces or commas.
+
+       --default-image-extension=EXTENSION
+              Specify a default extension to use when image paths/URLs have no extension.  This allows  you  to  use  the
+              same  source  for  formats  that require different kinds of images.  Currently this option only affects the
+              markdown and LaTeX readers.
+
+       --filter=EXECUTABLE
+              Specify an executable to be used as a filter transforming the Pandoc AST after  the  input  is  parsed  and
+              before  the  output  is written.  The executable should read JSON from stdin and write JSON to stdout.  The
+              JSON must be formatted like pandoc's own JSON input and output.  The name of  the  output  format  will  be
+              passed to the filter as the first argument.  Hence,
+
+                     pandoc --filter ./caps.py -t latex
+
+              is equivalent to
+
+                     pandoc -t json | ./caps.py latex | pandoc -f json -t latex
+
+              The latter form may be useful for debugging filters.
+
+              Filters  may  be written in any language.  Text.Pandoc.JSON exports toJSONFilter to facilitate writing fil‐
+              ters in Haskell.  Those who would prefer to write filters in  python  can  use  the  module  pandocfilters,
+              installable  from PyPI.  See http://github.com/jgm/pandocfilters for the module and several examples.  Note
+              that the EXECUTABLE will be sought in the user's PATH, and not in the working directory, if no directory is
+              provided.  If you want to run a script in the working directory, preface the filename with ./.
+
+       -M KEY[=VAL], --metadata=KEY[:VAL]
+              Set the metadata field KEY to the value VAL.  A value specified on the command line overrides a value spec‐
+              ified in the document.  Values will be parsed as YAML boolean or string values.  If no value is  specified,
+              the  value  will  be  treated as Boolean true.  Like --variable, --metadata causes template variables to be
+              set.  But unlike --variable, --metadata affects the metadata of the underlying document (which is  accessi‐
+              ble from filters and may be printed in some output formats).
+
+       --normalize
+              Normalize the document after reading: merge adjacent Str or Emph elements, for example, and remove repeated
+              Spaces.
+
+       -p, --preserve-tabs
+              Preserve tabs instead of converting them to spaces (the default).  Note that this will only affect tabs  in
+              literal code spans and code blocks; tabs in regular text will be treated as spaces.
+
+       --tab-stop=NUMBER
+              Specify the number of spaces per tab (default is 4).
+
+   General writer options
+       -s, --standalone
+              Produce  output  with  an appropriate header and footer (e.g.  a standalone HTML, LaTeX, or RTF file, not a
+              fragment).  This option is set automatically for pdf, epub, epub3, fb2, docx, and odt output.
+
+       --template=FILE
+              Use FILE as a custom template for the generated document.  Implies --standalone.  See Templates below for a
+              description  of  template  syntax.   If no extension is specified, an extension corresponding to the writer
+              will be added, so that --template=special looks for special.html for HTML output.  If the template  is  not
+              found,  pandoc will search for it in the user data directory (see --data-dir).  If this option is not used,
+              a default template appropriate for the output format will be used (see -D/--print-default-template).
+
+       -V KEY[=VAL], --variable=KEY[:VAL]
+              Set the template variable KEY to the value VAL when rendering the document in  standalone  mode.   This  is
+              generally  only  useful when the --template option is used to specify a custom template, since pandoc auto‐
+              matically sets the variables used in the default templates.  If no VAL is specified, the key will be  given
+              the value true.
+
+       -D FORMAT, --print-default-template=FORMAT
+              Print the default template for an output FORMAT.  (See -t for a list of possible FORMATs.)
+
+       --print-default-data-file=FILE
+              Print a default data file.
+
+       --no-wrap
+              Disable text wrapping in output.  By default, text is wrapped appropriately for the output format.
+
+       --columns=NUMBER
+              Specify length of lines in characters (for text wrapping).
+
+       --toc, --table-of-contents
+              Include  an  automatically  generated  table  of  contents  (or, in the case of latex, context, and rst, an
+              instruction to create one) in the output document.  This option has  no  effect  on  man,  docbook,  slidy,
+              slideous, s5, docx, or odt output.
+
+       --toc-depth=NUMBER
+              Specify  the  number  of section levels to include in the table of contents.  The default is 3 (which means
+              that level 1, 2, and 3 headers will be listed in the contents).
+
+       --no-highlight
+              Disables syntax highlighting for code blocks and inlines, even when a language attribute is given.
+
+       --highlight-style=STYLE
+              Specifies the coloring style to be used in highlighted source code.  Options are  pygments  (the  default),
+              kate, monochrome, espresso, zenburn, haddock, and tango.
+
+       -H FILE, --include-in-header=FILE
+              Include  contents  of  FILE, verbatim, at the end of the header.  This can be used, for example, to include
+              special CSS or javascript in HTML documents.  This option can be used repeatedly to include multiple  files
+              in the header.  They will be included in the order specified.  Implies --standalone.
+
+       -B FILE, --include-before-body=FILE
+              Include  contents  of  FILE, verbatim, at the beginning of the document body (e.g.  after the <body> tag in
+              HTML, or the \begin{document} command in LaTeX).  This can be used to include navigation bars or banners in
+              HTML  documents.   This  option can be used repeatedly to include multiple files.  They will be included in
+              the order specified.  Implies --standalone.
+
+       -A FILE, --include-after-body=FILE
+              Include contents of FILE, verbatim, at the end of the document body (before the </body> tag in HTML, or the
+              \end{document}  command  in LaTeX).  This option can be be used repeatedly to include multiple files.  They
+              will be included in the order specified.  Implies --standalone.
+
+   Options affecting specific writers
+       --self-contained
+              Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the  contents
+              of  linked scripts, stylesheets, images, and videos.  The resulting file should be "self-contained," in the
+              sense that it needs no external files and no net access to be displayed properly by a browser.  This option
+              works  only with HTML output formats, including html, html5, html+lhs, html5+lhs, s5, slidy, slideous, dzs‐
+              lides, and revealjs.  Scripts, images, and stylesheets at absolute URLs will be downloaded; those at  rela‐
+              tive  URLs will be sought first relative to the working directory, then relative to the user data directory
+              (see --data-dir), and finally relative to pandoc's default data directory.  --self-contained does not  work
+              with --mathjax.
+
+       --offline
+              Deprecated synonym for --self-contained.
+
+       -5, --html5
+              Produce  HTML5  instead of HTML4.  This option has no effect for writers other than html.  (Deprecated: Use
+              the html5 output format instead.)
+
+       --html-q-tags
+              Use <q> tags for quotes in HTML.
+
+       --ascii
+              Use only ascii characters in output.  Currently supported only for HTML output (which uses numerical  enti‐
+              ties instead of UTF-8 when this option is selected).
+
+       --reference-links
+              Use  reference-style  links, rather than inline links, in writing markdown or reStructuredText.  By default
+              inline links are used.
+
+       --atx-headers
+              Use ATX style headers in markdown and asciidoc output.  The default is to use setext-style headers for lev‐
+              els 1-2, and then ATX headers.
+
+       --chapters
+              Treat  top-level  headers  as chapters in LaTeX, ConTeXt, and DocBook output.  When the LaTeX template uses
+              the report, book, or memoir class, this option is implied.  If beamer is the output format, top-level head‐
+              ers will become \part{..}.
+
+       -N, --number-sections
+              Number  section  headings  in LaTeX, ConTeXt, HTML, or EPUB output.  By default, sections are not numbered.
+              Sections with class unnumbered will never be numbered, even if --number-sections is specified.
+
+       --number-offset=NUMBER[,NUMBER,...],
+              Offset for section headings in HTML output (ignored in other output formats).  The first number is added to
+              the section number for top-level headers, the second for second-level headers, and so on.  So, for example,
+              if you want the first top-level header in your document to be numbered "6", specify --number-offset=5.   If
+              your  document  starts  with  a  level-2  header which you want to be numbered "1.5", specify --number-off‐
+              set=1,4.  Offsets are 0 by default.  Implies --number-sections.
+
+       --no-tex-ligatures
+              Do not convert quotation marks, apostrophes, and dashes to the TeX ligatures when writing LaTeX or ConTeXt.
+              Instead,  just  use  literal  unicode characters.  This is needed for using advanced OpenType features with
+              XeLaTeX and LuaLaTeX.  Note: normally --smart is selected automatically for LaTeX and ConTeXt  output,  but
+              it  must  be  specified  explicitly  if  --no-tex-ligatures  is selected.  If you use literal curly quotes,
+              dashes, and ellipses in your source, then you may want to use --no-tex-ligatures without --smart.
+
+       --listings
+              Use listings package for LaTeX code blocks
+
+       -i, --incremental
+              Make list items in slide shows display incrementally (one by one).  The default is for  lists  to  be  dis‐
+              played all at once.
+
+       --slide-level=NUMBER
+              Specifies  that headers with the specified level create slides (for beamer, s5, slidy, slideous, dzslides).
+              Headers above this level in the hierarchy are used to divide the slide show into  sections;  headers  below
+              this  level create subheads within a slide.  The default is to set the slide level based on the contents of
+              the document; see Structuring the slide show, below.
+
+       --section-divs
+              Wrap sections in <div> tags (or <section> tags in HTML5), and attach identifiers to the enclosing <div> (or
+              <section>) rather than the header itself.  See Section identifiers, below.
+
+       --email-obfuscation=none|javascript|references
+              Specify  a  method for obfuscating mailto: links in HTML documents.  none leaves mailto: links as they are.
+              javascript obfuscates them using javascript.  references obfuscates them by printing their letters as deci‐
+              mal or hexadecimal character references.
+
+       --id-prefix=STRING
+              Specify  a prefix to be added to all automatically generated identifiers in HTML and DocBook output, and to
+              footnote numbers in markdown output.  This is useful for preventing duplicate identifiers  when  generating
+              fragments to be included in other pages.
+
+       -T STRING, --title-prefix=STRING
+              Specify  STRING  as  a prefix at the beginning of the title that appears in the HTML header (but not in the
+              title as it appears at the beginning of the HTML body).  Implies --standalone.
+
+       -c URL, --css=URL
+              Link to a CSS style sheet.  This option can be be used repeatedly to include multiple files.  They will  be
+              included in the order specified.
+
+       --reference-odt=FILE
+              Use  the  specified  file  as  a  style reference in producing an ODT.  For best results, the reference ODT
+              should be a modified version of an ODT produced using pandoc.   The  contents  of  the  reference  ODT  are
+              ignored,  but  its  stylesheets  are  used in the new ODT.  If no reference ODT is specified on the command
+              line, pandoc will look for a file reference.odt in the user data directory (see --data-dir).   If  this  is
+              not found either, sensible defaults will be used.
+
+       --reference-docx=FILE
+              Use the specified file as a style reference in producing a docx file.  For best results, the reference docx
+              should be a modified version of a docx file produced using pandoc.  The contents of the reference docx  are
+              ignored,  but  its  stylesheets are used in the new docx.  If no reference docx is specified on the command
+              line, pandoc will look for a file reference.docx in the user data directory (see --data-dir).  If  this  is
+              not  found  either,  sensible  defaults will be used.  The following styles are used by pandoc: [paragraph]
+              Normal, Compact, Title, Authors, Date, Heading 1, Heading 2, Heading 3, Heading 4, Heading 5, Block  Quote,
+              Definition  Term,  Definition, Body Text, Table Caption, Image Caption; [character] Default Paragraph Font,
+              Body Text Char, Verbatim Char, Footnote Ref, Link.
+
+       --epub-stylesheet=FILE
+              Use the specified CSS file to style the EPUB.  If no stylesheet is specified, pandoc will look for  a  file
+              epub.css  in the user data directory (see --data-dir).  If it is not found there, sensible defaults will be
+              used.
+
+       --epub-cover-image=FILE
+              Use the specified image as the EPUB cover.  It is recommended that the image be less than 1000px  in  width
+              and  height.   Note  that in a markdown source document you can also specify cover-image in a YAML metadata
+              block (see EPUB Metadata, below).
+
+       --epub-metadata=FILE
+              Look in the specified XML file for metadata for the EPUB.  The file should contain a series of Dublin  Core
+              elements, as documented at http://dublincore.org/documents/dces/.  For example:
+
+                      <dc:rights>Creative Commons</dc:rights>
+                      <dc:language>es-AR</dc:language>
+
+              By  default,  pandoc  will  include  the following metadata elements: <dc:title> (from the document title),
+              <dc:creator> (from the document authors), <dc:date> (from the document date, which should be  in  ISO  8601
+              format),  <dc:language>  (from  the  lang  variable,  or,  if  is  not  set,  the  locale), and <dc:identi‐
+              fier id="BookId"> (a randomly generated UUID).  Any of these may be overridden by elements in the  metadata
+              file.
+
+              Note:  if  the source document is markdown, a YAML metadata block in the document can be used instead.  See
+              below under EPUB Metadata.
+
+       --epub-embed-font=FILE
+              Embed the specified font in the EPUB.  This option can be repeated to embed multiple fonts.  To use  embed‐
+              ded fonts, you will need to add declarations like the following to your CSS (see --epub-stylesheet):
+
+                     @font-face {
+                     font-family: DejaVuSans;
+                     font-style: normal;
+                     font-weight: normal;
+                     src:url("DejaVuSans-Regular.ttf");
+                     }
+                     @font-face {
+                     font-family: DejaVuSans;
+                     font-style: normal;
+                     font-weight: bold;
+                     src:url("DejaVuSans-Bold.ttf");
+                     }
+                     @font-face {
+                     font-family: DejaVuSans;
+                     font-style: italic;
+                     font-weight: normal;
+                     src:url("DejaVuSans-Oblique.ttf");
+                     }
+                     @font-face {
+                     font-family: DejaVuSans;
+                     font-style: italic;
+                     font-weight: bold;
+                     src:url("DejaVuSans-BoldOblique.ttf");
+                     }
+                     body { font-family: "DejaVuSans"; }
+
+       --epub-chapter-level=NUMBER
+              Specify the header level at which to split the EPUB into separate "chapter" files.  The default is to split
+              into chapters at level 1 headers.  This option only affects the internal composition of the EPUB,  not  the
+              way  chapters  and  sections are displayed to users.  Some readers may be slow if the chapter files are too
+              large, so for large documents with few level 1 headers, one might want to use a chapter level of 2 or 3.
+
+       --latex-engine=pdflatex|lualatex|xelatex
+              Use the specified LaTeX engine when producing PDF output.  The default is pdflatex.  If the engine  is  not
+              in your PATH, the full path of the engine may be specified here.
+
+   Citation rendering
+       --bibliography=FILE
+              Set  the  bibliography  field in the document's metadata to FILE, overriding any value set in the metadata,
+              and process citations using pandoc-citeproc.  (This is  equivalent  to  --metadata bibliography=FILE --fil‐
+              ter pandoc-citeproc.)
+
+       --csl=FILE
+              Set  the  csl field in the document's metadata to FILE, overriding any value set in the metadata.  (This is
+              equivalent to --metadata csl=FILE.)
+
+       --citation-abbreviations=FILE
+              Set the citation-abbreviations field in the document's metadata to FILE, overriding any value  set  in  the
+              metadata.  (This is equivalent to --metadata citation-abbreviations=FILE.)
+
+       --natbib
+              Use  natbib  for  citations in LaTeX output.  This option is not for use with the pandoc-citeproc filter or
+              with PDF output.  It is intended for use in producing a LaTeX file that can be processed with pdflatex  and
+              bibtex.
+
+       --biblatex
+              Use  biblatex for citations in LaTeX output.  This option is not for use with the pandoc-citeproc filter or
+              with PDF output.  It is intended for use in producing a LaTeX file that can be processed with pdflatex  and
+              bibtex or biber.
+
+   Math rendering in HTML
+       -m [URL], --latexmathml[=URL]
+              Use  LaTeXMathML  to  display embedded TeX math in HTML output.  The URL should point to the LaTeXMathML.js
+              load script.  If a URL is not provided, a link to LaTeXMathML.js at the Homepage  of  LaTeXMathML  will  be
+              inserted.
+
+       --mathml[=URL]
+              Convert  TeX  math  to  MathML  (in docbook as well as html and html5).  In standalone html output, a small
+              javascript (or a link to such a script if a URL is supplied) will be inserted that allows the MathML to  be
+              viewed on some browsers.
+
+       --jsmath[=URL]
+              Use  jsMath  to  display  embedded TeX math in HTML output.  The URL should point to the jsMath load script
+              (e.g.  jsMath/easy/load.js); if provided, it will be linked to in the header of standalone HTML  documents.
+              If  a  URL is not provided, no link to the jsMath load script will be inserted; it is then up to the author
+              to provide such a link in the HTML template.
+
+       --mathjax[=URL]
+              Use MathJax to display embedded TeX math in HTML output.  The URL  should  point  to  the  MathJax.js  load
+              script.  If a URL is not provided, a link to the MathJax CDN will be inserted.
+
+       --gladtex
+              Enclose  TeX  math in <eq> tags in HTML output.  These can then be processed by gladTeX to produce links to
+              images of the typeset formulas.
+
+       --mimetex[=URL]
+              Render TeX math using the mimeTeX CGI script.  If URL is not specified, it is assumed that the script is at
+              /cgi-bin/mimetex.cgi.
+
+       --webtex[=URL]
+              Render  TeX  formulas  using  an external script that converts TeX formulas to images.  The formula will be
+              concatenated with the URL provided.  If URL is not specified, the Google Chart API will be used.
+
+   Options for wrapper scripts
+       --dump-args
+              Print information about command-line arguments to stdout, then exit.  This option is intended primarily for
+              use  in  wrapper scripts.  The first line of output contains the name of the output file specified with the
+              -o option, or - (for stdout) if no output file was specified.  The remaining lines contain the command-line
+              arguments,  one  per line, in the order they appear.  These do not include regular Pandoc options and their
+              arguments, but do include any options appearing after a -- separator at the end of the line.
+
+       --ignore-args
+              Ignore command-line arguments (for use in wrapper scripts).  Regular Pandoc options are not ignored.  Thus,
+              for example,
+
+                     pandoc --ignore-args -o foo.html -s foo.txt -- -e latin1
+
+              is equivalent to
+
+                     pandoc -o foo.html -s
+
+TEMPLATES
+       When  the  -s/--standalone option is used, pandoc uses a template to add header and footer material that is needed
+       for a self-standing document.  To see the default template that is used, just type
+
+              pandoc -D FORMAT
+
+       where FORMAT is the name of the output format.  A custom template can be specified using  the  --template  option.
+       You  can  also  override  the  system  default  templates  for a given output format FORMAT by putting a file tem‐
+       plates/default.FORMAT in the user data directory (see --data-dir, above).  Exceptions: For odt  output,  customize
+       the default.opendocument template.  For pdf output, customize the default.latex template.
+
+       Templates may contain variables.  Variable names are sequences of alphanumerics, -, and _, starting with a letter.
+       A variable name surrounded by $ signs will be replaced by its value.  For example, the string $title$ in
+
+              <title>$title$</title>
+
+       will be replaced by the document title.
+
+       To write a literal $ in a template, use $$.
+
+       Some variables are set automatically by pandoc.  These vary somewhat depending on the output format,  but  include
+       metadata fields (such as title, author, and date) as well as the following:
+
+       header-includes
+              contents specified by -H/--include-in-header (may have multiple values)
+
+       toc    non-null value if --toc/--table-of-contents was specified
+
+       include-before
+              contents specified by -B/--include-before-body (may have multiple values)
+
+       include-after
+              contents specified by -A/--include-after-body (may have multiple values)
+
+       body   body of document
+
+       lang   language code for HTML or LaTeX documents
+
+       slidy-url
+              base URL for Slidy documents (defaults to http://www.w3.org/Talks/Tools/Slidy2)
+
+       slideous-url
+              base URL for Slideous documents (defaults to slideous)
+
+       s5-url base URL for S5 documents (defaults to s5/default)
+
+       revealjs-url
+              base URL for reveal.js documents (defaults to reveal.js)
+
+       theme  reveal.js or LaTeX beamer theme
+
+       transition
+              reveal.js transition
+
+       fontsize
+              font size (10pt, 11pt, 12pt) for LaTeX documents
+
+       documentclass
+              document class for LaTeX documents
+
+       classoption
+              option for LaTeX documentclass, e.g.  oneside; may be repeated for multiple options
+
+       geometry
+              options for LaTeX geometry class, e.g.  margin=1in; may be repeated for multiple options
+
+       linestretch
+              adjusts line spacing (requires the setspace package)
+
+       fontfamily
+              font  package  to use for LaTeX documents (with pdflatex): TeXLive has bookman (Bookman), utopia or fourier
+              (Utopia), fouriernc (New Century Schoolbook), times or txfonts (Times), mathpazo  or  pxfonts  or  mathpple
+              (Palatino), libertine (Linux Libertine), arev (Arev Sans), and the default lmodern, among others.
+
+       mainfont, sansfont, monofont, mathfont
+              fonts for LaTeX documents (works only with xelatex and lualatex)
+
+       colortheme
+              colortheme for LaTeX beamer documents
+
+       fonttheme
+              fonttheme for LaTeX beamer documents
+
+       linkcolor
+              color for internal links in LaTeX documents (red, green, magenta, cyan, blue, black)
+
+       urlcolor
+              color for external links in LaTeX documents
+
+       citecolor
+              color for citation links in LaTeX documents
+
+       links-as-notes
+              causes links to be printed as footnotes in LaTeX documents
+
+       biblio-style
+              bibliography style in LaTeX, when used with --natbib
+
+       biblio-files
+              bibliography files to use in LaTeX, with --natbib or --biblatex
+
+       section
+              section number in man pages
+
+       header header in man pages
+
+       footer footer in man pages
+
+       Variables may be set at the command line using the -V/--variable option.  Variables set in this way override meta‐
+       data fields with the same name.
+
+       Templates may contain conditionals.  The syntax is as follows:
+
+              $if(variable)$
+              X
+              $else$
+              Y
+              $endif$
+
+       This will include X in the template if variable has a non-null value; otherwise it will include Y.  X  and  Y  are
+       placeholders  for  any  valid  template  text,  and may include interpolated variables or other conditionals.  The
+       $else$ section may be omitted.
+
+       When variables can have multiple values (for example, author in a multi-author document), you can  use  the  $for$
+       keyword:
+
+              $for(author)$
+              <meta name="author" content="$author$" />
+              $endfor$
+
+       You can optionally specify a separator to be used between consecutive items:
+
+              $for(author)$$author$$sep$, $endfor$
+
+       A dot can be used to select a field of a variable that takes an object as its value.  So, for example:
+
+              $author.name$ ($author.affiliation$)
+
+       If  you use custom templates, you may need to revise them as pandoc changes.  We recommend tracking the changes in
+       the default templates, and modifying your custom templates accordingly.  An easy way to do this  is  to  fork  the
+       pandoc-templates  repository  (http://github.com/jgm/pandoc-templates)  and  merge  in  changes  after each pandoc
+       release.
+
+PRODUCING SLIDE SHOWS WITH PANDOC
+       You can use Pandoc to produce an HTML + javascript slide presentation that can be viewed via a web browser.  There
+       are  five  ways  to  do this, using S5, DZSlides, Slidy, Slideous, or reveal.js.  You can also produce a PDF slide
+       show using LaTeX beamer.
+
+       Here's the markdown source for a simple slide show, habits.txt:
+
+              % Habits
+              % John Doe
+              % March 22, 2005
+
+              # In the morning
+
+              ## Getting up
+
+              - Turn off alarm
+              - Get out of bed
+
+              ## Breakfast
+
+              - Eat eggs
+              - Drink coffee
+
+              # In the evening
+
+              ## Dinner
+
+              - Eat spaghetti
+              - Drink wine
+
+              ------------------
+
+              ![picture of spaghetti](images/spaghetti.jpg)
+
+              ## Going to sleep
+
+              - Get in bed
+              - Count sheep
+
+       To produce an HTML/javascript slide show, simply type
+
+              pandoc -t FORMAT -s habits.txt -o habits.html
+
+       where FORMAT is either s5, slidy, slideous, dzslides, or revealjs.
+
+       For Slidy, Slideous, reveal.js, and S5, the file produced by pandoc with the -s/--standalone option embeds a  link
+       to javascripts and CSS files, which are assumed to be available at the relative path s5/default (for S5), slideous
+       (for Slideous), reveal.js (for reveal.js), or at the Slidy website at w3.org (for Slidy).   (These  paths  can  be
+       changed  by  setting  the  slidy-url, slideous-url, revealjs-url, or s5-url variables; see --variable, above.) For
+       DZSlides, the (relatively short) javascript and css are included in the file by default.
+
+       With all HTML slide formats, the --self-contained option can be used to produce a single file that contains all of
+       the data necessary to display the slide show, including linked scripts, stylesheets, images, and videos.
+
+       To produce a PDF slide show using beamer, type
+
+              pandoc -t beamer habits.txt -o habits.pdf
+
+       Note that a reveal.js slide show can also be converted to a PDF by printing it to a file from the browser.
+
+   Structuring the slide show
+       By  default, the slide level is the highest header level in the hierarchy that is followed immediately by content,
+       and not another header, somewhere in the document.  In the example above, level 1 headers are always  followed  by
+       level 2 headers, which are followed by content, so 2 is the slide level.  This default can be overridden using the
+       --slide-level option.
+
+       The document is carved up into slides according to the following rules:
+
+       · A horizontal rule always starts a new slide.
+
+       · A header at the slide level always starts a new slide.
+
+       · Headers below the slide level in the hierarchy create headers within a slide.
+
+       · Headers above the slide level in the hierarchy create "title slides," which just contain the section  title  and
+         help to break the slide show into sections.
+
+       · A  title page is constructed automatically from the document's title block, if present.  (In the case of beamer,
+         this can be disabled by commenting out some lines in the default template.)
+
+       These rules are designed to support many different styles of slide show.  If you don't care about structuring your
+       slides into sections and subsections, you can just use level 1 headers for all each slide.  (In that case, level 1
+       will be the slide level.) But you can also structure the slide show into sections, as in the example above.
+
+       Note: in reveal.js slide shows, if slide level is 2, a two-dimensional layout will be produced, with level 1 head‐
+       ers  building  horizontally  and  level  2 headers building vertically.  It is not recommended that you use deeper
+       nesting of section levels with reveal.js.
+
+   Incremental lists
+       By default, these writers produces lists that display "all at once." If you want your lists to  display  incremen‐
+       tally (one item at a time), use the -i option.  If you want a particular list to depart from the default (that is,
+       to display incrementally without the -i option and all at once with the -i option), put it in a block quote:
+
+              > - Eat spaghetti
+              > - Drink wine
+
+       In this way incremental and nonincremental lists can be mixed in a single document.
+
+   Inserting pauses
+       You can add "pauses" within a slide by including a paragraph containing three dots, separated by spaces:
+
+              # Slide with a pause
+
+              content before the pause
+
+              . . .
+
+              content after the pause
+
+   Styling the slides
+       You can change the style of HTML  slides  by  putting  customized  CSS  files  in  $DATADIR/s5/default  (for  S5),
+       $DATADIR/slidy  (for  Slidy),  or $DATADIR/slideous (for Slideous), where $DATADIR is the user data directory (see
+       --data-dir, above).  The originals may be found in pandoc's system data directory (generally $CABALDIR/pandoc-VER‐
+       SION/s5/default).  Pandoc will look there for any files it does not find in the user data directory.
+
+       For dzslides, the CSS is included in the HTML file itself, and may be modified there.
+
+       For reveal.js, themes can be used by setting the theme variable, for example:
+
+              -V theme=moon
+
+       Or you can specify a custom stylesheet using the --css option.
+
+       To style beamer slides, you can specify a beamer "theme" or "colortheme" using the -V option:
+
+              pandoc -t beamer habits.txt -V theme:Warsaw -o habits.pdf
+
+       Note  that  header  attributes  will  turn  into slide attributes (on a <div> or <section>) in HTML slide formats,
+       allowing you to style individual slides.  In Beamer,  the  only  header  attribute  that  affects  slides  is  the
+       allowframebreaks  class, which sets the allowframebreaks option, causing multiple slides to be created if the con‐
+       tent overfills the frame.  This is recommended especially for bibliographies:
+
+              # References {.allowframebreaks}
+
+   Speaker notes
+       reveal.js has good support for speaker notes.  You can add notes to your markdown document thus:
+
+              <div class="notes">
+              This is my note.
+
+              - It can contain markdown
+              - like this list
+
+              </div>
+
+       To show the notes window, press s while viewing the presentation.  Notes are not yet  supported  for  other  slide
+       formats, but the notes will not appear on the slides themselves.
+
+EPUB METADATA
+       EPUB  metadata  may  be  specified using the --epub-metadata option, but if the source document is markdown, it is
+       better to use a YAML metadata block.  Here is an example:
+
+              ---
+              title:
+              - type: main
+                text: My Book
+              - type: subtitle
+                text: An investigation of metadata
+              creator:
+              - role: author
+                text: John Smith
+              - role: editor
+                text: Sarah Jones
+              identifier:
+              - scheme: DOI
+                text: doi:10.234234.234/33
+              publisher:  My Press
+              rights:  (c) 2007 John Smith, CC BY-NC
+              ...
+
+       The following fields are recognized:
+
+       identifier
+              Either a string value or an object with fields text and scheme.   Valid  values  for  scheme  are  ISBN-10,
+              GTIN-13,  UPC,  ISMN-10, DOI, LCCN, GTIN-14, ISBN-13, Legal deposit number, URN, OCLC, ISMN-13, ISBN-A, JP,
+              OLCC.
+
+       title  Either a string value, or an object with fields file-as and type, or a list of such objects.  Valid  values
+              for type are main, subtitle, short, collection, edition, extended.
+
+       creator
+              Either  a string value, or an object with fields role, file-as, and text, or a list of such objects.  Valid
+              values for role are marc relators, but pandoc will attempt to translate the human-readable  versions  (like
+              "author" and "editor") to the appropriate marc relators.
+
+       contributor
+              Same format as creator.
+
+       date   A  string  value  in YYYY-MM-DD format.  (Only the year is necessary.) Pandoc will attempt to convert other
+              common date formats.
+
+       language
+              A string value in RFC5646 format.  Pandoc will default to the local language if nothing is specified.
+
+       subject
+              A string value or a list of such values.
+
+       description
+              A string value.
+
+       type   A string value.
+
+       format A string value.
+
+       relation
+              A string value.
+
+       coverage
+              A string value.
+
+       rights A string value.
+
+       cover-image
+              A string value (path to cover image).
+
+       stylesheet
+              A string value (path to CSS stylesheet).
+
+LITERATE HASKELL SUPPORT
+       If you append +lhs (or +literate_haskell) to an appropriate input or  output  format  (markdown,  markdown_strict,
+       rst,  or latex for input or output; beamer, html or html5 for output only), pandoc will treat the document as lit‐
+       erate Haskell source.  This means that
+
+       · In markdown input, "bird track" sections will be parsed as Haskell code  rather  than  block  quotations.   Text
+         between \begin{code} and \end{code} will also be treated as Haskell code.
+
+       · In  markdown output, code blocks with classes haskell and literate will be rendered using bird tracks, and block
+         quotations will be indented one space, so they will not be treated as Haskell code.  In addition,  headers  will
+         be  rendered  setext-style  (with underlines) rather than atx-style (with '#' characters).  (This is because ghc
+         treats '#' characters in column 1 as introducing line numbers.)
+
+       · In restructured text input, "bird track" sections will be parsed as Haskell code.
+
+       · In restructured text output, code blocks with class haskell will be rendered using bird tracks.
+
+       · In LaTeX input, text in code environments will be parsed as Haskell code.
+
+       · In LaTeX output, code blocks with class haskell will be rendered inside code environments.
+
+       · In HTML output, code blocks with class haskell will be rendered with class literatehaskell and bird tracks.
+
+       Examples:
+
+              pandoc -f markdown+lhs -t html
+
+       reads literate Haskell source formatted with markdown conventions and writes ordinary HTML (without bird tracks).
+
+              pandoc -f markdown+lhs -t html+lhs
+
+       writes HTML with the Haskell code in bird tracks, so it can be copied and pasted as literate Haskell source.
+
+CUSTOM WRITERS
+       Pandoc can be extended with custom writers written in lua.  (Pandoc includes a lua interpreter, so lua need not be
+       installed separately.)
+
+       To use a custom writer, simply specify the path to the lua script in place of the output format.  For example:
+
+              pandoc -t data/sample.lua
+
+       Creating a custom writer requires writing a lua function for each possible element in a pandoc document.  To get a
+       documented example which you can modify according to your needs, do
+
+              pandoc --print-default-data-file sample.lua
+
+AUTHORS
+       © 2006-2013 John MacFarlane (jgm at berkeley dot edu).  Released under the GPL, version 2 or greater.  This  soft‐
+       ware carries no warranty of any kind.  (See COPYRIGHT for full copyright and warranty notices.) Other contributors
+       include Recai Oktaş, Paulo Tanimoto, Peter Wang, Andrea Rossato, Eric Kow, infinity0x, Luke Plant, shreevatsa.pub‐
+       lic,  Puneeth Chaganti, Paul Rivier, rodja.trappe, Bradley Kuhn, thsutton, Nathan Gass, Jonathan Daugherty, Jérémy
+       Bobbio, Justin Bogner, qerub, Christopher Sawicki, Kelsey Hightower, Masayoshi  Takahashi,  Antoine  Latter,  Ralf
+       Stephan,  Eric Seidel, B.  Scott Michel, Gavin Beatty, Sergey Astanin, Arlo O'Keeffe, Denis Laxalde, Brent Yorgey,
+       David Lazar, Jamie F.  Olson, Matthew Pickering, Albert Krewinkel, mb21, Jesse Rosenthal.
+
+PANDOC'S MARKDOWN
+       For a complete description of pandoc's extensions to standard markdown, see pandoc_markdown (5).
+
+SEE ALSO
+       pandoc_markdown (5).
+
+       The Pandoc source code and all documentation may be downloaded from <http://johnmacfarlane.net/pandoc/>.
+
+
+
+Pandoc User's Guide                                  January 19, 2013                                           PANDOC(1)

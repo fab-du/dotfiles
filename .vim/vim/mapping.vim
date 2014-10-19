@@ -1,4 +1,7 @@
 
+"type vg to search a word in google
+vmap g :<C-U>!iceweasel "http://www.google.fr/search?hl=fr&q=<cword>&btnG=Recherche+Google&meta=" &gt;& /dev/null<CR><CR>
+
 
 "funktion keys mappings 
 

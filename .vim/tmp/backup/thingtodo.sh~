@@ -45,7 +45,7 @@ sudo gdebi skype-ubuntu-precise_4.2.0.13-1_i386.deb
 #Install Dropbox 
 sudo gdebi dropbox_1.6.0_amd64.deb
 
-if [[ ! -f $HOME/.gtkrc-2.0]]; then
+if [[ ! -f $HOME/.gtkrc-2.0 ]]; then
         touch $HOME/.gtkrc-2.0 
 fi
 
