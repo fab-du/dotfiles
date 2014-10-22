@@ -4,5 +4,6 @@ tags1
 tags2
 tags.bak
 *-SCRATCH.*
-.vim/tmp/
-.vim/view/
+.vim/tmp/*
+.vim/view/* 
+
