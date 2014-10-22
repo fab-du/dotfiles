@@ -1,122 +1,20 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bienvenu dans wai Pro </title>
-    <link rel="stylesheet" href="index.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <title></title>
     <meta charset="utf-8" />
+    
+<link rel="stylesheet" href="lightbox.css">
+
 </head>
 <body>
-<script src="myfunc.js" type="text/javascript" charset="utf-8"/></script>
 
-<div id="wrapper1">
-<div id="wrapper">
-        <header>   
-            <h1> Dein</h1> <h2> Stadt </h2> im Blick !!!</h1>
-        </header>
-    
-        <section> 
-    			
-		<p align="justify">
-			<h5>Herzlich Willkommen auf Meine-Stadt-im-Blick</h5>	
-			<br/> 
-			Diese Service gibt Ihnen die Möglichkeit Ihre Stadt, oder <br/>
-			andere Städte virtuel zu besuchen.			  <br/> 
-			Sie verfügen zahlreichenden Fotos von Müseum, Theater,	  <br/>
-			Strassen, Stadien, und anderen Sehenwürdigkeiten. 	  <br/>
-			Es ist sehr einfach zu bedienen und intuitive.            <br/>
-			<br/> <br/>
-			Viel Spass beim Besuchen !!!!!	
-</p>
-
-    
-    <div id="button" align="center">
-            <div id="einlogButton" class="buttongroup" onclick="swapswip()">
-                <a href="#" onclick="swapswip()">
-<h3>Einlogen</h3>
-                </a>
-        </div>
-
-            <div id="registrationButton" class="buttongroup" onclick="swipswap()">
-                <a href="#" onclick="swipswap()">
-            <h3> Registrieren </h3> 
-                </a>
-        </div>
-        </section>
-    
-    
-        <footer>
-        </footer>
-    </div>
-
-    <div id="einlogFormular" >
-
-<fieldset class="formular">
-<legend><p> Loggin formular</p> </legend>
-<form name="einloggen" method="POST">
-<ul>
-<li><label>User Name: </label>
-<input type="TEXT" name="uName" id="uname" size="20"/></li>
-
-<li><label>Passwort:   </label>
-<input type="PASSWORD"  name="pass" id="pass" size="20"/></li>
-
-<li> <label for="submit"> <br/> </label> 
-<button type="submit" id="submit">Senden</button></li>
-</ul>
-</form>
-</fieldset>
-
-    
-    </div>
-    <div id="RegistrationFormular">
-
-        <fieldset class="formular">
-            <legend><p> Registration formular</p> </legend>
-            <form name="einloggen" method="POST">
-                <ul>
-                    <li><label>User Name: </label>
-                        <input type="TEXT" name="uName" id="uname" size="20"/></li>
-
-                    <li><label>Passwort:   </label>
-                        <input type="PASSWORD"  name="pass" id="pass" size="20"/></li>
-
-                    <li><label>Retype Passwort:   </label>
-                        <input type="PASSWORD"  name="repass" id="repass" size="20"/></li>
-
-                    <p><br/></p> 
-                    <p></p>
-                    <div id="Stadt"> 
-                        <li> <label> Mannheim </label>
-                            <input type="CHECKBOX" /> 
-                        </li>
-
-                        <li> <label> Heidelberg </label>
-                            <input type="CHECKBOX" /> 
-                        </li>
-
-                        <li> <label> Ludwigshafen</label>
-                            <input type="CHECKBOX" /> 
-                        </li>
-
-                        <li> <label> Worms </label>
-                            <input type="CHECKBOX" /> 
-                        </li>
-                    </div>
-
-                    <p><br/></p> 
-                    <p></p>
-                    <li> 
-                        <button type="submit" id="submit">Senden</button></li>
-
-                </ul>
-            </form>
-        </fieldset>
+  Please fix the link to the fotos 
+<a href="javascript:lightbox(null,'file:///.foto.html' );">Show me the lightbox</a>
 
 
-    </div>
-</div>
-</div>
-    
 </body>
+<script src="JS/jquery_ui/external/jquery/jquery.js"></script>
+<script src="JS/jquery_ui/jquery-ui.min.js"></script>
+<script src="lightbox.js" type="text/javascript" charset="utf-8"></script>
 </html>

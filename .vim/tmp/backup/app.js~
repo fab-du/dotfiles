@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('./db/setup.js');
 var session = require('express-session');
-var MongoStore=require('connect-mongo')(session);
+var MongoStore=require('connect-mongostore')(session);
 
 
 mongoose.setup();
@@ -13,7 +13,6 @@ mongoose.setup();
 var setup  = require('./setup.js');
 var router = require('./router.js');
 var app = express();
-
 
 // generate 36-char random hex string as secret
 var secret = "", rand;//{{{

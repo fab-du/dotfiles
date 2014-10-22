@@ -2,13 +2,19 @@
     {
       "libs": [
         "browser",
-        "jquery", 
-        "ecma5"
+        "jquery"
       ],
-      "loadEagerly": [],
+      "loadEagerly": [
+        "importantfile.js"
+      ],
       "plugins": {
-        "requirejs": {}, 
-        "node": {}, 
-        "express":{} 
+        "requirejs": {
+          "baseURL": "./",
+          "paths": {}
+        }, 
+        "node": {
+            "baseURL": "./",
+            "paths": {}
+        }
       }
     }

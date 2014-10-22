@@ -82,6 +82,30 @@ DB-module stellt folgende weitere Funktionalitäten zur Verfügung: <br/>
   ansehen will. 
 
 
+IV.2. Server Module
+----------------------
+
+Server basiert hier auf der Servlet Technologie ( J2EE ). 
+Server bearbeiten nur POST und GET Anfrage. 
+
+Bei der GET-Request werden einfach die Webseite an Client zurueckgeschickt. 
+Bei Post-Request hingegen finden ueblichen Ueberpruefungen statt, 
+abhaengig von Ergebniss der Ueberpruefung , wird ein entsprechende Aktion 
+durchgefuert. 
+
+IV.2.a. Registrierung
+---------------------- 
 
 
+
+
+IV.2.b. Anmeldung
+----------------- 
+
+IV.2.c. Stadt hinzufuegen(bzw loeschen)
+--------------------------------------- 
+
+
+IV.2.d. Display Bildern 
+-----------------------
 

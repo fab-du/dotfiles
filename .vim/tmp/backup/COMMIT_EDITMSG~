@@ -6,8 +6,10 @@
 # Ihr Branch ist auf dem selben Stand wie 'origin/master'.
 #
 # zum Commit vorgemerkte Änderungen:
-#	neue Datei:     setupSYS.sh
+#	geändert:       output.pdf
+#	geändert:       presentation.md
+#	neue Datei:     project.css
 #
-# Änderungen, die nicht zum Commit vorgemerkt sind:
-#	geändert:       ../.config/conky (geänderter Inhalt)
+# Unbeobachtete Dateien:
+#	../img/
 #

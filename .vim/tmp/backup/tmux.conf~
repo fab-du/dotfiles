@@ -1,119 +1,80 @@
-# Use something easier to type as the prefix.
-set -g prefix C-f
+#set-option -g default-terminal "screen-256color"
+set-option -g default-shell /bin/zsh
+
+### screen-like keybindings
 unbind C-b
-bind C-f send-prefix
+set -g prefix C-a
+bind C-a send-prefix
+bind a send-prefix
+bind A command-prompt "rename-window %%"
+setw -g automatic-rename off
 
-# Relax!
-set -sg escape-time 0
-set -sg repeat-time 600
+bind Escape copy-mode
+# default is too slow which is annoying during heavy-use of the copy buffer
+set -s escape-time 100
 
-# Shut up.
-set -g quiet on
+# vi-keys everywhere; anything else would be uncivilized
+setw -g mode-keys vi
+set -g status-keys vi
+setw -g xterm-keys on
 
-# Mouse
-set -g mode-mouse on
-setw -g mouse-select-window on
-setw -g mouse-select-pane on
-
-# This is hilariously absurd.  How many nerds use tmux on OS X every day and
-# it's still fundamentally broken?
-set -g default-command "reattach-to-user-namespace -l zsh"
-set -g default-command "reattach-to-user-namespace -l fish"
-
-# Less stretching to get to the first item.
-set -g base-index 1
-setw -g pane-base-index 1
-
-# Reload the config.
-bind r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
-
-# Saner splitting.
-bind v split-window -h
-bind s split-window -v
-bind S choose-session
-
-# Pane movement
+# Moving between windows/panes
+bind C-a last-window
+bind " " next-window
+bind BSpace previous-window
+bind '"' choose-window
+set -g mouse-select-pane on
 bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
+bind H command-prompt "resize-pane -L %1"
+bind J command-prompt "resize-pane -D %1"
+bind K command-prompt "resize-pane -U %1"
+bind L command-prompt "resize-pane -R %1"
+bind y setw synchronize-panes
 
-# DVTM style pane selection
-bind 1 select-pane -t 1
-bind 2 select-pane -t 2
-bind 3 select-pane -t 3
-bind 4 select-pane -t 4
-bind 5 select-pane -t 5
-bind 6 select-pane -t 6
-bind 7 select-pane -t 7
-bind 8 select-pane -t 8
-bind 9 select-pane -t 9
+# splits
+bind C new-window -c "#{pane_current_path}"
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+bind r next-layout
+bind R previous-layout
 
-# Layouts
-set -g main-pane-width 260
-bind M select-layout main-vertical
-bind E select-layout even-horizontal
+# maximizing and restoring panes.
+bind x resize-pane -Z
 
-# Pane resizing
-bind -r C-h resize-pane -L 5
-bind -r C-j resize-pane -D 5
-bind -r C-k resize-pane -U 5
-bind -r C-l resize-pane -R 5
+# nice, big scrollback buffer (lines)
+set -g history-limit 10000
 
-# Window movement
-# Only really makes sense if you have your parens bound to shifts like me.
-bind -r ( select-window -t :-
-bind -r ) select-window -t :+
-bind-key -r H swap-window -t -1
-bind-key -r L swap-window -t +1
+# pre-configured window and pane layouts
+bind W run "tmux renamew work; tmux splitw -l 3; tmux selectp -U"
 
-# 256 colors please
-set -g default-terminal "screen-256color"
 
-# Bad Wolf
-set -g status-fg white
-set -g status-bg colour234
-set -g window-status-activity-attr bold
-set -g pane-border-fg colour245
-set -g pane-active-border-fg colour39
-set -g message-fg colour16
-set -g message-bg colour221
-set -g message-attr bold
+# read and write and delete paste buffer
+bind > command-prompt -p "Write buffer to xclip:" \
+    "run 'tmux save-buffer -b %1 - | xclip -i -select clipboard'"
+bind < command-prompt -p "Read from xclip into buffer:" \
+    "run 'xclip -o -selection clipboard | tmux load-buffer -b %1 -'"
+bind + command-prompt "delete-buffer -b %1"
 
-# Custom status bar
-# Powerline symbols: ⮂ ⮃ ⮀ ⮁ ⭤
-set -g status-left-length 32
-set -g status-right-length 150
-set -g status-interval 5
+# toggle activity/silence monitoring
+bind m setw monitor-activity
+bind M command-prompt -p "monitor-silence (seconds)" "setw monitor-silence %%"
+set-option -ga terminal-overrides ',*:enacs@:smacs@:rmacs@:acsc@'
 
-set -g status-left '#[fg=colour16,bg=colour254,bold] #S #[fg=colour254,bg=colour238,nobold]⮀#[fg=colour15,bg=colour238,bold] #(ls ~/.mail/steve-stevelosh.com/INBOX/cur  ~/.mail/steve-stevelosh.com/INBOX/new | wc -l | tr -d " ") #[fg=colour238,bg=colour234,nobold]⮀'
+ #set-option -g pane-border-fg white
+ #set-option -g pane-border-bg white
+ #set-option -g pane-active-border-fg green
+ #set-option -g pane-active-border-bg green
 
-set -g status-right '#[fg=colour245]⮃ %R ⮃ %d %b #[fg=colour254,bg=colour234,nobold]#(rdio-current-track-tmux)⮂#[fg=colour16,bg=colour254,bold] #h '
 
-set -g window-status-format "#[fg=white,bg=colour234] #I #W "
-set -g window-status-current-format "#[fg=colour234,bg=colour39]⮀#[fg=colour16,bg=colour39,noreverse,bold] #I ⮁ #W #[fg=colour39,bg=colour234,nobold]⮀"
+# panes:
+set-option -g pane-border-fg default
+set-option -g pane-border-bg default
+set-option -g pane-active-border-fg green
+set-option -g pane-active-border-bg default
 
-# Activity
-setw -g monitor-activity on
-set -g visual-activity off
+source $HOME/Project/dotfiles/tmux/theme.sh
 
-# Autorename sanely.
-setw -g automatic-rename on
-
-# Better name management
-bind c new-window
-bind , command-prompt "rename-window '%%'"
-
-# Copy mode
-setw -g mode-keys vi
-bind ` copy-mode
-unbind [
-unbind p
-bind p paste-buffer
-bind -t vi-copy H start-of-line
-bind -t vi-copy L end-of-line
-bind -t vi-copy v begin-selection
-bind -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
-bind -t vi-copy Escape cancel
-bind y run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
-
+# vim:ft=tmux

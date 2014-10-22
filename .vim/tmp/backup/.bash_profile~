@@ -31,8 +31,8 @@ export QMAKESPEC PATH
 #fi
 
 # For zh 
-#if [ -f ~/.zshr ]; then
-   #. ~/.bashrc;
+#if [ -f ~/.zshrc ]; then
+   #. ~/.zshrc;
 #fi
 
 
