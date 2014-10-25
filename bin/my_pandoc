@@ -1,18 +1,6 @@
 #!/bin/bash 
 set -e #enable argument
 
-##What needed 
-#Footer
-#Header 
-
-#Table of content 
-
-#code snippet with dark background 
-
-# $1 welche modus 
-# $2 pdf, slide 
-# $3 input name  
-
 
 latex_engine="xelatex"
 data_dir='/home/batlab/Dropbox/pandoc-templates'
@@ -22,35 +10,31 @@ case $1 in
 	  case $2 in 
 		pdf)
       #template='/home/batlab/downloads/mytemplate.tex'
-      template='default.latex'
+      template='latex'
 			depth=3
 			output='output.pdf'
+      echo "$data_dir"
 
-      pandoc -s -S -N --data-dir="$data_dir"\
-      --variable mainfont=Georgia\
-      --variable sansfont=Arial\ 
-      --variable monofont="Bitstream Vera Sans Mono"\
-      --variable fontsize=12pt --variable version=1.10\
+      pandoc -s -S\
       --latex-engine="$latex_engine"\
-      --template "$template"\ 
-      --toc -c $HOME/Dropbox/VorlesungWS2014/SOE/SOE_VORTRAG/src/project.css\
-      -s --highlight-style zenburn\
-      --table-of-contents --toc-depth $depth -o $output $3 
+      --variable mainfont="Georgia"\
+      --variable sansfont="Arial"\ 
+      --variable fontsize="12pt"\ 
+      --variable version="1.10"\
+      --template="$template"\ 
+      --table-of-contents --toc-depth "$depth" -o "$output" "$3" 
 		;;
 		slide) 
-			template='default.slidy'
+			template='revealjs'
 			depth=1
-			output='output.pdf'
+			output='output.html'
+      echo "$pwd"
+      pandoc --data-dir "$data_dir"\
+      --self-contained -s -t "$template"\
+      -o "$output" "$3" 
 		;;
 	  esac
 	;;
 esac 
 
 
-
-
- #pandoc --data-dir /home/batlab/Dropbox/pandoc-templates --self-contained -s -t revealjs  --css /home/batlab/Dropbox/pandoc-templates/reveal.js/css/theme/default.css foo.txt -o foo.html
-
-#pandoc --data-dir /home/batlab/Dropbox/pandoc-templates --self-contained -s -i -t s5  foo.txt -o foo.html
-
-#pandoc --data-dir /home/batlab/Dropbox/pandoc-templates --self-contained -s -t dzslides  foo.txt -o foo.html
