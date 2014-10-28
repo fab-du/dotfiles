@@ -9,3 +9,5 @@ act=$(aapt dump badging $1|awk -F" " '/launchable-activity/ {print $2}'|awk -F"'
 adb shell am start -n $pkg/$act
 
 And run myapp.apk
+
+nproc := abfrage anzahl von core 

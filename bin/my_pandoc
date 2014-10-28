@@ -2,18 +2,20 @@
 set -e #enable argument
 
 
-latex_engine="xelatex"
-data_dir='/home/batlab/Dropbox/pandoc-templates'
 
 case $1 in 
 	mode)
 	  case $2 in 
 		pdf)
-      #template='/home/batlab/downloads/mytemplate.tex'
+      latex_engine="xelatex"
       template='latex'
-			depth=3
+			depth=3 
 			output='output.pdf'
-      echo "$data_dir"
+      mainfont= 'Georgia'
+      fontsize='12pt'
+
+      config = " --table-of-contents"
+
 
       pandoc -s -S\
       --latex-engine="$latex_engine"\
@@ -22,15 +24,19 @@ case $1 in
       --variable fontsize="12pt"\ 
       --variable version="1.10"\
       --template="$template"\ 
-      --table-of-contents --toc-depth "$depth" -o "$output" "$3" 
+      --table-of-contents\
+      --toc-depth "$depth"\
+      "$3"\ #input 
+      -o "$output" 
 		;;
+
 		slide) 
 			template='revealjs'
 			depth=1
 			output='output.html'
-      echo "$pwd"
-      pandoc --data-dir "$data_dir"\
-      --self-contained -s -t "$template"\
+
+      pandoc\
+        --self-contained -s -t "$template"\
       -o "$output" "$3" 
 		;;
 	  esac
@@ -38,3 +44,4 @@ case $1 in
 esac 
 
 
+#pandoc --data-dir /home/batlab/.pandoc/tempates --self-contained -s -t revealjs vortrag.md -o foo.html -V revealjs-url:/home/batlab/.pandoc/templates/reveal.js/ --table-of-contents -c /home/batlab/.pandoc/templates/reveal.js/css/theme/night.css --highlight-style pygments

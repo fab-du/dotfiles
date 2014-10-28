@@ -47,14 +47,18 @@ fi
 clear 
 clear 
 
-if[ ! -d $HOME/android_build ]; then 
+if [ ! -d $HOME/android_build ]; then 
     mkdir -p $HOME/android_build
     cd $HOME/android_build 
 fi
 
+#Python installation
+install_python ( ) {
+
 echo 
 echo ">>>>>Python Installation<<<<<<"
 echo 
+
 sudo apt-get install build-essential gcc $PARAM
 wget http://www.python.org/ftp/python/3.3.2/Python-3.3.2.tgz
 tar -xvzf Python-3.3.2.tgz
@@ -70,7 +74,14 @@ else
   read -p "Press [Enter] key to continue..."
 fi
 clear
+}
 
+
+# CCache Installation . 
+# Please be aware that the use of CCache can 
+# produce weird compilation error 
+
+install_ccache(){
 echo
 echo "Installing CCache!"
 echo
@@ -90,8 +101,12 @@ else
   read -p "Press [Enter] key to continue..."
 fi
 clear
+}
 
 
+# JDK 6 installation 
+
+install_jdk_6() {
 echo
 echo "Installing JDK 6!"
 echo
@@ -105,9 +120,11 @@ if [ ${SKIP} = 1 ]; then
 else
   read -p "Press [Enter] key to continue..."
 fi
-
 clear
+}
 
+# GNU Make installation
+install_gnu_make() {
 echo
 echo "Installing GNU Make!"
 echo
@@ -124,9 +141,13 @@ if [ ${SKIP} = 1 ]; then
 else
   read -p "Press [Enter] key to continue..."
 fi
-
 clear
+}
 
+# Installation of package use for the Android Core and System Dev 
+# Please refer to developer.android.com for further information 
+
+install_android_core_package() {
 echo
 echo "Installing Required Packages!"
 echo
@@ -140,8 +161,8 @@ android-tools-adb android-tools-fastboot libcloog-isl-dev \
 texinfo gcc-multilib \
 schedtool libxml2-utils libxml2 \
 
+#Tweak to avoid the 32-64-Bit architectur incompatibility 
 sudo ln -s /usr/lib/i386-linux-gnu/mesa/libGL.so.1 /usr/lib/i386-linux-gnu/libGL.so
-
 if [ ${SKIP} = 1 ]; then
   echo "Unattended installation. skipping pause..."
 else
@@ -149,18 +170,28 @@ else
 fi
 
 clear
+}
 
+# Only for ubuntu
+tweak_1(){
 echo
 echo "Add terminal to The mouse right button shortcut!"
 echo
 sudo apt-get install nautilus-open-terminal $PARAM
 nautilus -q
+}
 
+install_git(){
 echo
 echo "Installing GIT!"
 echo
 sudo apt-get install git $PARAM
+}
 
+
+# Repo installation . 
+# Please refer to android system dev. for Repo user manual
+install_repo(){
 echo
 echo "Installing Repo"
 echo
@@ -184,6 +215,7 @@ else
 fi
 
 clear
+}
 
 echo
 echo "Downloading and Configuring Android SDK!!"
