@@ -25,11 +25,11 @@
       "last_prompted_google_url": "https://www.google.de/",
       "pepper_flash_settings_enabled": true,
       "window_placement": {
-         "bottom": 714,
-         "left": 0,
+         "bottom": 737,
+         "left": 2,
          "maximized": false,
-         "right": 1020,
-         "top": 1,
+         "right": 1022,
+         "top": 24,
          "work_area_bottom": 739,
          "work_area_left": 0,
          "work_area_right": 1024,
@@ -42,10 +42,6 @@
       "enabled": true,
       "id": "2"
    },
-   "dns_prefetching": {
-      "host_referral_list": [ 2, [ "http://localhost:8090/", [ "http://localhost:8090/", 4.789151658046697 ] ] ],
-      "startup_list": [ 1, "https://accounts.google.com/", "https://clients2.google.com/", "https://clients4.google.com/", "https://www.google.com/" ]
-   },
    "download": {
       "directory_upgrade": true,
       "extensions_to_open": ""
@@ -56,8 +52,8 @@
          "initialized": true
       },
       "autoupdate": {
-         "last_check": "13064532117029509",
-         "next_check": "13064549460576592"
+         "last_check": "13064910634327985",
+         "next_check": "13064927250481081"
       },
       "chrome_url_overrides": {
          "bookmarks": [ "chrome-extension://eemcgdkfndhakfknompkggombfjjjeno/main.html" ]
@@ -1683,7 +1679,9 @@
                   "protocol_str": "quic"
                },
                "settings": {
-                  "4": 100
+                  "4": 100,
+                  "5": 32,
+                  "6": 0
                },
                "supports_spdy": true
             },
@@ -1823,7 +1821,9 @@
                   "protocol_str": "quic"
                },
                "settings": {
-                  "4": 100
+                  "4": 100,
+                  "5": 32,
+                  "6": 0
                },
                "supports_spdy": true
             },
@@ -2530,8 +2530,15 @@
                }
             },
             "www.google.com:443": {
+               "alternate_protocol": {
+                  "port": 443,
+                  "probability": 0.02,
+                  "protocol_str": "quic"
+               },
                "settings": {
-                  "4": 100
+                  "4": 100,
+                  "5": 22,
+                  "6": 1
                },
                "supports_spdy": true
             },
@@ -2761,9 +2768,9 @@
          },
          "pref_version": 1
       },
-      "exit_type": "Normal",
+      "exit_type": "Crashed",
       "exited_cleanly": true,
-      "gaia_info_update_time": "13064482215416171",
+      "gaia_info_update_time": "13064908815716461",
       "local_profile_id": 9773998,
       "managed_user_id": "",
       "managed_users": {
@@ -2877,7 +2884,7 @@
       "has_setup_completed": true,
       "history_delete_directives": true,
       "keystore_encryption_bootstrap_token": "djEwU8hvjnvcMQgZHJOCKc84iG2feiiB5iayHEbLjLA7Ie3l4NMZidzOmZL5oCX9uq0p7c20l33exbO+uOLw0Y28yNDiItymfrGkW3N97vRNS1Q=",
-      "last_synced_time": "13064535961764667",
+      "last_synced_time": "13064912282191396",
       "managed_user_settings": true,
       "managed_user_shared_settings": true,
       "managed_users": true,

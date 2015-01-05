@@ -313,7 +313,3 @@ echo "Thanks for using this script!"
 echo "Now, Enjoy compiling roms/kernels :)"
 read -p "Press [Enter] key to exit..."
 exit
-
-
-
-
