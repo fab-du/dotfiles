@@ -1,0 +1,10 @@
+{
+   "description": {
+      "description": "Short application description",
+      "message": "8-ми більярд"
+   },
+   "name": {
+      "description": "Application name, used in install dialog etc.",
+      "message": "Пул"
+   }
+}

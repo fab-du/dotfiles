@@ -1,6 +1,0 @@
-
-package de.hs_mannheim.SRNInterface;
-
-class I_SRN_WindowController {
-}
-

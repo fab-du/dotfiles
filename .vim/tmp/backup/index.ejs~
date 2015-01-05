@@ -1,6 +1,0 @@
-
-<% include layout %>
-
-<div class="index">
-    <%= title %>
-</div>

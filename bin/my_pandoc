@@ -11,21 +11,25 @@ case $1 in
       template='latex'
 			depth=3 
 			output='output.pdf'
-      mainfont= 'Georgia'
+      mainfont='Georgia'
+      sansfont='Arial'
       fontsize='12pt'
 
       config = " --table-of-contents"
 
 
-      pandoc -s -S\
-      --latex-engine="$latex_engine"\
-      --variable mainfont="Georgia"\
-      --variable sansfont="Arial"\ 
-      --variable fontsize="12pt"\ 
-      --variable version="1.10"\
-      --template="$template"\ 
-      --table-of-contents\
-      --toc-depth "$depth"\
+      # -s 
+      # -S 
+      # --table-of-contents produce table of contents 
+      # -chapters : separate Chapters with blank page 
+      pandoc -s -S --table-of-contents -chapters\
+      --latex-engine="$latex_engine" \
+      --variable mainfont="$mainfont" \
+      --variable sansfont="$sansfont"  \ 
+      --variable fontsize="$fontsize"   \ 
+      --template="$template"             \ 
+      --table-of-contents                 \
+      --toc-depth "$depth"                 \
       "$3"\ #input 
       -o "$output" 
 		;;
@@ -43,5 +47,8 @@ case $1 in
 	;;
 esac 
 
+
+
+ #pandoc --table-of-contents --chapters --variable mainfont=Georgia --variable sansfont=Arial --variable monofont="Bitstream Vera Sans Mono" --variable fontsize=12pt --variable version=1.10 --latex-engine=xelatex presentation.md -o Umdruck.pdf
 
 #pandoc --data-dir /home/batlab/.pandoc/tempates --self-contained -s -t revealjs vortrag.md -o foo.html -V revealjs-url:/home/batlab/.pandoc/templates/reveal.js/ --table-of-contents -c /home/batlab/.pandoc/templates/reveal.js/css/theme/night.css --highlight-style pygments

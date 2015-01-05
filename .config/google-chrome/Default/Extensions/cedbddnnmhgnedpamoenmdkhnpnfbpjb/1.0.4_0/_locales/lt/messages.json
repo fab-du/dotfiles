@@ -1,0 +1,10 @@
+{
+   "description": {
+      "description": "Short application description",
+      "message": "Keleto žaidėjų 3D biliardo žaidimai"
+   },
+   "name": {
+      "description": "Application name, used in install dialog etc.",
+      "message": "Pool"
+   }
+}

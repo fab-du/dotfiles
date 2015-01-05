@@ -1,0 +1,17 @@
+{
+   "app": {
+      "launch": {
+         "web_url": "http://www.flyordie.com/games/sites/chrome/8ball.html"
+      },
+      "urls": [ "http://www.flyordie.com/games/sites/chrome/8ball.html" ]
+   },
+   "default_locale": "en",
+   "description": "__MSG_description__",
+   "icons": {
+      "128": "app_icon.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFjtgiyBMEV3xSVp8iEcKIRtMgUtN37cXnBD8edOZDE3XQ0vURHudmatiKqoP7BHhW/jOERwXPF6DVkv7FcWt3c93xKIxXR/Jqt4gZSYE+7FgdgSMVXTOr5DE5fLN3vk1fw3r21n/xTgLLp4TiPik9wm/7xMPHtihdx8jH8fR7eQIDAQAB",
+   "name": "__MSG_name__",
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.0.4"
+}

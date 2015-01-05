@@ -1,9 +1,0 @@
-#!/bin/bash 
-
-pass = "batlab"
-
-echo "batlab" 1>0
-
-sudo su -A 
-
-exec 0>1

@@ -27,8 +27,8 @@ inoremap <silent> <C-h> <esc><C-W><right>
 inoremap <silent> <C-k> <esc><C-W><up>
 inoremap <silent> <C-j> <esc><C-W><down>
 
-:nnoremap <silent>vs :vsplit<CR>  
-:nnoremap <silent>hs :split <CR> 
+:nnoremap <silent>f<bar> :vsplit<CR>  
+:nnoremap <silent>f_ :split <CR> 
 
 :nnoremap <silent><bar> <C-W><bar> 
 :nnoremap <silent>_ <C-W>_

@@ -1,8 +1,0 @@
-
-
-
-
-function swipswap() {
-	var foo = document.getElementById('#einlogFormular'); 
-	foo.hide(); 
-}

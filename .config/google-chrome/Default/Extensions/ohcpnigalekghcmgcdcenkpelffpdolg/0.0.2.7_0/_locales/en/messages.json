@@ -1,0 +1,224 @@
+{
+   "EnableHSL": {
+      "message": "Show HSL"
+   },
+   "EnableRGB": {
+      "message": "Show RGB"
+   },
+   "ShowRGBHSL": {
+      "message": "Show RGB and HSL on page"
+   },
+   "advancedOptions": {
+      "message": "Advanced Options"
+   },
+   "allowWebGl": {
+      "message": "Allow WebGL for Pixelated Preview"
+   },
+   "appleIcon": {
+      "message": "Use Apple Digital Color Meter logo"
+   },
+   "approved": {
+      "message": "Approved"
+   },
+   "autocopyhex": {
+      "message": "Attempt to auto copy hex value to clipboard"
+   },
+   "bbackgroundColor": {
+      "message": "Popup Background Color"
+   },
+   "bgPageUnavailable": {
+      "message": "Background Snapshot Not Responding - Please Refresh the Page and Try Again."
+   },
+   "borderValue": {
+      "message": "Borders to use (css value)"
+   },
+   "buyRegisterTip": {
+      "message": "Click to Buy & Register a ColorPick License or Opt-in."
+   },
+   "clear": {
+      "message": "Clear"
+   },
+   "clearSync": {
+      "message": "Clear Sync Storage"
+   },
+   "closeAndExit": {
+      "message": "Close and Exit Color Pick Mode"
+   },
+   "colorOfDay": {
+      "message": "Color of the day"
+   },
+   "configurationHelp": {
+      "message": "Help & Options"
+   },
+   "contSprevZoomd": {
+      "message": "Large size on page preview"
+   },
+   "copycolorval": {
+      "message": "Copy the color value"
+   },
+   "dblClick": {
+      "message": "Double click"
+   },
+   "default": {
+      "message": "Default"
+   },
+   "desktopapp": {
+      "message": "Desktop Color Pick App"
+   },
+   "disablePickEveryTime": {
+      "message": "Do not start picking each time popup is clicked"
+   },
+   "disableRewriting": {
+      "message": "Disable affiliation of non-affiliate links"
+   },
+   "emptyDesc": {
+      "message": ""
+   },
+   "error": {
+      "message": "Error"
+   },
+   "extDescription": {
+      "message": "An eye-dropper & color-picker tool that allows you to select color values from webpages."
+   },
+   "extName": {
+      "message": "ColorPick Eyedropper"
+   },
+   "fetchSync": {
+      "message": "Fetch settings from Google Account Sync Storage"
+   },
+   "fishEye": {
+      "message": "Fish Eye Amount"
+   },
+   "full": {
+      "message": "Full"
+   },
+   "getStandaloneApp": {
+      "message": "ColorPick Standalone Application"
+   },
+   "hasAgreedToLicense": {
+      "message": "Has agreed to Terms of Use"
+   },
+   "help": {
+      "message": "Help/Info"
+   },
+   "hideMinimize": {
+      "message": "Hide/Minimize [esc]"
+   },
+   "history": {
+      "message": "History"
+   },
+   "iconIsBitmap": {
+      "message": "Icon is zoomed pixel preview"
+   },
+   "iconIsPreview": {
+      "message": "Use icon badge square color preview"
+   },
+   "inappComError": {
+      "message": "Temporary problem with this payment method (Check your Internet connectivity), please try again later, try the buy license key method or contact the developer sam@vidsbee.com"
+   },
+   "inappPurchaseError": {
+      "message": "Unknown failure!  Check your Internet connectivity."
+   },
+   "licenseComError": {
+      "message": "Problem communicating with license server.  Make sure your firewall is open on port 80 or contact your system administrator.  Please try again soon!"
+   },
+   "licenseExceeded": {
+      "message": "License may be in use on the maximum number of hosts.  License upgrade may resolve the issue... Launch upgrade webpage?"
+   },
+   "loadsyncOptions": {
+      "message": "Sync Storage options have been loaded and saved."
+   },
+   "maxZoom": {
+      "message": "Max Zoomed"
+   },
+   "modifyLicense": {
+      "message": "Modify License"
+   },
+   "off": {
+      "message": "Off"
+   },
+   "on": {
+      "message": "On"
+   },
+   "pickAgainLocked": {
+      "message": "Pick Another Color [Enter]"
+   },
+   "pickAgainUnlocked": {
+      "message": "Select Current Color [Enter]"
+   },
+   "pickEveryTime": {
+      "message": "Start picking each time popup is clicked"
+   },
+   "pixelatedPreview": {
+      "message": "Zoomed Preview is Pixelated"
+   },
+   "popOutWindow": {
+      "message": "Pop-Out (separate window)"
+   },
+   "pressEnterToPick": {
+      "message": "Press Enter to Pick Color"
+   },
+   "reSnapPage": {
+      "message": "Refresh Picture of Page [r]"
+   },
+   "registerBanner": {
+      "message": "Register"
+   },
+   "registerButton": {
+      "message": "Register"
+   },
+   "registered": {
+      "message": "Registered"
+   },
+   "resetIcon": {
+      "message": "Revert to normal icon"
+   },
+   "rightClick": {
+      "message": "Right click"
+   },
+   "saveOptions": {
+      "message": "Save Options"
+   },
+   "savedoptions": {
+      "message": "Options Saved."
+   },
+   "seeTerms": {
+      "message": "See Terms of Use"
+   },
+   "shareClors": {
+      "message": "Color of the Day Statistics (See Terms of Use)"
+   },
+   "showColorChooser": {
+      "message": "Show Color Chooser"
+   },
+   "showDefaults": {
+      "message": "Show Defaults"
+   },
+   "showPreviewInContentS": {
+      "message": "Show image preview near cursor while picking"
+   },
+   "showPreviousClr": {
+      "message": "Show Split Color Preview with Previous Color"
+   },
+   "showndefaults": {
+      "message": "Please press save, now showing defaults."
+   },
+   "terms": {
+      "message": "Terms of Use"
+   },
+   "unregistered": {
+      "message": "Unregistered"
+   },
+   "usageStatistics": {
+      "message": "Gather Usage Statistics (See Terms of Use)"
+   },
+   "useCSSValues": {
+      "message": "Use CSS values for RGB/HSL"
+   },
+   "usePNG": {
+      "message": "Use PNG quality when available"
+   },
+   "usePrevColorBG": {
+      "message": "Use Previous Color for Background"
+   }
+}

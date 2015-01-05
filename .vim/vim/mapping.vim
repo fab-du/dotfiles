@@ -1,3 +1,6 @@
+"speed edit vimrc 
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "type vg to search a word in google
 vmap g :<C-U>!iceweasel "http://www.google.fr/search?hl=fr&q=<cword>&btnG=Recherche+Google&meta=" &gt;& /dev/null<CR><CR>
@@ -16,23 +19,19 @@ vnoremap <a-f1> "sy/<c-r>=substitute(@s,'\n','\\n','g')<cr>/<cr>n:%s/<c-r>=subst
 "}}}
 
 " a shortcut to show the numbered register contents
-map <f2> :reg "0123456789-*+:/<cr>
-
+map 	 <f2> :reg "0123456789-*+:/<cr>
 map 	 <f3> :TagbarToggle<cr>
-
 nmap 	 <f4> :NERDTreeToggle<cr> 
 inoremap <f4> <esc>:NERDTreeToggle<cr> 
-
 nnoremap <f5> :Dispatch<cr> 
 inoremap <f5> <esc>:Dispatch<cr> 
-
 nmap <silent> <f6> :SyntasticCheck<cr>
 
 " editing 
 
 nnoremap <localleader>; A;<Esc>
-nnoremap mn ]m  " Jump to the next function 
-nnoremap mN [m  " jump to the previous Function 
+nnoremap fn ]m  " Jump to the next function 
+nnoremap fp [m  " jump to the previous Function 
 nnoremap <C-l> :noh<cr>
 " Reselect text that was just pasted {{{
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/

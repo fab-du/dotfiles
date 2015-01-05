@@ -1,6 +1,0 @@
-
-#!/bin/bash 
-
-rm *.o 
-rm Makefile 
-rm ScrennPro 

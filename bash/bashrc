@@ -1,0 +1,10 @@
+source ~/bash/lib/bash_config.sh 
+source ~/bash/lib/color.sh 
+source ~/bash/lib/git_prompt.sh 
+source ~/bash/lib/prompt.sh 
+source ~/bash/lib/aliases.sh 
+source ~/bash/lib/options.sh 
+source ~/bash/lib/functions.sh 
+source ~/bash/lib/completion.sh 
+source ~/bash/lib/ssh-agent.sh 
+source ~/bash/lib/path.sh 

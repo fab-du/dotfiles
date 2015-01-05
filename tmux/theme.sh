@@ -1,4 +1,4 @@
-#### COLOUR
+#### COLOR
 
 tm_icon="♟"
 tm_color_active=colour118
@@ -48,15 +48,17 @@ set-option -g display-panes-colour $tm_color_inactive
 # clock
 set-window-option -g clock-mode-colour $tm_color_active
 
-#tm_spotify="#[fg=$tm_color_music]#(osascript ~/.dotfiles/applescripts/spotify.scpt)"
-#tm_itunes="#[fg=$tm_color_music]#(osascript ~/.dotfiles/applescripts/itunes.scpt)"
-#tm_rdio="#[fg=$tm_color_music]#(osascript ~/.dotfiles/applescripts/rdio.scpt)"
-tm_battery="#(~/.dotfiles/bin/battery_indicator.sh)"
+### Colors
+setw -g window-status-bell-attr blink
+setw -g window-status-bell-bg green
+setw -g window-status-bell-fg black
+setw -g window-status-current-bg white
+setw -g window-status-current-fg blue
 
 tm_date="#[fg=$tm_color_inactive] %R %d %b"
 tm_host="#[fg=$tm_color_feature,bold]#h"
 tm_session_name="#[fg=$tm_color_feature,bold]$tm_icon #S"
+tm_battery="#(~/bin/battery_indicator.sh)"
 
 set -g status-left $tm_session_name
-#set -g status-right $tm_itunes' '$tm_rdio' '$tm_battery' '$tm_date' '$tm_host
-set -g status-right $tm_date' '$tm_host' '$tm_battery
+#set -g status-right $tm_date' '$tm_host' 'tm_battery 

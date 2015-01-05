@@ -4,7 +4,7 @@ tags1
 tags2
 tags.bak
 *-SCRATCH.*
-.vim/tmp/*
-.vim/tmp/**/*
+.vim/tmp/
 .vim/view/* 
+.config/google-chrome/ 
 

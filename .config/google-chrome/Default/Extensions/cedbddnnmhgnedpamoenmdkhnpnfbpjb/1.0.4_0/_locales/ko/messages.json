@@ -1,0 +1,10 @@
+{
+   "description": {
+      "description": "Short application description",
+      "message": "온라인 당구"
+   },
+   "name": {
+      "description": "Application name, used in install dialog etc.",
+      "message": "풀"
+   }
+}

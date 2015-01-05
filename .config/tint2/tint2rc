@@ -123,7 +123,7 @@ launcher_icon_theme = gnome-colors-statler
 # Each launcher_item_app must be a full path to a .desktop file
 launcher_item_app = /usr/share/applications/terminator.desktop
 launcher_item_app = /usr/share/applications/xfce4-file-manager.desktop
-launcher_item_app = /usr/share/applications/gedit.desktop
+launcher_item_app = /usr/share/applications/gvim.desktop
 launcher_item_app = /usr/share/applications/iceweasel.desktop
 
 # System Tray

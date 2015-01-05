@@ -1,4 +1,5 @@
-<?xml version="1.0" ?><openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
+<?xml version="1.0"?>
+<openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
   <resistance>
     <strength>10</strength>
     <screen_edge_strength>20</screen_edge_strength>
@@ -405,7 +406,7 @@
           <enabled>true</enabled>
           <name>htop</name>
         </startupnotify>
-        <command>terminator --command=&quot;htop&quot;</command>
+        <command>terminator --command="htop"</command>
       </action>
     </keybind>
     <keybind key="W-v">
@@ -943,15 +944,16 @@
 
   # end of the example
 -->
-    
-    
-    
-    
-    
-    
-    
-  
-
-<application><focus>yes</focus><iconic>no</iconic><fullscreen>no</fullscreen><decor>no</decor><shade>yes</shade><position force="no"><x>0</x><y>0</y></position></application>
-</applications>
+    <application>
+      <focus>yes</focus>
+      <iconic>no</iconic>
+      <fullscreen>no</fullscreen>
+      <decor>no</decor>
+      <shade>yes</shade>
+      <position force="no">
+        <x>0</x>
+        <y>0</y>
+      </position>
+    </application>
+  </applications>
 </openbox_config>

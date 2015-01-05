@@ -1,7 +1,0 @@
-
-function register( registration_data ) {
-    
-}
-
-
-exports.register= register ; 

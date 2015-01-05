@@ -1,8 +1,0 @@
-/*body{*/
-    /*background-image : url('data:img/clementine.png'); */
-/*}*/
-
-#fotolist
-{
-    display: none; 
-}

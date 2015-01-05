@@ -2,7 +2,7 @@ delay=1
 region=3
 action=1
 show_mouse=1
-screenshot_dir=file:/home/batlab/backup
+screenshot_dir=file:/home/batlab/Project/J2EE/WAI_PRO
 app=viewnior
 last_user=
 

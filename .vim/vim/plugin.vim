@@ -25,14 +25,15 @@ let g:ycm_filetype_blacklist = {
 """ Syntastic settings"{{{
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = 'E'
+let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = 'S'
-let g:syntastic_warning_symbol = 'W'
+let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_warning_symbol = 'S'
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_aggregate_errors = 1
 "jump to the first issue detected if error"
 let g:syntastic_auto_jump = 2
-nmap <silent> <F6> :SyntasticCheck<cr>
+nmap <silent><F6> :SyntasticCheck<cr>
 
 if ! &diff
     let g:syntastic_check_on_open = 1
@@ -47,7 +48,7 @@ let g:tagbar_width = 25
 let g:tagbar_iconchars = ['+', '-']
 "}}}
 
-"Markdown " {{{2
+" {{{ Markdown
 augroup markdown 
    au!
    au BufRead,BufNewFile *.md set filetype=markdown
@@ -71,3 +72,60 @@ endfunction
 inoremap <NL> <C-R>=(Ulti_ExpandOrJump_and_getRes() > 0)?"":IMAP_Jumpfunc('', 0)<CR>
 let g:UltiSnipsSnippetsDir = "~/.vim/my/UltiSnips/"
 "}}}
+"
+
+
+"QuickRun 
+let g:quickrun_config = {}
+
+let g:quickrun_config.markdown = {
+\ 'type': 'markdown/pandoc',
+\ 'cmdopt': '-s',
+\ 'outputter': 'browser'
+\ }
+
+
+" JavaScript {{{
+" ---------------------------------------------------------------------------------------------------
+let g:quickrun_config['javascript'] = {
+	\ 'exec'      : '%c %s:p',
+	\ 'command'   : 'node',
+	\ 'runner'    : 'vimproc',
+\ }
+
+let g:quickrun_config['javascript/jshint'] = {
+	\ 'exec'      : '%c %s:p ',
+	\ 'command'   : 'jshint',
+	\ 'runner'    : 'vimproc',
+\ }
+
+let g:quickrun_config['javascript/jslint'] = {
+	\ 'exec'      : '%c %s:p ',
+	\ 'command'   : 'jslint',
+	\ 'runner'    : 'vimproc',
+\ }
+
+let g:quickrun_config['javascript/gjslint'] = {
+	\ 'exec'      : '%c %s:p ',
+	\ 'command'   : 'gjslint',
+	\ 'runner'    : 'vimproc',
+\ }
+
+let g:quickrun_config['javascript/mocha'] = {
+	\ 'exec'      : '%c %o %s:p',
+	\ 'command'   : 'mocha',
+	\ 'cmdopt'    : '--no-colors -R spec',
+	\ 'runner'    : 'vimproc',
+\ }
+
+
+" Qt {{{
+" ---------------------------------------------------------------------------------------------------
+let g:quickrun_config['qml/qmlscene'] = {
+	\ 'command' : 'qmlscene',
+	\ 'exec'    : '%c %s:p',
+	\ 'runner'  : 'vimproc',
+	\ 'quickfix/errorformat' : 'file:\/\/%f:%l %m',
+\ }
+
+let g:quickrun_config['qml'] = g:quickrun_config['qml/qmlscene']

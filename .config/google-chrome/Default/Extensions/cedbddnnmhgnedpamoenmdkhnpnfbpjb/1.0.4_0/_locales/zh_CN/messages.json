@@ -1,0 +1,10 @@
+{
+   "description": {
+      "description": "Short application description",
+      "message": "3D多人台球游戏"
+   },
+   "name": {
+      "description": "Application name, used in install dialog etc.",
+      "message": "8號球"
+   }
+}

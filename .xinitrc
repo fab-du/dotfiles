@@ -1,9 +1,6 @@
 
-# Source profile File 
-source ~/.profile 
-
 # source xmodmap 
-if [ -s ~/.xmodmaprc ]; then
+if [ -f ~/.xmodmaprc ]; then
     xmodmap ~/.xmodmaprc
 fi
 

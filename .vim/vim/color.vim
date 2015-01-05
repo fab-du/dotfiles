@@ -40,7 +40,7 @@ hi search ctermfg=Yellow ctermbg=Blue cterm=bold,underline
 
 
 
-set statusline=♥%f  
+set statusline=♥♥%f  
 set statusline+=%= 
 set statusline+=%l
 set statusline+=%L

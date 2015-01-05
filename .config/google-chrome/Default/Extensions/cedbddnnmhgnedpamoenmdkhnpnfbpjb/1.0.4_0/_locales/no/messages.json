@@ -1,0 +1,10 @@
+﻿{
+  "name": {
+    "message": "Pool",
+    "description": "Application name, used in install dialog etc."
+  },
+  "description": {
+    "message": "3D multiplayer-biljard",
+    "description": "Short application description"
+  }
+}

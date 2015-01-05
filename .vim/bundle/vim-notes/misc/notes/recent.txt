@@ -1,1 +1,0 @@
-/home/batlab/.vim/bundle/vim-notes/misc/notes/shadow/Note taking commands

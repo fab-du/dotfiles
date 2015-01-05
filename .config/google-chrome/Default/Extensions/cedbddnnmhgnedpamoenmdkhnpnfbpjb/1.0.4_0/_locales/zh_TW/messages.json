@@ -1,0 +1,10 @@
+{
+   "description": {
+      "description": "Short application description",
+      "message": "線上桌球遊戲"
+   },
+   "name": {
+      "description": "Application name, used in install dialog etc.",
+      "message": "8號球"
+   }
+}

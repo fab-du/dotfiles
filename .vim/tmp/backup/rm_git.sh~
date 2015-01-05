@@ -1,8 +1,0 @@
-#!/bin/bash 
-
-FILE=/home/batlab/.vim/bundle
-
-for f in $FILE/* 
-do
-    rm -rf "$file/.gitignore" "$file/.git"  
-done

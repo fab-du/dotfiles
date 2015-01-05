@@ -10,6 +10,9 @@ dotfiles
    * .gitconfig
    * .conkyrc
    * .xmodmaprc
+   * .xsessionrc
+   * .bash\_profile 
+   * .profile 
 
 * .vim [dir]
 * .config[dir]

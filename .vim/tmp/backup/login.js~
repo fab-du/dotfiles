@@ -1,6 +1,0 @@
-
-function login(login_data) {
-    
-}
-
-exports.login = login; 

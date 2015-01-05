@@ -1,0 +1,10 @@
+{
+   "description": {
+      "description": "Short application description",
+      "message": "Multiplayer 3D Piljardi mängud"
+   },
+   "name": {
+      "description": "Application name, used in install dialog etc.",
+      "message": "8-Ball Pool"
+   }
+}

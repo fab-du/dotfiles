@@ -1,6 +1,0 @@
-package de.hs_mannheim.SRNInterface;
-
-
-public interface I_SRN_Window extends java.awt.event.WindowListener, java.awt.event.ActionListener{
-
-}

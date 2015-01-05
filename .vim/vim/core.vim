@@ -6,6 +6,10 @@ call pathogen#infect()
 filetype plugin indent on
 syntax on 
 
+"sys 
+let s:is_win   = has('win32') || has('win64')
+let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
+let s:is_linux = !s:is_mac && has('unix')
 
 set t_Co=256 
 set t_ut= 
@@ -42,9 +46,9 @@ let maplocalleader=";"
 set backup                        " enable backups
 set noswapfile                    " it's 2013, Vim.
 
-set undodir=~/.vim/tmp/undo//     " undo files
-set backupdir=~/.vim/tmp/backup// " backups
-set directory=~/.vim/tmp/swap//   " swap files
+set undodir=~/tmp/vim/tmp/undo//     " undo files
+set backupdir=~/tmp/vim/tmp/backup// " backups
+set directory=~/tmp/vim/tmp/swap//   " swap files
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
@@ -95,7 +99,7 @@ endfunction
 function! _(str)
         return s:move_cursor_pos_mapping(a:str, "\<Left>")
 endfunction
-nnoremap <expr> [prefix]s _(":%s/<Cursor>//g")
+noremap  <expr> [prefix]s _(":%s/<Cursor>//g")
 vnoremap <expr> [prefix]s _(":S/<Cursor>//g")
 nnoremap <expr> [prefix]S _(":%S/<Cursor>//g")
 vnoremap <expr> [prefix]S _(":S/<Cursor>//g")
@@ -177,9 +181,6 @@ function! s:QuitTab()
   endtry
 endfunction
 "}}}
-" Scripting helpers {{{1
-command -nargs=1 Warn echohl WarningMsg | echo <args> | echohl None
-" }}}
 
 let s:default_path = escape(&path, '\ ') " store default value of 'path'
 " Always add the current file's directory to the path and tags list if not
@@ -190,4 +191,3 @@ autocmd BufRead *
       \ exec "set path-=".s:default_path |
       \ exec "set path^=".s:tempPath |
       \ exec "set path^=".s:default_path
-
