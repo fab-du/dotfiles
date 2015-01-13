@@ -25,11 +25,11 @@
       "last_prompted_google_url": "https://www.google.de/",
       "pepper_flash_settings_enabled": true,
       "window_placement": {
-         "bottom": 737,
-         "left": 2,
+         "bottom": 714,
+         "left": 0,
          "maximized": false,
-         "right": 1022,
-         "top": 24,
+         "right": 1020,
+         "top": 1,
          "work_area_bottom": 739,
          "work_area_left": 0,
          "work_area_right": 1024,
@@ -42,6 +42,10 @@
       "enabled": true,
       "id": "2"
    },
+   "dns_prefetching": {
+      "host_referral_list": [ 2, [ "http://localhost:8090/", [ "http://localhost:8090/", 1.9130006098631032 ] ] ],
+      "startup_list": [ 1, "http://crunchbang.org/", "https://accounts.google.com/", "https://www.google.com/", "https://www.googleapis.com/" ]
+   },
    "download": {
       "directory_upgrade": true,
       "extensions_to_open": ""
@@ -53,7 +57,7 @@
       },
       "autoupdate": {
          "last_check": "13064910634327985",
-         "next_check": "13064927250481081"
+         "next_check": "13065238552468089"
       },
       "chrome_url_overrides": {
          "bookmarks": [ "chrome-extension://eemcgdkfndhakfknompkggombfjjjeno/main.html" ]
@@ -136,7 +140,7 @@
             },
             "initial_keybindings_set": true,
             "install_time": "13058642829884026",
-            "lastpingday": "13064140800296504",
+            "lastpingday": "13064832005333000",
             "location": 10,
             "manifest": {
                "background": {
@@ -255,7 +259,7 @@
 
             },
             "install_time": "13058622856556590",
-            "lastpingday": "13064140800296504",
+            "lastpingday": "13064832005333000",
             "location": 1,
             "manifest": {
                "app": {
@@ -357,7 +361,7 @@
             "is_active": false,
             "last_active_pingday": "13059734426114932",
             "last_launch_time": "13058924843886417",
-            "lastpingday": "13064140800296504",
+            "lastpingday": "13064832005333000",
             "location": 1,
             "manifest": {
                "app": {
@@ -426,7 +430,7 @@
 
             },
             "install_time": "13058924552078318",
-            "lastpingday": "13064140800296504",
+            "lastpingday": "13064832005333000",
             "location": 1,
             "manifest": {
                "app": {
@@ -482,7 +486,7 @@
 
             },
             "install_time": "13058622856332720",
-            "lastpingday": "13064140800296504",
+            "lastpingday": "13064832005333000",
             "location": 1,
             "manifest": {
                "app": {
@@ -680,7 +684,7 @@
                "scriptable_host": [ "\u003Call_urls>" ]
             },
             "install_time": "12979765737646185",
-            "lastpingday": "13064140800296504",
+            "lastpingday": "13064832005333000",
             "location": 1,
             "manifest": {
                "content_scripts": [ {
@@ -731,7 +735,7 @@
             "install_time": "13064101488971525",
             "last_active_pingday": "13059734426114932",
             "last_launch_time": "13058925299280234",
-            "lastpingday": "13064140800296504",
+            "lastpingday": "13064832005333000",
             "location": 1,
             "manifest": {
                "app": {
@@ -1295,7 +1299,7 @@
             },
             "initial_keybindings_set": true,
             "install_time": "13058622855802828",
-            "lastpingday": "13064140800296504",
+            "lastpingday": "13064832005333000",
             "location": 10,
             "manifest": {
                "app": {
@@ -1364,7 +1368,7 @@
             },
             "initial_keybindings_set": true,
             "install_time": "13058924551779619",
-            "lastpingday": "13064140800296504",
+            "lastpingday": "13064832005333000",
             "location": 1,
             "manifest": {
                "background": {
@@ -1443,7 +1447,7 @@
 
             },
             "install_time": "13058622856102500",
-            "lastpingday": "13064140800296504",
+            "lastpingday": "13064832005333000",
             "location": 1,
             "manifest": {
                "app": {
@@ -1487,7 +1491,7 @@
       "toolbarsize": -1
    },
    "gcm": {
-      "check_time": "13064248997518151"
+      "check_time": "13064912569385991"
    },
    "google": {
       "services": {
@@ -1808,6 +1812,11 @@
                   "port": 443,
                   "probability": 0.02,
                   "protocol_str": "quic"
+               },
+               "settings": {
+                  "4": 100,
+                  "5": 32,
+                  "6": 0
                },
                "supports_spdy": true
             },
@@ -2555,6 +2564,11 @@
                   "probability": 0.02,
                   "protocol_str": "quic"
                },
+               "settings": {
+                  "4": 100,
+                  "5": 32,
+                  "6": 0
+               },
                "supports_spdy": true
             },
             "www.google.de:80": {
@@ -2768,9 +2782,9 @@
          },
          "pref_version": 1
       },
-      "exit_type": "Crashed",
+      "exit_type": "Normal",
       "exited_cleanly": true,
-      "gaia_info_update_time": "13064908815716461",
+      "gaia_info_update_time": "13065133300299171",
       "local_profile_id": 9773998,
       "managed_user_id": "",
       "managed_users": {
@@ -2797,16 +2811,16 @@
          "extensions": {
             "settings": {
                "ahfgeienlihckogmohjhadlkjgocpleb": "E9BA7BF047F71EC4D039A9A8FF80F4427C2E4506C161951390941D23B12B1B42",
-               "bepbmhgboaologfdajaanbcjmnhjmhfn": "4C97DF2B74A1AC421BEF6E427483B6AD43E6A62FE50C14696AC35169516F1172",
-               "blpcfgokakmgnkcojhhkbfbldkacnbeo": "CA7AB602679F0FAE771473F687477056A2A7EDD4D42E72F7846DE5508C4691D2",
-               "cbkkbcmdlboombapidmoeolnmdacpkch": "0DB4FE37839ABCA0D19561DD926D1693B89B47BF00E99B5D880486C65C33470D",
-               "cedbddnnmhgnedpamoenmdkhnpnfbpjb": "B6061294B0DD2C916983860C651CA72171424A148CC182C8E65536AB87545476",
-               "coobgpohoikkiipiblmjeljniedjpjpf": "CC951FA7BD2CDD74691449C64098924D1E4C2FF6F1A11530CD17C53D0FFBDA94",
+               "bepbmhgboaologfdajaanbcjmnhjmhfn": "4C57C0CD987C4561B73524BCA595F8D5763192C3D3F019398916DC5BF07C6512",
+               "blpcfgokakmgnkcojhhkbfbldkacnbeo": "8D1082D69510006DFAD3094E8792591678EA3D85BE6DB133F779037D5BD4B15F",
+               "cbkkbcmdlboombapidmoeolnmdacpkch": "0D401683E5D46BCB2210E3EE308C1530BC29AB1004FF7ACA21EE8F0474A81C23",
+               "cedbddnnmhgnedpamoenmdkhnpnfbpjb": "FAFAC07F2CD981EFB2E96C01BCB3342CD8340411EAA9A3F76C2B6768A83AE139",
+               "coobgpohoikkiipiblmjeljniedjpjpf": "DBD6191FFA768A213A97378C85BAD50A5F106D31C4C596263DC15F3BC0A41297",
                "dnhpdliibojhegemfjheidglijccjfmc": "D54EDCD137A0B06FD2C723A1A793A0C9106968AE95F96E5EF6B9028CFD87C7B0",
                "eemcgdkfndhakfknompkggombfjjjeno": "E878123490B79FACFEF4D94FC1F87E7A6508016CE187C934BEBCC43B1A2F18B9",
                "ennkphjdgehloodpbhlhldgbnhmacadg": "11A49B93C8D1EC10A53BAF334B24C51C46C97332447170DFC01A32C6FE047E28",
-               "fkjongoeciifbagjhbjaemcajgimefed": "38BEAD9DE46BC2127DF74A6EE046D8A8A59F832EF7E384237C5AC09DF3D6EF31",
-               "gbchcmhmhahfdphkhkmpfmihenigjmpp": "050FA24F0AFE258F8C34A3C6C6BA10DB78AF954D0486205706AF87821DC739A9",
+               "fkjongoeciifbagjhbjaemcajgimefed": "1C9DE7C26F86328EB7A55529B12882194D990D5125504FA9E8F81762886239C7",
+               "gbchcmhmhahfdphkhkmpfmihenigjmpp": "7F2B208772B345976AB5FE91EAEEB01F5028B031E1E70E7E05FBB6B03BEE4210",
                "gfdkimpbcpahaombhbimeihdjnejgicl": "7488A32C21FE4FA9BF2A106D7A32660C529E1D7388192371F273C21444CEACDD",
                "kmendfapggjehodndflmmgagdbamhnfd": "DDE6F2D097D660F9D14CAEDFA23CE59AE00F79268E8324C4F4836A49C778957A",
                "mfehgcgbbipciphmccgaenjidiccnmng": "8FFB84A41EB147ABDDF8DA3F15E9EB791965A771D23C1572B809834D81AF7540",
@@ -2814,9 +2828,9 @@
                "mgndgikekgjfcpckkfioiadnlibdjbkf": "E8B5901B85855B11DC7ED30234F99919411CFDFFDC23CEFCCD85190C3CB04780",
                "neajdppkdcdipfabeoofebfddakdcjhd": "E2D732F936A714040A5BD5186444EF7D991ED3C7B097175E1CA44D24E340D22D",
                "nkeimhogjdpnpccoofpliimaahmaaome": "B8ADECBA3C46A21E13F4A9D119495D1E235FCF0FEBCBEBC4D82F7BB7A1C81F04",
-               "nmmhkkegccagdldgiimedpiccmgmieda": "62118727C17DD191127CC058E8D98D156676B697F91F4A2C710C71DC0384B229",
-               "ohcpnigalekghcmgcdcenkpelffpdolg": "69DBAF031AFDCADC96A784057FCC78DBAFEF0BAF9FE1D1F85F3935DBA8B70DD6",
-               "pjkljhegncpnkpknbcohdijeoejaedia": "8C45E3E17ECD014FFB054D874B317DF97FE31EBF744B62072CB83BDDF211C68B"
+               "nmmhkkegccagdldgiimedpiccmgmieda": "DA4F68B9EEF075BA4D0260C54D2F6EB1D23D02940230C65CFF6B15CEBA3B76B4",
+               "ohcpnigalekghcmgcdcenkpelffpdolg": "F22421F225F8EA78D8953476EA5CAACBFF6C497325E6E64724A9EBEA78406C09",
+               "pjkljhegncpnkpknbcohdijeoejaedia": "576393E8C7193F25D0D102732E24A0F23009B31672BF89B8E44C1C92A0BB8824"
             }
          },
          "google": {
@@ -2884,7 +2898,7 @@
       "has_setup_completed": true,
       "history_delete_directives": true,
       "keystore_encryption_bootstrap_token": "djEwU8hvjnvcMQgZHJOCKc84iG2feiiB5iayHEbLjLA7Ie3l4NMZidzOmZL5oCX9uq0p7c20l33exbO+uOLw0Y28yNDiItymfrGkW3N97vRNS1Q=",
-      "last_synced_time": "13064912282191396",
+      "last_synced_time": "13065133268873646",
       "managed_user_settings": true,
       "managed_user_shared_settings": true,
       "managed_users": true,
