@@ -1,7 +1,0 @@
-[Default Applications]
-application/pdf=kde4-okularApplication_pdf.desktop
-application/octet-stream=openshot.desktop
-
-[Added Associations]
-application/pdf=kde4-okular.desktop;kde4-okularApplication_pdf.desktop;
-application/octet-stream=openshot.desktop;

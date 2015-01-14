@@ -1,6 +1,0 @@
-vokoscreen Version: 2.0.0
-Record resolution: 1161x802
-Alsa string: -f alsa -i pulse 
-Qt Version: 4.8.6
-avconv Version: 9.11-6:9.11-3+b3
-Record String: avconv  -f x11grab -framerate 25 -video_size 1161x802 -i :0.0+1283,75 -dcodec copy -f alsa -i pulse  -pix_fmt yuv420p -c:v mpeg4 -c:a libmp3lame  -qscale 1  /home/batlab/videos/vokoscreen-2014-08-17_13-30-01.avi
