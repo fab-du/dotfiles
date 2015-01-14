@@ -1,4 +1,4 @@
-source ~/zsh/lib/apple.zsh-theme 
+source ~/zsh/lib/prompt.zsh 
 source ~/zsh/lib/path.zsh
 source ~/zsh/lib/functions.zsh
 source ~/zsh/lib/aliases.zsh
