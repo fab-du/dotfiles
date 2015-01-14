@@ -1,0 +1,24 @@
+#/bin/sh 
+
+
+
+params="$(echo $*)"
+
+echo "$params" >> "/home/batlab/tmp/tmp"
+
+domain="$(awk -F='' {'print $1'} /home/batlab/tmp/tmp)"
+site="$(awk -F='' {'print $2'} /home/batlab/tmp/tmp)"
+
+
+rm $HOME/tmp/tmp
+
+wget \
+     --recursive \
+     --no-clobber \
+     --page-requisites \
+     --html-extension \
+     --convert-links \
+     --restrict-file-names=windows \
+     --domains $domain \
+     --no-parent \
+         $site
