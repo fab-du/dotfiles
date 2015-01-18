@@ -22,7 +22,7 @@ let g:ycm_filetype_blacklist = {
       \}
 " }}}
 
-""" Syntastic settings"{{{
+""" Syntastic settings <F6>"{{{
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = '✗'
@@ -33,7 +33,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_aggregate_errors = 1
 "jump to the first issue detected if error"
 let g:syntastic_auto_jump = 2
-nmap <silent><F6> :SyntasticCheck<cr>
+nnoremap <silent><F6> :SyntasticCheck<cr>
 
 if ! &diff
     let g:syntastic_check_on_open = 1
@@ -72,8 +72,6 @@ endfunction
 inoremap <NL> <C-R>=(Ulti_ExpandOrJump_and_getRes() > 0)?"":IMAP_Jumpfunc('', 0)<CR>
 let g:UltiSnipsSnippetsDir = "~/.vim/my/UltiSnips/"
 "}}}
-"
-
 
 "QuickRun 
 let g:quickrun_config = {}
@@ -129,3 +127,35 @@ let g:quickrun_config['qml/qmlscene'] = {
 \ }
 
 let g:quickrun_config['qml'] = g:quickrun_config['qml/qmlscene']
+
+" Plugin Tabular {{{
+"
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
+if exists(":Tabularize")
+  nnoremap <Leader>a= :Tabularize /=<CR>
+  vnoremap <Leader>a= :Tabularize /=<CR>
+  nnoremap <Leader>a: :Tabularize /:\zs<CR>
+  vnoremap <Leader>a: :Tabularize /:\zs<CR>
+endif
+" }}}
+"
+"Plugin DBext {{{ 
+"# move to line , type ,sel for "select"
+"# and type 'e' for execute 
+"# en 0 
+" <leader>se for multiple query 
+
+nnoremap <leader>l :DBListTable<CR> 
+
+"}}}

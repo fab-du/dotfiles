@@ -8,13 +8,7 @@ source $HOME/.vim/vim/mapping.vim
 let g:pandoc#after#modules#enabled = ["nrrwrgn", "ultisnips"]
 let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=wai:passwd=wai:dbname=wai_db'
 
-"# move to line , type ,sel for "select"
-"# and type 'e' for execute 
-"# en 0 
-
-" <leader>se for multiple query 
-"
-map <leader>l :DBListTable<CR> 
+inoremap jk <esc>
 
 vnoremap <leader>tab :call <SID>table()<cr>
 function! s:table() range
@@ -27,4 +21,17 @@ function! s:table() range
 endfunction
 
 command! -range=% Rst :'<,'>!pandoc -f markdown -t rst
+
+" Put all js file in args list 
+
+
+function! s:put_in_args( dirname ) 
+  exec Rooter 
+  s:dir_found = finddir( dirname )
+
+    if s:dir_found
+     let s:result = system( 'shell find . -name "*.js" -type f -print' )
+      execute("argadd"." ". s:result) 
+    endif
+endfunction
 

@@ -88,7 +88,7 @@ function! NotMoveWhenLeavingFromInsertMode()
 		return "\<Esc>"
 	endif
 endfunction
-imap <silent><expr> <Esc> NotMoveWhenLeavingFromInsertMode()
+inoremap <silent><expr> <Esc> NotMoveWhenLeavingFromInsertMode()
 "imap <silent><expr>jk NotMoveWhenLeavingFromInsertMode()
 " Ref: http://d.hatena.ne.jp/osyo-manga/20130424/1366800441
 function! s:move_cursor_pos_mapping(str, ...)
@@ -99,7 +99,7 @@ endfunction
 function! _(str)
         return s:move_cursor_pos_mapping(a:str, "\<Left>")
 endfunction
-noremap  <expr> [prefix]s _(":%s/<Cursor>//g")
+nnoremap  <expr> [prefix]s _(":%s/<Cursor>//g")
 vnoremap <expr> [prefix]s _(":S/<Cursor>//g")
 nnoremap <expr> [prefix]S _(":%S/<Cursor>//g")
 vnoremap <expr> [prefix]S _(":S/<Cursor>//g")
@@ -116,12 +116,12 @@ vnoremap <silent><A-k> :m '<-2<CR>gv=gv
 
 "}}}
 "2. Upper/Lower word"{{{
-nmap <leader>u mQviwU`Q
-nmap <leader>l mQviwu`Q
+nnoremap <leader>u mQviwU`Q
+nnoremap <leader>l mQviwu`Q
 
 "3. Upper/Lower the first char of word 
-nmap <leader>U mQgewvU`Q
-nmap <leader>L mQgewvu`Q
+nnoremap <leader>U mQgewvU`Q
+nnoremap <leader>L mQgewvu`Q
 "}}}
 
 "Ignore Files {{{ "{{{"{{{"{{{
@@ -167,8 +167,8 @@ nnoremap<nowait> j gj
 nnoremap<nowait> k gk
 xnoremap<nowait> j gj
 xnoremap<nowait> k gk
-nmap J 5j
-nmap K 5k
+nnoremap J 5j
+nnoremap K 5k
 xmap J 5j
 xmap K 5k
 nnoremap QQ :QuitTab<cr>
@@ -183,8 +183,8 @@ endfunction
 "}}}
 
 let s:default_path = escape(&path, '\ ') " store default value of 'path'
-" Always add the current file's directory to the path and tags list if not
 " already there. Add it to the beginning to speed up searches.
+" Always add the current file's directory to the path and tags list if not
 autocmd BufRead *
       \ let s:tempPath=escape(escape(expand("%:p:h"), ' '), '\ ') |
       \ exec "set path-=".s:tempPath |
