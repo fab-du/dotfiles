@@ -30,8 +30,7 @@ nmap <silent> <f6> :SyntasticCheck<cr>
 " editing 
 
 nnoremap <localleader>; A;<Esc>
-nnoremap fn ]m  " Jump to the next function 
-nnoremap fp [m  " jump to the previous Function 
+
 nnoremap <C-l> :noh<cr>
 " Reselect text that was just pasted {{{
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/

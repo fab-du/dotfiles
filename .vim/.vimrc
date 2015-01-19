@@ -35,3 +35,14 @@ function! s:put_in_args( dirname )
     endif
 endfunction
 
+
+" move up/down quickly by using Alt-j, Alt-k
+" which will move us around by functions
+nnoremap <silent> fn }
+nnoremap <silent> fp {
+autocmd FileType ruby map <buffer>  fn ]m
+autocmd FileType ruby map <buffer>  fp [m
+autocmd FileType rspec map <buffer> fn }
+autocmd FileType rspec map <buffer> fp {
+autocmd FileType *.js map <buffer> <A-k> }
+autocmd FileType *.js map <buffer> <A-j> {
