@@ -41,10 +41,13 @@ nmap <leader>q :q!<CR>
 nmap <leader>wq :wq<CR> 
 nmap <leader>ww :w<CR> 
 
-vnoremap <left>  :2wincmd <<cr>
-vnoremap <right> :2wincmd ><cr>
-vnoremap <up>    :2wincmd +<cr>
-vnoremap <down>  :2wincmd -<cr>
+" Resize windows with arrow keys
+nnoremap <C-Up> <C-w>+
+nnoremap <C-Down> <C-w>-
+nnoremap <C-Left> <C-w><
+nnoremap <C-Right> <C-w>>
+
+
 "}}
 
 
