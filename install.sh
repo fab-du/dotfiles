@@ -26,5 +26,3 @@ fi
 
   ln -s $PWD/$dotfile $HOME/$dotfile 
 done
-
-
