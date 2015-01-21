@@ -1,3 +1,4 @@
+source ~/zsh/lib/git.zsh
 source ~/zsh/lib/prompt.zsh 
 source ~/zsh/lib/path.zsh
 source ~/zsh/lib/functions.zsh
