@@ -1,6 +1,11 @@
 function toon {
 echo -n ""
 }
+
+function timemy {
+echo -n `date +%H:%M:%S`
+}
+
 get_git_dirty() {
 git diff --quiet || echo '*'
 }
@@ -21,7 +26,7 @@ vcs_info
 setopt prompt_subst
 #%~/ %{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}
 PROMPT='%{$fg[magenta]%}$(toon)%{$reset_color%} '
-RPROMPT='%~/ %{$reset_color%}${time} %{$fg[magenta]%}$(git_prompt_info)%{$reset_color%}$(git_prompt_status)%{$reset_color%}$(git_prompt_ahead)%{$reset_color%}'
+RPROMPT='%{$fg[yellow]%}%~/ %{$fg[blue]%}$(timemy)%{$fg[magenta]%}$(git_prompt_info)%{$reset_color%}$(git_prompt_status)%{$reset_color%}$(git_prompt_ahead)%{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" ☁ %{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
