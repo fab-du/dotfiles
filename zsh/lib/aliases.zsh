@@ -1,5 +1,5 @@
 alias sudo='sudo -E'
-alias man=vimman
+#alias man=vimman
 
 alias ls='ls -h --color=always --group-directories-first'
 alias lsl='ls -l'

@@ -4,7 +4,7 @@ autoload colors; colors;
 function nop() { }
 
 # Use vim as a man viewer
-function vimman() { vim -R -c "man $1 $2" -c "bdelete 1"; }
+#function vimman() { vim -R -c "man $1 $2" -c "bdelete 1"; }
 
 # Extract Stuff
 extract () {
