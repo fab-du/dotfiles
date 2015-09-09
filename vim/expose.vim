@@ -1,8 +1,8 @@
-so ~/vim.minimal/expose_core.vim 
-so ~/vim.minimal/expose_filetype.vim 
-so ~/vim.minimal/expose_flavour.vim 
-so ~/vim.minimal/expose_plugin.vim 
-so ~/vim.minimal/mapping.vim 
+so ~/dotfiles/vim/expose_core.vim
+so ~/dotfiles/vim/expose_filetype.vim
+so ~/dotfiles/vim/expose_flavour.vim
+so ~/dotfiles/vim/expose_plugin.vim
+so ~/dotfiles/vim/mapping.vim
 
 
 " to display a better text for closed folds

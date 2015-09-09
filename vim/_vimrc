@@ -1,0 +1,4 @@
+
+if has("gui-win32")
+  source $HOME/dotfiles/vim/expose.vim
+endif
