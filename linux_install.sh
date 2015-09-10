@@ -6,10 +6,6 @@ dot_backup=$HOME/tmp/"dotfiles_backup"
 mkdir $dot_backup 
 
 
-#git update 
-
-echo $PWD/$dotfiles 
-
 for dotfile in $dotfiles
 do
 if [ -d $HOME/$dotfile ] 
