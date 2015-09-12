@@ -27,7 +27,7 @@ endif
 
 set nocompatible              " be iMproved, required
     filetype off                  " required
-    set rtp+=~/dotfiles/bundle/Vundle.vim
+    set rtp+=~/dotfiles/.vim/bundle/Vundle.vim
     call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
     source ~/dotfiles/.vim/Bundle.vim
