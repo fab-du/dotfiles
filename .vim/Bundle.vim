@@ -1,17 +1,19 @@
+
+call plug#begin('~/.vim/bundle')
 "Integration ---------------------------------------------"{{{
-Plugin 'tpope/vim-fugitive'     
-Plugin 'airblade/vim-gitgutter' 
-Plugin 'benmills/vimux'         
-Plugin 'tpope/vim-classpath'
-Plugin 'youjumpiwatch/vim-androidmanifest'
-Plugin 'vim-scripts/adt.vim'
+Plug 'tpope/vim-fugitive'     
+Plug 'airblade/vim-gitgutter' 
+Plug 'benmills/vimux'         
+Plug 'tpope/vim-classpath'
+Plug 'youjumpiwatch/vim-androidmanifest'
+Plug 'vim-scripts/adt.vim'
 
 "shell , completly write in vimL 
 "mainly important for window system
 "where the shell is not great at all. :/
 
 if has('win32') || has('win64')
-    Plugin 'Shougo/vimshell.vim'    
+    Plug 'Shougo/vimshell.vim'    
 endif
 
 " features 
@@ -19,98 +21,99 @@ endif
 " :FullScreen 
 "  and this great function amongst others :  xolox#misc#os#exec()
 " :call xolox#misc#os#exec({'command': 'vimrun', 'async': 1})
-Plugin 'xolox/vim-shell'        
+Plug 'xolox/vim-shell'        
 
  " colored man in vim 
-Plugin 'jez/vim-superman'       
+Plug 'jez/vim-superman'       
 " End Integration -----------------------------------------"}}}
 
 " Code completion ------------------------------------"{{{
-Plugin 'vim-scripts/javacomplete'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'tdcdev/ycm_simple_conf'
+Plug 'vim-scripts/javacomplete'
+Plug 'marijnh/tern_for_vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator'
+Plug 'tdcdev/ycm_simple_conf'
 " End Code completion ---------------------------------"}}}
 
 "helper :  ---------------------------------------"{{{
 " use by xolox plugins and others
 " and this great function amongst others :  xolox#misc#os#exec()
-Plugin 'xolox/vim-misc'
-Plugin 'vim-scripts/DfrankUtil'
+Plug 'xolox/vim-misc'
+Plug 'vim-scripts/DfrankUtil'
 " End helper :  ---------------------------------------"}}}
 
 " Full Language Support "{{{
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'moll/vim-node'
-Plugin 'fatih/vim-go'
-Plugin 'vim-scripts/dbext.vim' 
-Plugin 'nono/jquery.vim'
-Plugin 'Townk/vim-qt'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'burnettk/vim-angular'
-Plugin 'tpope/vim-markdown'
-Plugin 'yuratomo/java-api-android'
+Plug 'vim-ruby/vim-ruby'
+Plug 'moll/vim-node'
+Plug 'fatih/vim-go'
+Plug 'vim-scripts/dbext.vim' 
+Plug 'nono/jquery.vim'
+Plug 'Townk/vim-qt'
+Plug 'suan/vim-instant-markdown'
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'burnettk/vim-angular'
+Plug 'tpope/vim-markdown'
+Plug 'yuratomo/java-api-android'
 " End Full Language Support "}}}
 
 "Make"{{{
-Plugin 'thinca/vim-quickrun' 
-Plugin 'tpope/vim-dispatch'
+Plug 'thinca/vim-quickrun' 
+Plug 'tpope/vim-dispatch'
 if has('nvim')
-    Plugin 'benekastah/neomake'
+    Plug 'benekastah/neomake'
 endif 
 " End Make"}}}
 
 " Enhance vim built-in Features"{{{
-Plugin 'sjl/gundo.vim'
-Plugin 'mbbill/undotree'
-Plugin 'airblade/vim-rooter'
+Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
+Plug 'airblade/vim-rooter'
 " End Enhance vim built-in Features"}}}
 
 " Code Navigation"{{{
-Plugin 'mileszs/ack.vim'
-Plugin 'rking/ag.vim'
-Plugin 'justinmk/vim-sneak'
-Plugin 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
+Plug 'justinmk/vim-sneak'
+Plug 'majutsushi/tagbar'
 " End Code Navigation"}}}
 
 " Vanity stuff"{{{
-Plugin 'bling/vim-airline'
-Plugin 'jszakmeister/vim-togglecursor' 
-Plugin 'junegunn/goyo.vim'
+Plug 'bling/vim-airline'
+Plug 'jszakmeister/vim-togglecursor' 
+Plug 'junegunn/goyo.vim'
 " End Vanity stuff"}}}
 
 " Snippet and dic"{{{
-Plugin 'guileen/vim-node-dict'
-Plugin 'jamescarr/snipmate-nodejs'
-Plugin 'vim-scripts/UltiSnips' 
+Plug 'guileen/vim-node-dict'
+Plug 'jamescarr/snipmate-nodejs'
+Plug 'vim-scripts/UltiSnips' 
 " End Snippet and dic"}}}
 
 " Codify"{{{
-Plugin 'tpope/vim-unimpaired'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-surround'
-Plugin 'godlygeek/tabular'
-Plugin 'mattn/emmet-vim'
-Plugin 'kana/vim-smartinput'
-Plugin 'Valloric/MatchTagAlways'
+Plug 'tpope/vim-unimpaired'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
+Plug 'mattn/emmet-vim'
+Plug 'kana/vim-smartinput'
+Plug 'Valloric/MatchTagAlways'
 " End Codify"}}}
 
 " File Navigation"{{{
-Plugin 'kien/ctrlp.vim'
-Plugin 'Shougo/unite.vim'
-" End File Navigation"}}}
+Plug 'kien/ctrlp.vim'
+Plug 'Shougo/unite.vim'
+" En File Navigation"}}}
 
 " @TODO  "{{{
-Plugin 'tpope/vim-abolish'
-Plugin 'scrooloose/syntastic'
-Plugin 'kana/vim-textobj-user' "}}}
+Plug 'tpope/vim-abolish'
+Plug 'scrooloose/syntastic'
+Plug 'kana/vim-textobj-user' "}}}
 
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'othree/yajs.vim'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'scrooloose/nerdtree'
+Plug 'othree/yajs.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
+call plug#end()

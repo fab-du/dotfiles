@@ -1,13 +1,5 @@
 #!/bin/sh
 
-cd $HOME/dotfiles/.vim/
-mkdir bundle
-cd bundle
-git clone https://github.com/VundleVim/Vundle.vim
-cd $HOME/dotfiles/.vim/
-mkdir autoload
-cd autoload
-git clone https://github.com/VundleVim/Vundle.vim
 
 dotfiles=$( ls -A )
 
@@ -34,4 +26,7 @@ done
 
 
 # For vim 
-vim +PluginInstall +qall
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +PlugInstall +qall

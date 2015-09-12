@@ -25,17 +25,10 @@ elseif g:is_win && g:is_gui
     let s:win_bin_dir = expand("$HOME/vim_bin")
 endif
 
-set nocompatible              " be iMproved, required
-    filetype off                  " required
-    set rtp+=~/dotfiles/.vim/bundle/Vundle.vim
-    call vundle#begin()
-    Plugin 'VundleVim/Vundle.vim'
-    source ~/dotfiles/.vim/Bundle.vim
-call vundle#end()            " required
-
 filetype plugin indent on
 syntax on
 
+source ~/dotfiles/.vim/Bundle.vim
 
 " for rooter plugin to work properly
 " Change to current file directory 
