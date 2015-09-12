@@ -27,10 +27,10 @@ endif
 
 set nocompatible              " be iMproved, required
     filetype off                  " required
-    set rtp+="" . g:editor_root . "/bundle/Vundle.vim"
+    set rtp+=$HOME/dotfiles/bundle/Vundle.vim
     call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
-    source $HOME/dotfiles/.vim/Bundle.vim
+    source ~/dotfiles/.vim/Bundle.vim
 call vundle#end()            " required
 
 filetype plugin indent on
