@@ -9,3 +9,5 @@ tags.bak
 .config/google-chrome/ 
 bundle
 autoload
+tmp
+view
