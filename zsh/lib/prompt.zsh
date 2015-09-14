@@ -1,4 +1,4 @@
-source ~/.shell/lib/git_prompt.zsh
+source ~/dotfiles/zsh/lib/git_prompt.zsh
 
 function zle-line-init zle-keymap-select {
   zle reset-prompt
