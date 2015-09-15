@@ -111,7 +111,7 @@ Plug 'scrooloose/syntastic'
 Plug 'kana/vim-textobj-user' "}}}
 
 
-Plug 'scrooloose/nerdtree', {'on', 'NERDTreeToggle'}
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'christoomey/vim-tmux-navigator'
