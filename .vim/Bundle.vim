@@ -87,7 +87,7 @@ Plug 'junegunn/goyo.vim'
 " Snippet and dic"{{{
 Plug 'guileen/vim-node-dict'
 Plug 'jamescarr/snipmate-nodejs'
-Plug 'vim-scripts/UltiSnips' 
+Plug 'vim-scripts/UltiSnips' | Plug 'honza/vim-snippets'
 " End Snippet and dic"}}}
 
 " Codify"{{{
