@@ -117,7 +117,6 @@ set modeline
 set ttyfast
 set t_Co=256
 set background=dark
-colorscheme ion
 set startofline
 set switchbuf=useopen,usetab
 
