@@ -29,10 +29,10 @@ Plug 'jez/vim-superman'
 
 " Code completion ------------------------------------"{{{
 Plug 'vim-scripts/javacomplete', { 'for' : 'java'} 
-Plug 'marijnh/tern_for_vim'
-Plug 'Valloric/YouCompleteMe' , { 'for' : 'C++'} 
-Plug 'rdnetto/YCM-Generator'  , { 'for' : 'C++'}  
-Plug 'tdcdev/ycm_simple_conf' , { 'for' : 'C++'}  
+Plug 'marijnh/tern_for_vim', {'for': 'javascript'}
+Plug 'Valloric/YouCompleteMe' , { 'for' : 'cpp'} 
+Plug 'rdnetto/YCM-Generator'  , { 'for' : 'cpp'}  
+Plug 'tdcdev/ycm_simple_conf' , { 'for' : 'cpp'}  
 " End Code completion ---------------------------------"}}}
 
 "helper :  ---------------------------------------"{{{
@@ -43,17 +43,17 @@ Plug 'vim-scripts/DfrankUtil'
 " End helper :  ---------------------------------------"}}}
 
 " Full Language Support "{{{
-Plug 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby', { 'for' : 'ruby'}
 Plug 'moll/vim-node'
 Plug 'fatih/vim-go'
-Plug 'vim-scripts/dbext.vim' 
+Plug 'vim-scripts/dbext.vim', { 'for': 'sql'}
 Plug 'nono/jquery.vim'
-Plug 'Townk/vim-qt'
-Plug 'suan/vim-instant-markdown'
+Plug 'Townk/vim-qt', { 'for' : 'c++'}
+Plug 'suan/vim-instant-markdown', {'for' : 'markdown'}
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'burnettk/vim-angular'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown' , {'for' : 'markdown'} 
 Plug 'yuratomo/java-api-android'
 " End Full Language Support "}}}
 
