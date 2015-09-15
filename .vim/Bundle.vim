@@ -4,9 +4,9 @@ call plug#begin('~/.vim/bundle')
 Plug 'tpope/vim-fugitive'     
 Plug 'airblade/vim-gitgutter' 
 Plug 'benmills/vimux'         
-Plug 'tpope/vim-classpath'
-Plug 'youjumpiwatch/vim-androidmanifest'
-Plug 'vim-scripts/adt.vim'
+Plug 'tpope/vim-classpath' , { 'for' : 'java'}
+Plug 'youjumpiwatch/vim-androidmanifest' , { 'for' : 'java'}
+Plug 'vim-scripts/adt.vim', { 'for' : 'java'}
 
 "shell , completly write in vimL 
 "mainly important for window system
@@ -28,11 +28,11 @@ Plug 'jez/vim-superman'
 " End Integration -----------------------------------------"}}}
 
 " Code completion ------------------------------------"{{{
-Plug 'vim-scripts/javacomplete'
+Plug 'vim-scripts/javacomplete', { 'for' : 'java'} 
 Plug 'marijnh/tern_for_vim'
-Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator'
-Plug 'tdcdev/ycm_simple_conf'
+Plug 'Valloric/YouCompleteMe' , { 'for' : 'C++'} 
+Plug 'rdnetto/YCM-Generator'  , { 'for' : 'C++'}  
+Plug 'tdcdev/ycm_simple_conf' , { 'for' : 'C++'}  
 " End Code completion ---------------------------------"}}}
 
 "helper :  ---------------------------------------"{{{
@@ -111,7 +111,7 @@ Plug 'scrooloose/syntastic'
 Plug 'kana/vim-textobj-user' "}}}
 
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', {'on', 'NERDTreeToggle'}
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'christoomey/vim-tmux-navigator'
