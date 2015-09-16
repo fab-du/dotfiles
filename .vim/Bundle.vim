@@ -4,6 +4,8 @@ call plug#begin('~/.vim/bundle')
 Plug 'tpope/vim-fugitive'     
 Plug 'airblade/vim-gitgutter' 
 Plug 'benmills/vimux'         
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'tpope/vim-classpath' , { 'for' : 'java'}
 Plug 'youjumpiwatch/vim-androidmanifest' , { 'for' : 'java'}
 Plug 'vim-scripts/adt.vim', { 'for' : 'java'}
@@ -114,6 +116,5 @@ Plug 'kana/vim-textobj-user' "}}}
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()

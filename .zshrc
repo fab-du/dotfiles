@@ -7,3 +7,8 @@ source ~/dotfiles/zsh/lib/keys.zsh
 source ~/dotfiles/zsh/lib/prompt.zsh
 
 export TERM=xterm-color
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+
+

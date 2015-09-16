@@ -93,7 +93,7 @@ nnoremap <silent><bar> <C-W><bar>
 nnoremap <silent>f= <C-W>=
 
 "Clipboard interaction
-nnoremap<silent><leader>p :set paste<CR> :r!xclip -o<CR> :set nopaste<CR> p`[v`]=
+nnoremap<silent><leader>p mz:-1r !xclip -o -sel clip<CR>`z
 vnoremap<silent><leader>y :!xclip -f -sel clip<cr>
 
 nnoremap <silent> g<leader>.   :call <SID>go_current()<CR>
