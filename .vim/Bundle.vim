@@ -75,7 +75,7 @@ Plug 'airblade/vim-rooter'
 
 " Code Navigation"{{{
 Plug 'mileszs/ack.vim'
-Plug 'rking/ag.vim'
+Plug 'rking/ag.vim', {'on' : 'Ag'}
 Plug 'justinmk/vim-sneak'
 Plug 'majutsushi/tagbar'
 " End Code Navigation"}}}

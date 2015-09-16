@@ -24,15 +24,12 @@ export PATH="/usr/lib/jvm/java-1.7.0-openjdk-i386/bin:$PATH"
 #export JAVA_HOME="/home/batie/Downloads/jdk8"
 #export PATH="/home/batie/Downloads/jdk8/bin:$PATH"
 
-#export JAVA_HOME="/home/batie/Downloads/jersey-2.19.zip"
-#export PATH="/home/batie/Downloads/jdk8/bin:$PATH"
-
 export QMAKESPEC=/usr/lib/i386-linux-gnu/qt5/mkspecs/linux-g++
 export QMAKESPEC PATH 
 
 export EDITOR=vim
 #export TERM=xterm-256color
-export ANDROID_PRODUCT_OUT=$HOME/batlab/Android
+export ANDROID_PRODUCT_OUT=$HOME/batie/Android
 export ANDROID_HOME=$HOME/adt-bundle/sdk/
 export QT_SELECT=5
 
@@ -47,7 +44,7 @@ export MPD_HOST PATH
 export NVM_DIR="/home/batie/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export NODE_DIR=/home/batie/.nvm/versions/node/v4.0.0/bin
+export NODE_PATH=/home/batie/.nvm/versions/node/v4.0.0/lib/node_modules/
 
 export NVM_DIR PATH
 export NODE_DIR PATH
