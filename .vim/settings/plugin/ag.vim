@@ -1,6 +1,5 @@
 
 if executable('ag')
-    line number
     set grepprg=ag\ --nogroup\ --nocolor\ --column
     set grepformat=%f:%l:%c%m
 
