@@ -46,4 +46,10 @@ export MPD_HOST=localhost
 export MPD_PORT PATH
 export MPD_HOST PATH
 
+export NVM_DIR="/home/batie/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+export NODE_DIR="/home/batie/.nvm/versions/node/4.0.0/bin"
+
+export NVM_DIR PATH
+export NODE_DIR PATH
