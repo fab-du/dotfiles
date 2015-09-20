@@ -5,8 +5,8 @@ source ~/dotfiles/zsh/lib/options.zsh
 source ~/dotfiles/zsh/lib/completion.zsh
 source ~/dotfiles/zsh/lib/keys.zsh
 source ~/dotfiles/zsh/lib/prompt.zsh
+source ~/dotfiles/zsh/lib/plugin/mvn/mvn.plugin.zsh
 
 export TERM=xterm-color
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-nvm use stable
 
