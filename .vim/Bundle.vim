@@ -118,5 +118,7 @@ Plug 'kana/vim-textobj-user' "}}}
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'jpalardy/vim-slime'
+
 
 call plug#end()

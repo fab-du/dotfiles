@@ -11,3 +11,4 @@ bundle
 autoload
 tmp
 view
+.vim/netrwhist
