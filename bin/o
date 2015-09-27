@@ -1,2 +1,87 @@
+#! /usr/bin/env /home/batie/.nvm/versions/node/v4.0.0/bin/node
 
-node ~/Projekt/_open/index.js 
+var os = require('os')
+var spawn = require('child_process').spawn 
+
+
+var input = process.argv[2];
+var pwd   = process.cwd()
+
+var open = function( file , command ){
+    var args = [ file ]
+    var opts = { detatached : true,  stdio: 'ignore' }
+
+    var exec_command = spawn( command, args, opts ).unref();
+
+}
+
+
+
+var regex = {
+    pattern_url : /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
+    pattern_file : /\.[0-9a-z]{1,5}$/i, 
+}
+
+var match = function( pattern , str ){
+   return  str.match( pattern )
+}
+
+if( match( regex.pattern_file , input ) ){
+
+  var arr = input.split('.');
+  var file_extension = arr[ arr.length - 1 ];
+
+  if( file_extension === "mp3" ||
+      file_extension === "au"  ||
+      file_extension === "wav" ||
+      file_extension === "flac"||
+      file_extension === "la"  ||
+      file_extension === "mp2" ||
+      file_extension === "m4a" ||
+      file_extension === "m4p" ||
+      file_extension === "mp4" ||
+      file_extension === "aac" ||
+      file_extension === "aaf" ||
+      file_extension === "3gp" ||
+      file_extension === "avi" ||
+      file_extension === "flv" ||
+      file_extension === "mov" 
+    ){
+        open( input , "gnome-mplayer" );
+    }
+    else if( file_extension === "png"  ||
+             file_extension === "jpeg" ||
+             file_extension === "jpg"  ||
+             file_extension === "tiff" 
+    )
+    {
+       open( input , "feh" );
+    }
+    else if( file_extension === "pdf" )
+    {
+        open( input , "okular" );
+    }
+    else if( file_extension === "html" || file_extension === "htm" )
+    {
+        open( input , "google-chrome" );
+    }
+    else if( file_extension === "odt"   ||
+             file_extension === "doc"   ||
+             file_extension === "docx"  ||
+             file_extension === "xls"   ||
+             file_extension === "xlsx"  ||
+             file_extension === "odp" 
+           ){
+               open( input, "abiword")
+           }
+    else if( file_extension === "7z" || 
+             file_extension === "zip"  )
+    {
+
+    }
+    else{
+        console.log("error unknow file extension");
+    }
+
+}
+
