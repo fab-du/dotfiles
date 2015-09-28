@@ -74,10 +74,23 @@ if( match( regex.pattern_file , input ) ){
            ){
                open( input, "abiword")
            }
+    else if( file_extension === "txt"  ||
+             file_extension === "xml"  ||
+             file_extension === "json" ||
+             file_extension === "md"   ||
+             file_extension === "c"    ||
+             file_extension === "cpp"  ||
+             file_extension === "h"    ||
+             file_extension === "js"   ||
+             file_extension === "vhdl" ||
+             file_extension === "pl"    
+           ){
+               open( input, "gvim" );
+           }
     else if( file_extension === "7z" || 
              file_extension === "zip"  )
     {
-
+        open( input, "gzip" );
     }
     else{
         console.log("error unknow file extension");
