@@ -1,5 +1,7 @@
 source $HOME/dotfiles/.vim/expose.vim
 
+"command! dos2unix exec ':%s/\r//g'
+
 " to display a better text for closed folds
 fu! CustomFoldText()
     let line = getline(v:foldstart)
@@ -67,4 +69,6 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
+
+let g:instant_markdown_autostart = 0
 

@@ -1,6 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/batie/vim.minimal/settings/core'
-let g:netrw_dirhist_2='/home/batie/.vim'
-let g:netrw_dirhist_3='/home/batie/.vim/bundle'
-let g:netrw_dirhist_4='/home/batie/.vim/bundle/ack.vim'
+let g:netrw_dirhist_cnt =0

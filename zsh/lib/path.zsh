@@ -5,7 +5,7 @@ export PATH=$PATH:$HOME/bin
 # ccache path exported before compiler
 export PATH=/usr/lib/ccache/bin:$PATH
 
-export PYTHONPATH=$PYTHONPATH:$HOME/projects
+#export PYTHONPATH=$PYTHONPATH:$HOME/
 
 export ANDROID_SDK="$HOME/adt-bundle/sdk"
 
@@ -20,6 +20,7 @@ export PATH=$MY_BIN:$PATH
 #export JAVA_HOME="/usr/lib/jvm/java-7-oracle"
 #export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-i386"
 #export PATH="/usr/lib/jvm/java-1.7.0-openjdk-i386/bin:$PATH"
+
 
 export JAVA_HOME="/home/batie/Downloads/jdk8"
 export PATH="/home/batie/Downloads/jdk8/bin:$PATH"
@@ -43,12 +44,11 @@ export MPD_HOST PATH
 
 export NVM_DIR="/home/batie/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR PATH
+
 
 export NODE_PATH=/home/batie/.nvm/versions/node/v4.0.0/lib/node_modules/
+export NODE_DIR=/home/batie/.nvm/versions/node/v4.0.0/bin/
 
-export NVM_DIR PATH
-export NODE_DIR PATH
-
-export SPRING_HOME=/home/batie/bin_external/spring-boot/bin
-export SPRING_HOME PATH
-
+export PATH=$NODE_DIR:$PATH
+export PATH=$NODE_PATH:$PATH

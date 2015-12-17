@@ -14,8 +14,8 @@ vnoremap =: :Tabularize /:<CR>
 
 
 "Surround "mapping"
-nnoremap <C-"> g@w"
-nnoremap <C-'> g@w'
+nnoremap <C-"> viw<esc>a"<esc>hbi"<esc>lel 
+nnoremap <C-'> viw<esc>a'<esc>hbi'<esc>lel
                          
 "Sneak mapping 
 nnoremap <C-Space> <Plug>SneakForward

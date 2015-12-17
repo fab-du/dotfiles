@@ -38,26 +38,21 @@ source "/home/batie/bin_external/fzf/shell/key-bindings.zsh"
 # Further custumization
 #
 
-function dict {
-
+function detofr {
     readonly DICT_PATH=~/Downloads/de_fr.txt
-
     if [ -z "$1" ]; then
         cat $DICT_PATH | fzf-tmux | xclip -i -selection clipboard
     else
         ag --no-number --ignore-case "$1" $DICT_PATH | fzf-tmux -q "$1" | xclip -i -selection clipboard
-
     fi
 }
 
 function buff {
     readonly BUFF=~/.buffer
      cat ~/.buffer | fzf-tmux |  xclip -i
-
 }
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
-
 
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
@@ -170,4 +165,5 @@ ftpane () {
     tmux select-window -t $target_window
   fi
 }
+
 

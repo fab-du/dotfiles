@@ -1,3 +1,10 @@
+function! s:isNode()
+	let shebang = getline(1)
+	if shebang =~# '^#!.*/bin/env\s\+node\>' | return 1 | en
+	if shebang =~# '^#!.*/bin/node\>' | return 1 | en
+	return 0
+endfunction
+
 
 call plug#begin('~/.vim/bundle')
 "Integration ---------------------------------------------"{{{
@@ -30,9 +37,12 @@ Plug 'jez/vim-superman'
 " End Integration -----------------------------------------"}}}
 
 " Code completion ------------------------------------"{{{
-Plug 'vim-scripts/javacomplete', { 'for' : 'java'} 
-Plug 'marijnh/tern_for_vim', {'for': 'javascript'}
-Plug 'Valloric/YouCompleteMe' , { 'for' : 'cpp'} 
+"Plug 'vim-scripts/javacomplete', { 'for' : 'java'} 
+Plug 'artur-shaik/vim-javacomplete2'
+
+Plug 'marijnh/tern_for_vim', {'for': 'javascript', 'do' : 'npm install'}
+Plug 'Valloric/YouCompleteMe' , { 'do' : 'git submodule update --init --recursive && ./install.sh' } 
+autocmd! User YouCompleteMe call youcompleteme#Enable()
 Plug 'rdnetto/YCM-Generator'  , { 'for' : 'cpp'}  
 Plug 'tdcdev/ycm_simple_conf' , { 'for' : 'cpp'}  
 " End Code completion ---------------------------------"}}}
@@ -46,12 +56,12 @@ Plug 'vim-scripts/DfrankUtil'
 
 " Full Language Support "{{{
 Plug 'vim-ruby/vim-ruby', { 'for' : 'ruby'}
-Plug 'moll/vim-node'
+Plug 'moll/vim-node', { 'for' : 'node'}
 Plug 'fatih/vim-go'
 Plug 'vim-scripts/dbext.vim', { 'for': 'sql'}
 Plug 'nono/jquery.vim'
-Plug 'Townk/vim-qt', { 'for' : 'c++'}
-Plug 'suan/vim-instant-markdown', {'for' : 'markdown'}
+Plug 'Townk/vim-qt', { 'for' : 'cpp'}
+Plug 'suan/vim-instant-markdown', {'for' : 'markdown', 'do' : 'npm install instant-markdown-d -g'}
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'burnettk/vim-angular'
@@ -87,8 +97,7 @@ Plug 'junegunn/goyo.vim'
 " End Vanity stuff"}}}
 
 " Snippet and dic"{{{
-Plug 'guileen/vim-node-dict'
-Plug 'jamescarr/snipmate-nodejs'
+Plug 'jamescarr/snipmate-nodejs', { 'for' : 'node'}
 Plug 'vim-scripts/UltiSnips' | Plug 'honza/vim-snippets'
 " End Snippet and dic"}}}
 
@@ -97,7 +106,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', { 'for' : 'html'}
 Plug 'kana/vim-smartinput'
 Plug 'Valloric/MatchTagAlways'
 " End Codify"}}}
@@ -117,7 +126,14 @@ Plug 'kana/vim-textobj-user' "}}}
 
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'othree/yajs.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'xaviershay/tslime.vim'
+Plug 'bonsaiben/bootstrap-snippets', { 'for' :  'html' }
+Plug 'wincent/ferret'
+Plug 'peterhoeg/vim-qml', { 'for' : 'qml'}
+
+"vim plugin developpment
+Plug '~/vim_java_utils'
+Plug '~/dictplugin'
+
 
 call plug#end()
