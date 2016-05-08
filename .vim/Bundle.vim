@@ -6,6 +6,7 @@ function! s:isNode()
 endfunction
 
 
+if g:plugin_manager_installed
 call plug#begin('~/.vim/bundle')
 "Integration ---------------------------------------------"{{{
 Plug 'tpope/vim-fugitive'     
@@ -135,5 +136,6 @@ Plug 'peterhoeg/vim-qml', { 'for' : 'qml'}
 Plug '~/vim_java_utils'
 Plug '~/dictplugin'
 
-
 call plug#end()
+
+endif

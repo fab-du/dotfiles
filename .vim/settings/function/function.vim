@@ -13,14 +13,14 @@ function! g:SortCss()
     endfor
 endfunction 
 
-function! g:put_in_args( dirname, filetype )
-exec Rooter
-    s:dir_found = finddir( dirname )
-    if s:dir_found
-        let s:result = system( 'shell find . -name "*.js" -type f -print' )
-        execute("argadd"." ". s:result)
-    endif
-endfunction
+"function! g:put_in_args( dirname, filetype )
+"exec Rooter
+"    s:dir_found = finddir( dirname )
+"    if s:dir_found
+"        let s:result = system( 'shell find . -name "*.js" -type f -print' )
+"        execute("argadd"." ". s:result)
+"    endif
+"endfunction
 
 function! g:DelTagOfFile(file)
     let fullpath = a:file
@@ -40,4 +40,13 @@ function! g:UpdateTags()
     call DelTagOfFile(f)
     let resp = system(cmd)
 endfunction
+
+" TODO : for cygwin
+let g:is_win = has('win32') || has('win64')
+let g:is_mac = has('mac') || system('uname') =~? '^darwin'
+let g:is_linux = !g:is_mac && has('unix')
+let g:is_gui = has('gui_running') || has('gui_macvim')
+let g:is_vim = ( g:is_linux || g:is_mac ) && !g:is_gui && !has('nvim')
+let g:is_nvim = !g:is_vim && has('nvim') 
+let g:plugin_manager_installed = filereadable(expand('~/.vim/plug')) || filereadable(expand('~/.config/nvim/plug'))
 

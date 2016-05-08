@@ -1,10 +1,3 @@
-let g:is_win = has('win32') || has('win64')
-let g:is_mac = has('mac') || system('uname') =~? '^darwin'
-let g:is_linux = !g:is_mac && has('unix')
-
-let g:is_gui = has('gui_running') || has('gui_macvim') 
-let g:is_vim = g:is_linux && !g:is_gui
-
 
 if g:is_linux 
   let g:python_host_prog='/usr/bin/python'
