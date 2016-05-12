@@ -2,6 +2,7 @@
 
 
 dotfiles=$( ls -A )
+ignoredfiles=[".gitignore", ".git", "linux_install.sh", "linux_uninstall.sh", "README.md"]
 echo $dotfiles
 
 dot_backup=$HOME/"dotfiles_backup"
