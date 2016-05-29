@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+dpkg --get-selections | grep node
+
+sudo apt-get remove --purge node
+sudo apt-get update
+sudo apt-get install build-essential checkinstall libssl-dev curl
+curl https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+nvm install node
+
+npm install npm
+
+
