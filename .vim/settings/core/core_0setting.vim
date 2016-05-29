@@ -1,4 +1,3 @@
-
 if g:is_linux 
   let g:python_host_prog='/usr/bin/python'
 endif
@@ -35,9 +34,9 @@ set complete=.,w,b,k,u,i,t
     "w  scan the current buffer ( 'wrapscan' is ignored) 
     "b	scan other loaded buffers that are in the buffer list
     "k	scan the files given with the 'dictionary' option
-	"u	scan the unloaded buffers that are in the buffer list
-	"i	scan current and included files
-	"t	scan tag file
+    "u	scan the unloaded buffers that are in the buffer list
+    "i	scan current and included files
+    "t	scan tag file
     
 set completeopt=longest,menuone,menu
 set omnifunc=syntaxcomplete#Complete
@@ -83,11 +82,6 @@ set backup " enable backups
 set undodir=$HOME/.vim/tmp/undo// " undo files
 set backupdir=$HOME/.vim/tmp/backup// " backups
 set directory=$HOME/.vim/tmp/swap// " swap files
-
-"TODO
-"set undodir="" . g:editor_root . "/tmp/undo//" 
-"set backupdir="" . g:editor_root . "/tmp/backup//"
-"set directory="". g:editor_root . "/tmp/swap//"
 
 
 " Make those folders automatically if they don't already exist.
@@ -235,20 +229,6 @@ autocmd BufRead * silent loadview
 "Resize split when the window is resizecd
 "au VimResized * :wincmd=
 au VimResized * exe "normal! \<c-w>=" 
-
-
-autocmd WinEnter * if &diff | call s:DiffTweaks() | endif
- 
- function s:DiffTweaks()
-   " I don't like the diff colors used by most color schemes…
-   let diff_colors = 'default'
-   if g:colors_name != diff_colors
-     execute 'colorscheme' fnameescape(diff_colors)
-   endif
-   " I use automatic text folding which kind of breaks diff mode.
-   setlocal nofoldenable
- endfunction
-
 
 autocmd BufEnter * call s:CloseEmptyBuffer()
 

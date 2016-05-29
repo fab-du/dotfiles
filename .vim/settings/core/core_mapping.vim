@@ -19,17 +19,11 @@ nnoremap<nowait> j gj
 nnoremap<nowait> k gk
 xnoremap<nowait> j gj
 xnoremap<nowait> k gk
-nmap J 5j
-nmap K 5k
+nnoremap J 5j
+nnoremap K 5k
 xmap J 5j
 xmap K 5k
 
-
-"TODO
-"Find others mappings for nohls
-"make <c-l> clear the highlight as well as redraw
-"nnoremap <C-L> :nohls<CR><C-L>
-"inoremap <C-L> <C-O>:nohls<CR>
 
 "if you visually select something and hit paste
 " that thing gets yanked into your buffer. This
@@ -67,7 +61,7 @@ vnoremap / /\v
 
 
 "ref: https://github.com/cohama/.vim/blob/master/.vimrc
-function! NotMoveWhenLeavingFromInsertMode()
+function! g:NotMoveWhenLeavingFromInsertMode()
     let cursorPos = col(".")
     let maxColumn = col("$")
         if cursorPos < maxColumn && cursorPos != 1
@@ -77,8 +71,8 @@ function! NotMoveWhenLeavingFromInsertMode()
         endif
 endfunction
 
-inoremap <silent><expr><ESC> NotMoveWhenLeavingFromInsertMode()
-inoremap <silent><expr>jk NotMoveWhenLeavingFromInsertMode()
+inoremap <silent><expr><ESC> g:NotMoveWhenLeavingFromInsertMode()
+inoremap <silent><expr>jk g:NotMoveWhenLeavingFromInsertMode()
 
 "Moving line up and down 
 nnoremap <silent><A-j> :m .+1<CR>==
