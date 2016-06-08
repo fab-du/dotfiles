@@ -1,0 +1,10 @@
+tree 
+git-all
+sshfs 
+build-essential 
+curl 
+python 
+python-dev
+python-pip 
+ant 
+maven

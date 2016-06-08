@@ -4,23 +4,51 @@ var os = require('os')
 var spawn = require('child_process').spawn 
 
 
+
 var input = process.argv[2];
 var pwd   = process.cwd()
 
 var open = function( file , command ){
     var args = [ file ]
     var opts = { detatached : true,  stdio: 'ignore' }
-
     var exec_command = spawn( command, args, opts ).unref();
+};
 
-}
+var open_os = function ( file ){
+  var platform = os.platform();
 
+  var command = "xdg-open" 
+  var args = [ "file" ];
+  var opts = { detatached : true,  stdio: 'ignore' }
+
+  if ( platform === "linux" ){
+  	command = "xdg-open" 
+	args.push(">");
+	args.push("/dev/null");
+	args.push("2>&1");
+	args.push("&");
+  }
+  else if ( platform ==="cygwin" ){
+     command = "cygstart" 
+     args.push(">");
+     args.push("/dev/null");
+     args.push("2>&1");
+     args.push("&");
+  }
+  else if ( platform ==="mac" ){
+     command = "open" 
+  }
+  
+
+  var exec_command = spawn( command, args, opts ).unref();
+
+};
 
 
 var regex = {
     pattern_url : /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
     pattern_file : /\.[0-9a-z]{1,5}$/i, 
-}
+};
 
 var match = function( pattern , str ){
    return  str.match( pattern )

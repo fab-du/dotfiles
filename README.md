@@ -3,18 +3,21 @@ dotfiles
 
 dotfiles
 
-#Actuel: 
-   * .tmux.conf
-   * .xinitrc
-   * .vimrc
-   * .gitconfig
-   * .conkyrc
-   * .xmodmaprc
-   * .xsessionrc
-   * .bash\_profile 
-   * .profile 
+### Actuel: 
 
+* .tmux.conf
+* .xinitrc
+* .vimrc
+* .gitconfig
+* .conkyrc
+* .xmodmaprc
+* .xsessionrc
+* .profile 
 * .vim [dir]
 * .config[dir]
-* bin[dir]
+*  bin[dir]
+
+### Installation 
+
+
 
