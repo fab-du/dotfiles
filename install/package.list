@@ -1,5 +1,6 @@
 tree 
 git-all
+ssh
 sshfs 
 build-essential 
 curl 
@@ -8,3 +9,5 @@ python-dev
 python-pip 
 ant 
 maven
+httpie
+tree

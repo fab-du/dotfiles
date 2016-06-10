@@ -19,5 +19,10 @@ dotfiles
 
 ### Installation 
 
+```sh
+chsh -s $(which zsh)  
+```
+
+
 
 
