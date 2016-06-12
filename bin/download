@@ -1,13 +1,27 @@
-#/bin/sh 
+#/bin/bash 
 
-echo "$*" >> "/home/batlab/tmp/tmp"
+set -e 
 
-domain="$(awk -F='' {'print $1'} /home/batlab/tmp/tmp)"
-site="$(awk -F='' {'print $2'} /home/batlab/tmp/tmp)"
+domain=$2     #Domain where the page to download are
+page=$4       #Page to download
 
-echo "$domain" 
-echo "$site"
+progname=$(basename $0)
 
+help()
+{
+cat <<EOF
+Usage: $progname -domain example.com -download example.com/tutorial 
+EOF
+}
+
+if [ "$1" = "-h" ]; then
+  help 
+  exit 0  
+fi
+
+
+my_wget() 
+{
 wget \
      --recursive \
      --no-clobber \
@@ -15,6 +29,14 @@ wget \
      --html-extension \
      --convert-links \
      --restrict-file-names=windows \
-     --domains $domain \
-     --no-parent \
-         $site
+     --domains $domain\
+     --no-parent $page $4 &> /dev/null
+
+if [[ "$?" = "0" ]]; 
+then
+  echo "Download success"
+fi
+
+}
+
+my_wget 

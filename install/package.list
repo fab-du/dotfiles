@@ -11,3 +11,8 @@ ant
 maven
 httpie
 tree
+hub
+ack
+nginx
+dnsmasq
+tmux

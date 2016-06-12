@@ -1,39 +1,17 @@
-
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
-
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # If you're running fzf in a large git repository, git ls-tree can boost up the speed of the traversal.
 
-#export FZF_DEFAULT_COMMAND='
-#(git ls-tree -r --name-only HEAD ||
-#find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
 
-#bind-key -n 'M-l' run "tmux split-window -p 40 'tmux send-keys -t #{pane_id} \"$(locate / | fzf -m | paste -sd\\  -)\"'"
-
-
-
-
-
-# Setup fzf
-# ---------
-if [[ ! "$PATH" =~ "/home/batie/bin_external/fzf/bin" ]]; then
-  export PATH="$PATH:/home/batie/bin_external/fzf/bin"
-fi
-
-# Man path
-# --------
-if [[ ! "$MANPATH" =~ "/home/batie/bin_external/fzf/man" && -d "/home/batie/bin_external/fzf/man" ]]; then
-  export MANPATH="$MANPATH:/home/batie/bin_external/fzf/man"
-fi
 
 # Auto-completion
 # ---------------
-[[ $- =~ i ]] && source "/home/batie/bin_external/fzf/shell/completion.zsh" 2> /dev/null
+# [[ $- =~ i ]] && source "/home/batie/bin_external/fzf/shell/completion.zsh" 2> /dev/null
 
 # Key bindings
 # ------------
-source "/home/batie/bin_external/fzf/shell/key-bindings.zsh"
+# source "/home/batie/bin_external/fzf/shell/key-bindings.zsh"
 
 # Further custumization
 #

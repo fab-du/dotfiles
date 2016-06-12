@@ -33,6 +33,3 @@ exec_file=$(tar -xzvf "$tmpdir"".tgz" -C "$HOME""/tmp_fzf")
 echo $exec_file
 mv  "$HOME""/tmp_fzf/""$exec_file" "$HOME""/bin_external/fzf"
 rm -rf "$HOME""/tmp_fzf"
-
-
-

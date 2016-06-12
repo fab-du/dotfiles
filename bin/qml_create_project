@@ -1,9 +1,0 @@
-#!/bin/sh 
-
-mkdir "$HOME/Project/QT/$1"
-mkdir "$HOME/Project/QT/$1/qml"
-mkdir "$HOME/Project/QT/$1/js"
-touch "$HOME/Project/QT/$1/main.qml"
-
-cp "$HOME/Project/QT/SET_Exemple/vorlage/project.qmlproject" "$HOME/Project/QT/$1/"
-
