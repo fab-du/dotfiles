@@ -1,14 +1,14 @@
 if g:is_linux 
   let g:python_host_prog='/usr/bin/python'
 endif
-
 if g:is_mac 
     let g:python_host_prog='/usr/local/bin/python' # found via `which python`
 endif
 
-
 if has('nvim')
-    let g:editor_root=expand("~/.nvim")
+    let g:editor_root=expand("~/.vim")
+    let &runtimepath.=','.expand("~/.vim")
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 elseif g:is_vim 
     let g:editor_root=expand("~/.vim")
     set term=screen-256color
@@ -26,10 +26,8 @@ source ~/dotfiles/.vim/Bundle.vim
 " Change to current file directory 
 " will denn been control with Rooter Plugin
 set noautochdir 
-
 "Completions 
 set completefunc=syntaxcomplete#Complete
-
 set complete=.,w,b,k,u,i,t 
     "w  scan the current buffer ( 'wrapscan' is ignored) 
     "b	scan other loaded buffers that are in the buffer list
@@ -42,13 +40,8 @@ set completeopt=longest,menuone,menu
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
 set wildmode=longest,full
-set formatoptions=croqn 
 set nojoinspaces
 
-set autochdir
-
-set laststatus=2
-set noshowmode
 let mapleader=","
 let g:mapleader=","
 
@@ -59,7 +52,6 @@ command W w !sudo tee % > /dev/null
 "buffer becomes hidden when it is abandoned
 set hid
 " Configure backspace so it acts as it should act
-set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 " Don't redraw while executing macros (good performance config)
 set lazyredraw 
@@ -79,10 +71,9 @@ set number
 
 set noswapfile
 set backup " enable backups
-set undodir=$HOME/.vim/tmp/undo// " undo files
-set backupdir=$HOME/.vim/tmp/backup// " backups
-set directory=$HOME/.vim/tmp/swap// " swap files
-
+set undodir=$HOME/.tmp_vim/undo// " undo files
+set backupdir=$HOME/.tmp_vim/backup// " backups
+set directory=$HOME/.tmp_vim/swap// " swap files
 
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
@@ -95,44 +86,33 @@ if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
 
-set timeoutlen=1000
-set ttimeoutlen=0
+if g:is_vim
+    set timeoutlen=1000
+    set ttimeoutlen=0
+endif
 
-set encoding=utf8
-set fileformats="unix,dos,mac"
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+"set fileformats="unix,dos,mac"
 set modeline
 set ttyfast
 set t_Co=256
-set background=dark
-set startofline
-set switchbuf=useopen,usetab
 
-set noerrorbells
-set visualbell
-set t_vb=
-
-set autoread
-
-set sessionoptions+=tabpages,globals
-set viminfo=!,'100,h,n~/.viminfo
-set history=1000
+if g:is_vim
+    set backspace=eol,start,indent
+    set incsearch
+    set background=dark
+    set autoread
+    set viminfo=!,'100,h,n~/.viminfo
+    set fillchars=vert:\|
+    set history=10000
+endif
 
 set undolevels=10000
 set undofile
 set undoreload=1000
-
 set nobackup
-
-"set formatoptions=qn1c
-set nrformats-=octal
-
-
-"set nocursorline
-"call matchadd("SpellRare", "\\%101v.", -1)
-set virtualedit=all
-set titlelen=100
-set tabpagemax=19
-set showtabline=1
 
 set wildignore=*.o,*.so,*.pyc,*.class,*.fasl,tags
 set wildignore+=*.swp,*.cache,*.jar,*.bat,*.dat,*.gif
@@ -166,26 +146,18 @@ set splitbelow
 set splitright
 set nowrap
 set nolist
-set fillchars=vert:\|
 set listchars=tab:\|\ ,trail:·,precedes:…,extends:…
 set textwidth=100
 set showbreak=..
 set linebreak
 set ignorecase
 set smartcase
-set incsearch
 set hlsearch
 set gdefault
 set nofoldenable
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-set foldtext=MyFoldText()
 set foldmethod=marker "fdm: looks for patterns of triple-braces in a file
 set foldcolumn=4 "fdc: creates a small left-hand gutter for displaying fold info
-function MyFoldText()
-  let line = getline(v:foldstart)
-  let sub = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
-  return v:folddashes . sub
-endfunction
 set columns=87 
 set cc=80
 
@@ -195,9 +167,7 @@ augroup hide_foldcolumn_signs
     au Colorscheme * hi clear FoldColumn | hi link FoldColumn Hidden
 augroup END
 
-
 if g:is_gui 
-   "set guifont=Consolas\ For\ Powerline\ 11
    set guioptions-=T
    set guioptions-=l
    set guioptions-=L
@@ -211,9 +181,9 @@ if g:is_gui
    set guioptions-=mc " remove 'e' for terminal-style tabs
 endif
 
- if executable('zsh')
-	set shell=zsh\ -l
- endif
+if executable('zsh')
+   set shell=zsh\ -l
+endif
 
 " When restoring a hidden buffer Vim doesn't always keep the same view (like
 " when your view shows beyond the end of the file). (Vim tip 1375)
@@ -223,21 +193,10 @@ au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
 
 "hack to save fold view
-autocmd BufWrite * mkview
-autocmd BufRead * silent loadview
+"autocmd BufWrite * mkview
+"autocmd BufRead * silent loadview
 
 "Resize split when the window is resizecd
-"au VimResized * :wincmd=
+au VimResized * :wincmd=
 au VimResized * exe "normal! \<c-w>=" 
-
-autocmd BufEnter * call s:CloseEmptyBuffer()
-
-function s:CloseEmptyBuffer()
-    if winnr('$') == 2 && &bt == 'help'
-      let bufnr = tabpagebuflist()[1]
-      let modified = getwinvar(2, '&modified')
-      if bufname(bufnr) == '' && !modified
-        only
-      endif
-    endif
-endfunction
+autocmd BufEnter * call g:CloseEmptyBuffer()

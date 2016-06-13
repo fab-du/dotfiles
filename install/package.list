@@ -3,6 +3,7 @@ git-all
 ssh
 sshfs 
 build-essential 
+cmake
 curl 
 python 
 python-dev

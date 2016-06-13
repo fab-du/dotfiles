@@ -7,13 +7,16 @@ nmap <leader>U mQgewvU`Q
 nmap <leader>L mQgewvu`Q
 
 "Make alt-key work sanely
-let c='a'
-while c <= 'z'
- exec "set <A-".c.">=\e".c
- "Trick to make Alt key work properly  
- exec "imap \e".c." <A-".c.">"
-  let c = nr2char(1+char2nr(c))
-endw
+if g:is_vim
+    let c='a'
+    while c <= 'z'
+    exec "set <A-".c.">=\e".c
+    "Trick to make Alt key work properly  
+    exec "imap \e".c." <A-".c.">"
+    let c = nr2char(1+char2nr(c))
+    endw
+endif
+
 
 nnoremap<nowait> j gj
 nnoremap<nowait> k gk
@@ -59,21 +62,6 @@ command! -bang WQ wq<bang>
 nnoremap / /\v
 vnoremap / /\v
 
-
-"ref: https://github.com/cohama/.vim/blob/master/.vimrc
-function! g:NotMoveWhenLeavingFromInsertMode()
-    let cursorPos = col(".")
-    let maxColumn = col("$")
-        if cursorPos < maxColumn && cursorPos != 1
-            return "\<Esc>l"
-        else
-            return "\<Esc>"
-        endif
-endfunction
-
-inoremap <silent><expr><ESC> g:NotMoveWhenLeavingFromInsertMode()
-inoremap <silent><expr>jk g:NotMoveWhenLeavingFromInsertMode()
-
 "Moving line up and down 
 nnoremap <silent><A-j> :m .+1<CR>==
 nnoremap <silent><A-k> :m .-2<CR>==
@@ -110,3 +98,30 @@ command CDC cd %:p:h
 " Spacebar toggles a fold, zi toggles all folding, zM closes all folds
 noremap <silent> <space> :exe 'silent! normal! za'.(foldlevel('.')?'':'l')<cr>
 
+"command! dos2unix exec ':%s/\r//g'
+inoremap <C-B> `
+cnoremap <C-B> `
+inoremap <C-T> ~
+cnoremap <C-T> ~
+" quickfix window
+nnoremap <silent> <leader>xx :cwindow<CR>
+nnoremap <silent> <leader>xp :clist<CR>
+nnoremap <silent> <leader>xc :cclose<CR>
+nnoremap <silent> <leader>xz :call setqflist([])<CR>
+nnoremap <TAB> }
+xnoremap <TAB> }
+nnoremap \ {
+xnoremap \ {
+" keep search matches in the middle of the window
+nnoremap n nzvzz
+nnoremap N Nzvzz
+" don't lose selection after indenting
+vnoremap < <gv
+vnoremap > >gv
+" useful cheats
+inoremap <C-A> <ESC>I
+inoremap <C-Q> <ESC>A
+inoremap <C-E> <ESC>lwi
+inoremap <C-S> <ESC>lbi
+inoremap <C-D> <ESC>o
+inoremap <C-F> <ESC>O

@@ -1,12 +1,12 @@
-function! s:isNode()
-	let shebang = getline(1)
-	if shebang =~# '^#!.*/bin/env\s\+node\>' | return 1 | en
-	if shebang =~# '^#!.*/bin/node\>' | return 1 | en
-	return 0
-endfunction
+let extend_installation=$FAB_DU_DOT_EXTENDED 
+if extend_installation == '1'
 
+if !filereadable(expand("~/.vim/autoload/plug.vim")) 
+	echo "Installing Plug Manager ..."
+	echo ""
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
 
-if g:plugin_manager_installed
 call plug#begin('~/.vim/bundle')
 "Integration ---------------------------------------------"{{{
 Plug 'tpope/vim-fugitive'     
@@ -42,7 +42,7 @@ Plug 'jez/vim-superman'
 Plug 'artur-shaik/vim-javacomplete2'
 
 Plug 'marijnh/tern_for_vim', {'for': 'javascript', 'do' : 'npm install'}
-Plug 'Valloric/YouCompleteMe' , { 'do' : 'git submodule update --init --recursive && ./install.sh' } 
+Plug 'Valloric/YouCompleteMe' , { 'do' : 'git submodule update --init --recursive && ./install.py' } 
 autocmd! User YouCompleteMe call youcompleteme#Enable()
 Plug 'rdnetto/YCM-Generator'  , { 'for' : 'cpp'}  
 Plug 'tdcdev/ycm_simple_conf' , { 'for' : 'cpp'}  
@@ -137,5 +137,11 @@ Plug '~/vim_java_utils'
 Plug '~/dictplugin'
 
 call plug#end()
-
 endif
+
+function! s:isNode()
+	let shebang = getline(1)
+	if shebang =~# '^#!.*/bin/env\s\+node\>' | return 1 | en
+	if shebang =~# '^#!.*/bin/node\>' | return 1 | en
+	return 0
+endfunction

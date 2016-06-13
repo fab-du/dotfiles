@@ -41,12 +41,22 @@ function! g:UpdateTags()
     let resp = system(cmd)
 endfunction
 
+function! g:CloseEmptyBuffer()
+    if winnr('$') == 2 && &bt == 'help'
+      let bufnr = tabpagebuflist()[1]
+      let modified = getwinvar(2, '&modified')
+      if bufname(bufnr) == '' && !modified
+        only
+      endif
+    endif
+endfunction
+
 " TODO : for cygwin
 let g:is_win = has('win32') || has('win64')
 let g:is_mac = has('mac') || system('uname') =~? '^darwin'
 let g:is_linux = !g:is_mac && has('unix')
 let g:is_gui = has('gui_running') || has('gui_macvim')
 let g:is_vim = ( g:is_linux || g:is_mac ) && !g:is_gui && !has('nvim')
-let g:is_nvim = !g:is_vim && has('nvim') 
-let g:plugin_manager_installed = filereadable(expand('~/.vim/plug')) || filereadable(expand('~/.config/nvim/plug'))
+let g:is_nvim = ( g:is_linux || g:is_mac ) && has('nvim') 
+let g:plugin_manager_installed = filereadable(expand('~/.vim/plug'))
 

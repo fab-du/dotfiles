@@ -1,4 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/home/batie/Downloads/startbootstrap-simple-sidebar-1.0.5'
 let g:netrw_dirhist_2='/home/batie/Downloads/startbootstrap-simple-sidebar-1.0.5/css'
+let g:netrw_dirhist_3='/home/batie/dotfiles/.vim/settings/core'
