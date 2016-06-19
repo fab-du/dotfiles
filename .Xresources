@@ -1,0 +1,34 @@
+#include "/home/batie/.colors/blackburn"
+
+Xft.lcdfilter                :  lcddefault
+Xft.hintstyle                :  hintslight
+Xft.hinting                  :  1
+Xft.autohint                 :  1
+Xft.antialias                :  1
+Xft.dpi                      :  96
+Xft.rgba                     :  rgb
+
+Xcursor.theme                :  Vanilla-DMZ-AA
+
+!*.font                   :  xft:Hack:pixelsize=10:autohint=true
+!*.boldFont               :  xft:Hack:pixelsize=10:autohint=true
+
+*.scrollBar              :  false
+*.buffered               :  true
+*.perl-ext-common        :  default,tabbedex
+*.tabbed.tabbar-fg       :  8
+*.tabbed.tabbar-bg       :  0
+*.tabbed.tab-fg          :  15
+*.tabbed.tab-bg          :  0
+*.tabbed.autohide        :  true
+*.tabbed.reopen-on-close :  yes
+
+*.perl-ext               :  default,url-select
+*.keysym.C-i             :  perl:url-select:select_next
+*.url-select.launcher    :  /usr/bin/firefox
+*.url-select.underline   :  true
+*.colorUL                :  #78A4FF
+
+xterm*faceName : Hack:pixelsize=11
+xterm*termName : xterm-256color
+xterm*loginshell : true

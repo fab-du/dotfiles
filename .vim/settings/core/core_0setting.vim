@@ -8,10 +8,9 @@ endif
 if has('nvim')
     let g:editor_root=expand("~/.vim")
     let &runtimepath.=','.expand("~/.vim")
-    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 elseif g:is_vim 
     let g:editor_root=expand("~/.vim")
-    set term=screen-256color
+    "set term=screen-256color
 elseif g:is_win && g:is_gui
     let g:editor_root=expand("$HOME/vimfiles")
     let s:win_bin_dir = expand("$HOME/vim_bin")
@@ -25,10 +24,10 @@ source ~/dotfiles/.vim/Bundle.vim
 " for rooter plugin to work properly
 " Change to current file directory 
 " will denn been control with Rooter Plugin
-set noautochdir 
+"set noautochdir 
 "Completions 
-set completefunc=syntaxcomplete#Complete
-set complete=.,w,b,k,u,i,t 
+"set completefunc=syntaxcomplete#Complete
+"set complete=.,w,b,k,u,i,t 
     "w  scan the current buffer ( 'wrapscan' is ignored) 
     "b	scan other loaded buffers that are in the buffer list
     "k	scan the files given with the 'dictionary' option
@@ -36,39 +35,34 @@ set complete=.,w,b,k,u,i,t
     "i	scan current and included files
     "t	scan tag file
     
-set completeopt=longest,menuone,menu
-set omnifunc=syntaxcomplete#Complete
-set wildmenu
-set wildmode=longest,full
-set nojoinspaces
+"set completeopt=longest,menuone,menu
+"set wildmenu
+"set wildmode=longest,full
+"set nojoinspaces
 
-let mapleader=","
-let g:mapleader=","
+let mapleader=','
 
 syntax enable 
 
 " save file as root
 command W w !sudo tee % > /dev/null
 "buffer becomes hidden when it is abandoned
-set hid
-" Configure backspace so it acts as it should act
-set whichwrap+=<,>,h,l
-" Don't redraw while executing macros (good performance config)
-set lazyredraw 
-" For regular expressions turn magic on
-set magic
-" How many tenths of a second to blink when matching brackets
-set mat=2
-" DISPLAY SETTINGS
-set scrolloff=2         " 2 lines above/below cursor when scrolling
-set showmatch           " show matching bracket (briefly jump)
-set matchtime=2         " reduces matching paren blink time from the 5[00]ms
-set showmode            " show mode in status bar (insert/replace/...)
-set showcmd             " show typed command in status bar
-set ruler               " show cursor position in status bar
-set title               " show file in titlebar
-set number
-
+"set hid
+"" Configure backspace so it acts as it should act
+"set whichwrap+=<,>,h,l
+"set lazyredraw " Don't redraw while executing macros (good performance config)
+"" How many tenths of a second to blink when matching brackets
+"set mat=2
+"" DISPLAY SETTINGS
+"set scrolloff=2         " 2 lines above/below cursor when scrolling
+"set showmatch           " show matching bracket (briefly jump)
+"set matchtime=2         " reduces matching paren blink time from the 5[00]ms
+"set showmode            " show mode in status bar (insert/replace/...)
+"set showcmd             " show typed command in status bar
+"set ruler               " show cursor position in status bar
+"set title               " show file in titlebar
+"set number
+"
 set noswapfile
 set backup " enable backups
 set undodir=$HOME/.tmp_vim/undo// " undo files
@@ -87,32 +81,19 @@ if !isdirectory(expand(&directory))
 endif
 
 if g:is_vim
-    set timeoutlen=1000
-    set ttimeoutlen=0
+"    set timeoutlen=1000
+"    set ttimeoutlen=0
 endif
-
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
-"set fileformats="unix,dos,mac"
-set modeline
-set ttyfast
-set t_Co=256
 
 if g:is_vim
-    set backspace=eol,start,indent
-    set incsearch
-    set background=dark
-    set autoread
-    set viminfo=!,'100,h,n~/.viminfo
-    set fillchars=vert:\|
-    set history=10000
+"    set backspace=eol,start,indent
+"   set incsearch
+"   set background=dark
+"   set autoread
+"   set viminfo=!,'100,h,n~/.viminfo
+"   set fillchars=vert:\|
+"   set history=10000
 endif
-
-set undolevels=10000
-set undofile
-set undoreload=1000
-set nobackup
 
 set wildignore=*.o,*.so,*.pyc,*.class,*.fasl,tags
 set wildignore+=*.swp,*.cache,*.jar,*.bat,*.dat,*.gif
@@ -130,73 +111,38 @@ set wildignore+=*.orig " Merge resolution files
 set wildignore+=classes
 set wildignore+=lib
 
-set cmdheight=1
-set report=0
-set shortmess=IaA
-set sidescrolloff=1
-
-set smarttab
-set expandtab
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
-set shiftround
-set smartindent
-set splitbelow
-set splitright
-set nowrap
-set nolist
-set listchars=tab:\|\ ,trail:·,precedes:…,extends:…
-set textwidth=100
-set showbreak=..
-set linebreak
-set ignorecase
-set smartcase
-set hlsearch
-set gdefault
-set nofoldenable
-set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-set foldmethod=marker "fdm: looks for patterns of triple-braces in a file
-set foldcolumn=4 "fdc: creates a small left-hand gutter for displaying fold info
-set columns=87 
-set cc=80
-
-hi clear FoldColumn | hi link FoldColumn Hidden
-augroup hide_foldcolumn_signs
-    au!
-    au Colorscheme * hi clear FoldColumn | hi link FoldColumn Hidden
-augroup END
+"set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 
 if g:is_gui 
-   set guioptions-=T
-   set guioptions-=l
-   set guioptions-=L
-   set guioptions-=r
-   set guioptions-=R
-   set guioptions-=m
-   set guioptions-=M
-   set guioptions-=l
-   set guioptions-=b
-   set guioptions-=L
-   set guioptions-=mc " remove 'e' for terminal-style tabs
+"  set guioptions-=T
+"  set guioptions-=l
+"  set guioptions-=L
+"  set guioptions-=r
+"  set guioptions-=R
+"  set guioptions-=m
+"  set guioptions-=M
+"  set guioptions-=l
+"  set guioptions-=b
+"  set guioptions-=L
+"  set guioptions-=mc " remove 'e' for terminal-style tabs
 endif
 
-if executable('zsh')
-   set shell=zsh\ -l
-endif
+"if executable('zsh')
+"   set shell=zsh\ -l
+"endif
 
 " When restoring a hidden buffer Vim doesn't always keep the same view (like
 " when your view shows beyond the end of the file). (Vim tip 1375)
-if ! &diff
-au BufLeave * let b:winview = winsaveview()
-au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
-endif
+"if ! &diff
+"au BufLeave * let b:winview = winsaveview()
+"au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+"endif
 
 "hack to save fold view
 "autocmd BufWrite * mkview
 "autocmd BufRead * silent loadview
 
 "Resize split when the window is resizecd
-au VimResized * :wincmd=
-au VimResized * exe "normal! \<c-w>=" 
-autocmd BufEnter * call g:CloseEmptyBuffer()
+"au VimResized * :wincmd=
+"au VimResized * exe "normal! \<c-w>=" 
+"autocmd BufEnter * call g:CloseEmptyBuffer()

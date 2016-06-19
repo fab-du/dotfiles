@@ -1,0 +1,12 @@
+#!/bin/bash
+
+opt=$(echo "foo bar man")
+opts=$(echo "foo bar dodo")
+
+for i in $opt; do
+	for j in $opts; do
+		if [[ "$i" == "$j" ]]; then
+			echo $i
+		fi
+	done
+done

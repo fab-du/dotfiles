@@ -6,8 +6,7 @@ source ~/dotfiles/zsh/lib/completion.zsh
 source ~/dotfiles/zsh/lib/keys.zsh
 source ~/dotfiles/zsh/lib/prompt.zsh
 source ~/dotfiles/zsh/lib/plugin/mvn/mvn.plugin.zsh
-#source ~/base16/base16-default.dark.sh 
 
-export TERM=xterm-color
+#export TERM=xterm-256color
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+[ -f ~/.zshrc_local ] && source ~/.zshrc_local

@@ -1,46 +1,45 @@
 "CtrlP Mapping
+nnoremap <leader>b     :CtrlPBuffer<CR>
+nnoremap <leader>f     :CtrlP<CR>
+nnoremap <leader>mru   :CtrlPMRUFiles<CR>
+nnoremap <leader>t     :CtrlPTag<CR>
 
-if exists('g:loaded_ctrlp')
-	nnoremap <leader>b     :CtrlPBuffer<CR>
-	nnoremap <leader>f     :CtrlP<CR>
-	nnoremap <leader>mru   :CtrlPMRUFiles<CR>
-	nnoremap <leader>t     :CtrlPTag<CR>
-endif
+
+nnoremap <Leader>c$ <plug>NERDCommenterToEOL
+nnoremap <leader>cs <plug>NERDCommenterSexy
+nnoremap <leader>cu <plug>NERDCommenterUncomment
+
+nnoremap <leader>gu :GundoToggle<CR>
             
 "tabularize
-if exists('g:loaded_tabularize')
-	nnoremap =  :Tabularize /
-	vnoremap =  ":Tabularize /"
-	nnoremap == :Tabularize /=<CR>
-	vnoremap == :Tabularize /=<CR>
-	nnoremap =: :Tabularize /:<CR>
-	vnoremap =: :Tabularize /:<CR>
-endif
-
+nnoremap =  :Tabularize /
+vnoremap =  ":Tabularize /"
+nnoremap == :Tabularize /=<CR>
+vnoremap == :Tabularize /=<CR>
+nnoremap =: :Tabularize /:<CR>
+vnoremap =: :Tabularize /:<CR>
 
 "Surround "mapping"
 nnoremap <C-"> viw<esc>a"<esc>hbi"<esc>lel 
 nnoremap <C-'> viw<esc>a'<esc>hbi'<esc>lel
                          
 "Sneak mapping 
-if exists('g:loaded_sneak_plugin')
-	nnoremap <C-Space> <Plug>SneakForward
-	nmap ; <Plug>SneakPrevious
-	xmap ; <Plug>SneakPrevious
-	omap ; <Plug>SneakPrevious
-	nmap s <Plug>Sneak_f
-	nmap S <Plug>Sneak_F
-	xmap s <Plug>Sneak_f
-	xmap S <Plug>Sneak_F
-	omap s <Plug>Sneak_f
-	omap S <Plug>Sneak_F
-	nmap s <Plug>Sneak_t
-	nmap T <Plug>Sneak_T
-	xmap t <Plug>Sneak_t
-	xmap T <Plug>Sneak_T
-	omap t <Plug>Sneak_t
-	omap T <Plug>Sneak_T
-endif
+nnoremap <C-Space> <Plug>SneakForward
+nmap ; <Plug>SneakPrevious
+xmap ; <Plug>SneakPrevious
+omap ; <Plug>SneakPrevious
+nmap s <Plug>Sneak_f
+nmap S <Plug>Sneak_F
+xmap s <Plug>Sneak_f
+xmap S <Plug>Sneak_F
+omap s <Plug>Sneak_f
+omap S <Plug>Sneak_F
+nmap s <Plug>Sneak_t
+nmap T <Plug>Sneak_T
+xmap t <Plug>Sneak_t
+xmap T <Plug>Sneak_T
+omap t <Plug>Sneak_t
+omap T <Plug>Sneak_T
 
 "Quickfix window 
 nnoremap <silent><leader>qc :cclose<CR> 
@@ -52,29 +51,19 @@ nnoremap <silent> ü <C-]>
 nnoremap <silent> Ü :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag".word)<cr> 
 
 
-if exists('g:loaded_tagbar')
-	nnoremap <F3>       :TagbarToggle<cr>
-	inoremap <F3>  <ESC>:TagbarToggle<cr>
-endif
+nnoremap <F3>       :TagbarToggle<cr>
+inoremap <F3>  <ESC>:TagbarToggle<cr>
 
-if exists('g:loaded_ner')
-	nnoremap <F4>       :NERDTreeToggle<CR> 
-	inoremap <F4>  <ESC>:<NERDTreeToggle<CR> 
-endif
+nnoremap <F4>       :NERDTreeToggle<CR> 
+inoremap <F4>  <ESC>:<NERDTreeToggle<CR> 
 
-if exists('g:loaded_syntastic')
-	nnoremap <F5>       :SyntasticCheck<CR> 
-	inoremap <C-F5><ESC>:SyntasticCheck<CR> 
-endif
+nnoremap <F5>       :SyntasticCheck<CR> 
+inoremap <C-F5><ESC>:SyntasticCheck<CR> 
 
-if exists('g:loaded_dispatch')
-	nnoremap <F6>       :Dispatch<CR>
-	inoremap <F6>       :Dispatch<CR>
-endif
+nnoremap <F6>       :Dispatch<CR>
+inoremap <F6>       :Dispatch<CR>
 
-if exists('g:loaded_quickrun')
-	nnoremap <leader>qr :QuickRun -outputter/buffer/split "botright 8sp"<CR>
-endif
+nnoremap <leader>qr :QuickRun -outputter/buffer/split "botright 8sp"<CR>
 
 set pastetoggle     =<F10>
 "nnoremap <F11>      :registers<CR> 
@@ -98,6 +87,7 @@ nnoremap <silent>ts :tab split<CR>
 nnoremap <silent>tl :tablast<CR>
 nnoremap <silent>tf :tabfirst<CR>
 nnoremap <silent>te :tabedit<CR>
+
 "switch between windows
 if exists('g:loaded_tmux_navigator')
 	nnoremap <silent> fh :TmuxNavigateLeft  "<esc><C-W><left>
@@ -139,14 +129,12 @@ function s:go_current()
 endfunction
 
 "Fugitive
-if exists('g:loaded_fugitive')
-	nnoremap <leader>gs :Gstatus<cr>
-	nnoremap <leader>gd :Gdiff<cr>
-	nnoremap <leader>gb :Gblame<cr>
-	nnoremap <leader>gw :Gwrite
-	nnoremap <leader>gr :Gread
-	nnoremap <leader>dp :diffput<cr>:diffupdate<cr>
-	vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
-	nnoremap <leader>dg :diffget<cr>:diffupdate<cr>
-	vnoremap <leader>dg :diffget<cr>:diffupdate<cr>
-endif
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gw :Gwrite
+nnoremap <leader>gr :Gread
+nnoremap <leader>dp :diffput<cr>:diffupdate<cr>
+vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
+nnoremap <leader>dg :diffget<cr>:diffupdate<cr>
+vnoremap <leader>dg :diffget<cr>:diffupdate<cr>

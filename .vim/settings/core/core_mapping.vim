@@ -7,15 +7,15 @@ nmap <leader>U mQgewvU`Q
 nmap <leader>L mQgewvu`Q
 
 "Make alt-key work sanely
-if g:is_vim
-    let c='a'
-    while c <= 'z'
-    exec "set <A-".c.">=\e".c
-    "Trick to make Alt key work properly  
-    exec "imap \e".c." <A-".c.">"
-    let c = nr2char(1+char2nr(c))
-    endw
-endif
+"if g:is_vim && !has('nvim')
+"    let c='a'
+"    while c <= 'z'
+"    exec "set <A-".c.">=\e".c
+"    "Trick to make Alt key work properly  
+"    exec "imap \e".c." <A-".c.">"
+"    let c = nr2char(1+char2nr(c))
+"    endw
+"endif
 
 
 nnoremap<nowait> j gj
@@ -85,10 +85,8 @@ nnoremap <leader>Q <ESC>:q<CR>
 nnoremap <leader>wq <ESC>:wq<CR>
 
 "Easy Completions
-ino >k <C-x><C-k>
+inoremap >k <C-x><C-k>
 
-
-"Surround
 
 "Open file from current dir
 nnoremap <C-f> :FZF <c-r>=fnameescape(expand("%:p:h"))<cr><cr>
@@ -99,29 +97,29 @@ command CDC cd %:p:h
 noremap <silent> <space> :exe 'silent! normal! za'.(foldlevel('.')?'':'l')<cr>
 
 "command! dos2unix exec ':%s/\r//g'
-inoremap <C-B> `
-cnoremap <C-B> `
-inoremap <C-T> ~
-cnoremap <C-T> ~
-" quickfix window
-nnoremap <silent> <leader>xx :cwindow<CR>
-nnoremap <silent> <leader>xp :clist<CR>
-nnoremap <silent> <leader>xc :cclose<CR>
-nnoremap <silent> <leader>xz :call setqflist([])<CR>
-nnoremap <TAB> }
-xnoremap <TAB> }
-nnoremap \ {
-xnoremap \ {
-" keep search matches in the middle of the window
-nnoremap n nzvzz
-nnoremap N Nzvzz
-" don't lose selection after indenting
-vnoremap < <gv
-vnoremap > >gv
+"inoremap <C-B> `
+"cnoremap <C-B> `
+"inoremap <C-T> ~
+"cnoremap <C-T> ~
+"" quickfix window
+"nnoremap <silent> <leader>xx :cwindow<CR>
+"nnoremap <silent> <leader>xp :clist<CR>
+"nnoremap <silent> <leader>xc :cclose<CR>
+"nnoremap <silent> <leader>xz :call setqflist([])<CR>
+"nnoremap <TAB> }
+"xnoremap <TAB> }
+"nnoremap \ {
+"xnoremap \ {
+"" keep search matches in the middle of the window
+"nnoremap n nzvzz
+"nnoremap N Nzvzz
+"" don't lose selection after indenting
+"vnoremap < <gv
+"vnoremap > >gv
 " useful cheats
-inoremap <C-A> <ESC>I
-inoremap <C-Q> <ESC>A
-inoremap <C-E> <ESC>lwi
-inoremap <C-S> <ESC>lbi
-inoremap <C-D> <ESC>o
-inoremap <C-F> <ESC>O
+"inoremap <C-A> <ESC>I
+"inoremap <C-Q> <ESC>A
+"inoremap <C-E> <ESC>lwi
+"inoremap <C-S> <ESC>lbi
+"inoremap <C-D> <ESC>o
+"inoremap <C-F> <ESC>O

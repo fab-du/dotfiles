@@ -13,5 +13,4 @@ let g:syntastic_auto_loc_list = 0
 "Disable default behavieu
 let g:syntastic_mode_map = {
         \ "mode": "passive",
-        \ "active_filetypes": ["javascript", "php"],
-        \ "passive_filetypes": ["puppet"] }
+	\  "active_filetypes": ["javascript", "php"] }

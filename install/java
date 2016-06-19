@@ -1,0 +1,2 @@
+#!/bin/bash
+wget -p ~/bin_external/java_repl -qO- http://albertlatacz.published.s3.amazonaws.com/javarepl/javarepl.jar

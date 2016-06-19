@@ -33,7 +33,7 @@ alias e_vimrc='vim $HOME/.vimrc'
 alias e_tmux='vim $HOME/.tmux.conf' 
 alias e_bashrc='vim $HOME/.bashrc' 
 alias e_zsh='vim $HOME/.zshrc' 
-alias e_i3='vim $HOME/.i3/config' 
+alias e_awe='vim $HOME/.config/awesome' 
 
 
 ####Screen Setup########## 
@@ -78,10 +78,8 @@ alias ANDROID='cd $HOME/Project/ANDROID/'
 alias JAVA='cd $HOME/Project/JAVA/'
 alias J2EE='cd $HOME/Project/J2EE/'
 
-alias bachs='cd $HOME/Project/Server'
 alias doc='cd $HOME/Dokumente'
 alias down='cd $HOME/Downloads'
-
 
 #Android Programming Aliases : 
 alias android_make_build_xml='android update project -p'
@@ -102,8 +100,6 @@ alias ls_bin='ls -alh'
 alias ch='cd ~'
 alias _='sudo'
 alias cvim='cd ~/.vim/'
-alias cdoc='cd $HOME/documents' 
-alias cdown='cd $HOME/downloads'
 alias ..='cd ..' 
 alias .2='cd ../../'
 alias .3='cd ../../../' 

@@ -10,4 +10,3 @@ let g:surround_35  = "#{\r}"   " #
 " Or yss- to do entire line.
 let g:surround_45 = "<% \r %>"    " -
 let g:surround_61 = "<%= \r %>"   " =
-

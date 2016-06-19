@@ -1,4 +1,6 @@
 tree 
+unzip
+xclip
 git-all
 ssh
 sshfs 
