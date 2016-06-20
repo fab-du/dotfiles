@@ -6,6 +6,8 @@ dotfiles
 ### Actuel: 
 
 * .tmux.conf
+* .dmenurc  [new]
+* .rofirc [new]
 * .xinitrc
 * .vimrc
 * .gitconfig
