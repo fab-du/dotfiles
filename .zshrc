@@ -10,3 +10,6 @@ source ~/dotfiles/zsh/lib/plugin/mvn/mvn.plugin.zsh
 #export TERM=xterm-256color
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zshrc_local ] && source ~/.zshrc_local
+
+# config ls colors 
+eval `dircolors -b $HOME/dotfiles/.misc_configs/.dircolors`
