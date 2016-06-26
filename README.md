@@ -34,6 +34,40 @@ Like vim plugin or software
 wget -P -qO- https://raw.githubusercontent/bat-lab/dotfiles/install/install.sh | bash 
 ```
 
+Programm
+========
+
+### Editor
+
+#### Vi, Vim Nvim 
+
+### Window Manager
+
+#### Awesome WM 
+
+Awesome WM is a tiling window manager, fully customizable that give you 
+incredible flexibility. Try it, and you will never go back.
+
+### File Manager
+
+#### MC ( Midnight commander )
+
+Command based File Manager. with vim-like Motions. 
+
+#### Krusader
+
+Gui File Manager based on MC. 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
