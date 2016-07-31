@@ -101,9 +101,10 @@ else
 	nnoremap <silent> fj <esc><C-W><down>
 endif
 "Split window
-nnoremap <silent>fv <esc>:vsplit 
-nnoremap <silent>_ <C-W>_
-nnoremap <silent><bar> <C-W><bar>
+nnoremap <silent>fv <esc>:vsplit
+nnoremap <silent>fh <esc>:vsplit
+nnoremap <silent>_  <C-W>_
+nnoremap <silent><bar>  <C-W>|
 nnoremap <silent>f= <C-W>=
 
 "Clipboard interaction

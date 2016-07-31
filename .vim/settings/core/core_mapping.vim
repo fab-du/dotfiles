@@ -85,7 +85,7 @@ nnoremap <leader>Q <ESC>:q<CR>
 nnoremap <leader>wq <ESC>:wq<CR>
 
 "Easy Completions
-inoremap >k <C-x><C-k>
+inoremap <C-k> <C-x><C-k>
 
 
 "Open file from current dir
@@ -96,7 +96,7 @@ command CDC cd %:p:h
 " Spacebar toggles a fold, zi toggles all folding, zM closes all folds
 noremap <silent> <space> :exe 'silent! normal! za'.(foldlevel('.')?'':'l')<cr>
 
-"command! dos2unix exec ':%s/\r//g'
+command! Dos2unix exec ':%s/\r//g'
 "inoremap <C-B> `
 "cnoremap <C-B> `
 "inoremap <C-T> ~
@@ -106,16 +106,16 @@ noremap <silent> <space> :exe 'silent! normal! za'.(foldlevel('.')?'':'l')<cr>
 "nnoremap <silent> <leader>xp :clist<CR>
 "nnoremap <silent> <leader>xc :cclose<CR>
 "nnoremap <silent> <leader>xz :call setqflist([])<CR>
-"nnoremap <TAB> }
-"xnoremap <TAB> }
-"nnoremap \ {
-"xnoremap \ {
+nnoremap <tab> }
+xnoremap <tab> }
+nnoremap \ {
+xnoremap \ {
 "" keep search matches in the middle of the window
 "nnoremap n nzvzz
 "nnoremap N Nzvzz
 "" don't lose selection after indenting
-"vnoremap < <gv
-"vnoremap > >gv
+vnoremap < <gv
+vnoremap > >gv
 " useful cheats
 "inoremap <C-A> <ESC>I
 "inoremap <C-Q> <ESC>A

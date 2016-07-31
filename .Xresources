@@ -1,34 +1,53 @@
-#include "/home/batie/.colors/blackburn"
+Xcursor.theme: DMZ-White
 
-Xft.lcdfilter                :  lcddefault
-Xft.hintstyle                :  hintslight
-Xft.hinting                  :  1
-Xft.autohint                 :  1
-Xft.antialias                :  1
-Xft.dpi                      :  96
-Xft.rgba                     :  rgb
+*.faceName:            Hack
+*.faceSize:            10
+*.letterSpace:         -1
 
-Xcursor.theme                :  Vanilla-DMZ-AA
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.hinting:    true
+Xft.rgba:       rgb
+Xft.hintstyle:  hintslight
 
-!*.font                   :  xft:Hack:pixelsize=10:autohint=true
-!*.boldFont               :  xft:Hack:pixelsize=10:autohint=true
 
-*.scrollBar              :  false
-*.buffered               :  true
-*.perl-ext-common        :  default,tabbedex
-*.tabbed.tabbar-fg       :  8
-*.tabbed.tabbar-bg       :  0
-*.tabbed.tab-fg          :  15
-*.tabbed.tab-bg          :  0
-*.tabbed.autohide        :  true
-*.tabbed.reopen-on-close :  yes
+*.background: #232C31
+*.foreground: #C5C8C6
+! black
+*color0: #2D3C46
+*color8: #425059
+! red
+*color1: #A54242
+*color9: #CC6666
+! green
+*color2: #8C9440
+*color10: #B5BD68
+! yellow
+*color3: #DE935F
+*color11: #F0C674
+! blue
+*color4: #5F819D
+*color12: #81A2BE
+! magenta
+*color5: #85678F
+*color13: #B294BB
+! cyan
+*color6: #5E8D87
+*color14: #8ABEB7
+! white
+*color7: #6C7A80
+*color15: #C5C8C6
 
-*.perl-ext               :  default,url-select
-*.keysym.C-i             :  perl:url-select:select_next
-*.url-select.launcher    :  /usr/bin/firefox
-*.url-select.underline   :  true
-*.colorUL                :  #78A4FF
+URxvt.internalBorder:      0
+URxvt.externalBorder:      0
 
-xterm*faceName : Hack:pixelsize=11
-xterm*termName : xterm-256color
-xterm*loginshell : true
+xterm.scrollBar:           false
+
+xterm*fading:              30
+
+
+URxvt.perl-ext-common:     matcher,resize-font,foo
+URxvt.keysym.F11:          perl:fullscreen:switch
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger:  C-Up
+

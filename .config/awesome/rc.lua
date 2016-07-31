@@ -1,4 +1,6 @@
 -- {{{ Required libraries
+require("revelation")
+require("myplacesmenu")
 local gears     = require("gears")
 local awful     = require("awful")
 awful.rules     = require("awful.rules")
@@ -8,6 +10,8 @@ local beautiful = require("beautiful")
 local naughty   = require("naughty")
 local drop      = require("scratchdrop")
 local lain      = require("lain")
+local freedesktop_menu = require("freedesktop.menu")
+local keydoc	= require("keydoc")
 -- }}}
 
 -- {{{ Error handling
@@ -54,7 +58,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker/t
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
-terminal   = "xterm" or "urxvtc" 
+terminal   = "xterm" or "urxvt" 
 editor     = os.getenv("EDITOR") or "nvim" or "vim" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -63,6 +67,7 @@ browser    = "firefox"
 gui_editor = "gvim"
 graphics   = "gimp"
 mail       = terminal .. " -e mutt "
+filemanager       = terminal .. " -e vifm "
 iptraf     = terminal .. " -g 180x54-20+34 -e sudo iptraf-ng -i all "
 musicplr   = terminal .. " -g 130x34-320+16 -e ncmpcpp "
 
@@ -95,8 +100,16 @@ end
 -- }}}
 
 -- {{{ Menu
-mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
-                              theme = { height = 16, width = 130 }})
+myappmenu = awful.menu({ items = freedesktop_menu.new() })
+mymainmenu = awful.menu({ items = { { "file-manager", terminal .. " -e vifm"},
+                                    { "places", myplacesmenu.myplacesmenu() },
+                                    { "Music Player", terminal .. "-e ncmpcpp" },
+                                    { "Internet", terminal .. "-e firefox" },
+                                    { "Neustarten", "sudo shutdown -r now" },
+                                    { "Ausschalten",  "sudo shutdown -h now" }
+                                  }
+                        })
+
 -- }}}
 
 -- {{{ Wibox
@@ -121,27 +134,13 @@ lain.widgets.calendar:attach(mytextclock, { font_size = 10 })
 -- Mail IMAP check
 mailicon = wibox.widget.imagebox(beautiful.widget_mail)
 mailicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(mail) end)))
---[[ commented because it needs to be set before use
-mailwidget = lain.widgets.imap({
-    timeout  = 180,
-    server   = "server",
-    mail     = "mail",
-    password = "keyring get mail",
-    settings = function()
-        if mailcount > 0 then
-            widget:set_text(" " .. mailcount .. " ")
-            mailicon:set_image(beautiful.widget_mail_on)
-        else
-            widget:set_text("")
-            mailicon:set_image(beautiful.widget_mail)
-        end
-    end
-})
-]]
+
+
+
 
 -- MPD
 mpdicon = wibox.widget.imagebox(beautiful.widget_music)
-mpdicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell(musicplr) end)))
+mpdicon:buttons(awful.util.table.join(awful.button({ modkey,  }, F9, function () awful.util.spawn_with_shell(musicplr) end)))
 mpdwidget = lain.widgets.mpd({
     settings = function()
         if mpd_now.state == "play" then
@@ -381,28 +380,16 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     -- Take a screenshot
     -- https://github.com/copycat-killer/dots/blob/master/bin/screenshot
-    awful.key({ altkey }, "p", function() os.execute("screenshot") end),
+    awful.key({ }, "Print", function() awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
 
-    -- Tag browsing
-    --awful.key({ modkey }, "Left",   awful.tag.viewprev       ),
-    --awful.key({ modkey }, "Right",  awful.tag.viewnext       ),
-    --awful.key({ modkey }, "Escape", awful.tag.history.restore),
+
+
+    -- MAC_OS-Like revelation
+    awful.key({modkey, "Control"}, "e", revelation),
 
     -- Non-empty tag browsing
     awful.key({ modkey }, "Left", function () lain.util.tag_view_nonempty(-1) end),
     awful.key({ modkey }, "Right", function () lain.util.tag_view_nonempty(1) end),
-
-    -- Default client focus
-    --awful.key({ altkey }, "k",
-     --   function ()
-      --      awful.client.focus.byidx( 1)
-            -- if client.focus then client.focus:raise() end
-        -- end),
-    --awful.key({ altkey }, "j",
-     --   function ()
-      --      awful.client.focus.byidx(-1)
-       --     if client.focus then client.focus:raise() end
-        -- end),
 
     -- By direction client focus
     awful.key({ modkey }, "j",
@@ -438,6 +425,7 @@ globalkeys = awful.util.table.join(
     end),
 
     -- Layout manipulation
+    keydoc.group("Layout manipulation"),
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
@@ -469,30 +457,15 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,	          }, "z",      function () drop(terminal) end),
 
     -- Widgets popups
-    awful.key({ altkey,           }, "c",      function () lain.widgets.calendar:show(7) end),
-    awful.key({ altkey,           }, "h",      function () fswidget.show(7) end),
+    awful.key({ altkey,           }, "c",      function () lain.widgets.calendar:show(4) end),
+    awful.key({ altkey,           }, "h",      function () fswidget.show(4) end),
 
     -- ALSA volume control
-    awful.key({ altkey }, "Up",
-        function ()
-           os.execute(string.format("amixer set %s 1%%+", volumewidget.channel))
-           volumewidget.update()
-       end),
-     awful.key({ altkey }, "Down",
-      function ()
-         os.execute(string.format("amixer set %s 1%%-", volumewidget.channel))
-            volumewidget.update()
-         end),
-    -- awful.key({ altkey }, "m",
-      --  function ()
-       --     os.execute(string.format("amixer set %s toggle", volumewidget.channel))
-        --    volumewidget.update()
-        -- end),
-    -- awful.key({ altkey, "Control" }, "m",
-      --  function ()
-       --     os.execute(string.format("amixer set %s 100%%", volumewidget.channel))
-        --    volumewidget.update()
-        -- end),
+    awful.key({           	  }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q set PCM 1+ unmute") volumewidget.update()  end),
+    awful.key({           	  }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q set PCM 1- unmute") volumewidget.update() end),
+    awful.key({                   }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q set Master 1+ unmute") volumewidget.update() end),
+    awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q set Master 1- unmute") volumewidget.update() end),
+    awful.key({                   }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master toggle") volumewidget.update() end),
 
     -- MPD control
     awful.key({ modkey, }, "F11",
@@ -516,9 +489,8 @@ globalkeys = awful.util.table.join(
 
     -- User programs
     awful.key({ modkey }, "e", function () awful.util.spawn(browser) end),
-    --awful.key({ modkey }, "i", function () awful.util.spawn(browser2) end),
-    --awful.key({ modkey }, "e", function () awful.util.spawn(gui_editor) end),
-    --awful.key({ modkey }, "g", function () awful.util.spawn(graphics) end),
+    awful.key({ modkey }, "d", function () awful.util.spawn(filemanager) end),
+    awful.key({ modkey }, "p", function () awful.util.spawn(musicplr) end),
 
     -- Prompt
     awful.key({ modkey }, "r", function () awful.util.spawn_with_shell("rofi -show run")  end),
@@ -528,7 +500,10 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+
+    -- show help
+    awful.key({ modkey, }, "F1", keydoc.display)
 )
 
 clientkeys = awful.util.table.join(
@@ -615,8 +590,8 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
 	                   size_hints_honor = false } },
-    { rule = { class = "URxvt" },
-          properties = { opacity = 0.99 } },
+    { rule = { class = "xterm" },
+          properties = { floating = false } },
 
     { rule = { class = "Firefox" },
           properties = { tag = tags[1][1] } },

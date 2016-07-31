@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # export PATH=$PATH:/usr/local/bin
 
 # abort if we're already inside a TMUX session
@@ -15,7 +15,7 @@ echo " "
 select opt in "${options[@]}"
 do
 	case $opt in
-		"New Session")
+		"unamed")
 			read -p "Enter new session name: " SESSION_NAME
 			tmux -2 new -s "$SESSION_NAME"
 			break

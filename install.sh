@@ -25,7 +25,8 @@ case $dotfile in .gitignore);; .git);; install.sh);; README.md);; ) ln -s $PWD/$
 done
 }
 
-[ "$1" == "min" || "$1" == "minimal" ] && installation_option="FAB_DU_DOT_MINIMAL"
+[ "$1" == "min" || "$1" == "minimal" ] 		  && installation_option="FAB_DU_DOT_MINIMAL"
+[ "$1" == "min" || "$1" == "server" ]  		  && installation_option="FAB_DU_DOT_SERVER"
 [ "$1" == "full" || "$1" == "full_installation" ] && installation_option="FAB_DU_DOT_EXTENDED"
 
 setup_shell()
