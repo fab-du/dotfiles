@@ -1,7 +1,8 @@
 #!/bin/bash
 
-echo "################################"
-echo "## Download vim plugin ##"
+
+ret=`which vim`
+[[  $ret=="0" ]] && echo "Vim already installed"; exit 0
 
 if [ ! -e "$HOME"/.vim/autoload/plug.vim ]; then
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

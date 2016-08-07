@@ -1,11 +1,24 @@
 #!/bin/bash
 
-packages=$(cat package.list)
+parent_path=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
+file="$parent_path""/package.list"
 
-sudo apt-get update
+installation_cmd="sudo apt-get install -y "
+#installation_cmd_osx="brew install "
 
-for package in $packages 
-do 
-	sudo apt-get install $package
-done
+install () {
+	packages=`awk "/${1}/{flag=1;next}/end/{flag=0}flag" $file`
+	for package in $packages 
+	do 
+		dpkg -s $package &> /dev/null 
+		[[ "$?" != "0" ]] && echo "Installing $package ..." && eval "$installation_cmd ""$package"" &> /dev/null"
+		echo "package $package already installed ..."
+	done
+}
 
+main() {
+   install $1
+}
+
+main $1
+exit 0

@@ -1,4 +1,5 @@
---minimal
+minimal
+inotify-tools
 tree 
 unzip
 xclip
@@ -18,17 +19,19 @@ python-dev
 python-pip 
 dnsmasq
 nginx
-mysql
+mysql-client
+mysql-server
+mysql-common
 postgresql
+end
 
---extended
-hub
-ack
+extended
+youtube-dl
+ack-grep
 tmux
 tmuxinator
 rofi
 mc
 vifm
-krusader
-more-utils
 wmctrl
+end

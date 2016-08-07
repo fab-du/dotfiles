@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+ret=`which lyx`
+[[  $ret=="0" ]] && echo "lyx already installed"; exit 0
 
 sudo apt-get install texlive-font-utils texlive-fonts-recommended inkscape -y
 sudo apt-get install libtiff-tools noweb sgmltools-lite linuxdoc-tools -y 
