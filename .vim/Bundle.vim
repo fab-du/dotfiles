@@ -56,14 +56,14 @@ Plug 'vim-scripts/DfrankUtil'
 " End helper :  ---------------------------------------"}}}
 
 " Full Language Support "{{{
-Plug 'vim-ruby/vim-ruby', { 'for' : 'ruby'}
+Plug 'vim-ruby/vim-ruby'
 Plug 'moll/vim-node', { 'for' : 'node'}
-Plug 'fatih/vim-go', { 'for' : 'go'}
-Plug 'vim-scripts/dbext.vim', { 'for': 'sql'}
+Plug 'fatih/vim-go'
+Plug 'vim-scripts/dbext.vim'
 Plug 'nono/jquery.vim', { 'for': 'js/jquery'}
 Plug 'Townk/vim-qt', { 'for' : 'cpp/qt'}
 Plug 'suan/vim-instant-markdown', {'for' : 'markdown', 'do' : 'npm install instant-markdown-d -g'}
-Plug 'pangloss/vim-javascript', {'for': 'js'}
+Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax', { 'for' : 'js'}
 Plug 'burnettk/vim-angular', { 'for': 'js/angular'}
 Plug 'tpope/vim-markdown' , {'for' : 'markdown'} 
@@ -120,6 +120,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 " En File Navigation"}}}
 
 " @TODO  "{{{
+Plug '/home/batie/dotfiles/.vim/custom_plugins/tomorow_bright'
 Plug 'tpope/vim-abolish'
 Plug 'scrooloose/syntastic' ", { 'on' : ['Syntastic', 'SyntasticCheck']}
 Plug 'kana/vim-textobj-user' "}}}
@@ -143,3 +144,5 @@ endif
 
 call plug#end()
 endif
+
+colorschem Tomorrow-Night-Bright

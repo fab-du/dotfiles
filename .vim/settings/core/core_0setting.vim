@@ -84,13 +84,13 @@ if g:is_vim
 endif
 
 if g:is_vim
-"    set backspace=eol,start,indent
-"   set incsearch
-"   set background=dark
-"   set autoread
+    set backspace=eol,start,indent
+    set incsearch
+    set background=dark
+    set autoread
 "   set viminfo=!,'100,h,n~/.viminfo
-"   set fillchars=vert:\|
-"   set history=10000
+   set fillchars=vert:\|
+   set history=10000
 endif
 
 set wildignore=*.o,*.so,*.pyc,*.class,*.fasl,tags
