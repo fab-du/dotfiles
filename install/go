@@ -1,0 +1,9 @@
+#!/bin/bash
+
+install_ubuntu() {
+ sudo add-apt-repository ppa:ubuntu-lxc/lxd-stable
+ sudo apt-get update
+ sudo apt-get install -y golang
+}
+
+install_ubuntu
