@@ -1,8 +1,8 @@
 #!/bin/bash
 
 java_link="http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz"
-tmp_file="~/tmp_java_install"
-jdk_file="$tmp_file""/jdk-8u102-linux-x64.tar.gz"
+tmp_file="$HOME""/tmp_java_install"
+jdk_file="$tmp_file""/jdk.tar.gz"
 
 which java-repl
 if [  $? -eq 0 ]; then
@@ -10,19 +10,13 @@ if [  $? -eq 0 ]; then
 	exit 0
 else
 	echo "Installing java-repl ....."
-	curl -fLo  ~/bin_external/java_repl/javarepl.jar --create-dirs http://albertlatacz.published.s3.amazonaws.com/javarepl/javarepl.jar &> /dev/null
+	curl -fLo  "$HOME""/bin_external/java_repl/javarepl.jar" --create-dirs http://albertlatacz.published.s3.amazonaws.com/javarepl/javarepl.jar &> /dev/null
 	touch ~/bin_external/java_repl/java-repl &&  chmod +x ~/bin_external/java_repl/java-repl
 	echo "#!/bin/bash">>~/bin_external/java_repl/java-repl
 	echo "java -jar ~/bin_external/java_repl/java-repl.jar">>~/bin_external/java_repl/java-repl
 fi
 
 
-which java
-if [  $? -eq 0 ]; then
-	echo "Java already installed $?" 
-else
-
-curl -fLo "$jdk_file" --create-dirs "$tmp_file"
 
 
 # ujavainstaller.sh - Ubuntu Java Installer (Oracle JDK)
@@ -72,12 +66,6 @@ echo
 echo Ubuntu Java Installer
 echo
 
-# Display usage information if no parameters were provided
-if [ $# -eq 0 ]; then
-   display_usage
-   exit 1
-fi
-
 # Check what options were provided
 REMOVE_OPENJDK=false
 JDK_ARCHIVE=""
@@ -90,9 +78,10 @@ while true; do
       -* ) echo "Unrecognized option $1"
            echo
            exit 1;;
-      * ) JDK_ARCHIVE=$jdk_file/ ; break ;;
+      * ) JDK_ARCHIVE=$1 ; break ;;
    esac
 done
+echo $JDK_ARCHIVE
 
 # Check if the script is running with root permissions
 if [ `id -u` -ne 0 ]; then
@@ -158,7 +147,7 @@ echo "OK"
 
 # Update /etc/profile
 echo -n "Updating /etc/profile ... "
-cat >> /etc/profile <<EOF
+cat >> ~/.profile_local <<EOF
 JAVA_HOME=$JDK_LOCATION
 JRE_HOME=$JDK_LOCATION/jre
 PATH=$PATH:$JDK_LOCATION/bin:$JDK_LOCATION/jre/bin

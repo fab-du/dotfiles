@@ -1,0 +1,78 @@
+[options]
+resize_grip = false
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+visible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = Meslo LG S for Powerline  8
+scrollback_lines = 1000
+search_wrap = true
+#icon_name = terminal
+#geometry = 640x480 
+
+# "system", "on" or "off"
+cursor_blink = system
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# $BROWSER is used by default
+#browser = firefox
+
+# word characters used for word selection
+# (default if unset: all graphic non-punctuation/space characters)
+#word_chars = -A-Za-z0-9,./?%&#:_=+@~
+
+# set size hints for the window
+#size_hints = false
+
+# emit escape sequences for other keys modified by Control
+#modify_other_keys = false
+
+[colors]
+foreground = #c5c8c6
+foreground_bold = #ffffff
+foreground_dim = #888888
+background = #ededed
+background = #1d1f21
+cursor = #aeafad
+
+# if unset, will reverse foreground and background
+highlight = #d6d6d6
+
+#foreground=   #eaeaea
+#background=   #000000
+#background = #1d1f21
+
+color0  =    #000000
+color1  =    #912226
+color2  =    #778900
+color3  =    #ae7b00
+color4  =    #1d2594
+color5  =    #682a9b
+color6  =    #2b6651
+color7  =    #929593
+color8  =    #666666
+color9  =    #cc6666
+color10 =    #b5bd68
+color11 =    #f0c674
+color12 =    #81a2be
+color13 =    #b294bb
+color14 =    #8abeb7
+color15 =    #ecebec
+
+[hints]
+#font = Hack 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
+
+# vim: ft=dosini cms=#%s

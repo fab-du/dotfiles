@@ -26,6 +26,7 @@ postgresql
 end
 
 extended
+cclive
 youtube-dl
 ack-grep
 tmux
@@ -34,4 +35,6 @@ rofi
 mc
 vifm
 wmctrl
+mupdf
+mupdf-tools
 end

@@ -4,7 +4,14 @@ autoload colors; colors;
 function nop() { }
 
 # Use vim as a man viewer
-function vimman() { vim -R -c "Man $1 $2" -c "bdelete 1"; }
+vman() {
+  nvim -c "SuperMan $*"
+
+  if [ "$?" != "0" ]; then
+    echo "No manual entry for $*"
+  fi
+}
+
 
 # Extract Stuff
 extract () {

@@ -1,83 +1,63 @@
-
 [user]
     name = fab-du
     email = batlab.official@gmail.com 
 
+[github]
+    user = fab-du
+
+
 [core]
     pager = cat
-    editor = vim
+    editor = nvim
     excludesfile = ~/.gitignore
 
 [alias]
+    difftex = difftool -y -t latex
     tags = tag -l
     branches = branch -a
     remotes = remote -v
-
     make-the-fucking-branch-point-at-the-fucking-commit = "!sh -c 'git checkout $1 && git reset --hard $2' -"
     root = rev-parse --show-toplevel
-
     graft = cherry-pick -x
-
     l   = log -18 --color=always --all --topo-order --pretty='format:%Cgreen%h%Creset %s%Cred%d%Creset %C(black bold)(by %an)%Creset'
     ll  = log     --color=always --all --topo-order --pretty='format:%Cgreen%h%Creset %s%Cred%d%Creset %C(black bold)(by %an)%Creset'
     gl  = log -12 --color=always --all --graph --topo-order --pretty='format:%Cgreen%h%Creset %s %C(black bold)(by %an)%Creset%C(yellow bold)%d%Creset%n'
     gll = log     --color=always --all --graph --topo-order --pretty='format:%Cgreen%h%Creset %s %C(black bold)(%cr by %an)%Creset%C(yellow bold)%d%Creset%n'
-
     pull = pull --ff-only
     up = merge --ff-only
-
     join = merge --no-ff
-
     discard-merge = reset --hard HEAD
-
     ack = log --color=always --all --topo-order --pretty='format:%Cgreen%h%Creset %s%Cred%d%Creset %C(black bold)(by %an)%Creset' --full-history -S 
-
     ci = commit
     cm = commit -m
-
     d = "!sh -c 'git diff $* | vim -R -' -"
     di = !git diff --cached | vim -R -
-
     co = checkout
     id = rev-parse
-
     stat = status
     st = status
-
     unstage = reset HEAD
     uns = reset HEAD
-
     shelve = stash save --include-untracked
     unshelve = stash pop
-
     shel = shelve
     unshel = unshelve
-
     delete-local-branch = branch -D
     delete-local-reference-to-remote-branch = "!sh -c 'git branch -rd $1/$2' -"
     delete-remote-branch = "!sh -c 'git push $1 --delete $2' -"
     ; delete-branch = "!sh -c 'git delete-local-branch $1; git delete-local-reference-to-remote-branch origin/$1; git delete-local-reference-to-remote-branch upstream/$1' -"
     delete-branch = "!sh -c 'git delete-local-branch $1; git remotes | cut -f1 | sort | uniq | xargs -n1 -J % git delete-local-reference-to-remote-branch % $1' -"
-
     currentbranch = rev-parse --abbrev-ref HEAD
-
     fo = fetch origin
     fu = fetch upstream
-
     po = push origin
-    ; lo = pull origin
-
     mo = !git merge --no-ff origin/`git currentbranch`
     mu = !git merge --no-ff upstream/`git currentbranch`
-
     uo = !git merge --ff-only origin/`git currentbranch`
     uu = !git merge --ff-only upstream/`git currentbranch`
-
     fuu = "!sh -c 'git fu && git uu' -"
-
     addremove = !git add . && git add -u
     addrem = !git addremove
-
     ; Find all commits in the given ref that aren't also in master
     ; TODO: Make this take a second optional argument
     find-unmerged-commits = "!sh -c 'git log $1 --format='''%H''' --not master --' -"
@@ -104,8 +84,6 @@
     sl = "!sh -c 'git show --color=always $1 | less -R' -"
 
     find-merge = "!sh -c 'git log $1..master --merges -n1' -"
-
-    fuck-up-history-from = pull --rebase
 [push]
     default = current
 
@@ -115,28 +93,9 @@
     interactive = auto
     status = auto
 
-[difftool "KaleidoscopeWithId"]
-cmd = ksdiff --partial-changeset --UUID \"$KSID\" --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-
-[difftool "Kaleidoscope"]
-cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-
 [difftool]
     prompt = false
 
-[diff]
-    tool = Kaleidoscope
-
-[merge]
-    tool = splice
-
-[mergetool "splice"]
-    cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
-    trustExitCode = true
-
-[mergetool "Kaleidoscope"]
-cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-trustExitCode = true
 
 [web]
     browser = open

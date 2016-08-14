@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 ret=`which ag`
-[[  $ret=="0" ]] && echo "Ag already installed"; exit 0
+[[  `which ag` ]] && echo "Ag already installed"; exit 0
 
 tmp="$HOME""/tmp_ag"
 sudo apt-get install -y automake pkg-config libpcre3-dev zlib1g-dev liblzma-dev
@@ -9,4 +9,5 @@ git clone https://github.com/ggreer/the_silver_searcher "$tmp"
 cd $tmp
 ./build.sh
 cd $tmp
-sudo make install
+sudo make install &>/dev/null
+rm -rf $tmp

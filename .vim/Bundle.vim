@@ -15,13 +15,12 @@ Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'tpope/vim-classpath' , { 'for' : 'java'}
-Plug 'youjumpiwatch/vim-androidmanifest' , { 'for' : 'java'}
+Plug 'youjumpiwatch/vim-androidmanifest'
 Plug 'vim-scripts/adt.vim', { 'for' : 'java'}
 
 "shell , completly write in vimL 
 "mainly important for window system
 "where the shell is not great at all. :/
-
 if has('win32') || has('win64')
     Plug 'Shougo/vimshell.vim'    
 endif
@@ -38,10 +37,8 @@ Plug 'jez/vim-superman'
 " End Integration -----------------------------------------"}}}
 
 " Code completion ------------------------------------"{{{
-"Plug 'vim-scripts/javacomplete', { 'for' : 'java'} 
-Plug 'artur-shaik/vim-javacomplete2', {'for' : 'java'}
+Plug 'artur-shaik/vim-javacomplete2'
 
-Plug 'marijnh/tern_for_vim', {'for': 'javascript', 'do' : 'npm install'}
 Plug 'Valloric/YouCompleteMe' , { 'do' : 'git submodule update --init --recursive && ./install.py' } 
 autocmd! User YouCompleteMe if !has('vim_starting') |  call youcompleteme#Enable() endif
 Plug 'rdnetto/YCM-Generator'  , { 'for' : 'cpp'}  
@@ -57,17 +54,17 @@ Plug 'vim-scripts/DfrankUtil'
 
 " Full Language Support "{{{
 Plug 'vim-ruby/vim-ruby'
-Plug 'moll/vim-node', { 'for' : 'node'}
+Plug 'moll/vim-node', {'for' : 'javascript'}
 Plug 'fatih/vim-go'
 Plug 'vim-scripts/dbext.vim'
 Plug 'nono/jquery.vim', { 'for': 'js/jquery'}
 Plug 'Townk/vim-qt', { 'for' : 'cpp/qt'}
 Plug 'suan/vim-instant-markdown', {'for' : 'markdown', 'do' : 'npm install instant-markdown-d -g'}
 Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax', { 'for' : 'js'}
-Plug 'burnettk/vim-angular', { 'for': 'js/angular'}
+Plug 'jelera/vim-javascript-syntax', { 'for' : 'javascript'}
+Plug 'burnettk/vim-angular'
 Plug 'tpope/vim-markdown' , {'for' : 'markdown'} 
-Plug 'yuratomo/java-api-android', {'for' : 'java/android'}
+"Plug 'yuratomo/java-api-android', {'for' : 'java/android'}
 " End Full Language Support "}}}
 
 "Make"{{{
@@ -82,6 +79,8 @@ endif
 Plug 'sjl/gundo.vim'
 Plug 'mbbill/undotree'
 Plug 'airblade/vim-rooter'
+Plug '907th/vim-auto-save'
+
 " End Enhance vim built-in Features"}}}
 
 " Code Navigation"{{{
@@ -122,7 +121,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 " @TODO  "{{{
 Plug '/home/batie/dotfiles/.vim/custom_plugins/tomorow_bright'
 Plug 'tpope/vim-abolish'
-Plug 'scrooloose/syntastic' ", { 'on' : ['Syntastic', 'SyntasticCheck']}
+Plug 'scrooloose/syntastic' 
 Plug 'kana/vim-textobj-user' "}}}
 
 
@@ -142,7 +141,21 @@ if filereadable(expand("~/.bundle_local.vim"))
     source '~/.bundle_local.vim'
 endif
 
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern'  }
+Plug 'zchee/deoplete-go'
+Plug 'zchee/deoplete-jedi'
+Plug 'osyo-manga/vim-monster', {'do': 'gem install rcodetools'}
+
+"rails
+Plug 'tpope/vim-rails' | Plug 'tpope/vim-bundler'  | Plug 'tpope/vim-abolish' |Plug 'tpope/vim-abolish' | Plug 'vim-scripts/dbext.vim' |  Plug 'tpope/vim-rake' 
+Plug 'tpope/vim-endwise'
+
+
 call plug#end()
 endif
 
-colorschem Tomorrow-Night-Bright
+colorscheme Tomorrow-Night-Bright
