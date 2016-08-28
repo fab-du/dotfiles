@@ -1,4 +1,3 @@
--- {{{ Required libraries
 require("revelation")
 require("myplacesmenu")
 local gears     = require("gears")
@@ -12,7 +11,6 @@ local drop      = require("scratchdrop")
 local lain      = require("lain")
 local freedesktop_menu = require("freedesktop.menu")
 local keydoc	= require("keydoc")
--- }}}
 
 -- {{{ Error handling
 if awesome.startup_errors then
@@ -33,7 +31,6 @@ do
         in_error = false
     end)
 end
--- }}}
 
 -- {{{ Autostart applications
 function run_once(cmd)
@@ -83,7 +80,7 @@ local layouts = {
 -- {{{ Tags
 tags = {
    names = { "b", "a", "t", "i", "è"},
-   layout = { layouts[1], layouts[2], layouts[3], layouts[1], layouts[4] }
+   layout = { layouts[2], layouts[2], layouts[3], layouts[1], layouts[4] }
 }
 
 for s = 1, screen.count() do
@@ -590,8 +587,6 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
 	                   size_hints_honor = false } },
-    { rule = { class = "xterm" },
-          properties = { floating = false } },
 
     { rule = { class = "Firefox" },
           properties = { tag = tags[1][1] } },

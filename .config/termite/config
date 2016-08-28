@@ -9,20 +9,13 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Meslo LG S for Powerline  8
+font = Meslo LG S for Powerline bold 8
 scrollback_lines = 1000
 search_wrap = true
-#icon_name = terminal
-#geometry = 640x480 
-
-# "system", "on" or "off"
 cursor_blink = system
 
 # "block", "underline" or "ibeam"
 cursor_shape = block
-
-# $BROWSER is used by default
-#browser = firefox
 
 # word characters used for word selection
 # (default if unset: all graphic non-punctuation/space characters)
@@ -31,48 +24,40 @@ cursor_shape = block
 # set size hints for the window
 #size_hints = false
 
-# emit escape sequences for other keys modified by Control
-#modify_other_keys = false
-
 [colors]
-foreground = #c5c8c6
-foreground_bold = #ffffff
-foreground_dim = #888888
-background = #ededed
-background = #1d1f21
-cursor = #aeafad
+foreground      = rgba(255,255,255,255) 
+foreground_bold = #c0b18b
+cursor          = #d17b49
+background = rgba(255 ,255, 100, 0)
 
-# if unset, will reverse foreground and background
-highlight = #d6d6d6
+# black
+color0  = #000000
+color8  = #666666
 
-#foreground=   #eaeaea
-#background=   #000000
-#background = #1d1f21
+# red 
+color1  = #d17b49
+color9  = #d17b49
 
-color0  =    #000000
-color1  =    #912226
-color2  =    #778900
-color3  =    #ae7b00
-color4  =    #1d2594
-color5  =    #682a9b
-color6  =    #2b6651
-color7  =    #929593
-color8  =    #666666
-color9  =    #cc6666
-color10 =    #b5bd68
-color11 =    #f0c674
-color12 =    #81a2be
-color13 =    #b294bb
-color14 =    #8abeb7
-color15 =    #ecebec
+# green
+color2  = #7b8748
+color10 = #7b8748
 
-[hints]
-#font = Hack 12
-#foreground = #dcdccc
-#background = #3f3f3f
-#padding = 2
-#border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
+# yellow
+color3  = #af865a
+color11 = #af865a
 
-# vim: ft=dosini cms=#%s
+# blue
+color4 =4a3637
+color12 = #81a2be
+
+# magenta
+color5  = #775759
+color13 = #775759
+
+# cyan
+color6  = #6d715e
+color14 = #6d715e
+
+# white
+color7      = rgba(0,0,255,255) 
+color15 = #c0b18b

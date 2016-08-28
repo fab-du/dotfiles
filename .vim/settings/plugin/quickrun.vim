@@ -14,7 +14,6 @@ let g:quickrun_config['_'] = {
 	\ 'hook/inu/echo'                                : 0,
 	\ 'hook/inu/wait'                                : 5,
 	\ 'hook/time/enable'                             : 1,
-	\ 'outputter'                                    : 'multi:buffer:quickfix',
 	\ 'outputter/buffer/split'                       : ':botright 8sp',
 	\ 'outputter/buffer/close_on_empty'              : 1,
 	\ 'runner'                                       : 'vimproc',
@@ -77,8 +76,4 @@ let g:quickrun_config['plantuml'] = {
 let g:quickrun_config['vhdl'] = {
     \ 'exec' : '%c %s:p ',
     \ 'command' : '/home/batlab/Xilinx/Vivado/2014.4/bin/xvhdl',
-    \}
-
-let g:quickrun_config['java'] = {
-    \ 'command' : 'ant',
     \}

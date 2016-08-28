@@ -63,7 +63,8 @@ inoremap <C-F5><ESC>:SyntasticCheck<CR>
 nnoremap <F6>       :Dispatch<CR>
 inoremap <F6>       :Dispatch<CR>
 
-nnoremap <leader>qr :QuickRun -outputter/buffer/split "botright 8sp"<CR>
+nnoremap <leader>qr :QuickRun  -mode n<CR>
+vnoremap <leader>qr :QuickRun  -mode v<CR>
 
 set pastetoggle     =<F10>
 "nnoremap <F11>      :registers<CR> 
@@ -101,8 +102,8 @@ else
 	nnoremap <silent> fj <esc><C-W><down>
 endif
 "Split window
-nnoremap <silent>fv <esc>:vsplit
-nnoremap <silent>fh <esc>:vsplit
+nnoremap <silent>fv <esc>:vsplit<CR>
+nnoremap <silent>fh <esc>:vsplit<CR>
 nnoremap <silent>_  <C-W>_
 nnoremap <silent><bar>  <C-W>|
 nnoremap <silent>f= <C-W>=

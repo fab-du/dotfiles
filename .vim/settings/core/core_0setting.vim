@@ -1,23 +1,23 @@
+let s:python=system('which python3.5') 
 if g:is_linux 
-  let g:python_host_prog='/usr/bin/python'
+  let g:python_host_prog=''. s:python
 endif
 if g:is_mac 
-    let g:python_host_prog='/usr/local/bin/python' # found via `which python`
+    let g:python3_host_prog=s:python
+    let g:python_host_prog=s:python
 endif
+
 
 if has('nvim')
     let g:editor_root=expand("~/.vim")
     let &runtimepath.=','.expand("~/.vim")
-elseif g:is_vim 
-    let g:editor_root=expand("~/.vim")
-    "set term=screen-256color
 elseif g:is_win && g:is_gui
     let g:editor_root=expand("$HOME/vimfiles")
     let s:win_bin_dir=expand("$HOME/vim_bin")
 endif
 
-filetype plugin indent on
-syntax on
+filetype plugin indent  on
+syntax enable 
 
 source ~/dotfiles/.vim/Bundle.vim
 
@@ -28,6 +28,7 @@ source ~/dotfiles/.vim/Bundle.vim
 "Completions 
 set completefunc=syntaxcomplete#Complete
 set complete=.,w,b,k,u,i,t 
+syntax enable 
     
 set completeopt=longest,menuone,menu
 set wildmenu
@@ -36,7 +37,7 @@ set nojoinspaces
 
 let mapleader=','
 
-syntax enable 
+set clipboard=unnamed
 
 " save file as root
 command W w !sudo tee % > /dev/null
@@ -44,11 +45,6 @@ command W w !sudo tee % > /dev/null
 set hid
 "" Configure backspace so it acts as it should act
 set whichwrap+=<,>,h,l
-"set lazyredraw " Don't redraw while executing macros (good performance config)
-"" How many tenths of a second to blink when matching brackets
-"set mat=2
-"" DISPLAY SETTINGS
-"set scrolloff=2         " 2 lines above/below cursor when scrolling
 set showmatch           " show matching bracket (briefly jump)
 set matchtime=2         " reduces matching paren blink time from the 5[00]ms
 set showmode            " show mode in status bar (insert/replace/...)
@@ -56,14 +52,14 @@ set showcmd             " show typed command in status bar
 set ruler               " show cursor position in status bar
 set title               " show file in titlebar
 set number
+set relativenumber
 "
 set noswapfile
-set backup " enable backups
+set nobackup " enable backups
 set undodir=$HOME/.tmp_vim/undo// " undo files
-set backupdir=$HOME/.tmp_vim/backup// " backups
-set directory=$HOME/.tmp_vim/swap// " swap files
 set viewdir=$HOME/.tmp_vim/view
-
+"set backupdir=$HOME/.tmp_vim/backup// " backups
+"set directory=$HOME/.tmp_vim/swap// " swap files
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
@@ -76,11 +72,6 @@ if !isdirectory(expand(&directory))
 endif
 if !isdirectory(expand(&viewdir))
     call mkdir(expand(&viewdir), "p")
-endif
-
-if g:is_vim
-"    set timeoutlen=1000
-"    set ttimeoutlen=0
 endif
 
 if g:is_vim

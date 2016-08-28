@@ -1,9 +1,8 @@
 #! /bin/bash
 
-
-#sudo apt-get remove ruby
-#sudo apt-get autoremove
-#exec $SHELL
+sudo apt-get remove ruby
+sudo apt-get autoremove
+exec $SHELL
 
 sudo apt-get update
 sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev
@@ -11,11 +10,10 @@ libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-soft
 libffi-dev -y
 sudo apt-get update
 
-
 cd
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc_local
-echo 'eval "$(rbenv init -)"' >> ~/.zshrc_local
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.profile_local
+echo 'eval "$(rbenv init -)"' >> ~/.profile_local
 exec $SHELL
 
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build

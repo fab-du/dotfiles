@@ -39,10 +39,10 @@ Plug 'jez/vim-superman'
 " Code completion ------------------------------------"{{{
 Plug 'artur-shaik/vim-javacomplete2'
 
-Plug 'Valloric/YouCompleteMe' , { 'do' : 'git submodule update --init --recursive && ./install.py' } 
-autocmd! User YouCompleteMe if !has('vim_starting') |  call youcompleteme#Enable() endif
-Plug 'rdnetto/YCM-Generator'  , { 'for' : 'cpp'}  
-Plug 'tdcdev/ycm_simple_conf' , { 'for' : 'cpp'}  
+"Plug 'Valloric/YouCompleteMe' , { 'do' : 'git submodule update --init --recursive && ./install.py' } 
+"autocmd! User YouCompleteMe if !has('vim_starting') |  call youcompleteme#Enable() endif
+"Plug 'rdnetto/YCM-Generator'  , { 'for' : 'cpp'}  
+"Plug 'tdcdev/ycm_simple_conf' , { 'for' : 'cpp'}  
 " End Code completion ---------------------------------"}}}
 
 "helper :  ---------------------------------------"{{{
@@ -54,22 +54,18 @@ Plug 'vim-scripts/DfrankUtil'
 
 " Full Language Support "{{{
 Plug 'vim-ruby/vim-ruby'
-Plug 'moll/vim-node', {'for' : 'javascript'}
 Plug 'fatih/vim-go'
 Plug 'vim-scripts/dbext.vim'
-Plug 'nono/jquery.vim', { 'for': 'js/jquery'}
-Plug 'Townk/vim-qt', { 'for' : 'cpp/qt'}
+Plug 'Townk/vim-qt'
 Plug 'suan/vim-instant-markdown', {'for' : 'markdown', 'do' : 'npm install instant-markdown-d -g'}
 Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax', { 'for' : 'javascript'}
 Plug 'burnettk/vim-angular'
+Plug 'moll/vim-node', {'for' : 'javascript.node'}
 Plug 'tpope/vim-markdown' , {'for' : 'markdown'} 
-"Plug 'yuratomo/java-api-android', {'for' : 'java/android'}
 " End Full Language Support "}}}
 
 "Make"{{{
 Plug 'thinca/vim-quickrun' 
-Plug 'tpope/vim-dispatch'
 if has('nvim')
     Plug 'benekastah/neomake'
 endif 
@@ -92,14 +88,19 @@ Plug 'majutsushi/tagbar'
 
 " Vanity stuff"{{{
 Plug 'bling/vim-airline'
-Plug 'jszakmeister/vim-togglecursor' 
+
+if g:is_vim
+	Plug 'jszakmeister/vim-togglecursor' 
+endif 
+
 Plug 'junegunn/goyo.vim', {'on' : 'Goyo'}
 " End Vanity stuff"}}}
 
-" Snippet and dic"{{{
-Plug 'jamescarr/snipmate-nodejs', { 'for' : 'node'}
+" Snippets and dictionaries"{{{
+Plug 'jamescarr/snipmate-nodejs', { 'for' : 'javascript.node'}
+Plug 'bonsaiben/bootstrap-snippets', { 'for' :  'html' }
 Plug 'vim-scripts/UltiSnips' | Plug 'honza/vim-snippets'
-" End Snippet and dic"}}}
+" End Snippets and dictionaries"}}}
 
 " Codify"{{{
 Plug 'tpope/vim-unimpaired'
@@ -108,34 +109,30 @@ Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'mattn/emmet-vim', { 'for' : 'html' }
 Plug 'kana/vim-smartinput'
-Plug 'Valloric/MatchTagAlways'
+Plug 'Valloric/MatchTagAlways' "Match HTML tags
 " End Codify"}}}
 
 " File Navigation"{{{
 Plug 'kien/ctrlp.vim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-
 " En File Navigation"}}}
 
 " @TODO  "{{{
 Plug '/home/batie/dotfiles/.vim/custom_plugins/tomorow_bright'
 Plug 'tpope/vim-abolish'
 Plug 'scrooloose/syntastic' 
-Plug 'kana/vim-textobj-user' "}}}
-
+Plug 'kana/vim-textobj-user' 
+" End of TODO}}}
 
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'othree/yajs.vim', { 'do' : 'make'}
 Plug 'othree/html5.vim', { 'for' : 'html'}
-Plug 'othree/javascript-libraries-syntax.vim', {'for' : 'javascript'}
-Plug 'xaviershay/tslime.vim'
-Plug 'bonsaiben/bootstrap-snippets', { 'for' :  'html' }
+"Plug 'othree/javascript-libraries-syntax.vim', {'for' : 'javascript'}
 Plug 'wincent/ferret', { 'on' : ['Ack', 'Acks']}
 Plug 'peterhoeg/vim-qml', { 'for' : 'qml'}
 
 " local bundle
-" Mainly for dev plugins and 
+" Mainly for plugins dev and 
 " plugin I m testing and did not adopt yet.
 if filereadable(expand("~/.bundle_local.vim")) 
     source '~/.bundle_local.vim'
@@ -146,16 +143,16 @@ function! DoRemote(arg)
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern'  }
-Plug 'zchee/deoplete-go'
+Plug 'zchee/deoplete-go', {'do': 'make'}
 Plug 'zchee/deoplete-jedi'
-Plug 'osyo-manga/vim-monster', {'do': 'gem install rcodetools'}
 
 "rails
 Plug 'tpope/vim-rails' | Plug 'tpope/vim-bundler'  | Plug 'tpope/vim-abolish' |Plug 'tpope/vim-abolish' | Plug 'vim-scripts/dbext.vim' |  Plug 'tpope/vim-rake' 
 Plug 'tpope/vim-endwise'
 
+Plug 'xuhdev/vim-latex-live-preview'
+
 
 call plug#end()
 endif
 
-colorscheme Tomorrow-Night-Bright
