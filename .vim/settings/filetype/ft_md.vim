@@ -9,8 +9,8 @@ au BufNewFile,BufRead,BufWrite *.md,*.mkd,*.markdown,*.mdwn let &complete="k".ex
 "au BufNewFile,BufRead,BufWrite *.md,*.mkd,*.markdown,*.mdwn set dictionary=~/vim_external/dic/german.dic 
 "au BufNewFile,BufRead,BufWrite *.md,*.mkd,*.markdown,*.mdwn setlocal spell spelllang=de_de 
 au BufRead,BufWrite,InsertChange *.md,*.mkd,*.markdown,*.mdwn syn match ErrorMsg '\%>77v.\+'
-let g:tcommentGuessFileType_markdown = 'html'
-hi clear SpellBad 
-hi SpellBad cterm=underline ctermfg=245 guibg=#000000 guifg=#000000
+	let g:tcommentGuessFileType_markdown = 'html'
+	hi clear SpellBad 
+	hi SpellBad cterm=underline ctermfg=245 guibg=#000000 guifg=#000000
 augroup end
 

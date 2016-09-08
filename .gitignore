@@ -8,7 +8,6 @@ tags.bak
 .vim/view/* 
 .config/google-chrome/ 
 bundle
-autoload
 tmp
 view
 .vim/netrwhist
