@@ -1,14 +1,9 @@
 let extend_installation=$FAB_DU_DOT_EXTENDED 
 if extend_installation == '1'
 
-if !filereadable(expand("~/.vim/autoload/plug.vim")) 
-	echo "Installing Plug Manager ..."
-	echo ""
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
 call plug#begin('~/.vim/bundle')
 "Integration ---------------------------------------------"{{{
+Plug 'fab-du/vim-sensible'
 Plug 'tpope/vim-fugitive'     
 Plug 'airblade/vim-gitgutter' 
 Plug 'benmills/vimux'         
@@ -150,8 +145,8 @@ Plug 'zchee/deoplete-jedi'
 Plug 'tpope/vim-rails' | Plug 'tpope/vim-bundler'  | Plug 'tpope/vim-abolish' |Plug 'tpope/vim-abolish' | Plug 'vim-scripts/dbext.vim' |  Plug 'tpope/vim-rake' 
 Plug 'tpope/vim-endwise'
 
+"Latex
 Plug 'xuhdev/vim-latex-live-preview'
-
 
 call plug#end()
 endif
