@@ -91,10 +91,19 @@ nnoremap <silent>te :tabedit<CR>
 
 "switch between windows
 if exists('g:loaded_tmux_navigator')
+	let g:tmux_navigator_no_mappings = 1
 	nnoremap <silent> fh :TmuxNavigateLeft  "<esc><C-W><left>
 	nnoremap <silent> fl :TmuxNavigateRight "<esc><C-W><right>
 	nnoremap <silent> fk :TmuxNavigateUp    "<esc><C-W><up>
-	nnoremap <silent> fj :TmuxNavigateDown  "<esc><C-W><down>
+	nnoremap<silent>  fj :TmuxNavigateDown  "<esc><C-W><down>
+
+	nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+	nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+	nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+	nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+	nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+
+
 else
 	nnoremap <silent> fh <esc><C-W><left>
 	nnoremap <silent> fl <esc><C-W><right>

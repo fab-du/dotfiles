@@ -7,7 +7,7 @@ Plug 'fab-du/vim-sensible'
 Plug 'tpope/vim-fugitive'     
 Plug 'airblade/vim-gitgutter' 
 Plug 'benmills/vimux'         
-Plug 'christoomey/vim-tmux-navigator'
+Plug '~/.tmux/plugins/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'tpope/vim-classpath' , { 'for' : 'java'}
 Plug 'youjumpiwatch/vim-androidmanifest'
@@ -84,7 +84,7 @@ Plug 'majutsushi/tagbar'
 " Vanity stuff"{{{
 Plug 'bling/vim-airline'
 
-if g:is_vim
+if !has('nvim')
 	Plug 'jszakmeister/vim-togglecursor' 
 endif 
 
