@@ -22,24 +22,6 @@ vnoremap =: :Tabularize /:<CR>
 "Surround "mapping"
 nnoremap <C-"> viw<esc>a"<esc>hbi"<esc>lel 
 nnoremap <C-'> viw<esc>a'<esc>hbi'<esc>lel
-                         
-"Sneak mapping 
-nnoremap <C-Space> <Plug>SneakForward
-nmap ; <Plug>SneakPrevious
-xmap ; <Plug>SneakPrevious
-omap ; <Plug>SneakPrevious
-nmap s <Plug>Sneak_f
-nmap S <Plug>Sneak_F
-xmap s <Plug>Sneak_f
-xmap S <Plug>Sneak_F
-omap s <Plug>Sneak_f
-omap S <Plug>Sneak_F
-nmap s <Plug>Sneak_t
-nmap T <Plug>Sneak_T
-xmap t <Plug>Sneak_t
-xmap T <Plug>Sneak_T
-omap t <Plug>Sneak_t
-omap T <Plug>Sneak_T
 
 "Quickfix window 
 nnoremap <silent><leader>qc :cclose<CR> 

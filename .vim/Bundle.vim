@@ -77,7 +77,6 @@ Plug '907th/vim-auto-save'
 " Code Navigation"{{{
 Plug 'mileszs/ack.vim', {'on' : 'Ack'}
 Plug 'rking/ag.vim', {'on' : 'Ag'}
-Plug 'justinmk/vim-sneak'
 Plug 'majutsushi/tagbar'
 " End Code Navigation"}}}
 
@@ -86,13 +85,13 @@ Plug 'bling/vim-airline'
 
 if !has('nvim')
 	Plug 'jszakmeister/vim-togglecursor' 
-endif 
+endif
 
 Plug 'junegunn/goyo.vim', {'on' : 'Goyo'}
 " End Vanity stuff"}}}
 
 " Snippets and dictionaries"{{{
-Plug 'jamescarr/snipmate-nodejs', { 'for' : 'javascript.node'}
+Plug 'jamescarr/snipmate-nodejs'
 Plug 'bonsaiben/bootstrap-snippets', { 'for' :  'html' }
 Plug 'vim-scripts/UltiSnips' | Plug 'honza/vim-snippets'
 " End Snippets and dictionaries"}}}
