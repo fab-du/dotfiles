@@ -19,10 +19,6 @@ vnoremap == :Tabularize /=<CR>
 nnoremap =: :Tabularize /:<CR>
 vnoremap =: :Tabularize /:<CR>
 
-"Surround "mapping"
-nnoremap <C-"> viw<esc>a"<esc>hbi"<esc>lel 
-nnoremap <C-'> viw<esc>a'<esc>hbi'<esc>lel
-
 "Quickfix window 
 nnoremap <silent><leader>qc :cclose<CR> 
 nnoremap <silent><leader>qo :copen<CR>
