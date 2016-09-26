@@ -1,0 +1,9 @@
+{
+	"nvim":{ "vim" : "~/.vim", "vim/vimrc" : "~/.vimrc", "vim/vimrc" : "~/config/nvim/init.vim" },
+	"awesome":{"awesome" : "~/.config/awesome" },
+	"rofi":{ "misc_configs/rofirc" : "~/.rofirc"},
+	"xresources":{ "misc_configs/Xresources" : "~/.Xresources"},
+	"git":{ "git/gitconfig" : "~/.gitconfig", "git/gitignore_global" :"~/.gitignore_global"},
+	"fzf":{ "fzf" : "~/.fzf" },
+	"zsh":{ "zsh" : "~/.zsh", "zsh/zshrc" : "~/.zshrc"}
+}

@@ -1,0 +1,43 @@
+{
+"minimal":{
+"inotify-tools"   : "inotify-tools",
+"tree"            : "tree",
+"unzip"           : "unzip",
+"xclip"           : "xclip",
+"git-all"         : "git-all",
+"ssh"             : "ssh",
+"sshfs"           : "sshfs",
+"build-essential" : "build-essential",
+"cmake"           : "cmake",
+"curl"            : "curl",
+"wget"            : "wget",
+"httpie"          : "httpie",
+"maven"           : "maven",
+"tree"            : "tree",
+"ant"             : "ant",
+"python"          : "python",
+"python-dev"      : "python-dev",
+"python-pip"      : "python-pip",
+"dnsmasq"         : "dnsmasq",
+"nginx"           : "nginx",
+"mysql-client"    : "mysql-client",
+"mysql-server"    : "mysql-server",
+"mysql-common"    : "mysql-common",
+"postgresql"      : "postgresql",
+"tmux"            : "tmux",
+"exuberant-ctags" : "exuberant-ctags",
+"tmuxinator"      : "tmuxinator"
+},
+
+"extended":{
+"cclive"      : "cclive",
+"youtube-dl"  : "youtube-dl",
+"ack-grep"    : "ack-grep",
+"rofi"        : "rofi",
+"vifm"        : "vifm",
+"wmctrl"      : "wmctrl",
+"mupdf"       : "mupdf",
+"mupdf-tools" : "mupdf-tools"
+}
+
+}
