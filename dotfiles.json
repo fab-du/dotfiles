@@ -1,6 +1,7 @@
 {
 	"nvim":{"vim":"~/.vim", "vim/vimrc":"~/.vimrc", "vim/vimrc" : "~/config/nvim/init.vim"},
 	"awesome":{"awesome" : "~/.config/awesome"},
+	"ctags":{"misc_configs/ctags" : "~/.ctags"},
 	"vifm":{"vifm" : "~/.vifm"},
 	"tmux":{"tmux" : "~/.tmux" , "tmux/.tmux.conf": "~/.tmux.conf"},
 	"rofi":{"misc_configs/rofirc" : "~/.rofirc"},
