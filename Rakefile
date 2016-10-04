@@ -8,22 +8,27 @@ task :install do
 	dot_mod, install_command, dotfiles_dir, dotfiles_map, packages_map = installation_setting 
 
 	step "Switch to zsh if possible"
-	switch_to_zsh
+	#switch_to_zsh
 
 	step "Install beloved Fonts"
 	#install_fonts
 	
 	step "Install beloved Dependencies"
 	if dot_mod == "extended"
-		install_packages packages_map["minimal"], install_command
+	#	install_packages packages_map["minimal"], install_command
+	#	install_packages packages_map["extended"], install_command
 	end
-	install_packages packages_map[dot_mod], install_command
+	#install_packages packages_map["minimal"], install_command
 	
 	step "Uninstall/Backup config files"
+	dotfiles_map.inject(dotfiles_map) do | dotfiles_map , (key, value)|
+		 dotfiles_map[key]=filemap(value)
+		 dotfiles_map
+	end.freeze
 	unlink_files dotfiles_map
 
 	step "Installing config files"
-	link_files dotfiles_map
+	#link_files dotfiles_map
 end
 
 
@@ -71,24 +76,11 @@ def install_fonts
 end
 
 def filemap(map)
-	map.inject({}) do |result, (key, value)|
-		result[File.expand_path(key)] = File.expand_path(value)
-		result
-	end.freeze
+  map.inject({}) do |map, (key, value)|
+    map[File.expand_path( Dir.pwd + "/" + key)] = File.expand_path(value)
+    map
+  end
 end
-
-dirname = Dir.pwd
-dotfiles = dirname + "/dotfiles.json"
-packages = dirname + "/dependencies.json"
-
-dotfiles_map = JSON.parse(File.read ( dotfiles ))
-
-
-dotfiles_map.inject(dotfiles_map) do  |result, (key, value)|
-	result[key] = filemap(value);
-	result
-end.freeze
-
 
 def link_file(original_filename, symlink_filename)
   original_path = File.expand_path(original_filename)
@@ -111,8 +103,11 @@ end
 
 def link_files ( file_map ) 
 	file_map.each {
-		| origin, link |
-		link_file origin, link
+		| key, value |
+		value.each {
+			| origin, link |
+			link origin, link
+		}
 	}
 end
 
@@ -143,8 +138,11 @@ end
 
 def unlink_files ( file_map ) 
 	file_map.each {
-		| origin, link |
-		unlink_file origin, link
+		| key, value |
+		value.each {
+			| origin, link |
+			unlink_file origin, link
+		}
 	}
 end
 
