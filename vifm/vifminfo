@@ -1,0 +1,407 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Bookmarks:
+'b
+	/home/batie/bin/
+	../
+1468136477
+'d
+	/home/batie/Downloads/
+	../
+1468136477
+'h
+	/home/batie/
+	../
+1468137134
+'m
+	/home/batie/Music/
+	../
+1468136477
+'p
+	/home/batie/Projects/
+	../
+1468136477
+'v
+	/home/batie/Videos/
+	../
+1468136477
+
+# TUI:
+al
+q1
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/batie/Schreibtisch
+	dotfiles-master/
+7
+d/home/batie
+	Bilder/
+1
+d/home/batie/Bilder
+	../
+0
+d/home/batie
+	bin/
+13
+d/home/batie/bin
+	../
+0
+d/home/batie
+	dotfiles/
+16
+d/home/batie/dotfiles
+	../
+0
+d/home/batie
+	Music/
+4
+d/home/batie/Music
+	../
+0
+d/home/batie
+	../
+0
+d/home
+	batie/
+1
+d/home/batie
+	Bilder/
+1
+d/home/batie/Bilder
+	../
+0
+d/home/batie
+	Videos/
+9
+d/home/batie/Videos
+	../
+0
+d/home/batie
+	Projects/
+7
+d/home/batie/Projects
+	../
+0
+d/home/batie
+	PSS_Client/
+4
+d/home/batie/PSS_Client
+	../
+0
+d/home/batie
+	../
+0
+d/home
+	../
+0
+d/
+	media/
+9
+d/media
+	batie/
+1
+d/media/batie
+	../
+0
+d/media
+	batie/
+1
+d/media/batie
+	../
+0
+d/media
+	batie/
+1
+d/media/batie
+	../
+0
+d/media
+	batie/
+1
+d/media/batie
+	../
+0
+d/media
+	../
+0
+d/
+	home/
+5
+d/home
+	batie/
+1
+d/home/batie
+	dwhelper/
+17
+d/home/batie/dwhelper
+	../
+0
+d/home/batie
+	../
+0
+d/home
+	../
+0
+d/
+	media/
+9
+d/media
+	batie/
+1
+d/media/batie
+	Lexar/
+1
+d/media/batie/Lexar
+	nouvoté 2015/
+4
+d/media/batie/Lexar/nouvoté 2015
+	../
+0
+d/media/batie/Lexar
+	../
+0
+d/media/batie
+	../
+0
+d/media
+	../
+0
+d/
+	home/
+5
+d/home
+	batie/
+1
+d/home/batie
+	Schreibtisch/
+10
+d/home/batie/Schreibtisch
+	../
+0
+d/home/batie
+	dwhelper/
+17
+d/home/batie/dwhelper
+	../
+0
+d/home/batie
+	dwhelper/
+16
+d/home/batie/dwhelper
+	../
+0
+d/home/batie
+	dwhelper/
+19
+d/home/batie/dwhelper
+	../
+0
+d/home/batie
+	bin/
+13
+d/home/batie/bin
+	tm
+32
+d
+
+# Right window history (oldest to newest):
+D/home/batie
+	dwhelper/
+17
+D/home/batie/dwhelper
+	../
+0
+D/home/batie
+	fonts/
+18
+D/home/batie/fonts
+	patched-fonts/
+3
+D/home/batie/fonts/patched-fonts
+	../
+0
+D/home/batie/fonts
+	source/
+4
+D/home/batie/fonts/source
+	../
+0
+D/home/batie/fonts
+	unpatched-sample-fonts/
+5
+D/home/batie/fonts/unpatched-sample-fonts
+	Meslo/
+18
+D/home/batie/fonts/unpatched-sample-fonts/Meslo
+	L/
+1
+D/home/batie/fonts/unpatched-sample-fonts/Meslo/L
+	../
+0
+D/home/batie/fonts/unpatched-sample-fonts/Meslo
+	L-DZ/
+2
+D/home/batie/fonts/unpatched-sample-fonts/Meslo/L-DZ
+	../
+0
+D/home/batie/fonts/unpatched-sample-fonts/Meslo
+	M/
+3
+D/home/batie/fonts/unpatched-sample-fonts/Meslo/M
+	../
+0
+D/home/batie/fonts/unpatched-sample-fonts/Meslo
+	../
+0
+D/home/batie/fonts/unpatched-sample-fonts
+	../
+0
+D/home/batie/fonts
+	../
+0
+D/home/batie
+	fonts/
+18
+D/home/batie/fonts
+	../
+0
+D/home/batie
+	fonts/
+18
+D/home
+	batie/
+1
+D/home/batie
+	dwhelper/
+17
+D/home/batie/dwhelper
+	../
+0
+D/home/batie
+	Öffentlich/
+24
+D/home/batie/Öffentlich
+	../
+0
+D/home/batie
+	dwhelper/
+17
+D/home/batie/dwhelper
+	../
+0
+D/home/batie
+	Downloads/
+3
+D/home/batie/Downloads
+	latex-moderncv-master.zip
+13
+D/home/batie
+	dwhelper/
+15
+D/home/batie/dwhelper
+	../
+0
+D/home/batie
+	dotfiles/
+13
+D/home/batie/dotfiles
+	install/
+2
+D/home/batie/dotfiles/install
+	../
+0
+D/home/batie/dotfiles
+	../
+0
+D/home/batie
+	dwhelper/
+14
+D/home/batie/dwhelper
+	../
+0
+D/home/batie
+	../
+0
+D/home
+	../
+0
+D/
+	media/
+5
+D/media
+	batie/
+1
+D/media/batie
+	../
+0
+D/media
+	batie/
+1
+D/media/batie
+	../
+0
+D/media
+	batie/
+1
+D/media/batie
+	../
+0
+D/media
+	batie/
+1
+D/media/batie
+	../
+0
+D/media
+	batie/
+1
+D/media/batie
+	../
+0
+D
+
+# Command line history (oldest to newest):
+:!parole %
+:!parole PornPros\ -\ Ebony\ Nadia\ Jay\ gets\ railed\ after\ a\ relaxing\ bath.mp4
+:tabe
+:tab
+:tabnew
+:help tab
+:q
+
+# Search history (oldest to newest):
+/Musicjjjjjj
+/dw
+/schre
+
+# Prompt history (oldest to newest):
+pstatus.pdf
+
+# Local filter history (oldest to newest):
+
+# Registers:
+""/home/batie/dwhelper/Dollaphil fuck Jolie Caress in Wet Money Honeys - Free Black.mp4
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/home/batie/.vifm/Trash/000_Downloads
+	/home/batie/Downloads
+t/home/batie/.vifm/Trash/000_Music
+	/home/batie/Music
+
+# State:
+f
+i1
+[.1
+[F
+F
+I1
+].1
+]F
+s0
