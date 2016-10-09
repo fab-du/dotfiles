@@ -24,11 +24,12 @@ task :install do
 	dotfiles_map.inject(dotfiles_map) do | dotfiles_map , (key, value)|
 		 dotfiles_map[key]=filemap(value)
 		 dotfiles_map
-	end.freeze
+	end
 	unlink_files dotfiles_map
 
 	step "Installing config files"
-	#link_files dotfiles_map
+	puts "==================="
+	link_files dotfiles_map
 end
 
 
@@ -106,9 +107,25 @@ def link_files ( file_map )
 		| key, value |
 		value.each {
 			| origin, link |
-			link origin, link
+			link_file origin, link
 		}
 	}
+end
+
+def get_backup_path(path)
+  number=1
+  backup_path="#{path}.bak"
+  loop do
+    if number > 1
+      backup_path="#{backup_path}#{number}"
+    end
+    if File.exists?(backup_path) || File.symlink?(backup_path)
+	number += 1
+	next
+    end
+    break
+  end
+  backup_path
 end
 
 def unlink_file(original_filename, symlink_filename)

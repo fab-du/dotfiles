@@ -1,5 +1,5 @@
 {
-	"nvim":{"vim":"~/.vim", "vim/vimrc":"~/.vimrc", "vim/vimrc" : "~/config/nvim/init.vim"},
+	"nvim":{"vim":"~/.vim", "vim/vimrc":"~/.vimrc", "vim/vimrc" : "~/.config/nvim/init.vim"},
 	"awesome":{"awesome" : "~/.config/awesome"},
 	"ctags":{"misc_configs/ctags" : "~/.ctags"},
 	"vifm":{"vifm" : "~/.vifm"},
@@ -9,7 +9,7 @@
 	"git":{"git/gitconfig" : "~/.gitconfig", "git/gitignore_global" :"~/.gitignore_global"},
 	"fzf":{"fzf" : "~/.fzf"},
 	"synergy":{"synergie/synergy.conf":"~/.synergy.conf"},
-	"ncmpcpp":{"ncmpcpp":"~/.ncmpcpp/config"},
+	"ncmpcpp":{"ncmpcpp":"~/.ncmpcpp"},
 	"mpd":{"mpd" : "~/.config/mpd.conf"},
 	"zsh":{ "zsh" : "~/.zsh", "zsh/zshrc" : "~/.zshrc"}
 }
