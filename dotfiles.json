@@ -1,5 +1,5 @@
 {
-	"nvim":{"vim":"~/.vim", "vim/vimrc":"~/.vimrc", "vim/vimrc" : "~/.config/nvim/init.vim"},
+	"nvim":{"vim":"~/.vim", "vim":"~/.config/nvim", "vim/vimrc":"~/.vimrc", "vim/vimrc" : "~/.config/nvim/init.vim"},
 	"awesome":{"awesome" : "~/.config/awesome"},
 	"ctags":{"misc_configs/ctags" : "~/.ctags"},
 	"dircolors":{"misc_configs/dircolors" : "~/.dircolors"},

@@ -1,5 +1,4 @@
 "TODO : Move above to vim-sensible
-let &runtimepath.=','.expand("~/.vim")
 
 let extend_installation=$FAB_DU_DOT_EXTENDED 
 if extend_installation == '1'

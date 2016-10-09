@@ -84,17 +84,6 @@ nnoremap <silent> g<leader>l   :Unite line -auto-preview<cr>
 nnoremap <silent> g<leader>v   :Unite runtimepath -default-action=rec<cr>
 nnoremap <silent> g<leader>t   :Unite tag <cr>
 
-function s:go_root()
-   exec "CDC"
-   exec "Rooter"
-   exec "FZF " . getcwd()
-endfunction
-
-function s:go_current()
-   :CDC
-   exec "FZF " . fnameescape(expand("%:p:h"))
-endfunction
-
 "Fugitive
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gd :Gdiff<cr>
