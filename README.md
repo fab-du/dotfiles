@@ -34,6 +34,12 @@ Like vim plugin or software
 wget -P -qO- https://raw.githubusercontent/bat-lab/dotfiles/install/install.sh | bash 
 ```
 
+or this one-liner
+
+```sh
+git clone https://github.com/fab-du/dotfiles && cd ~/dotfiles && git submodule update --recursive --remote && rake install
+```
+
 Programm
 ========
 

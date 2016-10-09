@@ -8,7 +8,7 @@ task :install do
 	dot_mod, install_command, dotfiles_dir, dotfiles_map, packages_map = installation_setting 
 
 	step "Switch to zsh if possible"
-	#switch_to_zsh
+	switch_to_zsh
 
 	step "Install beloved Fonts"
 	#install_fonts
@@ -21,15 +21,14 @@ task :install do
 	#install_packages packages_map["minimal"], install_command
 	
 	step "Uninstall/Backup config files"
-	dotfiles_map.inject(dotfiles_map) do | dotfiles_map , (key, value)|
-		 dotfiles_map[key]=filemap(value)
-		 dotfiles_map
-	end
 	unlink_files dotfiles_map
 
 	step "Installing config files"
-	puts "==================="
 	link_files dotfiles_map
+
+	step "Setup vim"
+	sh "nvim +PlugInstall +qall"
+
 end
 
 
@@ -48,6 +47,10 @@ def installation_setting
 	dotfiles_dir = Dir.pwd
 	dotfiles = dotfiles_dir + "/dotfiles.json"
 	dotfiles_map = JSON.parse(File.read ( dotfiles ))
+	dotfiles_map.inject(dotfiles_map) do | dotfiles_map , (key, value)|
+		 dotfiles_map[key]=filemap(value)
+		 dotfiles_map
+	end
 	packages = dotfiles_dir + "/dependencies.json"
 	packages_map = JSON.parse( File.read ( packages ))
 
