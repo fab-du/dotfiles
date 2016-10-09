@@ -12,4 +12,4 @@ source ~/dotfiles/zsh/lib/plugin/mvn/mvn.plugin.zsh
 [ -f ~/.zshrc_local ] && source ~/.zshrc_local
 
 # config ls colors 
-eval `dircolors -b $HOME/dotfiles/.misc_configs/.dircolors`
+eval `dircolors -b $HOME/.dircolors`
