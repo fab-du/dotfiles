@@ -11,14 +11,14 @@ task :install do
 	switch_to_zsh
 
 	step "Install beloved Fonts"
-	#install_fonts
+	install_fonts
 	
 	step "Install beloved Dependencies"
 	if dot_mod == "extended"
-	#	install_packages packages_map["minimal"], install_command
-	#	install_packages packages_map["extended"], install_command
+		install_packages packages_map["minimal"], install_command
+		install_packages packages_map["extended"], install_command
 	end
-	#install_packages packages_map["minimal"], install_command
+	  install_packages packages_map["minimal"], install_command
 	
 	step "Uninstall/Backup config files"
 	unlink_files dotfiles_map
