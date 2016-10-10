@@ -207,6 +207,9 @@ d/home/batie
 d/home/batie/bin
 	tm
 32
+d/home/batie
+	Projects/
+12
 d
 
 # Right window history (oldest to newest):
@@ -390,10 +393,6 @@ pstatus.pdf
 # Directory stack (oldest to newest):
 
 # Trash content:
-t/home/batie/.vifm/Trash/000_Downloads
-	/home/batie/Downloads
-t/home/batie/.vifm/Trash/000_Music
-	/home/batie/Music
 
 # State:
 f
