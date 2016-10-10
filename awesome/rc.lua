@@ -1,4 +1,3 @@
-require("revelation")
 require("myplacesmenu")
 local gears     = require("gears")
 local awful     = require("awful")
@@ -378,11 +377,6 @@ globalkeys = awful.util.table.join(
     -- Take a screenshot
     -- https://github.com/copycat-killer/dots/blob/master/bin/screenshot
     awful.key({ }, "Print", function() awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
-
-
-
-    -- MAC_OS-Like revelation
-    awful.key({modkey, "Control"}, "e", revelation),
 
     -- Non-empty tag browsing
     awful.key({ modkey }, "Left", function () lain.util.tag_view_nonempty(-1) end),
