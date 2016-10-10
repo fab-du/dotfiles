@@ -1,6 +1,3 @@
-[submodule "lain"]
-	path = .config/awesome/lain
-	url = git://github.com/copycat-killer/lain.git
 [submodule "zsh/lib/zsh-autosuggestions"]
 	path = zsh/lib/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
@@ -10,3 +7,6 @@
 [submodule "tmux"]
 	path = tmux
 	url = https://github.com/fab-du/tmux
+[submodule "awesome/awesome/lain"]
+	path = awesome/awesome/lain
+	url = https://github.com/copycat-killer/lain
