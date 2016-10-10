@@ -10,3 +10,6 @@
 [submodule "awesome/awesome/lain"]
 	path = awesome/awesome/lain
 	url = https://github.com/copycat-killer/lain
+[submodule "awesome/lain"]
+	path = awesome/lain
+	url = https://github.com/copycat-killer/lain
