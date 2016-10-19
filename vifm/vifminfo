@@ -208,8 +208,11 @@ d/home/batie/bin
 	tm
 32
 d/home/batie
-	Projects/
-12
+	CV_EMB/
+4
+d/home/batie/CV_EMB
+	Lebenslauf.pdf
+5
 d
 
 # Right window history (oldest to newest):
@@ -376,6 +379,9 @@ D
 :tabnew
 :help tab
 :q
+:!xdg-open %
+:xdg-open %
+:!xdg-open Lebenslauf.pdf
 
 # Search history (oldest to newest):
 /Musicjjjjjj
