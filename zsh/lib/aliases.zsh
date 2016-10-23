@@ -3,7 +3,6 @@ alias cal='cal -m'
 alias cdu='cdu -dh -M1'
 alias cdf='cdf -h'
 
-alias vrename='vim +Rename'
 alias weather='weather -i LBSF'
 
 alias g='git'
@@ -14,7 +13,6 @@ alias gca='git commit -av'
 alias gdv='git diff -w "$@" | vim -R -'
 alias gp='git push'
 alias gl='git pull'
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gr='git rebase -i'
 
 alias be="bundle exec"

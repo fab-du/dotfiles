@@ -4,8 +4,17 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character t
 zstyle ':completion:*' menu select=0
 
 autoload -Uz compinit promptinit
-compinit
+if [[ $(date +'%j') > $(date +'%j' -r "${ZDOTDIR}/.zcompdump") ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
+
 promptinit
+prompt pure
+
+autoload fab_du_functions
+fab_du_functions
 
 zstyle ':completion:*' list-colors ''
 
@@ -27,11 +36,6 @@ zstyle ':completion:*:hosts' hosts $hosts
 # Use caching so that commands like apt and dpkg complete are useable
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path ~/.shell/cache/
-
-_vimproj_completion() {
-  reply=(`sed -n -e '/^\[/p' -e '/^\s*$/d' ~/.vimproj | sed -e 's/\[//' -e 's/]//' | uniq | sort`)
-}
-compctl -K _vimproj_completion vimproj
 
 expand-or-complete-with-dots() {
   echo -n "\e[31m......\e[0m"

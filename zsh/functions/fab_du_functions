@@ -1,7 +1,17 @@
-autoload colors; colors;
 
 # Do nothing
 function nop() { }
+
+config_rbenv() {
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(command rbenv init -)"
+  rbenv "$@"
+}
+
+config_nvm(){
+  export NVM_DIR="$HOME/.nvm"
+ [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+}
 
 # Use vim as a man viewer
 vman() {
@@ -33,29 +43,4 @@ extract () {
   else
     echo "'$1' is not a valid file"
   fi
-}
-
-# get the name of the branch we are on
-# Note: currently not used, __git_ps1 used instead.
-function git_prompt_info() {
-  if [[ -d .git ]];
-  then
-    ref=$(cat .git/HEAD)
-    echo "%{$fg[blue]%}(${ref#ref: refs/heads/})%{$fg[reset]%}"
-  elif [[ -f .git ]]
-  then
-    gitdir=$(cat .git)
-    gitdir=${gitdir#gitdir: }
-    ref=$(cat $gitdir/HEAD)
-    echo "%{$fg[blue]%}(${ref#ref: refs/heads/})%{$fg[reset]%}"
-  fi
-}
-
-function vi_mode_prompt_info() {
-  MODE_INDICATOR="%{$fg_bold[red]%}<<<%{$reset_color%}"
-  echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
-}
-
-function fliptable() {
-  echo "（╯°□°）╯︵ ┻━┻";
 }

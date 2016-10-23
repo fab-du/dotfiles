@@ -1,25 +1,21 @@
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:$HOME/bin
-
 # ccache path exported before compiler
 export PATH=/usr/lib/ccache/bin:$PATH
-
-#export PYTHONPATH=$PYTHONPATH:$HOME/
-
-export ANDROID_SDK="$HOME/adt-bundle/sdk"
-
-export PATH="$PATH:$ANDROID_SDK/tools"
-
-export ECLPSE_HOME="$HOME/adt-bundle/eclipse"
-export PATH=$ECLPSE_HOME:$PATH
 
 export MY_BIN="$HOME/bin"
 export PATH=$MY_BIN:$PATH
 
-export QMAKESPEC=/usr/lib/i386-linux-gnu/qt5/mkspecs/linux-g++
-export QMAKESPEC PATH 
+#export PYTHONPATH=$PYTHONPATH:$HOME/
 
 export EDITOR=nvim
-
 export QT_SELECT=5
+export MPD_HOST="localhost"
+export MPD_PORT="6601"
+export BROWSER="firefox"
+export CLICOLOR=true
+export PROJECTS="$HOME/Code"
+export MAVEN_OPTS="-Xmx1024m"
+export GOPATH="$PROJECTS/Go"
+export PATH="$PATH:$GOPATH/bin"
 
+# Options to fzf command
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'

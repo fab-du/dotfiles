@@ -1,0 +1,4 @@
+
+export ZDOTDIR="$HOME/.zsh"
+
+source "$ZDOTDIR/lib/path.zsh"
