@@ -16,7 +16,7 @@ export FZF_COMPLETION_OPTS='+c -x'
 
 # ---------
 if [[ ! "$PATH" == */home/batie/.fzf/bin* ]]; then
-  export PATH="$PATH:$HOME/bin_external/fzf/bin"
+  export PATH="$PATH:$HOME/bin_external/fzf"
 fi
 
 # Man path
