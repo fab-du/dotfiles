@@ -5,10 +5,15 @@ nnoremap <leader>mru   :CtrlPMRUFiles<CR>
 nnoremap <leader>t     :CtrlPTag<CR>
 
 nnoremap <Leader>c$ <plug>NERDCommenterToEOL
-nnoremap <leader>cs <plug>NERDCommenterSexy
-nnoremap <leader>cu <plug>NERDCommenterUncomment
+nnoremap <silent>cs <plug>NERDCommenterSexy
+nnoremap <silent>cu <plug>NERDCommenterUncomment
 
 nnoremap <leader>gu :GundoToggle<CR>
+
+"Surroound
+nmap ss <Plug>Ysurround
+nmap sc <Plug>Csurround
+nmap sd <Plug>Dsurround
             
 "tabularize
 nnoremap =  :Tabularize /
@@ -67,8 +72,6 @@ nnoremap <silent>tf :tabfirst<CR>
 nnoremap <silent>te :tabedit<CR>
 
 "Split window
-nnoremap <silent>fv <esc>:vsplit<CR>
-nnoremap <silent>fh <esc>:vsplit<CR>
 nnoremap <silent>_  <C-W>_
 nnoremap <silent><bar>  <C-W>|
 nnoremap <silent>f= <C-W>=
@@ -76,13 +79,6 @@ nnoremap <silent>f= <C-W>=
 "Clipboard interaction
 nnoremap<silent><leader>p mz:-1r !xclip -o -sel clip<CR>`z
 vnoremap<silent><leader>y :!xclip -f -sel clip<cr>
-
-nnoremap <silent> g<leader>.   :call <SID>go_current()<CR>
-nnoremap <silent> g<leader>p   :call <SID>go_root()<CR> 
-nnoremap <silent> g<leader>f   :Unite function<cr>
-nnoremap <silent> g<leader>l   :Unite line -auto-preview<cr>
-nnoremap <silent> g<leader>v   :Unite runtimepath -default-action=rec<cr>
-nnoremap <silent> g<leader>t   :Unite tag <cr>
 
 "Fugitive
 nnoremap <leader>gs :Gstatus<cr>

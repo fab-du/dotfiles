@@ -7,17 +7,12 @@ let g:ctrlp_use_caching = 1
 
 " The Silver Searcher
 if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=rg\ --vimgrep
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
 endif
 
-
-if g:is_win 
-    let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
-else
-    let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
-endif 
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 
 let g:ctrlp_map = '<leader>e'
 let g:ctrlp_open_new_file = 'r'
