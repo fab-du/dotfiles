@@ -1,69 +1,51 @@
-
 [options]
-resize_grip = false
-scroll_on_output = false
-scroll_on_keystroke = true
-audible_bell = false
-visible_bell = false
-mouse_autohide = false
+font = Monospace 9
+font = DejaVu Sans Mono 9
+mouse_autohide = true
+clickable_url = true
+browser = chromium
 allow_bold = true
 dynamic_title = true
-urgent_on_bell = true
-clickable_url = true
-font = Meslo LG S for PowerLine 9
-scrollback_lines = 1000
-search_wrap = true
-#icon_name = terminal
-#geometry = 640x480
-
-# "system", "on" or "off"
+scrollback_lines = 10000
 cursor_blink = system
 
-# "block", "underline" or "ibeam"
-cursor_shape = block
-
-# $BROWSER is used by default
-#browser = firefox
-
-# word characters used for word selection
-# (default if unset: all graphic non-punctuation/space characters)
-#word_chars = -A-Za-z0-9,./?%&#:_=+@~
-
-# set size hints for the window
-#size_hints = false
-
-# emit escape sequences for other keys modified by Control
-#modify_other_keys = false
-
 [colors]
-background = #141414
-foreground = #eeeeee
-cursor = #cc6666
-highlight = #d6d6d6
+# special
+foreground      = #d0d0d0
+foreground_bold = #d0d0d0
+cursor          = #d0d0d0
+background      = #151515
 
-# colors from color0 to color254 can be set
-# Black + Grey
-color0 = #1d1f21
-color8 = #969896
-# Red + Bright Red
-color1 = #912226
-color9 = #cc6666
-# Green + Bright Green
-color2 = #778900
-color10 = #b5bd68
-# Yellow (Orange) + Bright Yellow (Yellow)
-color3 = #ae7b00
-color11 = #f0c674
-# Blue + Bright Blue
-color4 = #1d2594
-# Magenta (Purple) + Bright Magenta
-color5 = #682a9b
-color13 = #b294bb
-# Cyan (Aqua) + Bright Cyan
-color6 = #2b6651
-color14 = #8abeb7
-# Light Grey (Selection) + White (Current Line)
-color7 = #929593
-color15 = #ecebec
+# black
+color0  = #151515
+color8  = #505050
+
+# red
+color1  = #ac4142
+color9  = #ac4142
+
+# green
+color2  = #90a959
+color10 = #90a959
+
+# yellow
+color3  = #f4bf75
+color11 = #f4bf75
+
+# blue
+color4  = #6a9fb5
+color12 = #6a9fb5
+
+# magenta
+color5  = #aa759f
+color13 = #aa759f
+
+# cyan
+color6  = #75b5aa
+color14 = #75b5aa
+
+# white
+color7  = #d0d0d0
+color15 = #f5f5f5
 
 # vim: ft=dosini cms=#%s
