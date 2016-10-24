@@ -44,3 +44,17 @@ extract () {
     echo "'$1' is not a valid file"
   fi
 }
+
+= () {
+   #ret=$(command bc -l <<<"scale=10;$calc")
+   #hex_ret=$(command bc -l <<<"obase=16;$ret")
+   #echo "DEC: `tput bold setaf 0036` $ret"
+   #echo "HEX: `tput bold setaf 0023` Ox$hex_ret"
+/usr/bin/env ruby <<-EORUBY
+ 
+ARGV.each do |a|
+  puts "Argument: #{a}"
+end
+ 
+EORUBY
+}

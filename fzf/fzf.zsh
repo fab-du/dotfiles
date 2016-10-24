@@ -11,6 +11,8 @@ export FZF_ALT_C_OPTS=""    # to pass additional options
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='~~'
 
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 # Options to fzf command
 export FZF_COMPLETION_OPTS='+c -x'
 

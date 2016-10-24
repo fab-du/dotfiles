@@ -1,11 +1,3 @@
-# ccache path exported before compiler
-export PATH=/usr/lib/ccache/bin:$PATH
-
-export MY_BIN="$HOME/bin"
-export PATH=$MY_BIN:$PATH
-
-#export PYTHONPATH=$PYTHONPATH:$HOME/
-
 export EDITOR=nvim
 export QT_SELECT=5
 export MPD_HOST="localhost"
@@ -15,7 +7,8 @@ export CLICOLOR=true
 export PROJECTS="$HOME/Code"
 export MAVEN_OPTS="-Xmx1024m"
 export GOPATH="$PROJECTS/Go"
-export PATH="$PATH:$GOPATH/bin"
+export SPRING_HOME="$HOME/Schreibtisch/spring-1.4.1.RELEASE"
 
-# Options to fzf command
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export PATH="$SPRING_HOME/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin:$HOME/bin"

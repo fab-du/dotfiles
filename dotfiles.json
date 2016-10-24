@@ -10,6 +10,7 @@
 	"xresources":{"misc_configs/Xresources" : "~/.Xresources"},
 	"git":{"git/gitconfig" : "~/.gitconfig", "git/gitignore_global" :"~/.gitignore_global"},
 	"fzf":{"fzf" : "~/.fzf"},
+	"bin":{"bin" : "~/bin"},
 	"synergy":{"synergie/synergy.conf":"~/.synergy.conf"},
 	"ncmpcpp":{"ncmpcpp":"~/.ncmpcpp"},
 	"mpd":{"mpd" : "~/.config/mpd"},
