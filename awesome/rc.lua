@@ -344,7 +344,6 @@ for s = 1, screen.count() do
     right_layout:add(arrl)
     right_layout_add(mpdicon, mpdwidget)
     right_layout_add(volicon, volumewidget)
-    --right_layout_add(mailicon, mailwidget)
     right_layout_add(memicon, memwidget)
     right_layout_add(cpuicon, cpuwidget)
     right_layout_add(tempicon, tempwidget)
@@ -452,11 +451,9 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey,           }, "h",      function () fswidget.show(4) end),
 
     -- ALSA volume control
-    awful.key({           	  }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q set PCM 1+ unmute") volumewidget.update()  end),
-    awful.key({           	  }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q set PCM 1- unmute") volumewidget.update() end),
-    awful.key({                   }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q set Master 1+ unmute") volumewidget.update() end),
-    awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q set Master 1- unmute") volumewidget.update() end),
-    awful.key({                   }, "XF86AudioMute", function () awful.util.spawn("amixer -q sset Master toggle") volumewidget.update() end),
+    awful.key({           	  }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -q set PCM 2+ unmute") volumewidget.update()  end),
+    awful.key({           	  }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -q set PCM 4- unmute") volumewidget.update() end),
+    awful.key({                   }, "XF86AudioMute", function () awful.util.spawn("amixer -D pulse set Master 1+ toggle") volumewidget.update() end),
 
     -- MPD control
     awful.key({ modkey, }, "F11",
@@ -581,19 +578,6 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
 	                   size_hints_honor = false } },
-
-    { rule = { class = "Firefox" },
-          properties = { tag = tags[1][1] } },
-
-    { rule = { instance = "plugin-container" },
-          properties = { tag = tags[1][1] } },
-
-	  { rule = { class = "Gimp" },
-     	    properties = { tag = tags[1][4] } },
-
-    { rule = { class = "Gimp", role = "gimp-image-window" },
-          properties = { maximized_horizontal = true,
-                         maximized_vertical = true } },
 }
 -- }}}
 

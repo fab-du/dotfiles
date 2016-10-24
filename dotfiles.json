@@ -12,6 +12,6 @@
 	"fzf":{"fzf" : "~/.fzf"},
 	"synergy":{"synergie/synergy.conf":"~/.synergy.conf"},
 	"ncmpcpp":{"ncmpcpp":"~/.ncmpcpp"},
-	"mpd":{"mpd" : "~/.config/mpd.conf"},
+	"mpd":{"mpd" : "~/.config/mpd"},
 	"zsh":{ "zsh" : "~/.zsh", "zsh/zshenv" : "~/.zshenv"}
 }
